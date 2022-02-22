@@ -1,12 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import {AddEventForm} from './components/addEventForm';
+import {JoinEventForm} from './components/joinEventForm';
+import {MapSection} from './components/mapSection';
 
 function App() {
   return (
     <div className="App">
-      <addEventForm/>
-      <joinEventForm/>
-      <mapSection/>
+      <AddEventForm/>
+      <JoinEventForm/>
+      <MapSection/>
 
     </div>
   );

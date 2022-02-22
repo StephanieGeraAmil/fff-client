@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const addEventForm = () => {
+export const AddEventForm = () => {
   return (
     <div>addEventForm</div>
   )

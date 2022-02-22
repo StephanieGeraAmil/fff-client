@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const joinEventForm = () => {
+export const JoinEventForm = () => {
   return (
     <div>joinEventForm</div>
   )

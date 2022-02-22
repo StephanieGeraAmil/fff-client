@@ -1,0 +1,92 @@
+@import "./variables";
+
+@mixin theme {
+  background-color: $background-color;
+  color: $base-color;
+  font-size: calc(10px + 2vmin);
+  font-family: $font;
+  font-weight: 900;
+}
+body {
+  margin: 0;
+  padding: 0;
+  @include theme();
+  width: 100%;
+
+  .root {
+    width: 100%;
+  }
+  .div_img {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+}
+
+.alert-pop-up {
+  position: fixed;
+  top: 28%;
+  left: 8%;
+  z-index: 20;
+  width: 80%;
+  height: 58vw;
+  padding: 3vw;
+  border-radius: 2vw;
+  background-color: #ffffff;
+  color: rgb(94, 12, 12);
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  font-size: 4.5vw;
+  .alert {
+    height: 60%;
+    text-align: center;
+    padding: 3vw;
+  }
+
+  .close-alert {
+    font-size: 3.5vw;
+    border-width: 0.2vw;
+    width: 4.1vw;
+    height: 4.1vw;
+    border-radius: 50%;
+    font-size: 3vw;
+    font-weight: bold;
+    text-align: center;
+    align-self: flex-end;
+
+    border-color: rgb(94, 12, 12);
+    background-color: white;
+    color: rgb(94, 12, 12);
+  }
+}
+.alert-pop-up-big {
+  height: 30vw;
+}
+
+@media (min-width: 500px) {
+  .body {
+    font-size: 2vw;
+  }
+
+  .alert-pop-up {
+    left: 25%;
+    width: 40%;
+    top: 28%;
+    font-size: 1.5vw;
+    height: 10vw;
+    .close-alert {
+      font-size: 1.5vw;
+      width: 2vw;
+      height: 2vw;
+    }
+  }
+  .alert-pop-up-big {
+    top: 30%;
+    left: 30%;
+    width: 34%;
+    height: 25vw;
+  }
+}
