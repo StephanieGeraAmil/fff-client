@@ -1,30 +1,41 @@
 import React from 'react'
-import {GoogleMap, useLoadScript} from '@react-google-maps/api'
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import mapStyles from "./mapStyles";
 
-const libraries=['places']
-const mapContainerStyle={
-  width:'100vw',
-  height:'100vh'
+//const libraries=['places']
+
+const containerStyle = {
+  width: '40vw',
+  height: '40vh'
 };
 const center={
   lat:-34.90328,
   lng:-56.18816
 }
+const options = {
+  styles: mapStyles,
+  disableDefaultUI: true,
+  zoomControl: true,
+};
 export const MapSection = () => {
-  const {isLoaded,loadError}=useLoadScript({
-    key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    libraries
-  });
-  if (loadError) return "Error loading map"
-  if (!isLoaded) return "Loading"
 
-  return (
+   const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: 'AIzaSyCwPyO0ICeErvK3sjNs8eyhpZMluSVGn5s',
+   
+  })
 
-           <div>
-             <GoogleMap mapContainerStyle={mapContainerStyle} zoom={8} center={center}>
-
-             </GoogleMap>
-           </div>
-  
-  )
+ 
+  return isLoaded ? (
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={18}
+        options={options}
+       
+      >
+        { /* Child components, such as markers, info windows, etc. */ }
+        <></>
+      </GoogleMap>
+  ) : <></>
 }

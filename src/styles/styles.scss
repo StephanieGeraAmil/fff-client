@@ -2,16 +2,17 @@
 
 @mixin theme {
   background-color: $background-color;
-  color: $base-color;
-  font-size: calc(10px + 2vmin);
-  font-family: $font;
-  font-weight: 900;
+  // color: $base-color;
+  // font-size: calc(10px + 2vmin);
+  // font-family: $font;
+  // font-weight: 900;
 }
 body {
   margin: 0;
   padding: 0;
   @include theme();
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
 
   .root {
     width: 100%;
@@ -67,9 +68,9 @@ body {
 }
 
 @media (min-width: 500px) {
-  .body {
-    font-size: 2vw;
-  }
+  // .body {
+  //   font-size: 2vw;
+  // }
 
   .alert-pop-up {
     left: 25%;

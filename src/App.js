@@ -7,8 +7,8 @@ import {MapSection} from './components/mapSection';
 function App() {
   return (
     <div className="App">
-      <AddEventForm/>
-      <JoinEventForm/>
+      {/* <AddEventForm/>
+      <JoinEventForm/> */}
       <MapSection/>
 
     </div>

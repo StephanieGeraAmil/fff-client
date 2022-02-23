@@ -2,11 +2,8 @@ body {
   margin: 0;
   padding: 0;
   background-color: #ffff;
-  color: #073b4c;
-  font-size: calc(10px + 2vmin);
-  font-family: "Montserrat", sans-serif;
-  font-weight: 900;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
 }
 
 body .root {
@@ -73,9 +70,6 @@ body .div_img {
 }
 
 @media (min-width: 500px) {
-  .body {
-    font-size: 2vw;
-  }
   .alert-pop-up {
     left: 25%;
     width: 40%;
