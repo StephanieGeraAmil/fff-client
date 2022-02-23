@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useCallback, useState} from 'react'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import mapStyles from "./mapStyles";
 
@@ -17,7 +17,24 @@ const options = {
   disableDefaultUI: true,
   zoomControl: true,
 };
+
+
+ 
+
 export const MapSection = () => {
+
+  const [markers, setMarkers] = useState([]);
+
+  const onMapClick = useCallback((e) => {
+    setMarkers((current) => [
+      ...current,
+      {
+        lat: e.latLng.lat(),
+        lng: e.latLng.lng(),
+        time: new Date(),
+      },
+    ]);
+  }, []);
 
    const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -32,9 +49,10 @@ export const MapSection = () => {
         center={center}
         zoom={18}
         options={options}
+         onClick={onMapClick}
        
       >
-        { /* Child components, such as markers, info windows, etc. */ }
+      
         <></>
       </GoogleMap>
   ) : <></>
