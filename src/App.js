@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import './App.css';
+import './styles/styles.css';
 import {AddEventForm} from './components/addEventForm';
 import {JoinEventForm} from './components/joinEventForm';
 import {MapSection} from './components/mapSection';
