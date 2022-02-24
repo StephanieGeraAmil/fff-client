@@ -168,12 +168,13 @@ function Search({ panTo }) {
 
   return (
     <div className="search">
-      <Combobox onSelect={handleSelect}>
+      <Combobox onSelect={handleSelect} className="combobox">
         <ComboboxInput
           value={value}
           onChange={handleInput}
           disabled={!ready}
           placeholder="Search your location"
+          className="inputcombobox"
         />
         <ComboboxPopover portal={false} className='pop_over' >
           <ComboboxList>

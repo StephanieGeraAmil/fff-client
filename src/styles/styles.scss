@@ -23,38 +23,29 @@ body {
     max-width: 1000px;
 
     z-index: 10;
-    input {
-      padding: 1.8vh;
-      font-size: 2.2vh;
-      width: 100%;
-      border-width: 0;
-      border-radius: 4vh;
-      z-index: 20;
-    }
-    .pop_over {
-      // position: absolute;
-      // z-index: 8;
-      border-bottom-left-radius: 4vh;
-      border-bottom-right-radius: 4vh;
-      font-size: 2.2vh;
-      transform: translateY(-3%);
-      transform: translateZ(-3%);
+    .combobox {
+      .inputcombobox {
+        position: absolute;
+        padding: 1.8vh;
+        font-size: 2.2vh;
+        width: 100%;
+        border-width: 0;
+        border-radius: 4vh;
+        z-index: 10;
+      }
+      .pop_over {
+        position: absolute;
+        top: 1.5vh;
+        left: -0.1vh;
+        z-index: 3;
+        width: 100%;
+        border-bottom-left-radius: 4vh;
+        border-bottom-right-radius: 4vh;
+        font-size: 2.2vh;
 
-      padding: 1.8vh;
-      padding-top: 5vh;
-    }
-  }
-
-  .locate {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    z-index: 10;
-    img {
-      width: 30px;
-      cursor: pointer;
+        padding: 1.8vh;
+        padding-top: 5vh;
+      }
     }
   }
 }
