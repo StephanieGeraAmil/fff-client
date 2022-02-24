@@ -25,13 +25,23 @@ body {
     z-index: 10;
     input {
       padding: 1.8vh;
-      font-size: 1.8vh;
+      font-size: 2.2vh;
       width: 100%;
       border-width: 0;
       border-radius: 4vh;
+      z-index: 20;
     }
     .pop_over {
-      background-color: white;
+      // position: absolute;
+      // z-index: 8;
+      border-bottom-left-radius: 4vh;
+      border-bottom-right-radius: 4vh;
+      font-size: 2.2vh;
+      transform: translateY(-3%);
+      transform: translateZ(-3%);
+
+      padding: 1.8vh;
+      padding-top: 5vh;
     }
   }
 

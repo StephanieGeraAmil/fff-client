@@ -5,15 +5,16 @@ import { formatRelative } from "date-fns";
 import usePlacesAutocomplete, { getGeocode, getLatLng,} from "use-places-autocomplete";
 
 import {Combobox,ComboboxInput,ComboboxPopover,ComboboxList, ComboboxOption,} from "@reach/combobox";
+ import "@reach/combobox/styles.css";
 
-const libraries=['places']
+const libraries=['places'];
 
 const containerStyle = {
-  width: '80vw',
-  height: '80vh'
+  width: '100vw',
+  height: '100vh'
 };
 const center={
-  lat:10.90328,
+  lat:-34.90328,
   lng:-56.18816
 }
 const options = {
@@ -174,11 +175,11 @@ function Search({ panTo }) {
           disabled={!ready}
           placeholder="Search your location"
         />
-        <ComboboxPopover >
+        <ComboboxPopover portal={false} className='pop_over' >
           <ComboboxList>
             {status === "OK" &&
               data.map(({ id, description }) => (
-                <ComboboxOption key={id} value={description} />
+                <ComboboxOption key={id+description} value={description} />
               ))}
           </ComboboxList>
         </ComboboxPopover>
