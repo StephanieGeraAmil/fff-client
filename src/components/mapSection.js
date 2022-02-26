@@ -1,4 +1,4 @@
-import React, {useCallback, useState,useRef, useEffect} from 'react'
+import React, {useCallback, useState,useRef} from 'react'
 import { GoogleMap,Marker,InfoWindow,useLoadScript } from '@react-google-maps/api';
 import mapStyles from "./mapStyles";
 import { formatRelative } from "date-fns";
@@ -99,19 +99,21 @@ export const MapSection = () => {
             icon={{
               url: `/bible.png`,
               origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(10, 12),
-              scaledSize: new window.google.maps.Size(20, 24),
+              anchor: new window.google.maps.Point(35, 40 ),
+              scaledSize: new window.google.maps.Size(70, 80),
             }}
           />
         ))}
         {selected ? (
             <InfoWindow
               position={{ lat: selected.lat, lng: selected.lng }}
+           
               onCloseClick={() => {
                 setSelected(null);
+                
               }}
             >
-              <div>
+              <div className='infoMarker'>
                 <h2>
                 Event
                 </h2>
@@ -120,6 +122,7 @@ export const MapSection = () => {
                 <p>Created {formatRelative(selected.time, new Date())}</p>
               </div>
             </InfoWindow>
+        
           ) : null}
 
 

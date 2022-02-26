@@ -17,7 +17,7 @@ body {
   .search {
     position: absolute;
     top: 5vw;
-    left: 50%;
+    left: 70%;
     transform: translateX(-50%);
     width: 40%;
     max-width: 1000px;
@@ -47,6 +47,11 @@ body {
         padding-top: 5vh;
       }
     }
+  }
+  .infoMarker {
+    padding: 1vh;
+    font-size: 0.8vh;
+    width: 10vh;
   }
 }
 

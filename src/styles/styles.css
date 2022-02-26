@@ -9,7 +9,7 @@ body {
 body .search {
   position: absolute;
   top: 5vw;
-  left: 50%;
+  left: 70%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   width: 40%;
@@ -38,5 +38,11 @@ body .search .combobox .pop_over {
   font-size: 2.2vh;
   padding: 1.8vh;
   padding-top: 5vh;
+}
+
+body .infoMarker {
+  padding: 1vh;
+  font-size: 0.8vh;
+  width: 10vh;
 }
 /*# sourceMappingURL=styles.css.map */
