@@ -38,9 +38,10 @@ export const MapSection = () => {
       ...current,
       {
         id: markers.length+1,
+        title: "Bible Study",
         lat: e.latLng.lat(),
         lng: e.latLng.lng(),
-        description: "This is a bible study group, everyoane is welcome",
+        description: "This is a bible study group that gathers on Monday Afternoon, everybody is welcome",
 
         time: new Date(),
       },
@@ -88,8 +89,8 @@ export const MapSection = () => {
             icon={{
               url: `/bible.png`,
               origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(20, 25 ),
-              size: new window.google.maps.Size(40, 50),
+              anchor: new window.google.maps.Point(32, 47 ),
+              size: new window.google.maps.Size(64, 94),
             }}
           />
         ))}
@@ -101,10 +102,12 @@ export const MapSection = () => {
                 setSelected(null);
                 
               }}
+             
+              
             >
-              <div className='infoMarker'>
+              <div  className='infoMarker'>
                  <h2>
-                Event
+               {selected.title}
                 </h2>
                  <p>Description:  {selected.description}</p>
               

@@ -2,6 +2,8 @@ body {
   margin: 0;
   padding: 0;
   background-color: #ffff;
+  color: #545454;
+  font-family: "Montserrat", sans-serif;
   width: 100vw;
   height: 100vh;
 }
@@ -20,6 +22,7 @@ body .search {
 body .search .combobox .inputcombobox {
   position: absolute;
   padding: 1vh;
+  padding-left: 2vh;
   font-size: 2.2vh;
   width: 100%;
   border-width: 0;
@@ -46,8 +49,40 @@ body .search .combobox .pop_over .pop_over_suggestion {
 }
 
 body .infoMarker {
+  padding-top: 0;
+  padding: 3vh;
+  font-size: 1.8vh;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 5vh;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body .infoMarker button {
+  background-color: #6229d0;
   padding: 1vh;
-  font-size: 0.8vh;
-  width: 10vh;
+  width: 60%;
+  margin: auto;
+  border-color: #6229d0;
+  border-radius: 5vh;
+  font-size: 1.8vh;
+  color: white;
+}
+
+body .infoMarker h2 {
+  margin: 0;
+}
+
+body .infoMarker p {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 /*# sourceMappingURL=styles.css.map */
