@@ -7,7 +7,7 @@ import usePlacesAutocomplete, { getGeocode, getLatLng,} from "use-places-autocom
 import {Combobox,ComboboxInput,ComboboxPopover,ComboboxList, ComboboxOption,} from "@reach/combobox";
  import "@reach/combobox/styles.css";
 
-const libraries=['places'];
+const librariesArray=['places'];
 
 const containerStyle = {
   width: '100vw',
@@ -29,13 +29,19 @@ export const MapSection = () => {
 
   const [markers, setMarkers] = useState([]);
   const [selected, setSelected] = React.useState(null);
+    const [eventToJoin, setEventToJoin] = React.useState(null);
 
   const onMapClick = useCallback((e) => {
+
+    //here I have to display the form that determines what type of event is it
     setMarkers((current) => [
       ...current,
       {
+        id: markers.length+1,
         lat: e.latLng.lat(),
         lng: e.latLng.lng(),
+        description: "This is a bible study group, everyoane is welcome",
+
         time: new Date(),
       },
     ]);
@@ -55,29 +61,12 @@ export const MapSection = () => {
 
    const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: 'AIzaSyCwPyO0ICeErvK3sjNs8eyhpZMluSVGn5s',
-    libraries,
+    libraries:librariesArray,
   });
-
-  //  useEffect(()=>{ 
-  //   //locate the map to where the user is 
-    
-  //   navigator.geolocation.getCurrentPosition(
-  //         (position) => {
-  //           console.log( 'in useEffect')
-  //           panTo({
-  //             lat: position.coords.latitude,
-  //             lng: position.coords.longitude,
-  //           });
-  //         },
-  //         //error
-  //         () => null
-  //       );
-
-  // },[]);
 
  
   return isLoaded ? (<>
-      {/* <Locate panTo={panTo} /> */}
+     
       <Search panTo={panTo} />
       <GoogleMap
         mapContainerStyle={containerStyle}
@@ -99,8 +88,8 @@ export const MapSection = () => {
             icon={{
               url: `/bible.png`,
               origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(35, 40 ),
-              scaledSize: new window.google.maps.Size(70, 80),
+              anchor: new window.google.maps.Point(20, 25 ),
+              size: new window.google.maps.Size(40, 50),
             }}
           />
         ))}
@@ -114,12 +103,17 @@ export const MapSection = () => {
               }}
             >
               <div className='infoMarker'>
-                <h2>
+                 <h2>
                 Event
                 </h2>
-                 <p>Latitude {selected.lat}</p>
-                  <p>Longitude {selected.lng}</p>
-                <p>Created {formatRelative(selected.time, new Date())}</p>
+                 <p>Description:  {selected.description}</p>
+              
+                <p>Created {formatRelative(selected.time, new Date())}</p> 
+                <button onClick={() => {
+                    setEventToJoin(selected);
+                  }}>
+                  Join
+                </button>
               </div>
             </InfoWindow>
         
@@ -183,7 +177,7 @@ function Search({ panTo }) {
           <ComboboxList>
             {status === "OK" &&
               data.map(({ id, description }) => (
-                <ComboboxOption key={id+description} value={description} />
+                <ComboboxOption  className='pop_over_suggestion' key={id+description} value={description} />
               ))}
           </ComboboxList>
         </ComboboxPopover>
