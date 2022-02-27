@@ -1,8 +1,12 @@
 import React, {useCallback, useState,useRef} from 'react'
+import { useDispatch,useSelector } from 'react-redux';
 import { GoogleMap,Marker,InfoWindow,useLoadScript } from '@react-google-maps/api';
 import mapStyles from "./mapStyles";
 import { formatRelative } from "date-fns";
 import usePlacesAutocomplete, { getGeocode, getLatLng,} from "use-places-autocomplete";
+import {AddEventForm} from "./addEventForm"
+import Modal from "./Modal"
+import Backdrop from "./Backdrop"
 
 import {Combobox,ComboboxInput,ComboboxPopover,ComboboxList, ComboboxOption,} from "@reach/combobox";
  import "@reach/combobox/styles.css";
@@ -27,13 +31,21 @@ const options = {
 
 export const MapSection = () => {
 
+
+    const events = useSelector((state) =>(state.events ? state.events :null));
+
   const [markers, setMarkers] = useState([]);
-  const [selected, setSelected] = React.useState(null);
-    const [eventToJoin, setEventToJoin] = React.useState(null);
+  const [selected, setSelected] = useState(null);
+    const [eventToJoin, setEventToJoin] =useState(null);
+      const [openForm, setOpenForm] = useState(null);
+
 
   const onMapClick = useCallback((e) => {
 
     //here I have to display the form that determines what type of event is it
+    // dispatch(openForm("addEvent"));
+   // dispatch(createJar({_id:jarSelected._id,...jarData}));
+   setOpenForm(true);
     setMarkers((current) => [
       ...current,
       {
@@ -45,7 +57,9 @@ export const MapSection = () => {
 
         time: new Date(),
       },
-    ]);
+    ]); 
+  
+
   }, []);
  
 
@@ -94,6 +108,7 @@ export const MapSection = () => {
             }}
           />
         ))}
+         {openForm? <React.Fragment><Backdrop/><Modal form={<AddEventForm/>}/></React.Fragment> : <></>}
         {selected ? (
             <InfoWindow
               position={{ lat: selected.lat, lng: selected.lng }}
@@ -124,6 +139,8 @@ export const MapSection = () => {
 
 
       </GoogleMap>
+
+     
    </>) : <></>
  
 }
