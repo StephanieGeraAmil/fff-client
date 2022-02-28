@@ -7,9 +7,10 @@ import usePlacesAutocomplete, { getGeocode, getLatLng,} from "use-places-autocom
 import {AddEventForm} from "./addEventForm"
 import Modal from "./Modal"
 import Backdrop from "./Backdrop"
+import {setForm} from '../actions/globalStateActions'
 
 import {Combobox,ComboboxInput,ComboboxPopover,ComboboxList, ComboboxOption,} from "@reach/combobox";
- import "@reach/combobox/styles.css";
+import "@reach/combobox/styles.css";
 
 const librariesArray=['places'];
 
@@ -31,21 +32,20 @@ const options = {
 
 export const MapSection = () => {
 
-
+    
     const events = useSelector((state) =>(state.events ? state.events :null));
-
-  const [markers, setMarkers] = useState([]);
-  const [selected, setSelected] = useState(null);
+    const form = useSelector((state) =>(state.form ? state.form :null));
+    const [markers, setMarkers] = useState([]);
+    const [selected, setSelected] = useState(null);
     const [eventToJoin, setEventToJoin] =useState(null);
-      const [openForm, setOpenForm] = useState(null);
-
+    const dispatch= useDispatch();
 
   const onMapClick = useCallback((e) => {
 
     //here I have to display the form that determines what type of event is it
     // dispatch(openForm("addEvent"));
-   // dispatch(createJar({_id:jarSelected._id,...jarData}));
-   setOpenForm(true);
+    dispatch(setForm('addEvent'));
+    //setOpenForm(true);
     setMarkers((current) => [
       ...current,
       {
@@ -58,6 +58,7 @@ export const MapSection = () => {
         time: new Date(),
       },
     ]); 
+     
   
 
   }, []);
@@ -108,7 +109,7 @@ export const MapSection = () => {
             }}
           />
         ))}
-         {openForm? <React.Fragment><Backdrop/><Modal form={<AddEventForm/>}/></React.Fragment> : <></>}
+         {form? <React.Fragment><Backdrop/><Modal form={<AddEventForm/>}/></React.Fragment> : <></>}
         {selected ? (
             <InfoWindow
               position={{ lat: selected.lat, lng: selected.lng }}

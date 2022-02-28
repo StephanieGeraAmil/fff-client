@@ -1,3 +1,4 @@
 import {combineReducers} from 'redux';
 import eventsReducer  from './eventsReducer.js'
-export default combineReducers({ events:eventsReducer });
+import globalStateReducer  from './globalStateReducer.js'
+export default combineReducers({ events:eventsReducer , form: globalStateReducer});

@@ -1,6 +1,7 @@
 import React ,{useState}from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import {createEvent} from '../actions/eventActions'
+import { unsetForm} from '../actions/globalStateActions'
 
 export const AddEventForm = () => {
   const dispatch= useDispatch();
@@ -23,7 +24,7 @@ export const AddEventForm = () => {
          lng:'',
 
      })
-       // dispatch(closeForm);
+        dispatch(unsetForm());
       };
 
   return (
@@ -49,7 +50,7 @@ export const AddEventForm = () => {
                       />
               </div>
                <div className="bottom mt-5">
-                   <input className="submitButton cancel" readOnly value="X" onClick={()=>{}}/>
+                   <input className="submitButton cancel" readOnly value="X" onClick={()=>{dispatch(unsetForm());}}/>
                 <input type="submit" value="Add Event" className="submitButton" />
                                
               </div> 
