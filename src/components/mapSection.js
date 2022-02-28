@@ -42,10 +42,9 @@ export const MapSection = () => {
 
   const onMapClick = useCallback((e) => {
 
-    //here I have to display the form that determines what type of event is it
-    // dispatch(openForm("addEvent"));
+
+ 
     dispatch(setForm('addEvent'));
-    //setOpenForm(true);
     setMarkers((current) => [
       ...current,
       {
@@ -104,8 +103,8 @@ export const MapSection = () => {
             icon={{
               url: `/bible.png`,
               origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(32, 47 ),
-              size: new window.google.maps.Size(64, 94),
+              anchor: new window.google.maps.Point(35, 50 ),
+              size: new window.google.maps.Size(70,100),
             }}
           />
         ))}

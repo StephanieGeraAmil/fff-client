@@ -5,9 +5,11 @@ import { unsetForm} from '../actions/globalStateActions'
 
 export const AddEventForm = () => {
   const dispatch= useDispatch();
+  const typesAvaiable=['Bible Study', "Coffee", "Pizza","Church","Movies", "Fitness"]
   const [eventData, setEventData]=useState({
          title:'',
          description:'',
+         type:'',
          lat:'',
          lng:'',
 
@@ -20,6 +22,7 @@ export const AddEventForm = () => {
         setEventData({
          title:'',
          description:'',
+         type:'',
          lat:'',
          lng:'',
 
@@ -48,6 +51,17 @@ export const AddEventForm = () => {
                       value={eventData.description}
                       onChange={(e)=>setEventData({...eventData, description:(e.target.value)})}
                       />
+              </div>
+                   <div className="form-group">
+                  <label className="m-2">Type: </label>
+             
+              
+                    <select  className="form-control dropdown" value={eventData.type}   onChange={(e)=>setEventData({...eventData, type:e.target.value})}>
+                        {typesAvaiable.map(item=><option  key={item}>{item}</option>)}
+                    </select>
+
+
+
               </div>
                <div className="bottom mt-5">
                    <input className="submitButton cancel" readOnly value="X" onClick={()=>{dispatch(unsetForm());}}/>
