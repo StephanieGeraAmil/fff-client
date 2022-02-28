@@ -16,6 +16,13 @@ export const AddEventForm = () => {
     const handleSubmit=(e)=>{
         e.preventDefault();
         dispatch(createEvent(eventData));
+        setEventData({
+         title:'',
+         description:'',
+         lat:'',
+         lng:'',
+
+     })
        // dispatch(closeForm);
       };
 
