@@ -16,8 +16,8 @@ export const AddEventForm = () => {
   const [eventData, setEventData]=useState({
          title:'',
          description:'',
-         type:'',
-         img:'',
+         type: typesAvaiable[0].name,
+         img:"."+typesAvaiable[0].img,
          lat:form.position.lat,
          lng:form.position.lng,
 
