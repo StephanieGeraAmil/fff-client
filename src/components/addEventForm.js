@@ -40,6 +40,7 @@ export const AddEventForm = () => {
     <div>
        <div className="form">
          <form onSubmit={handleSubmit}>
+             <input className="cancel" readOnly value="X" onClick={()=>{dispatch(unsetForm());}}/>
               <div className="form-group"> 
                   <label className="m-2">Title: </label>
                   <input  type="text"
@@ -75,11 +76,11 @@ export const AddEventForm = () => {
 
 
               </div>
-               <div className="bottom mt-5">
-                   <input className="submitButton cancel" readOnly value="X" onClick={()=>{dispatch(unsetForm());}}/>
+               
+                 
                 <input type="submit" value="Add Event" className="submitButton" />
                                
-              </div> 
+              
           </form>
        </div>
     </div>

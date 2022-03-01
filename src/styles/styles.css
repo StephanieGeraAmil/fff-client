@@ -22,8 +22,7 @@ body .search {
 body .search .combobox .inputcombobox {
   position: absolute;
   padding: 1vh;
-  padding-left: 2vh;
-  font-size: 2.2vh;
+  font-size: 1vw;
   width: 100%;
   border-width: 0;
   border-radius: 4vh;
@@ -38,14 +37,10 @@ body .search .combobox .pop_over {
   width: 100%;
   border-bottom-left-radius: 3vh;
   border-bottom-right-radius: 3vh;
-  font-size: 1.8vh;
+  font-size: 0.9vw;
   padding: 1vh;
   padding-top: 3.2vh;
-  padding-bottom: 0.5vh;
-}
-
-body .search .combobox .pop_over .pop_over_suggestion {
-  padding: 1vh;
+  padding-bottom: 0.2vh;
 }
 
 body .infoMarker {
@@ -99,9 +94,9 @@ body .backdrop {
 body .modal-area {
   position: fixed;
   top: 30%;
-  left: 10%;
+  left: 35%;
   z-index: 15;
-  width: 80%;
+  width: 30%;
   height: auto;
   border-radius: 2vw;
   background-color: #ffffff;
@@ -112,8 +107,8 @@ body .modal-area {
 body .modal-area form {
   width: 80%;
   margin: auto;
-  margin-top: 4vh;
-  margin-bottom: 2vh;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -139,62 +134,49 @@ body .modal-area form .form-group {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-bottom: 1vh;
+  margin-bottom: 1vw;
   font-weight: normal;
-  font-size: 2.4vh;
+  font-size: 1.2vw;
 }
 
 body .modal-area form .form-group .form-control {
   border-radius: 20vw;
   border-color: #545454;
-  border-width: 0.001vw;
+  border-width: 0.00001vw;
   width: 50%;
   font-weight: normal;
   color: #545454;
-  padding-left: 1.5vw;
+  padding-left: 1.2vw;
+  font-size: 1.2vw;
 }
 
-body .modal-area form .form-group .form-control .dropdown-control {
-  width: 50%;
+body .modal-area form .form-group .form-control select {
+  width: 100%;
 }
 
-body .modal-area form .bottom {
-  height: 4vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
+body .modal-area form .form-group .form-control select option {
+  font-size: 1.2vw;
 }
 
-body .modal-area form .bottom .submitButton {
-  background-color: #6229d0;
-  padding: 1vh;
-  width: 60%;
-  margin: auto;
-  border-color: #6229d0;
-  border-radius: 5vh;
-  font-size: 2vh;
-  color: white;
-}
-
-body .modal-area form .bottom .cancel {
-  font-size: 2vh;
+body .modal-area form .cancel {
+  position: absolute;
+  top: 0.8vw;
+  right: 1.1vw;
+  width: 1vw;
+  font-size: 1vw;
   text-align: center;
-  font-weight: bold;
-  width: 3vh;
-  height: 3vh;
-  border-radius: 50%;
   background-color: white;
   color: #545454;
+  border: #ffff;
+}
+
+body .modal-area form .submitButton {
+  background-color: #6229d0;
+  padding: 0.2vw;
+  padding-bottom: 0.4vw;
+  border-color: #6229d0;
+  border-radius: 2vh;
+  font-size: 1.2vw;
+  color: white;
 }
 /*# sourceMappingURL=styles.css.map */

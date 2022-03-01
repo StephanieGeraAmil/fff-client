@@ -70,7 +70,7 @@ export const MapSection = () => {
 
   const panTo = useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
-    mapRef.current.setZoom(16);
+    mapRef.current.setZoom(20);
   }, []);
 
 
@@ -86,7 +86,7 @@ export const MapSection = () => {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={16}
+        zoom={20}
         options={options}
          onClick={onMapClick}
           onLoad={onMapLoad}
