@@ -5,6 +5,7 @@ import { unsetForm} from '../actions/globalStateActions'
 
 export const AddEventForm = () => {
   const form = useSelector((state) =>(state.form ? state.form :null));
+    const events = useSelector((state) =>(state.events ? state.events :null));
   const dispatch= useDispatch();
   const typesAvaiable=[
                   {name:"Bible Study", img: `/bible.png`, id:1},
@@ -12,7 +13,8 @@ export const AddEventForm = () => {
                   {name:"Pizza", img: `/pizza.png`, id:3},
                   {name:"Church", img: `/church.png`, id:4},
                   {name:"Movies", img: `/tv.png`, id:5},
-                  {name:"Fitness",img: `/fitness.png`, id:6}];
+                  {name:"Fitness",img: `/fitness.png`, id:6},
+                  {name:"Pray",img: `/pray.png`, id:7}];
   const [eventData, setEventData]=useState({
          title:'',
          description:'',
@@ -20,18 +22,14 @@ export const AddEventForm = () => {
          img:"."+typesAvaiable[0].img,
          lat:form.position.lat,
          lng:form.position.lng,
+         id: events.length,
 
      })
 
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        // const url=  typesAvaiable.find(item=>item.name===eventData.type).img;
-
-        // setEventData({...eventData,img: url});
-        console.log(eventData);
-        dispatch(createEvent(eventData));
-       
+        dispatch(createEvent(eventData));       
         dispatch(unsetForm());
       };
 

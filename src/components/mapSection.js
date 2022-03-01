@@ -95,7 +95,7 @@ export const MapSection = () => {
     
        {events.map((marker) => (
           <Marker
-            key={`${marker.lat}-${marker.lng}`}
+            key={marker.id}
             position={{ lat: marker.lat, lng: marker.lng }}
             onClick={() => {
               setSelected(marker);
@@ -103,8 +103,8 @@ export const MapSection = () => {
             icon={{
               url: marker.img,
               origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(35, 50 ),
-              size: new window.google.maps.Size(70,100),
+              anchor: new window.google.maps.Point(50, 60),
+              size: new window.google.maps.Size(100,120),
             }}
           />
         ))}
@@ -126,7 +126,7 @@ export const MapSection = () => {
                 </h2>
                  <p>Description:  {selected.description}</p>
               
-                <p>Created {formatRelative(selected.time, new Date())}</p> 
+                {/* <p>Created {formatRelative(selected.time, new Date())}</p>  */}
                 <button onClick={() => {
                     setEventToJoin(selected);
                   }}>
