@@ -4,31 +4,39 @@ import {createEvent} from '../actions/eventActions'
 import { unsetForm} from '../actions/globalStateActions'
 
 export const AddEventForm = () => {
+  const form = useSelector((state) =>(state.form ? state.form :null));
   const dispatch= useDispatch();
-  const typesAvaiable=['Bible Study', "Coffee", "Pizza","Church","Movies", "Fitness"]
+  const typesAvaiable=[
+                  {name:"Bible Study", img: `/bible.png`, id:1},
+                  {name:"Coffee", img: `/coffee.png`, id:2},
+                  {name:"Pizza", img: `/pizza.png`, id:3},
+                  {name:"Church", img: `/church.png`, id:4},
+                  {name:"Movies", img: `/tv.png`, id:5},
+                  {name:"Fitness",img: `/fitness.png`, id:6}];
   const [eventData, setEventData]=useState({
          title:'',
          description:'',
          type:'',
-         lat:'',
-         lng:'',
+         img:'',
+         lat:form.position.lat,
+         lng:form.position.lng,
 
      })
 
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        dispatch(createEvent(eventData));
-        setEventData({
-         title:'',
-         description:'',
-         type:'',
-         lat:'',
-         lng:'',
+        // const url=  typesAvaiable.find(item=>item.name===eventData.type).img;
 
-     })
+        // setEventData({...eventData,img: url});
+        console.log(eventData);
+        dispatch(createEvent(eventData));
+       
         dispatch(unsetForm());
       };
+
+
+      
 
   return (
     <div>
@@ -56,8 +64,14 @@ export const AddEventForm = () => {
                   <label className="m-2">Type: </label>
              
               
-                    <select  className="form-control dropdown" value={eventData.type}   onChange={(e)=>setEventData({...eventData, type:e.target.value})}>
-                        {typesAvaiable.map(item=><option  key={item}>{item}</option>)}
+                    <select  className="form-control dropdown" value={eventData.type}   onChange={(e)=>setEventData({...eventData, type:e.target.value, img:"."+typesAvaiable.find(item=>item.name===e.target.value).img})}>
+                        {typesAvaiable.map(item=><option  key={item.id}>
+                                          {item.name} 
+                                          {/* <div  className="div_img" style={{
+                                          backgroundImage: `url("/bible.png")`
+                                          }}> 
+                                          </div> */}
+                                  </option>)}
                     </select>
 
 

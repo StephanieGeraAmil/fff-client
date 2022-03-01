@@ -42,21 +42,21 @@ export const MapSection = () => {
 
   const onMapClick = useCallback((e) => {
 
+    const position={ lat: e.latLng.lat(),
+                      lng: e.latLng.lng()};
+    dispatch(setForm({position}));
+    // setMarkers((current) => [
+    //   ...current,
+    //   {
+    //     id: markers.length+1,
+    //     title: "Bible Study",
+    //     lat: e.latLng.lat(),
+    //     lng: e.latLng.lng(),
+    //     description: "This is a bible study group that gathers on Monday Afternoon, everybody is welcome",
 
- 
-    dispatch(setForm('addEvent'));
-    setMarkers((current) => [
-      ...current,
-      {
-        id: markers.length+1,
-        title: "Bible Study",
-        lat: e.latLng.lat(),
-        lng: e.latLng.lng(),
-        description: "This is a bible study group that gathers on Monday Afternoon, everybody is welcome",
-
-        time: new Date(),
-      },
-    ]); 
+        
+    //   },
+    // ]); 
      
   
 
@@ -93,7 +93,7 @@ export const MapSection = () => {
        
       >
     
-       {markers.map((marker) => (
+       {events.map((marker) => (
           <Marker
             key={`${marker.lat}-${marker.lng}`}
             position={{ lat: marker.lat, lng: marker.lng }}
@@ -101,7 +101,7 @@ export const MapSection = () => {
               setSelected(marker);
             }}
             icon={{
-              url: `/bible.png`,
+              url: marker.img,
               origin: new window.google.maps.Point(0, 0),
               anchor: new window.google.maps.Point(35, 50 ),
               size: new window.google.maps.Size(70,100),
