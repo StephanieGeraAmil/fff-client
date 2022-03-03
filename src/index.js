@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Auth0Provider } from "@auth0/auth0-react";
 
 
 
@@ -21,9 +22,17 @@ const store= createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(
   <React.StrictMode>
+   
      <Provider store={store}>
-       <App />
+         <Auth0Provider
+          domain="dev-7pl37pty.us.auth0.com"
+          clientId="vNXWfuyHWr4jF94dV51O4ZclSOpkA8Hw"
+          redirectUri={window.location.origin}
+        >
+              <App />
+       </Auth0Provider>
     </Provider>
+  
   </React.StrictMode>,
   document.getElementById('root')
 );
