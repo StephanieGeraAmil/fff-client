@@ -4,6 +4,10 @@
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.9.0",
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.4.4",
+    "@mui/material": "^5.4.4",
     "@reach/combobox": "^0.16.5",
     "@react-google-maps/api": "^2.7.0",
     "@testing-library/jest-dom": "^5.16.2",

@@ -12,6 +12,8 @@ import {setForm} from '../actions/globalStateActions'
 import {Combobox,ComboboxInput,ComboboxPopover,ComboboxList, ComboboxOption,} from "@reach/combobox";
 import "@reach/combobox/styles.css";
 
+import { useAuth0 } from "@auth0/auth0-react";
+
 const librariesArray=['places'];
 
 const containerStyle = {
@@ -31,6 +33,7 @@ const options = {
 
 
 export const MapSection = () => {
+        const { user, logout} = useAuth0();
 
     
     const events = useSelector((state) =>(state.events ? state.events :null));

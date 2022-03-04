@@ -8,10 +8,36 @@ body {
   height: 100vh;
 }
 
+body .login_button {
+  height: 2vw;
+  width: 2vw;
+  top: 4vw;
+  right: 5%;
+  position: absolute;
+  background: url("./../login.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+}
+
+body .logout_button {
+  height: 2vw;
+  width: 2vw;
+  top: 4vw;
+  right: 5%;
+  position: absolute;
+  background: url("./../logout.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+}
+
 body .search {
   position: absolute;
   top: 4vw;
-  left: 70%;
+  right: 2%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   width: 40%;
