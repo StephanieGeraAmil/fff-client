@@ -33,12 +33,12 @@ const options = {
 
 
 export const MapSection = () => {
-        const { user, logout} = useAuth0();
+     //   const { user, logout} = useAuth0();
 
     
     const events = useSelector((state) =>(state.events ? state.events :null));
-    const form = useSelector((state) =>(state.form ? state.form :null));
-    const [markers, setMarkers] = useState([]);
+    const form = useSelector((state) =>(state.current.form ? state.current.form :null));
+   // const [markers, setMarkers] = useState([]);
     const [selected, setSelected] = useState(null);
     const [eventToJoin, setEventToJoin] =useState(null);
     const dispatch= useDispatch();

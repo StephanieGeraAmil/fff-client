@@ -27,15 +27,15 @@ export default
             }
         ]
     },
-    {
-        "featureType": "poi",
-        "elementType": "labels",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
+    // {
+    //     "featureType": "poi",
+    //     "elementType": "labels",
+    //     "stylers": [
+    //         {
+    //             "visibility": "off"
+    //         }
+    //     ]
+    // },
     {
         "featureType": "poi.business",
         "elementType": "all",
@@ -72,15 +72,15 @@ export default
             }
         ]
     },
-    {
-        "featureType": "road",
-        "elementType": "labels",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
+    // {
+    //     "featureType": "road",
+    //     "elementType": "labels",
+    //     "stylers": [
+    //         {
+    //             "visibility": "off"
+    //         }
+    //     ]
+    // },
     {
         "featureType": "road.highway",
         "elementType": "geometry.fill",
