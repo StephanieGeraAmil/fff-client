@@ -4,7 +4,7 @@ import {createEvent} from '../actions/eventActions'
 import { unsetForm} from '../actions/globalStateActions'
 
 export const AddEventForm = () => {
-  const form = useSelector((state) =>(state.form ? state.form :null));
+  const form = useSelector((state) =>(state.current.form ? state.current.form :null));
     const events = useSelector((state) =>(state.events ? state.events :null));
   const dispatch= useDispatch();
   const typesAvaiable=[
