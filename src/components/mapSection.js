@@ -14,7 +14,7 @@ import "@reach/combobox/styles.css";
 
 import { useAuth0 } from "@auth0/auth0-react";
 
-const librariesArray=['places'];
+const libraries=['places'];
 
 const containerStyle = {
   width: '100vw',
@@ -33,36 +33,20 @@ const options = {
 
 
 export const MapSection = () => {
-     //   const { user, logout} = useAuth0();
-
-    
     const events = useSelector((state) =>(state.events ? state.events :null));
     const form = useSelector((state) =>(state.current.form ? state.current.form :null));
-   // const [markers, setMarkers] = useState([]);
-    const [selected, setSelected] = useState(null);
-    const [eventToJoin, setEventToJoin] =useState(null);
     const dispatch= useDispatch();
 
+    const [selected, setSelected] = useState(null);
+    const [eventToJoin, setEventToJoin] =useState(null);
+   
+
   const onMapClick = useCallback((e) => {
-
-    const position={ lat: e.latLng.lat(),
-                      lng: e.latLng.lng()};
+    const position={  
+                      lat: e.latLng.lat(),
+                      lng: e.latLng.lng()
+                    };
     dispatch(setForm({position}));
-    // setMarkers((current) => [
-    //   ...current,
-    //   {
-    //     id: markers.length+1,
-    //     title: "Bible Study",
-    //     lat: e.latLng.lat(),
-    //     lng: e.latLng.lng(),
-    //     description: "This is a bible study group that gathers on Monday Afternoon, everybody is welcome",
-
-        
-    //   },
-    // ]); 
-     
-  
-
   }, []);
  
 
@@ -77,68 +61,67 @@ export const MapSection = () => {
   }, []);
 
 
-   const { isLoaded, loadError } = useLoadScript({
+  const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: 'AIzaSyCwPyO0ICeErvK3sjNs8eyhpZMluSVGn5s',
-    libraries:librariesArray,
+    libraries,
   });
 
  
   return isLoaded ? (<>
      
-      <Search panTo={panTo} />
+      <Search panTo={panTo}/>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
         zoom={20}
         options={options}
-         onClick={onMapClick}
-          onLoad={onMapLoad}
-       
+        onClick={onMapClick}
+        onLoad={onMapLoad}  
       >
     
-       {events.map((marker) => (
-          <Marker
-            key={marker.id}
-            position={{ lat: marker.lat, lng: marker.lng }}
-            onClick={() => {
-              setSelected(marker);
-            }}
-            icon={{
-              url: marker.img,
-              origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(50, 60),
-              size: new window.google.maps.Size(100,120),
-            }}
-          />
-        ))}
-         {form? <React.Fragment><Backdrop/><Modal form={<AddEventForm/>}/></React.Fragment> : <></>}
-        {selected ? (
-            <InfoWindow
-              position={{ lat: selected.lat, lng: selected.lng }}
-           
-              onCloseClick={() => {
-                setSelected(null);
+          {events.map((marker) => (
+              <Marker
+                key={marker.id}
+                position={{ lat: marker.lat, lng: marker.lng }}
+                onClick={() => {
+                  setSelected(marker);
+                }}
+                icon={{
+                  url: marker.img,
+                  origin: new window.google.maps.Point(0, 0),
+                  anchor: new window.google.maps.Point(50, 60),
+                  size: new window.google.maps.Size(100,120),
+                }}
+              />
+            ))}
+            {form? <React.Fragment><Backdrop/><Modal form={<AddEventForm/>}/></React.Fragment> : <></>}
+            {selected ? (
+                <InfoWindow
+                  position={{ lat: selected.lat, lng: selected.lng }}
+              
+                  onCloseClick={() => {
+                    setSelected(null);
+                    
+                  }}
                 
-              }}
-             
-              
-            >
-              <div  className='infoMarker'>
-                 <h2>
-               {selected.title}
-                </h2>
-                 <p>Description:  {selected.description}</p>
-              
-                {/* <p>Created {formatRelative(selected.time, new Date())}</p>  */}
-                <button onClick={() => {
-                    setEventToJoin(selected);
-                  }}>
-                  Join
-                </button>
-              </div>
-            </InfoWindow>
-        
-          ) : null}
+                  
+                >
+                  <div  className='infoMarker'>
+                    <h2>
+                  {selected.title}
+                    </h2>
+                    <p>Description:  {selected.description}</p>
+                  
+                    {/* <p>Created {formatRelative(selected.time, new Date())}</p>  */}
+                    <button onClick={() => {
+                        setEventToJoin(selected);
+                      }}>
+                      Join
+                    </button>
+                  </div>
+                </InfoWindow>
+            
+              ) : null}
 
 
       </GoogleMap>
@@ -147,8 +130,6 @@ export const MapSection = () => {
    </>) : <></>
  
 }
-
-
 
 
 function Search({ panTo }) {
@@ -176,7 +157,6 @@ function Search({ panTo }) {
   const handleSelect = async (address) => {
     setValue(address, false);
     clearSuggestions();
-
     try {
       const results = await getGeocode({ address });
       const { lat, lng } = await getLatLng(results[0]);

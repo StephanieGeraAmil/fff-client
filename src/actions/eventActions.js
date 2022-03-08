@@ -1,36 +1,26 @@
 import * as actions from '../actionTypes'
 
-//action creators
-
 export const createEvent=(event)=>async(dispatch)=>{
   
     try {
-
-      
         const action={type:actions.CREATE_EVENT, payload:event};
-        dispatch(action);
-
-        
+        dispatch(action);       
     } catch (error) {
         console.log(error);
     }
 }
 export const updateEvent=(updatedEvent)=>async(dispatch)=>{
-    try {
-     
+    try {    
         const action={type:actions.UPDATE_EVENT, payload:updatedEvent};
-        dispatch(action);
-        
+        dispatch(action);       
     } catch (error) {
         console.log(error);
     }
 }
 export const deleteEvent=(event_id)=>async(dispatch)=>{
-    try {
-    
+    try {  
         const action={type: actions.DELETE_EVENT,payload:event_id};
-        dispatch(action);
-        
+        dispatch(action);     
     } catch (error) {
         console.log(error);
     }

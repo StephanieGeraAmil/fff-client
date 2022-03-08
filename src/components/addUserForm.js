@@ -10,25 +10,16 @@ export const AddEventForm = () => {
   const dispatch= useDispatch();
 
 
-  const typesAvaiable=[
-                  {name:"Bible Study", img: `/bible.png`, id:1},
-                  {name:"Coffee", img: `/coffee.png`, id:2},
-                  {name:"Pizza", img: `/pizza.png`, id:3},
-                  {name:"Church", img: `/church.png`, id:4},
-                  {name:"Movies", img: `/tv.png`, id:5},
-                  {name:"Fitness",img: `/fitness.png`, id:6},
-                  {name:"Pray",img: `/pray.png`, id:7}];
-
-
-  const [eventData, setEventData]=useState({
-         title:'',
-         description:'',
-         type: typesAvaiable[0].name,
-         img:"."+typesAvaiable[0].img,
-         lat:form.position.lat,
-         lng:form.position.lng,
-         creator: userLogged,
-         users:[userLogged]
+ 
+  const [userData, setUsertData]=useState({
+         name:'',
+         email:'',
+         aproximatelat: typesAvaiable[0].name,
+         aproximatelng:"."+typesAvaiable[0].img,
+         gender:form.position.lat,
+         birthDate:'',
+        
+  
     });
 
 
