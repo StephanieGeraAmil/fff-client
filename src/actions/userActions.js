@@ -1,5 +1,5 @@
 import * as actions from '../actionTypes'
-
+import * as api from '../api.js';
 
 
 
@@ -37,4 +37,18 @@ export const deleteUser=(user_id)=>async(dispatch)=>{
     }
 
     
+}
+
+export const findUser=(userEmail)=>async(dispatch)=>{
+       
+    try {
+     
+        const {data}=await api.findUserByEmail(userEmail.email);
+       
+        const action={type:actions.SET_USER, payload:data};
+        dispatch(action);
+     
+    } catch (error) {
+        console.log(error);
+    }
 }

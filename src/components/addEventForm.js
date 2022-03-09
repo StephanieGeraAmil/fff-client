@@ -25,7 +25,7 @@ export const AddEventForm = () => {
          description:'',
          type: typesAvaiable[0].name,
          img:"."+typesAvaiable[0].img,
-         lat:form.position.lat,
+         lat:form.position.lat, 
          lng:form.position.lng,
          creator: userLogged,
          users:[userLogged]

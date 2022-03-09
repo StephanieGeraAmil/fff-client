@@ -1,22 +1,25 @@
 import React ,{useState}from 'react'
 import { useDispatch,useSelector } from 'react-redux';
-import {createEvent} from '../actions/eventActions'
+import {createUser} from '../actions/userActions'
+import {updateUser} from '../actions/userActions'
 import { unsetForm} from '../actions/globalStateActions'
 
-export const AddEventForm = () => {
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+export const AddUserForm = () => {
   const form = useSelector((state) =>(state.current.form ? state.current.form :null));
-  const events = useSelector((state) =>(state.events ? state.events :null));
   const userLogged = useSelector((state) =>(state.current.user ? state.current.user :null));
   const dispatch= useDispatch();
 
 
- 
-  const [userData, setUsertData]=useState({
+  const [aproxLocation, setAproxLocation]=useState('');
+  const [userData, setUserData]=useState({
          name:'',
          email:'',
-         aproximatelat: typesAvaiable[0].name,
-         aproximatelng:"."+typesAvaiable[0].img,
-         gender:form.position.lat,
+         aproximatelat:-34.90328,
+         aproximatelng:-56.18816,
+         gender:'',
          birthDate:'',
         
   
@@ -25,9 +28,22 @@ export const AddEventForm = () => {
 
   const handleSubmit=(e)=>{
       e.preventDefault();
-      dispatch(createEvent(eventData));       
+      if(form.type=="AddUser"){
+        console.log("add")
+        dispatch(createUser(userData));   
+      }else{
+          console.log("update")
+        dispatch(updateUser(userData));   
+      }    
       dispatch(unsetForm());
     };
+
+  const handleAproxLocationChange=()=>{
+    //use that input as search 
+    //set lat lng of map to user info
+  
+    
+  }
 
   return (
     <div>
@@ -35,36 +51,38 @@ export const AddEventForm = () => {
          <form onSubmit={handleSubmit}>
              <input className="cancel" readOnly value="X" onClick={()=>{dispatch(unsetForm());}}/>
               <div className="form-group"> 
-                  <label className="m-2">Title: </label>
+                  <label className="m-2">Name: </label>
                   <input  type="text"
                       required
                       className="form-control"
-                      value={eventData.title}
-                      onChange={(e)=>setEventData({...eventData, title:(e.target.value)})}
+                      value={userData.name}
+                      onChange={(e)=>setUserData({...userData, name:(e.target.value)})}
                       />
               </div>
                <div className="form-group"> 
-                  <label className="m-2">Description: </label>
+                  <label className="m-2">Gender: </label>
                   <input  type="text"
                       required
                       className="form-control"
-                      value={eventData.description}
-                      onChange={(e)=>setEventData({...eventData, description:(e.target.value)})}
+                      value={userData.gender}
+                      onChange={(e)=>setUserData({...userData, gender:(e.target.value)})}
+                      />
+              </div>
+               <div className="form-group"> 
+                  <label className="m-2">Aproximate Location: </label>
+                  <input  type="text"
+                      required
+                      className="form-control"
+                      value={aproxLocation}
+                      onChange={ (e)=> setAproxLocation(e.target.value)}
                       />
               </div>
               <div className="form-group">
-                  <label className="m-2">Type: </label>
-                  <select  className="form-control dropdown" value={eventData.type}   onChange={(e)=>setEventData({...eventData, type:e.target.value, img:"."+typesAvaiable.find(item=>item.name===e.target.value).img})}>
-                        {typesAvaiable.map(item=><option  key={item.id}>
-                                                      {item.name} 
-                                                      {/* <div  className="div_img" style={{
-                                                      backgroundImage: `url("/bible.png")`
-                                                      }}> 
-                                                      </div> */}
-                                                  </option>)}
-                  </select>
+                  <label className="m-2">Birth Date: </label>
+                   <DatePicker selected={userData.birthDate} onChange={(date) => setUserData({...userData, birthDate:(date)})} />
+                  
                </div>            
-              <input type="submit" value="Add Event" className="submitButton" />                        
+              <input type="submit" value="Save" className="submitButton" />                        
           </form>
        </div>
     </div>

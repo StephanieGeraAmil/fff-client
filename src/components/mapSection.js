@@ -5,6 +5,7 @@ import mapStyles from "./mapStyles";
 import { formatRelative } from "date-fns";
 import usePlacesAutocomplete, { getGeocode, getLatLng,} from "use-places-autocomplete";
 import {AddEventForm} from "./addEventForm"
+import {AddUserForm} from "./addUserForm"
 import Modal from "./Modal"
 import Backdrop from "./Backdrop"
 import {setForm} from '../actions/globalStateActions'
@@ -46,7 +47,7 @@ export const MapSection = () => {
                       lat: e.latLng.lat(),
                       lng: e.latLng.lng()
                     };
-    dispatch(setForm({position}));
+    dispatch(setForm({position, type:'AddEvent'}));
   }, []);
  
 
@@ -94,8 +95,11 @@ export const MapSection = () => {
                 }}
               />
             ))}
-            {form? <React.Fragment><Backdrop/><Modal form={<AddEventForm/>}/></React.Fragment> : <></>}
-            {selected ? (
+
+            {form? form.type=='AddEvent'&& <React.Fragment><Backdrop/><Modal form={<AddEventForm/>}/></React.Fragment> : <></> }
+            {form? form.type=='AddUserInfo'&& <React.Fragment><Backdrop/><Modal form={<AddUserForm/>}/></React.Fragment> : <></> }
+            {form? form.type=='AddUser'&& <React.Fragment><Backdrop/><Modal form={<AddUserForm/>}/></React.Fragment> : <></> }
+           {selected ? (
                 <InfoWindow
                   position={{ lat: selected.lat, lng: selected.lng }}
               
