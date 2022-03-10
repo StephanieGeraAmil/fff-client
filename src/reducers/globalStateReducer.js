@@ -6,9 +6,10 @@ export default (current={user:null,form:null}, action)=>{
          
         case actions.UNSET_FORM:
         return {...current,form: null};
-
+        
         case actions.SET_USER:
         return {...current,user: action.payload};
+       
            
         case actions.UNSET_USER:
         return {...current,user: null};

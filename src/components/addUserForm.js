@@ -2,7 +2,7 @@ import React ,{useState,useEffect}from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import {createUser} from '../actions/userActions'
 import {updateUser} from '../actions/userActions'
-import { unsetForm} from '../actions/globalStateActions'
+import { setUser, unsetForm} from '../actions/globalStateActions'
 
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -19,8 +19,7 @@ export const AddUserForm = () => {
 
   useEffect(()=>{
   if (!isLoading&& isAuthenticated) {  
-    console.log("in useEffect of userForm")
-    console.log(user)
+ 
     setUserData({...userData, email:user.email, name:user.nickname});
   }
   },[])
@@ -42,12 +41,12 @@ export const AddUserForm = () => {
   const handleSubmit=(e)=>{
       e.preventDefault();
       if(form.type=="AddUser"){
-        console.log("add")
-        dispatch(createUser(userData));   
+       dispatch(createUser(userData)); 
+        
       }else{
-          console.log("update")
-        dispatch(updateUser(userData));   
+        dispatch(updateUser(userData)); 
       }    
+      console.log('clear form')
       dispatch(unsetForm());
     };
 

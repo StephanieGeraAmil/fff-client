@@ -19,16 +19,18 @@ export const unsetForm=()=>async(dispatch)=>{
     }
 }
 
-export const setUser=(userEmail)=>async(dispatch)=>{
-       
-    try {
-     
-        const {data}=await api.findUserByEmail(userEmail.email);
-       
+export const setUser=(user)=>async(dispatch)=>{    
+    try { 
+        const {data}=await api.findUserByEmail(user.email); 
+        if(!data){
+            const action={type:actions.SET_FORM, payload:{type:"AddUser"}};
+            dispatch(action);
+
+        }
         const action={type:actions.SET_USER, payload:data};
-        dispatch(action);
-     
+        dispatch(action);  
     } catch (error) {
         console.log(error); 
     }
 }
+
