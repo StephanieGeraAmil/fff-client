@@ -15,10 +15,13 @@ import {Logout} from './components/logout';
 
 function App() {
       const { user, isAuthenticated, isLoading, loginWithRedirect ,logout} = useAuth0();
+     
       const dispatch= useDispatch();
      const [bdSearchDone, setBdSearchDone]=useState(false)
       const userLogged= useSelector((state)=>(state.current.user?state.current.user:null))
        const users= useSelector((state)=>(state.users?state.users:null))
+        const events = useSelector((state) =>(state.events ? state.events :null));
+       
       
    
        useEffect(()=>{
@@ -51,16 +54,9 @@ function App() {
           }
            
         },
-          
-          
-        //   if(userLogged==null){
-        //         dispatch(setForm({type:'AddUser'}));
-        //      }else if(userLogged.gender||userLogged.birthDate|| user.aproximatelat|| user.aproximatelng){
-        //         dispatch(setForm({type:'AddUserInfo'}));
-        //      }
-        //  },
+     
       
-        [isAuthenticated,userLogged, users]);
+        [isAuthenticated,userLogged, users,events]);
 
       
   return (

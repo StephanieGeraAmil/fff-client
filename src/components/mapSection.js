@@ -1,4 +1,4 @@
-import React, {useCallback, useState,useRef} from 'react'
+import React, {useCallback, useState,useRef, useEffect} from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import { GoogleMap,Marker,InfoWindow,useLoadScript } from '@react-google-maps/api';
 import mapStyles from "./mapStyles";
@@ -69,6 +69,7 @@ export const MapSection = () => {
     libraries,
   });
 
+
  
   return isLoaded ? (<>
      
@@ -112,6 +113,7 @@ export const MapSection = () => {
                 
                   
                 >
+                     
                   <div  className='infoMarker'>
                     <h2>
                   {selected.title}
@@ -120,11 +122,20 @@ export const MapSection = () => {
                   
                     {/* <p>Created {formatRelative(selected.time, new Date())}</p>  */}
                     <button onClick={() => {
-                      const updatedEvent={...selected, users:[...selected.users,userLogged ]}
-                        dispatch(updateEvent(updatedEvent));
-                        setSelected(null);
-                      }}>
-                      Join
+                      let updatedEvent=selected;
+                          if(!selected.users.find(usr=>usr._id==userLogged._id)){
+                          updatedEvent={...selected, users:[...selected.users,userLogged ]}
+                            
+                          }else{
+                            updatedEvent={...selected, users:selected.users.filter(usr=>usr._id!=userLogged._id)}
+                            console.log(updatedEvent)
+                            
+                          }
+                          dispatch(updateEvent(updatedEvent));
+                          setSelected(null);
+                      }
+                    }>
+                     { selected.users.find(usr=>usr._id==userLogged._id)?'Leave':'Join'}
                     </button>
                   </div>
                 </InfoWindow>
