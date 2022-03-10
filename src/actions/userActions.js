@@ -37,5 +37,16 @@ export const deleteUser=(user_id)=>async(dispatch)=>{
     
 }
 
+export const getUsers=()=>async(dispatch)=>{
+     try {  
+        const {data}=await api.fetchUsers();
+        const action={type: actions.FETCH_ALL_USERS,payload:data};
+        dispatch(action);     
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
 
 

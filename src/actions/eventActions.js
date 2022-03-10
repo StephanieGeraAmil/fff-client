@@ -5,7 +5,6 @@ export const createEvent=(event)=>async(dispatch)=>{
   
     try {
         const {data}=await api.createEvent(event);
-       
         const action={type:actions.CREATE_EVENT, payload:data};
         dispatch(action);       
     } catch (error) {
@@ -14,8 +13,8 @@ export const createEvent=(event)=>async(dispatch)=>{
 }
 export const updateEvent=(updatedEvent)=>async(dispatch)=>{
     try {    
-        const {data}=await api.updateEvent(updatedEvent);
-        const action={type:actions.UPDATE_EVENT, payload:data};
+        await api.updateEvent(updatedEvent);
+        const action={type:actions.UPDATE_EVENT, payload:updatedEvent};
         dispatch(action);       
     } catch (error) {
         console.log(error);

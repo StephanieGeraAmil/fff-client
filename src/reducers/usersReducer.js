@@ -13,8 +13,6 @@ export default (users={list:[],logged:null}, action)=>{
         case actions.FETCH_ALL_USERS:
         return {...users, list:action.payload};
 
-        // case actions.SET_USER_L:
-        // return {...users,logged: action.payload};
         
         default:
         return users;

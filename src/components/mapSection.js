@@ -14,7 +14,6 @@ import {updateEvent} from '../actions/eventActions'
 import {Combobox,ComboboxInput,ComboboxPopover,ComboboxList, ComboboxOption,} from "@reach/combobox";
 import "@reach/combobox/styles.css";
 
-import { useAuth0 } from "@auth0/auth0-react";
 
 const libraries=['places'];
 
@@ -35,22 +34,31 @@ const options = {
 
 
 export const MapSection = () => {
-    const events = useSelector((state) =>(state.events ? state.events :null));
-    const form = useSelector((state) =>(state.current.form ? state.current.form :null));
-       const userLogged = useSelector((state) =>(state.current.user ? state.current.user :null));
+    const eventSelector=(state) =>(state.events ? state.events :null);
+    const events = useSelector(eventSelector);
+    const userSelector=(state) =>(state.users ? state.users :null);
+    const users = useSelector(userSelector);
+    const formSelector=(state) =>(state.current.form ? state.current.form :null);
+    const form = useSelector(formSelector);
+    const userLoggedSelector=(state) =>(state.current.user ? state.current.user :null);
+    const userLogged = useSelector(userLoggedSelector);
     const dispatch= useDispatch();
 
     const [selected, setSelected] = useState(null);
-    const [eventToJoin, setEventToJoin] =useState(null);
+    
    
 
   const onMapClick = useCallback((e) => {
-    const position={  
-                      lat: e.latLng.lat(),
-                      lng: e.latLng.lng()
-                    };
-    dispatch(setForm({position, type:'AddEvent'}));
-  }, []);
+   
+    if(userLogged){
+
+        const position={  
+                          lat: e.latLng.lat(),
+                          lng: e.latLng.lng()
+                        };
+        dispatch(setForm({position, type:'AddEvent'}));
+    }
+  }, [userLogged]);
  
 
   const mapRef = useRef();
@@ -82,13 +90,12 @@ export const MapSection = () => {
         onClick={onMapClick}
         onLoad={onMapLoad}  
       >
-    
           {events.map((marker) => (
               <Marker
                 key={marker._id}
                 position={{ lat: marker.lat, lng: marker.lng }}
                 onClick={() => {
-                  setSelected(marker);
+                  setSelected(marker);  
                 }}
                 icon={{
                   url: marker.img,
@@ -98,51 +105,38 @@ export const MapSection = () => {
                 }}
               />
             ))}
-
             {form? form.type=='AddEvent'&& <React.Fragment><Backdrop/><Modal form={<AddEventForm/>}/></React.Fragment> : <></> }
             {form? form.type=='AddUserInfo'&& <React.Fragment><Backdrop/><Modal form={<AddUserForm/>}/></React.Fragment> : <></> }
             {form? form.type=='AddUser'&& <React.Fragment><Backdrop/><Modal form={<AddUserForm/>}/></React.Fragment> : <></> }
-           {selected ? (
+            {selected ? (
                 <InfoWindow
                   position={{ lat: selected.lat, lng: selected.lng }}
-              
                   onCloseClick={() => {
                     setSelected(null);
-                    
                   }}
-                
-                  
-                >
-                     
+                >   
                   <div  className='infoMarker'>
                     <h2>
-                  {selected.title}
+                       {selected.title}
                     </h2>
                     <p>Description:  {selected.description}</p>
-                  
                     {/* <p>Created {formatRelative(selected.time, new Date())}</p>  */}
-                    <button onClick={() => {
+                    {userLogged&&<button onClick={() => {
                       let updatedEvent=selected;
                           if(!selected.users.find(usr=>usr._id==userLogged._id)){
-                          updatedEvent={...selected, users:[...selected.users,userLogged ]}
-                            
+                            updatedEvent={...selected, users:[...selected.users,userLogged ]}
                           }else{
                             updatedEvent={...selected, users:selected.users.filter(usr=>usr._id!=userLogged._id)}
-                            console.log(updatedEvent)
-                            
                           }
                           dispatch(updateEvent(updatedEvent));
                           setSelected(null);
                       }
                     }>
                      { selected.users.find(usr=>usr._id==userLogged._id)?'Leave':'Join'}
-                    </button>
+                    </button>}
                   </div>
                 </InfoWindow>
-            
               ) : null}
-
-
       </GoogleMap>
 
      
