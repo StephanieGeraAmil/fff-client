@@ -9,6 +9,7 @@ import {AddUserForm} from "./addUserForm"
 import Modal from "./Modal"
 import Backdrop from "./Backdrop"
 import {setForm} from '../actions/globalStateActions'
+import {updateEvent} from '../actions/eventActions'
 
 import {Combobox,ComboboxInput,ComboboxPopover,ComboboxList, ComboboxOption,} from "@reach/combobox";
 import "@reach/combobox/styles.css";
@@ -36,6 +37,7 @@ const options = {
 export const MapSection = () => {
     const events = useSelector((state) =>(state.events ? state.events :null));
     const form = useSelector((state) =>(state.current.form ? state.current.form :null));
+       const userLogged = useSelector((state) =>(state.current.user ? state.current.user :null));
     const dispatch= useDispatch();
 
     const [selected, setSelected] = useState(null);
@@ -58,7 +60,7 @@ export const MapSection = () => {
 
   const panTo = useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
-    mapRef.current.setZoom(20);
+    mapRef.current.setZoom(19);
   }, []);
 
 
@@ -74,7 +76,7 @@ export const MapSection = () => {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={20}
+        zoom={19}
         options={options}
         onClick={onMapClick}
         onLoad={onMapLoad}  
@@ -82,7 +84,7 @@ export const MapSection = () => {
     
           {events.map((marker) => (
               <Marker
-                key={marker.id}
+                key={marker._id}
                 position={{ lat: marker.lat, lng: marker.lng }}
                 onClick={() => {
                   setSelected(marker);
@@ -118,7 +120,9 @@ export const MapSection = () => {
                   
                     {/* <p>Created {formatRelative(selected.time, new Date())}</p>  */}
                     <button onClick={() => {
-                        setEventToJoin(selected);
+                      const updatedEvent={...selected, users:[...selected.users,userLogged ]}
+                        dispatch(updateEvent(updatedEvent));
+                        setSelected(null);
                       }}>
                       Join
                     </button>

@@ -4,7 +4,7 @@ import { useDispatch , useSelector} from 'react-redux';
 import React, { useEffect, useState } from 'react'
 
 import {setForm,setUser} from './actions/globalStateActions.js';
-
+import {getEvents} from './actions/eventActions.js';
 import { useAuth0 } from "@auth0/auth0-react";
 import {MapSection} from './components/mapSection';
 import {Login} from './components/login';
@@ -22,6 +22,7 @@ function App() {
       
    
        useEffect(()=>{
+         dispatch(getEvents());
           if (!isLoading&& isAuthenticated){
             if(!userLogged ){      
               if(!users.logged){
@@ -40,6 +41,7 @@ function App() {
               }
               
             }else{
+              
           
                if(userLogged.gender==''||userLogged.birthDate==''|| user.aproximatelat==0||!user.aproximatelng==0){
                   dispatch(setForm({type:'AddUserInfo'}));

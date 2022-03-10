@@ -6,21 +6,10 @@ import * as api from '../api.js';
 export const createUser=(user)=>async(dispatch)=>{
   
     try {
-
-        console.log('on create user action')
-       
-         const {data}=await api.createUser(user);
-       
+        const {data}=await api.createUser(user);
         const action={type:actions.CREATE_USER, payload:data};
         dispatch(action);
 
-       
-        // action={type:actions.SET_USER_L, payload:data};
-        // dispatch(action);
-                 
-          
-
-        
     } catch (error) {
         console.log(error);
     }
@@ -48,20 +37,5 @@ export const deleteUser=(user_id)=>async(dispatch)=>{
     
 }
 
-// export const setUserL=(user)=>async(dispatch)=>{
-       
-//     try {
-     
-//         const {data}=await api.findUserByEmail(user.email);
-       
-//         const action={type:actions.SET_USER_L, payload:data};
-//         dispatch(action);
-  
-     
-//     } catch (error) {
-//         console.log(error); 
-//     }
- 
-// }
 
 
