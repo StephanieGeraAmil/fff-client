@@ -89,9 +89,9 @@ export const AddUserForm = () => {
                       onChange={ (e)=> setAproxLocation(e.target.value)}
                       />
               </div>
-              <div className="form-group">
+              <div className="form-group datepicker">
                   <label className="m-2">Birth Date: </label>
-                   <DatePicker selected={userData.birthDate} onChange={(date) => setUserData({...userData, birthDate:(date)})} />
+                   <DatePicker className="form-control" selected={userData.birthDate} onChange={(date) => setUserData({...userData, birthDate:(date)})} />
                   
                </div>            
               <input type="submit" value="Save" className="submitButton" />                        

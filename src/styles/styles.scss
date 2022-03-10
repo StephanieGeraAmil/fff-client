@@ -134,6 +134,32 @@ body {
       flex-direction: column;
       justify-content: flex-start;
       align-content: center;
+      .datepicker {
+        label {
+          width: 90%;
+        }
+        .react-datepicker {
+          font-size: 1.5vw !important;
+        }
+
+        .react-datepicker__current-month {
+          font-size: 2vw !important;
+        }
+
+        .react-datepicker__header {
+          padding-top: 1vw !important;
+        }
+
+        .react-datepicker__navigation {
+          top: 2vw !important;
+          width: 2vw !important;
+        }
+
+        .react-datepicker__day-name,
+        .react-datepicker__day {
+          margin: 1.5vw !important;
+        }
+      }
       .form-group {
         display: flex;
         flex-direction: row;
@@ -141,11 +167,15 @@ body {
         margin-bottom: 1vw;
         font-weight: normal;
         font-size: 1.2vw;
+        label {
+          width: 60%;
+        }
+
         .form-control {
           border-radius: $boxRadius;
           border-color: $base-color;
           border-width: 0.00001vw;
-          width: 50%;
+          width: 40%;
           font-weight: normal;
           color: $base-color;
           padding-left: 1.2vw;
