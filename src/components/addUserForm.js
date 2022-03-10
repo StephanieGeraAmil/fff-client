@@ -1,8 +1,10 @@
-import React ,{useState}from 'react'
+import React ,{useState,useEffect}from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import {createUser} from '../actions/userActions'
 import {updateUser} from '../actions/userActions'
 import { unsetForm} from '../actions/globalStateActions'
+
+import { useAuth0 } from "@auth0/auth0-react";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -12,11 +14,20 @@ export const AddUserForm = () => {
   const userLogged = useSelector((state) =>(state.current.user ? state.current.user :null));
   const dispatch= useDispatch();
 
-
+  const {user,isAuthenticated, isLoading} = useAuth0();
   const [aproxLocation, setAproxLocation]=useState('');
+
+  useEffect(()=>{
+  if (!isLoading&& isAuthenticated) {  
+    console.log("in useEffect of userForm")
+    console.log(user)
+    setUserData({...userData, email:user.email, name:user.nickname});
+  }
+  },[])
+
   const [userData, setUserData]=useState({
-         name:'',
-         email:'',
+         name:"",
+         email:"",
          aproximatelat:-34.90328,
          aproximatelng:-56.18816,
          gender:'',
@@ -24,6 +35,8 @@ export const AddUserForm = () => {
         
   
     });
+
+     
 
 
   const handleSubmit=(e)=>{

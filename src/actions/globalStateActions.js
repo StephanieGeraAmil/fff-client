@@ -1,4 +1,5 @@
 import * as actions from '../actionTypes'
+import * as api from '../api.js';
 
 
 export const setForm=(form)=>async(dispatch)=>{  
@@ -15,5 +16,19 @@ export const unsetForm=()=>async(dispatch)=>{
         dispatch(action);
     } catch (error) {
         console.log(error);
+    }
+}
+
+export const setUser=(userEmail)=>async(dispatch)=>{
+       
+    try {
+     
+        const {data}=await api.findUserByEmail(userEmail.email);
+       
+        const action={type:actions.SET_USER, payload:data};
+        dispatch(action);
+     
+    } catch (error) {
+        console.log(error); 
     }
 }

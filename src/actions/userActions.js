@@ -7,8 +7,11 @@ export const createUser=(user)=>async(dispatch)=>{
   
     try {
 
-      
-        const action={type:actions.CREATE_USER, payload:user};
+        console.log('on create user action')
+       
+         const {data}=await api.createUser(user);
+       
+        const action={type:actions.CREATE_USER, payload:data};
         dispatch(action);
 
         
@@ -39,16 +42,4 @@ export const deleteUser=(user_id)=>async(dispatch)=>{
     
 }
 
-export const findUser=(userEmail)=>async(dispatch)=>{
-       
-    try {
-     
-        const {data}=await api.findUserByEmail(userEmail.email);
-       
-        const action={type:actions.SET_USER, payload:data};
-        dispatch(action);
-     
-    } catch (error) {
-        console.log(error);
-    }
-}
+
