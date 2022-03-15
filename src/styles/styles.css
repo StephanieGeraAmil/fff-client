@@ -149,33 +149,37 @@ body .modal-area form {
       align-content: center;
 }
 
-body .modal-area form .datepicker label {
-  width: 90%;
+body .modal-area form .datepicker_row label {
+  width: 50% !important;
 }
 
-body .modal-area form .datepicker .react-datepicker {
-  font-size: 1.5vw !important;
+body .modal-area form .datepicker_row .datetime {
+  width: 90% !important;
 }
 
-body .modal-area form .datepicker .react-datepicker__current-month {
-  font-size: 2vw !important;
+body .modal-area form .datepicker_row .rdtPicker {
+  width: 150% !important;
+  border-radius: 1.5vw !important;
+  padding: 1.5vw;
 }
 
-body .modal-area form .datepicker .react-datepicker__header {
-  padding-top: 1vw !important;
+body .modal-area form .datepicker_row .rdtPicker .rdtDays {
+  width: 100% !important;
 }
 
-body .modal-area form .datepicker .react-datepicker__navigation {
-  top: 2vw !important;
-  width: 2vw !important;
+body .modal-area form .datepicker_row .rdtPicker .rdtDays table {
+  width: 100% !important;
 }
 
-body .modal-area form .datepicker .react-datepicker__day-name,
-body .modal-area form .datepicker .react-datepicker__day {
-  margin: 1.5vw !important;
+body .modal-area form .datepicker_row .rdtPicker .rdtDays table .rdtSwitch {
+  padding-bottom: 1vw;
 }
 
-body .modal-area form .form-group {
+body .modal-area form .datepicker_row .rdtPicker .rdtDays table .rdtTimeToggle {
+  display: none;
+}
+
+body .modal-area .form-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -191,11 +195,11 @@ body .modal-area form .form-group {
   font-size: 1.2vw;
 }
 
-body .modal-area form .form-group label {
+body .modal-area .form-group label {
   width: 60%;
 }
 
-body .modal-area form .form-group .form-control {
+body .modal-area .form-group .form-control {
   border-radius: 20vw;
   border-color: #545454;
   border-width: 0.00001vw;
@@ -206,15 +210,15 @@ body .modal-area form .form-group .form-control {
   font-size: 1.2vw;
 }
 
-body .modal-area form .form-group .form-control select {
+body .modal-area .form-group .form-control select {
   width: 100%;
 }
 
-body .modal-area form .form-group .form-control select option {
+body .modal-area .form-group .form-control select option {
   font-size: 1.2vw;
 }
 
-body .modal-area form .cancel {
+body .modal-area .cancel {
   position: absolute;
   top: 0.8vw;
   right: 1.1vw;
@@ -226,7 +230,7 @@ body .modal-area form .cancel {
   border: #ffff;
 }
 
-body .modal-area form .submitButton {
+body .modal-area .submitButton {
   background-color: #6229d0;
   padding: 0.2vw;
   padding-bottom: 0.4vw;

@@ -6,8 +6,8 @@ import { setUser, unsetForm} from '../actions/globalStateActions'
 
 import { useAuth0 } from "@auth0/auth0-react";
 
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import Datetime from 'react-datetime';
+import "react-datetime/css/react-datetime.css";
 
 export const AddUserForm = () => {
   const form = useSelector((state) =>(state.current.form ? state.current.form :null));
@@ -89,9 +89,14 @@ export const AddUserForm = () => {
                       onChange={ (e)=> setAproxLocation(e.target.value)}
                       />
               </div>
-              <div className="form-group datepicker">
+              <div className="form-group datepicker_row"  onClick={e => e.preventDefault()}>
                   <label className="m-2">Birth Date: </label>
-                   <DatePicker className="form-control" selected={userData.birthDate} onChange={(date) => setUserData({...userData, birthDate:(date)})} />
+                  <Datetime     
+                                closeOnSelect
+                                disableOnClickOutside={false}
+                                timeFormat={false}
+                                inputProps={{className:'datetime form-control'}}  onChange={(date) => setUserData({...userData, birthDate:(date)})}/>
+                  
                   
                </div>            
               <input type="submit" value="Save" className="submitButton" />                        

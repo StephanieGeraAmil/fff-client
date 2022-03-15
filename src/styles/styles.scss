@@ -134,84 +134,139 @@ body {
       flex-direction: column;
       justify-content: flex-start;
       align-content: center;
-      .datepicker {
+
+      .datepicker_row {
         label {
-          width: 90%;
+          width: 50% !important;
         }
-        .react-datepicker {
-          font-size: 1.5vw !important;
+        .datetime {
+          width: 90% !important;
         }
+        .rdtPicker {
+          width: 150% !important;
+          border-radius: 1.5vw !important;
+          padding: 1.5vw;
 
-        .react-datepicker__current-month {
-          font-size: 2vw !important;
-        }
-
-        .react-datepicker__header {
-          padding-top: 1vw !important;
-        }
-
-        .react-datepicker__navigation {
-          top: 2vw !important;
-          width: 2vw !important;
-        }
-
-        .react-datepicker__day-name,
-        .react-datepicker__day {
-          margin: 1.5vw !important;
-        }
-      }
-      .form-group {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-bottom: 1vw;
-        font-weight: normal;
-        font-size: 1.2vw;
-        label {
-          width: 60%;
-        }
-
-        .form-control {
-          border-radius: $boxRadius;
-          border-color: $base-color;
-          border-width: 0.00001vw;
-          width: 40%;
-          font-weight: normal;
-          color: $base-color;
-          padding-left: 1.2vw;
-          font-size: 1.2vw;
-
-          select {
-            width: 100%;
-            option {
-              font-size: 1.2vw;
+          .rdtDays {
+            width: 100% !important;
+            table {
+              width: 100% !important;
+              .rdtSwitch {
+                padding-bottom: 1vw;
+              }
+              .rdtTimeToggle {
+                display: none;
+              }
             }
           }
         }
       }
-      .cancel {
-        position: absolute;
-        top: 0.8vw;
-        right: 1.1vw;
-        width: 1vw;
-        font-size: 1vw;
-        text-align: center;
-        background-color: white;
+      // .datepicker_row {
+      //   display: flex;
+      //   flex-direction: row;
+      //   label {
+      //     width: 50%;
+      //   }
+      //   .react-datepicker-wrapper {
+      //     width: 50%;
+      //     .react-datepicker__input-container {
+      //       width: 100%;
+      //       display: flex;
+      //       .form-control {
+      //         align-self: flex-end;
+      //         width: 100%;
+      //       }
+      //     }
+      //   }
+      //   .react-datepicker__triangle {
+      //     display: none;
+      //   }
+
+      //   .react-datepicker-popper {
+      //     font-size: 2vw !important;
+      //     width: 500px !important;
+      //     border-radius: 4vw !important;
+      //     .react-datepicker__month-container {
+      //       font-size: 1vw !important;
+      //       width: 20vw !important;
+      //       height: 20vw !important;
+      //       border-radius: 4vw !important;
+      //       .react-datepicker__month {
+      //         width: 20vw !important;
+      //         height: 20vw !important;
+      //       }
+      //     }
+      //   }
+
+      // .react-datepicker__current-month {
+      //   font-size: 2vw !important;
+      // }
+
+      // .react-datepicker__header {
+      //   padding-top: 1vw !important;
+      // }
+
+      // .react-datepicker__navigation {
+      //   top: 2vw !important;
+      //   width: 2vw !important;
+      // }
+
+      // .react-datepicker__day-name,
+      // .react-datepicker__day {
+      //   margin: 1.5vw !important;
+      // }
+    }
+    .form-group {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 1vw;
+      font-weight: normal;
+      font-size: 1.2vw;
+      label {
+        width: 60%;
+      }
+
+      .form-control {
+        border-radius: $boxRadius;
+        border-color: $base-color;
+        border-width: 0.00001vw;
+        width: 40%;
+        font-weight: normal;
         color: $base-color;
-        border: #ffff;
-      }
-
-      .submitButton {
-        background-color: $accent-color;
-
-        padding: 0.2vw;
-        padding-bottom: 0.4vw;
-
-        border-color: $accent-color;
-        border-radius: 2vh;
+        padding-left: 1.2vw;
         font-size: 1.2vw;
-        color: white;
+
+        select {
+          width: 100%;
+          option {
+            font-size: 1.2vw;
+          }
+        }
       }
+    }
+    .cancel {
+      position: absolute;
+      top: 0.8vw;
+      right: 1.1vw;
+      width: 1vw;
+      font-size: 1vw;
+      text-align: center;
+      background-color: white;
+      color: $base-color;
+      border: #ffff;
+    }
+
+    .submitButton {
+      background-color: $accent-color;
+
+      padding: 0.2vw;
+      padding-bottom: 0.4vw;
+
+      border-color: $accent-color;
+      border-radius: 2vh;
+      font-size: 1.2vw;
+      color: white;
     }
   }
 }
