@@ -11,6 +11,8 @@ import Backdrop from "./Backdrop"
 import {setForm} from '../actions/globalStateActions'
 import {updateEvent} from '../actions/eventActions'
 
+
+
 import {Combobox,ComboboxInput,ComboboxPopover,ComboboxList, ComboboxOption,} from "@reach/combobox";
 import "@reach/combobox/styles.css";
 
@@ -46,9 +48,9 @@ export const MapSection = () => {
 
     const [selected, setSelected] = useState(null);
     
-   
 
   const onMapClick = useCallback((e) => {
+    setSelected(null);
    
     if(userLogged){
 
@@ -78,6 +80,9 @@ export const MapSection = () => {
   });
 
 
+
+
+
  
   return isLoaded ? (<>
      
@@ -95,6 +100,7 @@ export const MapSection = () => {
                 key={marker._id}
                 position={{ lat: marker.lat, lng: marker.lng }}
                 onClick={() => {
+                      
                   setSelected(marker);  
                 }}
                 icon={{
@@ -111,6 +117,7 @@ export const MapSection = () => {
             {selected ? (
                 <InfoWindow
                   position={{ lat: selected.lat, lng: selected.lng }}
+                    
                   onCloseClick={() => {
                     setSelected(null);
                   }}
@@ -122,19 +129,20 @@ export const MapSection = () => {
                     <p>Description:  {selected.description}</p>
                     {/* <p>Created {formatRelative(selected.time, new Date())}</p>  */}
                     {userLogged&&<button onClick={() => {
-                      let updatedEvent=selected;
-                          if(!selected.users.find(usr=>usr._id==userLogged._id)){
-                            updatedEvent={...selected, users:[...selected.users,userLogged ]}
-                          }else{
-                            updatedEvent={...selected, users:selected.users.filter(usr=>usr._id!=userLogged._id)}
-                          }
-                          dispatch(updateEvent(updatedEvent));
-                          setSelected(null);
-                      }
-                    }>
-                     { selected.users.find(usr=>usr._id==userLogged._id)?'Leave':'Join'}
-                    </button>}
+                                      let updatedEvent=selected;
+                                          if(!selected.users.find(usr=>usr._id==userLogged._id)){
+                                            updatedEvent={...selected, users:[...selected.users,userLogged ]}
+                                          }else{
+                                            updatedEvent={...selected, users:selected.users.filter(usr=>usr._id!=userLogged._id)}
+                                          }
+                                          dispatch(updateEvent(updatedEvent));
+                                          setSelected(null);
+                                      }
+                                    }>
+                                    { selected.users.find(usr=>usr._id==userLogged._id)?'Leave':'Join'}
+                                    </button>}
                   </div>
+             
                 </InfoWindow>
               ) : null}
       </GoogleMap>

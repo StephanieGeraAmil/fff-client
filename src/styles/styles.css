@@ -8,6 +8,10 @@ body {
   height: 100vh;
 }
 
+body .gm-ui-hover-effect {
+  display: none !important;
+}
+
 body .login_button {
   height: 2vw;
   width: 2vw;
@@ -76,7 +80,7 @@ body .infoMarker {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  border-radius: 5vh;
+  border-radius: 7vw;
   background-color: white;
   display: -webkit-box;
   display: -ms-flexbox;

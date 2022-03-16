@@ -13,6 +13,29 @@ body {
   @include theme();
   width: 100vw;
   height: 100vh;
+  // .gm-style-iw-c {
+  //   .gm-ui-hover-effect {
+  //     width: 10vw;
+  //     height: 10vh;
+  //     font-size: 10vw;
+  //   }
+  // }
+  // .gm-style-iw {
+  //   button {
+  //     width: 2vw;
+  //     height: 2vh;
+  //     font-size: 2vw;
+  //   }
+  // }
+  .gm-ui-hover-effect {
+    // height: 1vw !important;
+    // width: 1vw !important;
+    // font-size: 1vw !important;
+    display: none !important;
+  }
+  // .gm-style .gm-style-iw-t::after {
+  //   display: none;
+  // }
   .login_button {
     height: 2vw;
     width: 2vw;
@@ -81,7 +104,7 @@ body {
     padding: 3vh;
     font-size: 1.8vh;
     width: fit-content;
-    border-radius: 5vh;
+    border-radius: 7vw;
     background-color: white;
     display: flex;
     flex-direction: column;
