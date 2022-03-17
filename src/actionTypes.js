@@ -15,6 +15,11 @@ export const UPDATE_CHAT="chat/update_chat";
 export const DELETE_CHAT="chat/delete_chat";
 export const FETCH_ALL_CHATS= "chat/fetch_all_chats";
 
+export const CREATE_MESSAGE="message/create_message";
+export const UPDATE_MESSAGE="message/update_message";
+export const DELETE_MESSAGE="message/delete_message";
+export const FETCH_ALL_MESSAGES= "message/fetch_all_messages";
+
 export const SET_FORM="global/set_form";
 export const UNSET_FORM="global/unset_form";
 export const SET_USER="global/set_user";
