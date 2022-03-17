@@ -1,10 +1,11 @@
 import React from 'react'
 import {MessagesList} from './messagesList';
 
-export const ChatItem = () => {
+export const ChatItem = ({chat}) => {
   return (
     <div>
-         <p> " Chat Name - users - last message- new message indicator"</p>
+          <h4 className="chat_last">{chat._id}</h4>
+          <h4 className="chat_img ">{chat.img}</h4>
     </div>
   )
 }
