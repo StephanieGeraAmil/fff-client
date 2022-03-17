@@ -38,6 +38,19 @@ body .logout_button {
   border: none;
 }
 
+body .chat_section_button {
+  height: 2vw;
+  width: 2vw;
+  top: 4vw;
+  left: 5%;
+  position: absolute;
+  background: url("./../chat.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+}
+
 body .search {
   position: absolute;
   top: 4vw;

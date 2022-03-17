@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './styles/styles.css';
 import { useDispatch , useSelector} from 'react-redux';
 import React, { useEffect, useState } from 'react'
@@ -10,6 +10,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import {MapSection} from './components/mapSection';
 import {Login} from './components/login';
 import {Logout} from './components/logout';
+
 
 
 
@@ -49,12 +50,15 @@ function App() {
         },
         [isAuthenticated,users]);
 
-      
+      const OpenChats=()=>{
+
+      }
   return (
     <div className="App">
       <MapSection/>
       {!isAuthenticated && (<Login/>)}
       {isAuthenticated && (<Logout/>)}
+      {isAuthenticated && (<button className="chat_section_button" onClick={() =>OpenChats()}></button>)}
     </div>
   );
 }

@@ -13,29 +13,11 @@ body {
   @include theme();
   width: 100vw;
   height: 100vh;
-  // .gm-style-iw-c {
-  //   .gm-ui-hover-effect {
-  //     width: 10vw;
-  //     height: 10vh;
-  //     font-size: 10vw;
-  //   }
-  // }
-  // .gm-style-iw {
-  //   button {
-  //     width: 2vw;
-  //     height: 2vh;
-  //     font-size: 2vw;
-  //   }
-  // }
+
   .gm-ui-hover-effect {
-    // height: 1vw !important;
-    // width: 1vw !important;
-    // font-size: 1vw !important;
     display: none !important;
   }
-  // .gm-style .gm-style-iw-t::after {
-  //   display: none;
-  // }
+
   .login_button {
     height: 2vw;
     width: 2vw;
@@ -55,6 +37,18 @@ body {
     right: 5%;
     position: absolute;
     background: url("./../logout.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+  }
+  .chat_section_button {
+    height: 2vw;
+    width: 2vw;
+    top: 4vw;
+    left: 5%;
+    position: absolute;
+    background: url("./../chat.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -93,9 +87,6 @@ body {
         padding: 1vh;
         padding-top: 3.2vh;
         padding-bottom: 0.2vh;
-        // .pop_over_suggestion {
-        //   padding: 1vh;
-        // }
       }
     }
   }
@@ -184,60 +175,6 @@ body {
           }
         }
       }
-      // .datepicker_row {
-      //   display: flex;
-      //   flex-direction: row;
-      //   label {
-      //     width: 50%;
-      //   }
-      //   .react-datepicker-wrapper {
-      //     width: 50%;
-      //     .react-datepicker__input-container {
-      //       width: 100%;
-      //       display: flex;
-      //       .form-control {
-      //         align-self: flex-end;
-      //         width: 100%;
-      //       }
-      //     }
-      //   }
-      //   .react-datepicker__triangle {
-      //     display: none;
-      //   }
-
-      //   .react-datepicker-popper {
-      //     font-size: 2vw !important;
-      //     width: 500px !important;
-      //     border-radius: 4vw !important;
-      //     .react-datepicker__month-container {
-      //       font-size: 1vw !important;
-      //       width: 20vw !important;
-      //       height: 20vw !important;
-      //       border-radius: 4vw !important;
-      //       .react-datepicker__month {
-      //         width: 20vw !important;
-      //         height: 20vw !important;
-      //       }
-      //     }
-      //   }
-
-      // .react-datepicker__current-month {
-      //   font-size: 2vw !important;
-      // }
-
-      // .react-datepicker__header {
-      //   padding-top: 1vw !important;
-      // }
-
-      // .react-datepicker__navigation {
-      //   top: 2vw !important;
-      //   width: 2vw !important;
-      // }
-
-      // .react-datepicker__day-name,
-      // .react-datepicker__day {
-      //   margin: 1.5vw !important;
-      // }
     }
     .form-group {
       display: flex;
