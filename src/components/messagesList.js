@@ -1,7 +1,9 @@
 import React from 'react'
-
+import {Message} from './message';
 export const MessagesList = () => {
   return (
-    <div>M</div>
+    <div>
+      <Message/>
+    </div>
   )
 }

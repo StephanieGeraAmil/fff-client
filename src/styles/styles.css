@@ -1,3 +1,9 @@
+.chat_section .chat_list {
+  background-color: green;
+  top: 10vw;
+  position: absolute;
+}
+
 body {
   margin: 0;
   padding: 0;

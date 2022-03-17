@@ -9,6 +9,12 @@ export const DELETE_USER="user/delete_user";
 // export const SET_USER_L="user/set_user_l";
 export const FETCH_ALL_USERS= "user/fetch_all_users";
 
+
+export const CREATE_CHAT="chat/create_chat";
+export const UPDATE_CHAT="chat/update_chat";
+export const DELETE_CHAT="chat/delete_chat";
+export const FETCH_ALL_CHATS= "chat/fetch_all_chats";
+
 export const SET_FORM="global/set_form";
 export const UNSET_FORM="global/unset_form";
 export const SET_USER="global/set_user";

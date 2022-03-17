@@ -1,7 +1,10 @@
 import React from 'react'
+import {ChatItem} from './chatItem';
 
 export const ChatList = () => {
   return (
-    <div>chatList</div>
+    <div className='chat_list'>
+      <ChatItem/>
+    </div>
   )
 }

@@ -1,4 +1,6 @@
 @import "./variables";
+@import "./chat_section";
+@import "./chat";
 
 @mixin theme {
   background-color: $background-color;
