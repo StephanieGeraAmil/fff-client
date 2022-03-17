@@ -59,7 +59,7 @@ function App() {
       <MapSection/>
       {!isAuthenticated && (<Login/>)}
       {isAuthenticated && (<Logout/>)}
-      {isAuthenticated && (<Link  to="/chats"> <button className="chat_section_button" onClick={() =>OpenChats()}></button> </Link> )}
+      {isAuthenticated && (<Link  to="/chats"> <button className="chat_section_button"></button> </Link> )}
     </div>
   );
 }

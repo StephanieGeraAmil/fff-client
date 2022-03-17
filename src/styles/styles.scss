@@ -48,7 +48,19 @@ body {
     top: 4vw;
     left: 5%;
     position: absolute;
-    background: url("./../chat.png");
+    background: url("./../CHAT1.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+  }
+  .map_button {
+    height: 2vw;
+    width: 2vw;
+    top: 4vw;
+    left: 5%;
+    position: absolute;
+    background: url("./../MAP2.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
