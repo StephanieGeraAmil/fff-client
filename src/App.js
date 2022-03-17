@@ -10,6 +10,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import {MapSection} from './components/mapSection';
 import {Login} from './components/login';
 import {Logout} from './components/logout';
+import { Link} from "react-router-dom"; 
 
 
 
@@ -58,7 +59,7 @@ function App() {
       <MapSection/>
       {!isAuthenticated && (<Login/>)}
       {isAuthenticated && (<Logout/>)}
-      {isAuthenticated && (<button className="chat_section_button" onClick={() =>OpenChats()}></button>)}
+      {isAuthenticated && (<Link  to="/chats"> <button className="chat_section_button" onClick={() =>OpenChats()}></button> </Link> )}
     </div>
   );
 }
