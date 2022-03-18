@@ -30,9 +30,10 @@ export const deleteChat=(chat_id)=>async(dispatch)=>{
 
     
 }
-export const getChats=()=>async(dispatch)=>{
+export const getChats=()=>async(dispatch, getState)=>{
      try {  
-        const {data}=await api.fetchChats();
+        const usr=getState().current.user._id;
+        const {data}=await api.fetchChatsForUser(usr);
         const action={type: actions.FETCH_ALL_CHATS,payload:data};
         dispatch(action);     
     } catch (error) {

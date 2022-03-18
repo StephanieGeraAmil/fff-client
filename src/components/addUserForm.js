@@ -46,7 +46,7 @@ export const AddUserForm = () => {
       }else{
         dispatch(updateUser(userData)); 
       }    
-      console.log('clear form')
+  
       dispatch(unsetForm());
     };
 
