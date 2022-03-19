@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import{ ChatSection} from './components/chatSection';
+import{ ChatPage} from './components/chatPage';
 import reportWebVitals from './reportWebVitals';
 import { Auth0Provider } from "@auth0/auth0-react";
 
@@ -34,6 +35,7 @@ ReactDOM.render(
             <Routes>
                 <Route path="/" element={<App />} />
                 <Route path="/chats" element={<ChatSection />} />
+                <Route path="/chats/:id" element={<ChatPage />} />
              
             </Routes>
               

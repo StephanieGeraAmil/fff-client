@@ -2,6 +2,16 @@ import React from 'react'
 
 export const Message = () => {
   return (
-    <div>message</div>
+    <div>
+        <label>
+        message
+        </label>
+          <label>
+        message
+        </label>
+          <label>
+        message
+        </label>
+    </div>
   )
 }
