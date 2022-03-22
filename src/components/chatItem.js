@@ -4,11 +4,14 @@ import { Link} from "react-router-dom";
 
 export const ChatItem = ({chat}) => {
   const id=chat._id;
+   const title=chat.title;
   return (
-    <Link  to={id}>
-      <div>
-            <h4 className="chat_last">{id}</h4>
-            <h4 className="chat_img ">{chat.img}</h4>
+    <Link  to={id} params={{chat:{chat}}} >
+      <div className='chat_item'>
+          <div className='chat_preview'>    
+            <h4>{title}</h4>
+            <p>{id}</p>
+          </div>
             
       </div>
     </Link>

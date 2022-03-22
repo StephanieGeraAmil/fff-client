@@ -10,6 +10,9 @@ export default (messages=[], action)=>{
         case actions.DELETE_MESSAGE:
         return messages.filter((message)=>message._id!==action.payload);
 
+
+        case actions.FETCH_MESSAGES_FROM_CHAT:
+        return action.payload;
         case actions.FETCH_ALL_MESSAGES:
         return action.payload;
         

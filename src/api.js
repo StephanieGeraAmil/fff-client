@@ -21,7 +21,7 @@ export const createChat=(newChat)=> axios.post(chats_url, newChat);
 export const updateChat=(updatedChat)=> axios.patch(`${chats_url}/${updatedChat._id}`, updatedChat);
 export const deleteChat=(deleteChatId)=> axios.delete(`${chats_url}/${deleteChatId}`);
 const messages_url= backend_url+"/messages";
-export const fetchMessages=()=>axios.get(messages_url);
+export const fetchMessages=(chatId)=>axios.get(`${messages_url}/${chatId}`);
 export const createMessage=(newMessage)=> axios.post(messages_url, newMessage);
 export const updateMessage=(updatedMessage)=> axios.patch(`${messages_url}/${updatedMessage._id}`, updatedMessage);
 export const deleteMessage=(deleteMessageId)=> axios.delete(`${messages_url}/${deleteMessageId}`);

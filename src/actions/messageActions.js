@@ -30,10 +30,12 @@ export const deleteMessage=(message_id)=>async(dispatch)=>{
 
     
 }
-export const getMessages=()=>async(dispatch)=>{
+export const getMessages=(chat_id)=>async(dispatch)=>{
      try {  
-        const {data}=await api.fetchMessages();
-        const action={type: actions.FETCH_ALL_MESSAGES,payload:data};
+  
+        const {data}=await api.fetchMessages(chat_id);
+        
+        const action={type: actions.FETCH_MESSAGES_FROM_CHAT,payload:data};
         dispatch(action);     
     } catch (error) {
         console.log(error);

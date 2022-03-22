@@ -1,0 +1,32 @@
+.chat_page {
+  .message_list {
+    ul {
+      text-decoration: none;
+      list-style-type: none;
+      .message {
+        border-radius: 3vw;
+        border-color: $base-color;
+        padding: 2vw;
+        width: 50%;
+        margin: 1vw;
+      }
+      .sent {
+        background-color: green;
+      }
+      .received {
+        background-color: red;
+      }
+    }
+  }
+  input {
+    border-radius: 3vw;
+    width: 40%;
+    margin: 1vw;
+    padding: 2vw;
+  }
+  button {
+    border-radius: 50%;
+    width: 5.5vw;
+    height: 5.5vw;
+  }
+}

@@ -19,6 +19,7 @@ export const ChatSection = () => {
       <Link  to="/"> <button className="map_button"></button> </Link>
        {isAuthenticated && (<Logout/>)}
        <ChatList/>
+       {/* later on an option to create a chat room will be added here */}
       </div>
   )
 }
