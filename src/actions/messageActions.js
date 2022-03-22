@@ -42,3 +42,12 @@ export const getMessages=(chat_id)=>async(dispatch)=>{
     }
 
 }
+export const clearMessages=()=>async(dispatch)=>{
+     try { 
+        const action={type: actions.CLEAR_MESSAGES};
+        dispatch(action);     
+    } catch (error) {
+        console.log(error);
+    }
+
+}

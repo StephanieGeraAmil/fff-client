@@ -15,6 +15,8 @@ export default (messages=[], action)=>{
         return action.payload;
         case actions.FETCH_ALL_MESSAGES:
         return action.payload;
+          case actions.CLEAR_MESSAGES:
+        return [];
         
         default:
         return messages;

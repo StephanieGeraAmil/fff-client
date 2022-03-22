@@ -1,7 +1,7 @@
 import React ,{useEffect, useState}from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import {Message} from './message';
-import {createMessage, getMessages} from '../actions/messageActions';
+import {createMessage, getMessages, clearMessages} from '../actions/messageActions';
 import{ useParams} from 'react-router-dom';
 
 
@@ -29,9 +29,12 @@ export const ChatPage = () => {
   }
   useEffect(()=>{
       dispatch(getMessages(id));
+      return () => {
+          dispatch(clearMessages());
+        }
   },[])
 
-  //***** */ I have to clean the state. messages when I close the chat page
+  
 
   
   return (

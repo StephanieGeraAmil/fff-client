@@ -20,6 +20,7 @@ export const UPDATE_MESSAGE="message/update_message";
 export const DELETE_MESSAGE="message/delete_message";
 export const FETCH_MESSAGES_FROM_CHAT= "message/fetch_messages_from_chat";
 export const FETCH_ALL_MESSAGES= "message/fetch_all_messages";
+export const CLEAR_MESSAGES="message/clear_messages";
 
 export const SET_FORM="global/set_form";
 export const UNSET_FORM="global/unset_form";
