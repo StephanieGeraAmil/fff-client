@@ -9,6 +9,8 @@ export const ChatPage = () => {
    const { id } = useParams();
   
   const dispatch=useDispatch();
+  const chats= useSelector((state)=>state.chats)
+  const chat =chats.find(element=>element._id==id);
   const messagesOfChat = useSelector((state)=>state.messages)
   const currentUser = useSelector((state)=>state.current.user)
   const [msg, setMsg]= useState("")
@@ -28,6 +30,7 @@ export const ChatPage = () => {
                               chat:id}));   
   }
   useEffect(()=>{
+   
       dispatch(getMessages(id));
       return () => {
           dispatch(clearMessages());
@@ -39,6 +42,7 @@ export const ChatPage = () => {
   
   return (
     <div className='chat_page'>
+          <h4>{chat.title}</h4>
           <div className='message_list'>
 
              <ul>
@@ -60,9 +64,7 @@ export const ChatPage = () => {
               onChange={(e)=>setMsg(e.target.value)}
               onKeyPress={(e)=>handleKeyPress(e)}
               />
-          <button onClick={()=>handleSubmit()}>
-            Send
-          </button>
+          <button className="send_button" onClick={()=>handleSubmit()}></button>
             
           
     </div>

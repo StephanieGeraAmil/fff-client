@@ -11,10 +11,10 @@
         margin: 1vw;
       }
       .sent {
-        background-color: green;
+        background-color: $accent-diluded;
       }
       .received {
-        background-color: red;
+        background-color: $secondary-diluded;
       }
     }
   }
@@ -23,10 +23,15 @@
     width: 40%;
     margin: 1vw;
     padding: 2vw;
+    border-style: solid $base-color;
   }
-  button {
-    border-radius: 50%;
-    width: 5.5vw;
-    height: 5.5vw;
+  .send_button {
+    height: 4vw;
+    width: 4vw;
+    background: url("./../login.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
   }
 }

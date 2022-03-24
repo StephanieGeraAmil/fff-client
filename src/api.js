@@ -13,6 +13,8 @@ const events_url= backend_url+"/events";
 export const fetchEvents=()=>axios.get(events_url);
 export const createEvent=(newEvent)=> axios.post(events_url, newEvent);
 export const updateEvent=(updatedEvent)=> axios.patch(`${events_url}/${updatedEvent._id}`, updatedEvent);
+export const addUserToEvent=(update)=> axios.patch(`${events_url}/${update.event_id}`, update);
+export const deleteUserFromEvent=(update)=> axios.patch(`${events_url}/${update.event_id}`, update);
 export const deleteEvent=(deleteEventId)=> axios.delete(`${events_url}/${deleteEventId}`);
 const chats_url= backend_url+"/chats";
 export const fetchChats=()=>axios.get(chats_url);

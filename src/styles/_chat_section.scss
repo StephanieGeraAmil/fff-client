@@ -7,6 +7,8 @@
 
     display: flex;
     flex-direction: column;
+    text-decoration: none;
+    list-style-type: none;
     ul {
       margin: 0;
       padding: 0;
@@ -19,15 +21,24 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-around;
-
+        text-decoration: none;
         border-radius: 2vw;
         border-width: 0.5vw;
         border-color: solid $accent-color;
         margin-bottom: 2vw;
+        :link {
+          text-decoration: none;
+        }
+        :visited {
+          text-decoration: none;
+        }
         .chat_preview {
           display: flex;
           flex-direction: column;
           width: 80%;
+          color: $base-color;
+          border-bottom: 0.2vw solid $base-color;
+
           h4 {
             border: 0;
             margin: 0;

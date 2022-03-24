@@ -20,6 +20,24 @@ export const updateEvent=(updatedEvent)=>async(dispatch)=>{
         console.log(error);
     }
 }
+export const addUserToEvent=(update)=>async(dispatch)=>{
+    try {    
+        const updated=await api.addUserToEvent(update);
+        const action={type:actions.UPDATE_EVENT, payload:updated};
+        dispatch(action);       
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const deleteUserFromEvent=(update)=>async(dispatch)=>{
+    try {    
+         const updated=await api.deleteUserFromEvent(update);
+        const action={type:actions.UPDATE_EVENT, payload:updated};
+        dispatch(action);       
+    } catch (error) {
+        console.log(error);
+    }
+}
 export const deleteEvent=(event_id)=>async(dispatch)=>{
     try {  
         const action={type: actions.DELETE_EVENT,payload:event_id};

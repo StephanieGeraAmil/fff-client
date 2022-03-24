@@ -10,6 +10,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  text-decoration: none;
+  list-style-type: none;
 }
 
 .chat_section .chat_list ul {
@@ -34,10 +36,19 @@
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  text-decoration: none;
   border-radius: 2vw;
   border-width: 0.5vw;
   border-color: solid #6229d0;
   margin-bottom: 2vw;
+}
+
+.chat_section .chat_list ul .chat_item :link {
+  text-decoration: none;
+}
+
+.chat_section .chat_list ul .chat_item :visited {
+  text-decoration: none;
 }
 
 .chat_section .chat_list ul .chat_item .chat_preview {
@@ -49,6 +60,8 @@
       -ms-flex-direction: column;
           flex-direction: column;
   width: 80%;
+  color: #545454;
+  border-bottom: 0.2vw solid #545454;
 }
 
 .chat_section .chat_list ul .chat_item .chat_preview h4 {
@@ -85,11 +98,11 @@
 }
 
 .chat_page .message_list ul .sent {
-  background-color: green;
+  background-color: #baa7de;
 }
 
 .chat_page .message_list ul .received {
-  background-color: red;
+  background-color: #f9e8af;
 }
 
 .chat_page input {
@@ -97,12 +110,17 @@
   width: 40%;
   margin: 1vw;
   padding: 2vw;
+  border-style: solid #545454;
 }
 
-.chat_page button {
-  border-radius: 50%;
-  width: 5.5vw;
-  height: 5.5vw;
+.chat_page .send_button {
+  height: 4vw;
+  width: 4vw;
+  background: url("./../login.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
 }
 
 body {

@@ -101,7 +101,8 @@ export const MapSection = () => {
                 position={{ lat: marker.lat, lng: marker.lng }}
                 onClick={() => {
                       
-                  setSelected(marker);  
+                  setSelected(marker); 
+                
                 }}
                 icon={{
                   url: marker.img,
@@ -129,14 +130,21 @@ export const MapSection = () => {
                     <p>Description:  {selected.description}</p>
                     {/* <p>Created {formatRelative(selected.time, new Date())}</p>  */}
                     {userLogged&&<button onClick={() => {
-                                      let updatedEvent=selected;
-                                          if(!selected.users.find(usr=>usr._id==userLogged._id)){
-                                            updatedEvent={...selected, users:[...selected.users,userLogged ]}
+                                      // let updatedEvent=selected;
+                                     
+                                       let update={};
+                                          if(selected.users.find(usr=>usr._id==userLogged._id)){
+                                            //updatedEvent={...selected, users:[...selected.users,userLogged ]}
+                                            update={user:userLogged._id, event_id:selected._id,task:'deleteUser'}
+                                           
+
                                           }else{
-                                            updatedEvent={...selected, users:selected.users.filter(usr=>usr._id!=userLogged._id)}
+                                            //updatedEvent={...selected, users:selected.users.filter(usr=>usr._id!=userLogged._id)}
+                                            update={user:userLogged._id, event_id:selected._id, task:'addUser'}
                                           }
-                                          dispatch(updateEvent(updatedEvent));
-                                          setSelected(null);
+                                          // dispatch(updateEvent(updatedEvent));
+                                          // setSelected(null);
+                                      
                                       }
                                     }>
                                     { selected.users.find(usr=>usr._id==userLogged._id)?'Leave':'Join'}
