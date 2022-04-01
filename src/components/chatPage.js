@@ -27,7 +27,8 @@ export const ChatPage = () => {
   
     dispatch(createMessage({  sender:currentUser,
                               content:msg,
-                              chat:id}));   
+                              chat:id}));  
+    setMsg(""); 
   }
   useEffect(()=>{
    
