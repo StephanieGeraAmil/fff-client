@@ -13,31 +13,25 @@ export const createEvent=(event)=>async(dispatch)=>{
 }
 export const updateEvent=(updatedEvent)=>async(dispatch)=>{
     try {    
-        await api.updateEvent(updatedEvent);
-        const action={type:actions.UPDATE_EVENT, payload:updatedEvent};
-        dispatch(action);       
-    } catch (error) {
-        console.log(error);
-    }
-}
-export const addUserToEvent=(update)=>async(dispatch)=>{
-    try {    
-        const updated=await api.addUserToEvent(update);
+        const updated=await api.updateEvent(updatedEvent);
         const action={type:actions.UPDATE_EVENT, payload:updated};
         dispatch(action);       
     } catch (error) {
         console.log(error);
     }
 }
-export const deleteUserFromEvent=(update)=>async(dispatch)=>{
+export const updateUserInEvent=(updatedEvent)=>async(dispatch)=>{
     try {    
-         const updated=await api.deleteUserFromEvent(update);
-        const action={type:actions.UPDATE_EVENT, payload:updated};
-        dispatch(action);       
+       await api.updateEvent(updatedEvent);
+       const {data}=await api.fetchEventsWithUserBelongingInfo(updatedEvent.userToAddOrRemove);
+        const action={type: actions.FETCH_EVENTS_WITH_USER_BELONGING_INFO,payload:data};
+        dispatch(action);           
     } catch (error) {
         console.log(error);
     }
 }
+
+
 export const deleteEvent=(event_id)=>async(dispatch)=>{
     try {  
         const action={type: actions.DELETE_EVENT,payload:event_id};
@@ -53,6 +47,17 @@ export const getEvents=()=>async(dispatch)=>{
         const {data}=await api.fetchEvents();
         const action={type: actions.FETCH_ALL_EVENTS,payload:data};
         dispatch(action);     
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+export const getEventsWithUserBelongingInfo=(user_id)=>async(dispatch)=>{
+    try{ 
+        const {data}=await api.fetchEventsWithUserBelongingInfo(user_id);
+        const action={type: actions.FETCH_EVENTS_WITH_USER_BELONGING_INFO,payload:data};
+        dispatch(action);     
+
     } catch (error) {
         console.log(error);
     }

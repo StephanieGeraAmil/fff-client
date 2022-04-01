@@ -12,6 +12,9 @@ export default (chats=[], action)=>{
 
         case actions.FETCH_ALL_CHATS:
         return action.payload;
+
+        // case actions.UNSET_CHATS:
+        // return [];
         
         default:
         return chats;

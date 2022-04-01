@@ -11,14 +11,15 @@ export const updateUser=(updatedUser)=> axios.patch(`${users_url}/${updatedUser.
 export const deleteUser=(deleteUserId)=> axios.delete(`${users_url}/${deleteUserId}`);
 const events_url= backend_url+"/events";
 export const fetchEvents=()=>axios.get(events_url);
+export const fetchEventsWithUserBelongingInfo=(user_id)=>axios.get(`${events_url}/${user_id}`);
 export const createEvent=(newEvent)=> axios.post(events_url, newEvent);
 export const updateEvent=(updatedEvent)=> axios.patch(`${events_url}/${updatedEvent._id}`, updatedEvent);
-export const addUserToEvent=(update)=> axios.patch(`${events_url}/${update.event_id}`, update);
-export const deleteUserFromEvent=(update)=> axios.patch(`${events_url}/${update.event_id}`, update);
+export const addUserToEvent=(updatedEvent)=> axios.patch(`${events_url}/${updatedEvent._id}`, updatedEvent);
+export const deleteUserFromEvent=(updatedEvent)=> axios.patch(`${events_url}/${updatedEvent._id}`, updatedEvent);
 export const deleteEvent=(deleteEventId)=> axios.delete(`${events_url}/${deleteEventId}`);
 const chats_url= backend_url+"/chats";
 export const fetchChats=()=>axios.get(chats_url);
-export const fetchChatsForUser=(userId)=>axios.get(`${chats_url}/${userId}`);
+export const fetchChatsOfUser=(userId)=>axios.get(`${chats_url}/${userId}`); 
 export const createChat=(newChat)=> axios.post(chats_url, newChat);
 export const updateChat=(updatedChat)=> axios.patch(`${chats_url}/${updatedChat._id}`, updatedChat);
 export const deleteChat=(deleteChatId)=> axios.delete(`${chats_url}/${deleteChatId}`);

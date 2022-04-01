@@ -25,8 +25,10 @@ function App() {
     const events = useSelector((state) =>(state.events ? state.events :null));
 
       useEffect(()=>{
-        dispatch(getEvents());
-        dispatch(getUsers());
+        // i should probably get the events with the user logged in it false if there is no user logged , but I should ask on the map section
+        // dispatch(getEvents());
+       
+        // dispatch(getUsers()); I shouldnt get all users info
       },[])
     
       useEffect(()=>{

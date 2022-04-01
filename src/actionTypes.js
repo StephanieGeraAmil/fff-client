@@ -2,6 +2,7 @@ export const CREATE_EVENT="event/create_event";
 export const UPDATE_EVENT="event/update_event";
 export const DELETE_EVENT="event/delete_event";
 export const FETCH_ALL_EVENTS= "event/fetch_all_events";
+export const FETCH_EVENTS_WITH_USER_BELONGING_INFO="event/fetch_events_with_user_belonging_info";
 
 export const CREATE_USER="user/create_user";
 export const UPDATE_USER="user/update_user";
@@ -14,6 +15,7 @@ export const CREATE_CHAT="chat/create_chat";
 export const UPDATE_CHAT="chat/update_chat";
 export const DELETE_CHAT="chat/delete_chat";
 export const FETCH_ALL_CHATS= "chat/fetch_all_chats";
+
 
 export const CREATE_MESSAGE="message/create_message";
 export const UPDATE_MESSAGE="message/update_message";

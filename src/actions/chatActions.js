@@ -33,7 +33,7 @@ export const deleteChat=(chat_id)=>async(dispatch)=>{
 export const getChats=()=>async(dispatch, getState)=>{
      try {  
         const usr=getState().current.user._id;
-        const {data}=await api.fetchChatsForUser(usr);
+        const {data}=await api.fetchChatsOfUser(usr);
         const action={type: actions.FETCH_ALL_CHATS,payload:data};
         dispatch(action);     
     } catch (error) {
@@ -41,3 +41,11 @@ export const getChats=()=>async(dispatch, getState)=>{
     }
 
 }
+// export const unsetChats=()=>async(dispatch)=>{  
+//     try {
+//         const action={type:actions.UNSET_CHATS};
+//         dispatch(action);
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }

@@ -13,6 +13,12 @@ export default (events=[], action)=>{
         case actions.FETCH_ALL_EVENTS:
         return action.payload;
         
+        case actions.FETCH_EVENTS_WITH_USER_BELONGING_INFO:
+        return action.payload;
+
+        // case actions.SET_USER_SUSCRIBED_TO_EVENT:
+        // return action.payload;
+        
         default:
         return events;
     }

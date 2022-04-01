@@ -1,8 +1,14 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useAuth0 } from "@auth0/auth0-react";
+// import {useDispatch} from 'react-redux';
+// import { unsetChats } from '../actions/chatActions';
 
 export const Logout = () => {
+    // const dispatch= useDispatch();
     const { logout } = useAuth0();
-    ///I should clear the chats on state when logout
+    // useEffect(()=>{
+    //     dispatch(unsetChats());   
+    // },[])
+    
     return <button className="logout_button"  onClick={() => logout({ returnTo: window.location.origin })}></button>
 }
