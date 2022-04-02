@@ -10,5 +10,5 @@ export const Logout = () => {
     //     dispatch(unsetChats());   
     // },[])
     
-    return <button className="logout_button"  onClick={() => logout({ returnTo: window.location.origin })}></button>
+    return <button className="top_link logout_button"  onClick={() => logout({ returnTo: window.location.origin })}></button>
 }

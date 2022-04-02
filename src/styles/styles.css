@@ -1,8 +1,73 @@
-.chat_section .chat_list {
-  top: 10vw;
+.login_button {
   position: absolute;
-  left: 25%;
-  width: 50%;
+  z-index: 10;
+  top: 4vw;
+  right: 5vw !important;
+  height: 2vw;
+  width: 2vw;
+  background: url("./../login.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+}
+
+.top_section {
+  top: 4vw;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.top_section .top_link {
+  height: 2vw;
+  width: 2vw;
+  margin: 0 5vw;
+}
+
+.top_section .logout_button {
+  background: url("./../logout.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+}
+
+.top_section .chat_section_button {
+  background: url("./../CHAT1.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+}
+
+.top_section .map_button {
+  background: url("./../MAP2.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+}
+
+.infoMarker {
+  padding-top: 0;
+  padding: 3vh;
+  font-size: 1.8vh;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 7vw;
+  background-color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10,15 +75,51 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  text-decoration: none;
+}
+
+.infoMarker button {
+  background-color: #6229d0;
+  padding: 1vh;
+  width: 60%;
+  margin: auto;
+  border-color: #6229d0;
+  border-radius: 5vh;
+  font-size: 1.8vh;
+  color: white;
+}
+
+.infoMarker h2 {
+  margin: 0;
+}
+
+.infoMarker p {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+
+.chat_section .chat_list {
+  top: 10vw;
+  position: absolute;
+  left: 25%;
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   list-style-type: none;
+}
+
+.chat_section .chat_list a {
+  text-decoration: none;
+  color: #545454;
 }
 
 .chat_section .chat_list ul {
   margin: 0;
   padding: 0;
-  text-decoration: none;
-  list-style-type: none;
 }
 
 .chat_section .chat_list ul .chat_item {
@@ -43,14 +144,6 @@
   margin-bottom: 2vw;
 }
 
-.chat_section .chat_list ul .chat_item :link {
-  text-decoration: none;
-}
-
-.chat_section .chat_list ul .chat_item :visited {
-  text-decoration: none;
-}
-
 .chat_section .chat_list ul .chat_item .chat_preview {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -68,14 +161,14 @@
   border: 0;
   margin: 0;
   padding: 1vw;
-  font-size: 2vw;
+  font-size: 4vw;
   font-weight: 400;
 }
 
 .chat_section .chat_list ul .chat_item .chat_preview p {
   margin: 0;
   padding: 1vw;
-  font-size: 1vw;
+  font-size: 2vw;
   font-weight: 100;
 }
 
@@ -137,62 +230,10 @@ body .gm-ui-hover-effect {
   display: none !important;
 }
 
-body .login_button {
-  height: 2vw;
-  width: 2vw;
-  top: 4vw;
-  right: 5%;
-  position: absolute;
-  background: url("./../login.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: none;
-}
-
-body .logout_button {
-  height: 2vw;
-  width: 2vw;
-  top: 4vw;
-  right: 5%;
-  position: absolute;
-  background: url("./../logout.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: none;
-}
-
-body .chat_section_button {
-  height: 2vw;
-  width: 2vw;
-  top: 4vw;
-  left: 5%;
-  position: absolute;
-  background: url("./../CHAT1.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: none;
-}
-
-body .map_button {
-  height: 2vw;
-  width: 2vw;
-  top: 4vw;
-  left: 5%;
-  position: absolute;
-  background: url("./../MAP2.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: none;
-}
-
 body .search {
   position: absolute;
   top: 4vw;
-  right: 2%;
+  right: 10vw;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   width: 40%;
@@ -222,44 +263,6 @@ body .search .combobox .pop_over {
   padding: 1vh;
   padding-top: 3.2vh;
   padding-bottom: 0.2vh;
-}
-
-body .infoMarker {
-  padding-top: 0;
-  padding: 3vh;
-  font-size: 1.8vh;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-radius: 7vw;
-  background-color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-body .infoMarker button {
-  background-color: #6229d0;
-  padding: 1vh;
-  width: 60%;
-  margin: auto;
-  border-color: #6229d0;
-  border-radius: 5vh;
-  font-size: 1.8vh;
-  color: white;
-}
-
-body .infoMarker h2 {
-  margin: 0;
-}
-
-body .infoMarker p {
-  margin-top: 1vh;
-  margin-bottom: 1vh;
 }
 
 body .backdrop {

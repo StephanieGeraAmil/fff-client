@@ -3,17 +3,17 @@
     top: 10vw;
     position: absolute;
     left: 25%;
-    width: 50%;
-
+    width: 90%;
     display: flex;
     flex-direction: column;
-    text-decoration: none;
     list-style-type: none;
+    a {
+      text-decoration: none;
+      color: $base-color;
+    }
     ul {
       margin: 0;
       padding: 0;
-      text-decoration: none;
-      list-style-type: none;
       .chat_item {
         display: flex;
         padding: 0.5vw;
@@ -26,12 +26,7 @@
         border-width: 0.5vw;
         border-color: solid $accent-color;
         margin-bottom: 2vw;
-        :link {
-          text-decoration: none;
-        }
-        :visited {
-          text-decoration: none;
-        }
+
         .chat_preview {
           display: flex;
           flex-direction: column;
@@ -43,13 +38,13 @@
             border: 0;
             margin: 0;
             padding: 1vw;
-            font-size: 2vw;
+            font-size: 4vw;
             font-weight: 400;
           }
           p {
             margin: 0;
             padding: 1vw;
-            font-size: 1vw;
+            font-size: 2vw;
             font-weight: 100;
           }
         }

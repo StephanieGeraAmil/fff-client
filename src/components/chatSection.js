@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react'
-import {Link} from "react-router-dom"; 
-import {Logout} from './logout';
 import {ChatItem} from './chatItem';
 import {useAuth0 } from "@auth0/auth0-react";
 import {useDispatch , useSelector} from 'react-redux';
@@ -17,8 +15,6 @@ export const ChatSection = () => {
 
   return (
     <div className="chat_section">
-      <Link  to="/"> <button className="map_button"></button> </Link>
-       {isAuthenticated && (<Logout/>)}
        <ul className='chat_list'>
             {chats.map((item) => {
                 return (
