@@ -44,28 +44,25 @@ export const ChatPage = () => {
   return (
     <div className='chat_page'>
           <h4>{chat.title}</h4>
-          <div className='message_list'>
-
-             <ul>
-                {messagesOfChat.map((item) => {
-                    return (
-                        <li key={item._id}>
-                            <Message key={item._id} message={item} />
-                        </li>
-                    )
-                })}
-             </ul>
-           
+          <ul>
+            {messagesOfChat.map((item) => {
+                return (
+                    <li  key={item._id}>
+                        <Message key={item._id} message={item} />
+                    </li>
+                )
+            })}
+          </ul>  
+          <div className='writing_zone'>   
+              <input  type="text"
+                  required
+                  className="form-control"
+                  value={msg}
+                  onChange={(e)=>setMsg(e.target.value)}
+                  onKeyPress={(e)=>handleKeyPress(e)}
+                  />
+              <button className="send_button" onClick={()=>handleSubmit()}></button>
           </div>
-                
-          <input  type="text"
-              required
-              className="form-control"
-              value={msg}
-              onChange={(e)=>setMsg(e.target.value)}
-              onKeyPress={(e)=>handleKeyPress(e)}
-              />
-          <button className="send_button" onClick={()=>handleSubmit()}></button>
             
           
     </div>

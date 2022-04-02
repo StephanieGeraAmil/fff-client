@@ -176,38 +176,89 @@
   height: 3vw;
 }
 
-.chat_page .message_list ul {
-  text-decoration: none;
+.chat_page {
+  margin: auto;
+  margin-top: 4vw;
+  width: 40%;
+}
+
+.chat_page h4 {
+  font-size: 2.2vw;
+}
+
+.chat_page ul {
+  width: 100%;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   list-style-type: none;
 }
 
-.chat_page .message_list ul .message {
-  border-radius: 3vw;
-  border-color: #545454;
-  padding: 2vw;
-  width: 50%;
-  margin: 1vw;
+.chat_page ul li {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 1vw;
 }
 
-.chat_page .message_list ul .sent {
+.chat_page ul li .message_sent {
+  justify-self: flex-end;
+  border-radius: 3vw;
+  margin: 0;
+  padding: 2vw;
+  width: 50%;
+  margin-bottom: 2vw;
   background-color: #baa7de;
 }
 
-.chat_page .message_list ul .received {
+.chat_page ul li .message_received {
+  justify-self: flex-start;
+  border-radius: 3vw;
+  margin: 0;
+  padding: 2vw;
+  width: 50%;
+  margin-bottom: 2vw;
   background-color: #f9e8af;
 }
 
-.chat_page input {
-  border-radius: 3vw;
-  width: 40%;
-  margin: 1vw;
-  padding: 2vw;
-  border-style: solid #545454;
+.chat_page .writing_zone {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  margin: auto;
 }
 
-.chat_page .send_button {
-  height: 4vw;
-  width: 4vw;
+.chat_page .writing_zone input {
+  width: 95%;
+  height: 3vw;
+  margin: 2vw;
+  padding: 0.05vw;
+  border-radius: 3vw;
+}
+
+.chat_page .writing_zone .send_button {
+  height: 3vw;
+  width: 3vw;
   background: url("./../send.png");
   background-size: contain;
   background-position: center;

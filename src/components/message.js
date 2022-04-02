@@ -6,11 +6,11 @@ export const Message = ({message}) => {
     const messageUser=message.sender;
   return (
   <>
-   {messageUser!==currentUser._id &&( <div className="message received"> 
+   {messageUser!==currentUser._id &&( <div className="message_received"> 
                                             <label >{message.content}</label>
     
                                      </div>)}
-   {messageUser===currentUser._id &&( <div className="message sent"> 
+   {messageUser===currentUser._id &&( <div className="message_sent"> 
                                             <label >{message.content}</label>
     
                                      </div>)}
