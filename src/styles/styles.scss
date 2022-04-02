@@ -3,13 +3,12 @@
 @import "./map_section";
 @import "./chat_section";
 @import "./chat";
+@import "./forms";
 
 @mixin theme {
   background-color: $background-color;
   color: $base-color;
-  // font-size: calc(10px + 2vmin);
   font-family: $font;
-  // font-weight: 900;
 }
 body {
   margin: 0;
@@ -18,9 +17,9 @@ body {
   width: 100vw;
   height: 100vh;
 
-  .gm-ui-hover-effect {
-    display: none !important;
-  }
+  // .gm-ui-hover-effect {
+  //   display: none !important;
+  // }
 
   .search {
     position: absolute;
@@ -54,117 +53,6 @@ body {
         padding-top: 3.2vh;
         padding-bottom: 0.2vh;
       }
-    }
-  }
-
-  .backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-
-  .modal-area {
-    position: fixed;
-    top: 30%;
-    left: 35%;
-    z-index: 15;
-    width: 30%;
-    height: auto;
-    border-radius: 2vw;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
-    form {
-      width: 80%;
-      margin: auto;
-      margin-top: 2vw;
-      margin-bottom: 2vw;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-content: center;
-
-      .datepicker_row {
-        label {
-          width: 50% !important;
-        }
-        .datetime {
-          width: 90% !important;
-        }
-        .rdtPicker {
-          width: 150% !important;
-          border-radius: 1.5vw !important;
-          padding: 1.5vw;
-
-          .rdtDays {
-            width: 100% !important;
-            table {
-              width: 100% !important;
-              .rdtSwitch {
-                padding-bottom: 1vw;
-              }
-              .rdtTimeToggle {
-                display: none;
-              }
-            }
-          }
-        }
-      }
-    }
-    .form-group {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      margin-bottom: 1vw;
-      font-weight: normal;
-      font-size: 1.2vw;
-      label {
-        width: 60%;
-      }
-
-      .form-control {
-        border-radius: $boxRadius;
-        border-color: $base-color;
-        border-width: 0.00001vw;
-        width: 40%;
-        font-weight: normal;
-        color: $base-color;
-        padding-left: 1.2vw;
-        font-size: 1.2vw;
-
-        select {
-          width: 100%;
-          option {
-            font-size: 1.2vw;
-          }
-        }
-      }
-    }
-    .cancel {
-      position: absolute;
-      top: 0.8vw;
-      right: 1.1vw;
-      width: 1vw;
-      font-size: 1vw;
-      text-align: center;
-      background-color: white;
-      color: $base-color;
-      border: #ffff;
-    }
-
-    .submitButton {
-      background-color: $accent-color;
-
-      padding: 0.2vw;
-      padding-bottom: 0.4vw;
-
-      border-color: $accent-color;
-      border-radius: 2vh;
-      font-size: 1.2vw;
-      color: white;
     }
   }
 }

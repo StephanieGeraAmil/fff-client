@@ -97,11 +97,15 @@
   margin-bottom: 1vh;
 }
 
+.chat_section {
+  margin: auto;
+  margin-top: 10vw;
+  width: 70%;
+}
+
 .chat_section .chat_list {
-  top: 10vw;
-  position: absolute;
-  left: 25%;
-  width: 90%;
+  border: 0.2vw solid #545454;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -110,24 +114,26 @@
       -ms-flex-direction: column;
           flex-direction: column;
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .chat_section .chat_list a {
   text-decoration: none;
   color: #545454;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  border-bottom: 0.2vw solid #545454;
 }
 
-.chat_section .chat_list ul {
-  margin: 0;
-  padding: 0;
-}
-
-.chat_section .chat_list ul .chat_item {
+.chat_section .chat_list a .chat_item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   padding: 0.5vw;
-  width: 100%;
+  width: 80%;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -137,14 +143,9 @@
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  text-decoration: none;
-  border-radius: 2vw;
-  border-width: 0.5vw;
-  border-color: solid #6229d0;
-  margin-bottom: 2vw;
 }
 
-.chat_section .chat_list ul .chat_item .chat_preview {
+.chat_section .chat_list a .chat_item .chat_preview {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -154,25 +155,23 @@
           flex-direction: column;
   width: 80%;
   color: #545454;
-  border-bottom: 0.2vw solid #545454;
 }
 
-.chat_section .chat_list ul .chat_item .chat_preview h4 {
-  border: 0;
-  margin: 0;
-  padding: 1vw;
-  font-size: 4vw;
-  font-weight: 400;
-}
-
-.chat_section .chat_list ul .chat_item .chat_preview p {
+.chat_section .chat_list a .chat_item .chat_preview h4 {
   margin: 0;
   padding: 1vw;
   font-size: 2vw;
+  font-weight: 400;
+}
+
+.chat_section .chat_list a .chat_item .chat_preview p {
+  margin: 0;
+  padding: 1vw;
+  font-size: 1vw;
   font-weight: 100;
 }
 
-.chat_section .chat_list ul .chat_item .chat_item_img {
+.chat_section .chat_list a .chat_item .chat_item_img {
   width: 3vw;
   height: 3vw;
 }
@@ -216,6 +215,139 @@
   border: none;
 }
 
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-area {
+  position: fixed;
+  top: 30%;
+  left: 35%;
+  z-index: 15;
+  width: 30%;
+  height: auto;
+  border-radius: 2vw;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
+}
+
+.modal-area form {
+  width: 80%;
+  margin: auto;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.modal-area form .datepicker_row label {
+  width: 50% !important;
+}
+
+.modal-area form .datepicker_row .datetime {
+  width: 90% !important;
+}
+
+.modal-area form .datepicker_row .rdtPicker {
+  width: 150% !important;
+  border-radius: 1.5vw !important;
+  padding: 1.5vw;
+}
+
+.modal-area form .datepicker_row .rdtPicker .rdtDays {
+  width: 100% !important;
+}
+
+.modal-area form .datepicker_row .rdtPicker .rdtDays table {
+  width: 100% !important;
+}
+
+.modal-area form .datepicker_row .rdtPicker .rdtDays table .rdtSwitch {
+  padding-bottom: 1vw;
+}
+
+.modal-area form .datepicker_row .rdtPicker .rdtDays table .rdtTimeToggle {
+  display: none;
+}
+
+.modal-area .form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 1vw;
+  font-weight: normal;
+  font-size: 1.2vw;
+}
+
+.modal-area .form-group label {
+  width: 60%;
+}
+
+.modal-area .form-group .form-control {
+  border-radius: 20vw;
+  border-color: #545454;
+  border-width: 0.00001vw;
+  width: 40%;
+  font-weight: normal;
+  color: #545454;
+  padding-left: 1.2vw;
+  font-size: 1.2vw;
+}
+
+.modal-area .form-group .form-control select {
+  width: 100%;
+}
+
+.modal-area .form-group .form-control select option {
+  font-size: 1.2vw;
+}
+
+.modal-area .cancel {
+  position: absolute;
+  top: 0.8vw;
+  right: 1.1vw;
+  width: 1vw;
+  font-size: 1vw;
+  text-align: center;
+  background-color: white;
+  color: #545454;
+  border: #ffff;
+}
+
+.modal-area .submitButton {
+  background-color: #6229d0;
+  padding: 0.2vw;
+  padding-bottom: 0.4vw;
+  border-color: #6229d0;
+  border-radius: 2vh;
+  font-size: 1.2vw;
+  color: white;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -224,10 +356,6 @@ body {
   font-family: "Montserrat", sans-serif;
   width: 100vw;
   height: 100vh;
-}
-
-body .gm-ui-hover-effect {
-  display: none !important;
 }
 
 body .search {
@@ -263,138 +391,5 @@ body .search .combobox .pop_over {
   padding: 1vh;
   padding-top: 3.2vh;
   padding-bottom: 0.2vh;
-}
-
-body .backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-body .modal-area {
-  position: fixed;
-  top: 30%;
-  left: 35%;
-  z-index: 15;
-  width: 30%;
-  height: auto;
-  border-radius: 2vw;
-  background-color: #ffffff;
-  -webkit-box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
-}
-
-body .modal-area form {
-  width: 80%;
-  margin: auto;
-  margin-top: 2vw;
-  margin-bottom: 2vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -ms-flex-line-pack: center;
-      align-content: center;
-}
-
-body .modal-area form .datepicker_row label {
-  width: 50% !important;
-}
-
-body .modal-area form .datepicker_row .datetime {
-  width: 90% !important;
-}
-
-body .modal-area form .datepicker_row .rdtPicker {
-  width: 150% !important;
-  border-radius: 1.5vw !important;
-  padding: 1.5vw;
-}
-
-body .modal-area form .datepicker_row .rdtPicker .rdtDays {
-  width: 100% !important;
-}
-
-body .modal-area form .datepicker_row .rdtPicker .rdtDays table {
-  width: 100% !important;
-}
-
-body .modal-area form .datepicker_row .rdtPicker .rdtDays table .rdtSwitch {
-  padding-bottom: 1vw;
-}
-
-body .modal-area form .datepicker_row .rdtPicker .rdtDays table .rdtTimeToggle {
-  display: none;
-}
-
-body .modal-area .form-group {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin-bottom: 1vw;
-  font-weight: normal;
-  font-size: 1.2vw;
-}
-
-body .modal-area .form-group label {
-  width: 60%;
-}
-
-body .modal-area .form-group .form-control {
-  border-radius: 20vw;
-  border-color: #545454;
-  border-width: 0.00001vw;
-  width: 40%;
-  font-weight: normal;
-  color: #545454;
-  padding-left: 1.2vw;
-  font-size: 1.2vw;
-}
-
-body .modal-area .form-group .form-control select {
-  width: 100%;
-}
-
-body .modal-area .form-group .form-control select option {
-  font-size: 1.2vw;
-}
-
-body .modal-area .cancel {
-  position: absolute;
-  top: 0.8vw;
-  right: 1.1vw;
-  width: 1vw;
-  font-size: 1vw;
-  text-align: center;
-  background-color: white;
-  color: #545454;
-  border: #ffff;
-}
-
-body .modal-area .submitButton {
-  background-color: #6229d0;
-  padding: 0.2vw;
-  padding-bottom: 0.4vw;
-  border-color: #6229d0;
-  border-radius: 2vh;
-  font-size: 1.2vw;
-  color: white;
 }
 /*# sourceMappingURL=styles.css.map */
