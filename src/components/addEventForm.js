@@ -27,8 +27,7 @@ export const AddEventForm = () => {
          img:"."+typesAvaiable[0].img,
          lat:form.position.lat, 
          lng:form.position.lng,
-         creator: userLogged,
-         users:[userLogged]
+         creator: userLogged._id
     });
 
 

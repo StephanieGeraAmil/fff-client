@@ -4,9 +4,10 @@ import * as api from '../api.js';
 export const createEvent=(event)=>async(dispatch)=>{
   
     try {
-        const {data}=await api.createEvent(event);
-        const action={type:actions.CREATE_EVENT, payload:data};
-        dispatch(action);       
+        await api.createEvent(event);
+       const {data}=await api.fetchEventsWithUserBelongingInfo(event.creator);
+        const action={type: actions.FETCH_EVENTS_WITH_USER_BELONGING_INFO,payload:data};
+        dispatch(action);   
     } catch (error) {
         console.log(error);
     }
