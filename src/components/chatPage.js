@@ -16,15 +16,10 @@ export const ChatPage = () => {
   const [msg, setMsg]= useState("")
   const handleKeyPress=(e)=>{
     if(e.key === 'Enter'){
-      console.log('enter')
       handleSubmit();
-     }
- 
-   
+     }  
   }
   const handleSubmit=()=>{
-    console.log('submit');
-  
     dispatch(createMessage({  sender:currentUser,
                               content:msg,
                               chat:id}));  
@@ -37,9 +32,6 @@ export const ChatPage = () => {
           dispatch(clearMessages());
         }
   },[])
-
-  
-
   
   return (
     <div className='chat_page'>
@@ -62,9 +54,7 @@ export const ChatPage = () => {
                   onKeyPress={(e)=>handleKeyPress(e)}
                   />
               <button className="send_button" onClick={()=>handleSubmit()}></button>
-          </div>
-            
-          
+          </div>        
     </div>
   )
 }

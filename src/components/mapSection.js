@@ -40,6 +40,8 @@ export const MapSection = () => {
     const userLoggedSelector=(state) =>(state.current.user ? state.current.user :null);
     const userLogged = useSelector(userLoggedSelector);
     const dispatch= useDispatch();
+    const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env;
+    
 
     const [selected, setSelected] = useState(null);
   
@@ -68,11 +70,12 @@ export const MapSection = () => {
 
 
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: 'AIzaSyCwPyO0ICeErvK3sjNs8eyhpZMluSVGn5s',
+    googleMapsApiKey: REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
 
   useEffect(()=>{
+     
     if(userLogged){
       dispatch(getEventsWithUserBelongingInfo(userLogged._id));
     }else{

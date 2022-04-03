@@ -1,7 +1,10 @@
 
 
 import axios from 'axios';
-const backend_url="http://localhost:5500"
+
+const { REACT_APP_BACKEND_URL } = process.env;
+
+const backend_url=REACT_APP_BACKEND_URL;
 //const backend_url=""
 const users_url= backend_url+"/users";
 export const fetchUsers=()=>axios.get(users_url);
