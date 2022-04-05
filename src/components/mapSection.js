@@ -115,7 +115,7 @@ export const MapSection = () => {
             {form? form.type=='AddUser'&& <React.Fragment><Backdrop/><Modal form={<AddUserForm/>}/></React.Fragment> : <></> }
             {selected ? (
                 <InfoWindow
-                  position={{ lat: selected.lat, lng: selected.lng }}       
+                  position={{ lat: selected.lat+0.0002, lng: selected.lng}}       
                   onCloseClick={() => {
                     setSelected(null);
                   }}
