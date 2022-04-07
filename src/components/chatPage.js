@@ -3,17 +3,23 @@ import { useDispatch,useSelector } from 'react-redux';
 import {Message} from './message';
 import {createMessage, getMessages, clearMessages} from '../actions/messageActions';
 import{ useParams} from 'react-router-dom';
+import {io} from 'socket.io-client';
 
 
 export const ChatPage = () => {
-   const { id } = useParams();
+  const { id } = useParams();
   
   const dispatch=useDispatch();
   const chats= useSelector((state)=>state.chats)
   const chat =chats.find(element=>element._id==id);
   const messagesOfChat = useSelector((state)=>state.messages)
   const currentUser = useSelector((state)=>state.current.user)
+
+
+
   const [msg, setMsg]= useState("")
+  const [skt, setSkt]= useState({})
+
   const handleKeyPress=(e)=>{
     if(e.key === 'Enter'){
       handleSubmit();
@@ -23,10 +29,17 @@ export const ChatPage = () => {
     dispatch(createMessage({  sender:currentUser,
                               content:msg,
                               chat:id}));  
+    skt.emit("message-sent", (msg, id));
     setMsg(""); 
   }
   useEffect(()=>{
-   
+
+      const socket=io(process.env.REACT_APP_BACKEND_URL);
+      socket.on("connect",()=>{console.log(socket.id)});
+      socket.on ("new-message", (message)=>{console.log(message)});
+      setSkt(socket);
+
+  
       dispatch(getMessages(id));
       return () => {
           dispatch(clearMessages());
