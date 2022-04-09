@@ -15,8 +15,12 @@ export default (messages=[], action)=>{
         return action.payload;
         case actions.FETCH_ALL_MESSAGES:
         return action.payload;
-          case actions.CLEAR_MESSAGES:
+        case actions.CLEAR_MESSAGES:
         return [];
+        case actions.SET_MESSAGES_FROM_CHAT:
+        return action.payload;
+        case actions.ADD_MESSAGE_TO_CHAT:
+        return  [...messages, action.payload];
         
         default:
         return messages;
