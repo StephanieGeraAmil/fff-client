@@ -1,7 +1,7 @@
 import React ,{useEffect, useState}from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import {Message} from './message';
-import {createMessage, getMessages, clearMessages} from '../actions/messageActions';
+import {createMessage, getMessages, clearMessages,setMessages, addMessage} from '../actions/messageActions';
 import{ useParams} from 'react-router-dom';
 import {io} from 'socket.io-client';
 
@@ -26,23 +26,35 @@ export const ChatPage = () => {
      }  
   }
   const handleSubmit=()=>{
-    dispatch(createMessage({  sender:currentUser,
-                              content:msg,
-                              chat:id}));  
-    skt.emit("message-sent", (msg, id));
+    // dispatch(createMessage({  sender:currentUser,
+    //                           content:msg,
+    //                           chat:id}));  
+    
+    skt.emit("message-sent", {   sender:currentUser,
+                                  content:msg},
+                                  id);
     setMsg(""); 
   }
   useEffect(()=>{
 
       const socket=io(process.env.REACT_APP_BACKEND_URL);
-      socket.on("connect",()=>{console.log(socket.id)});
-      socket.on ("new-message", (message)=>{console.log(message)});
+     
+      socket.on("connect",()=>{
+                        socket.emit("get-last-100-messages",id);
+                      }); 
+   
+      socket.on("last-100-messgaes-from-chat",(data)=> {
+                                dispatch(setMessages(data))
+                              });
+      socket.on ("message-created", (message)=>{
+                                                  dispatch(addMessage(message));
+                                                });
       setSkt(socket);
 
   
-      dispatch(getMessages(id));
+      // dispatch(getMessages(id));
       return () => {
-          dispatch(clearMessages());
+          // dispatch(clearMessages());
         }
   },[])
   
