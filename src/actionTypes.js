@@ -28,6 +28,9 @@ export const SET_FORM="global/set_form";
 export const UNSET_FORM="global/unset_form";
 export const SET_USER="global/set_user";
 export const UNSET_USER="global/unset_user";
+export const SET_SELECTED_CHAT="global/set_selected_chat";
+export const CLEAR_SELECTED_CHAT="global/clear_selected_chat";
+
 
 export const SET_MESSAGES_FROM_CHAT="message/set_messages_from_chat";
 export const ADD_MESSAGE_TO_CHAT="message/add_message_to_chat";

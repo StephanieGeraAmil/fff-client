@@ -34,3 +34,20 @@ export const setUser=(user)=>async(dispatch)=>{
     }
 }
 
+export const setSelectedChat=(form)=>async(dispatch)=>{  
+    try {
+        const action={type:actions.SET_SELECTED_CHAT, payload:form};
+        dispatch(action);
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const clearSelectedChat=()=>async(dispatch)=>{  
+    try {
+        const action={type:actions.CLEAR_SELECTED_CHAT};
+        dispatch(action);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
