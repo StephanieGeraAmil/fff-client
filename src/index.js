@@ -28,7 +28,7 @@ ReactDOM.render(
             <Routes>
                 <Route path="/" element={<App />} />
                 <Route path="/chats" element={<ChatSection />} />
-                <Route path="/chats/:id" element={<ChatPage />} />
+             
              
             </Routes>
               
