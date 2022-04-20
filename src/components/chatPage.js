@@ -2,6 +2,14 @@ import React ,{useEffect, useState}from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import {Message} from './message';
 import {setMessages, addMessage} from '../actions/messageActions';
+import Button from 'react-bootstrap/Button';
+import Toast from 'react-bootstrap/Toast';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+
+import ListGroup from 'react-bootstrap/ListGroup';
+import ListGroupItem from 'react-bootstrap/ListGroupItem';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import {io} from 'socket.io-client';
 
@@ -47,27 +55,33 @@ export const ChatPage = ({selected_chat}) => {
   },[])
   
   return (
-    <div className='chat_page'>
+    <>
           <h4>{selected_chat.title}</h4>
-          <ul>
+          <ListGroup>
             {messagesOfChat.map((item) => {
                 return (
-                    <li  key={item._id}>
+                    <ListGroupItem  key={item._id}>
                         <Message message={item} />
-                    </li>
+                    </ListGroupItem>
                 )
             })}
-          </ul>  
-          <div className='writing_zone'>   
-              <input  type="text"
-                  required
-                  className="form-control"
-                  value={msg}
-                  onChange={(e)=>setMsg(e.target.value)}
-                  onKeyPress={(e)=>handleKeyPress(e)}
-                  />
-              <button className="send_button" onClick={()=>handleSubmit()}></button>
-          </div>        
-    </div>
+          </ListGroup>  
+          <Form>
+            
+                      <Form.Control type="text" placeholder=" "  onChange={(e)=>setMsg(e.target.value)}
+                              onKeyPress={(e)=>handleKeyPress(e)} />  
+                          {/* <input  type="text"
+                              required
+                              className="form-control"
+                              value={msg}
+                              onChange={(e)=>setMsg(e.target.value)}
+                              onKeyPress={(e)=>handleKeyPress(e)}
+                              /> */}
+                         
+            
+              <Button variant="secondary" size="lg" onClick={()=>handleSubmit()}>Send</Button>
+           </Form>
+             
+    </>
   )
 }
