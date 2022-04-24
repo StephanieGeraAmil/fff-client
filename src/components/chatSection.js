@@ -23,9 +23,9 @@ export const ChatSection = () => {
     },[])
 
   return (
-    <Container>
+    <Container className='mt-5'>
       <Row>
-          <Col>
+          <Col className='mt-5'>
                 <ListGroup >
                       {chats.map((item) => {
                           return (
@@ -36,7 +36,7 @@ export const ChatSection = () => {
                       })}
                   </ListGroup>
             </Col>
-            <Col>
+            <Col xs={7} className=' m-5 mt-5'>
                   {selectedChat&&<ChatPage selected_chat={selectedChat}/>}
             </Col>
         </Row>

@@ -63,6 +63,7 @@ export const setMessages=(data)=>async(dispatch)=>{
 }
 export const addMessage=(data)=>async(dispatch)=>{
      try {  
+        
         const action={type: actions.ADD_MESSAGE_TO_CHAT,payload:data};
         dispatch(action);     
     } catch (error) {

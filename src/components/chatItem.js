@@ -21,16 +21,9 @@ export const ChatItem = ({chat}) => {
     // <Link  to={id} params={{chat:{chat}}} >
 
       <Container onClick={()=>{onChatChange(chat)}}>
-          {/* <div className='chat_preview'>     */}
+        
             <h4>{chat.title}</h4>
-       
-            {/* <p>{chat.title.mesages[0]}</p> */}
-            {/* {chat.users.map((item) => {
-                return (
-                    <label key={item}>{item} ,</label>
-                )
-            })} */}
-          {/* </div> */}
+      
             
       </Container>
     // </Link>
