@@ -19,7 +19,8 @@ export const TopSection = () => {
     useEffect(()=>{
        
           if (!isLoading&& isAuthenticated){
-            if(!userLogged ){      
+            if(!userLogged ){   
+              //I already checked the db?   
               if(!users.logged){
                     if (!bdSearchDone) {
                       setBdSearchDone(true);
