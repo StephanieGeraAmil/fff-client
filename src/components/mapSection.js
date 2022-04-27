@@ -6,13 +6,16 @@ import { formatRelative } from "date-fns";
 import usePlacesAutocomplete, { getGeocode, getLatLng,} from "use-places-autocomplete";
 import {AddEventForm} from "./addEventForm"
 import {AddUserForm} from "./addUserForm"
-import Modal from "./Modal"
-import Backdrop from "./Backdrop"
+import Modal from "react-bootstrap/Modal"
+import Container from "react-bootstrap/Container"
+// import Backdrop from "./Backdrop"
 import {setForm} from '../actions/globalStateActions'
 import {getEvents, getEventsWithUserBelongingInfo,updateUserInEvent} from '../actions/eventActions'
 
 import {Combobox,ComboboxInput,ComboboxPopover,ComboboxList, ComboboxOption,} from "@reach/combobox";
 import "@reach/combobox/styles.css";
+import Button from 'react-bootstrap/Button';
+
 
 
 const libraries=['places'];
@@ -44,6 +47,15 @@ export const MapSection = () => {
     
 
     const [selected, setSelected] = useState(null);
+
+
+
+
+    /// modals
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
   
   const onMapClick = useCallback((e) => {
     setSelected(null);
@@ -54,6 +66,7 @@ export const MapSection = () => {
                           lng: e.latLng.lng()
                         };
         dispatch(setForm({position, type:'AddEvent'}));
+        handleShow();
     }
   }, [userLogged]);
  
@@ -75,8 +88,10 @@ export const MapSection = () => {
   });
 
   useEffect(()=>{
+        handleShow();
      
     if(userLogged){
+      
       dispatch(getEventsWithUserBelongingInfo(userLogged._id));
     }else{
        dispatch(getEvents());
@@ -110,23 +125,25 @@ export const MapSection = () => {
                 }}
               />
             ))}
-            {form? form.type=='AddEvent'&& <React.Fragment><Backdrop/><Modal form={<AddEventForm/>}/></React.Fragment> : <></> }
-            {form? form.type=='AddUserInfo'&& <React.Fragment><Backdrop/><Modal form={<AddUserForm/>}/></React.Fragment> : <></> }
-            {form? form.type=='AddUser'&& <React.Fragment><Backdrop/><Modal form={<AddUserForm/>}/></React.Fragment> : <></> }
+            {form? form.type=='AddEvent'&& <Modal  show={show} onHide={handleClose}> <AddEventForm/></Modal> : <></> }
+            {form? form.type=='AddUserInfo'&& <Modal show={show} onHide={handleClose}> <AddUserForm/></Modal>: <></> }
+            {form? form.type=='AddUser'&& <Modal show={show} onHide={handleClose}><AddUserForm/></Modal> : <></> } 
             {selected ? (
                 <InfoWindow
-                  position={{ lat: selected.lat+0.0002, lng: selected.lng}}       
+                  position={{ lat: selected.lat, lng: selected.lng}}       
                   onCloseClick={() => {
                     setSelected(null);
                   }}
                 >   
-                  <div  className='infoMarker'>
+              
+                    <Container>
                     <h2>
                        {selected.title}
-                    </h2>
+                    </h2> 
+                   
                     <p>Description:  {selected.description}</p>
                     <p>Created {formatRelative(new Date(selected.date),Date.now())}</p> 
-                    {userLogged&&<button onClick={() => {
+                    {userLogged&&<Button onClick={() => {
                                       let update={};
                                           if(selected.hasTheUser){
                                             update={...selected,userToAddOrRemove:userLogged._id, task:'deleteUser'}
@@ -136,14 +153,18 @@ export const MapSection = () => {
                                          }
                                           dispatch(updateUserInEvent(update)); 
                                           setSelected(null);  
+                                          handleClose();
                                       }
                                     }>
                                     { selected.hasTheUser?'Leave':'Join'}
-                                    </button>}
-                  </div>
+                                    </Button>}
+                    {/* </Modal.Body> */}
+                  {/* </Modal> */}
+                  </Container>
                 </InfoWindow>
               ) : null}
       </GoogleMap>
+      
   </>) : <></>
 }
 

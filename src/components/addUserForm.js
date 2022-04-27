@@ -6,6 +6,7 @@ import { setUser, unsetForm} from '../actions/globalStateActions'
 import Form from 'react-bootstrap/Form';
 import CloseButton from 'react-bootstrap/CloseButton';
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import { useAuth0 } from "@auth0/auth0-react";
 
 // import Datetime from 'react-datetime';
@@ -28,14 +29,8 @@ export const AddUserForm = () => {
   
   useEffect(()=>{
   if (!isLoading&& isAuthenticated) {  
- 
     setUserData({...userData, email:user.email, name:user.nickname});
-   
-  
-    console.log(day)
-       console.log(month)
-          console.log(year)
-  }
+   }
   },[])
 
   const [userData, setUserData]=useState({
@@ -73,32 +68,40 @@ export const AddUserForm = () => {
   }
 
   return (
-    <Form className='mt-5' >
-      {/* <CloseButton /> */}
-          <Form.Control className='mb-3'  type="text" placeholder="Name"  onChange={(e)=>setUserData({...userData, name:(e.target.value)})} defaultValue={userData.name} />  
-          <Form.Select  className='mb-3' onChange={(e)=>setUserData({...userData, gender:(e.target.value)})} defaultValue="Female" >
-                <option value="Female">Female</option>
-                <option value="Male">Male</option>
-                <option value="Other">Other</option>
-          </Form.Select>
-          <Form.Control className='mb-3' type="text" placeholder="City"  onChange={(e)=>handleAproxLocationChange(e.target.value)} />  
-          <Stack direction="horizontal" gap={3} className='mb-3' >
-          <Form.Select  onChange={(e)=>setDay(e.target.value) } defaultValue={day} >
-           { dayVaules.map((day)=> {return( <option value={day}>{day}</option>)})}
-               
-           
-          </Form.Select>
-          <Form.Select   onChange={(e)=>setMonth(e.target.value)} defaultValue={month}>
-                { monthVaules.map((month)=> {return( <option value={month}>{month}</option>)})}
-               
-          </Form.Select>
-          <Form.Select  onChange={(e)=>setYear(e.target.value)} defaultValue={year} >
-                  { yearVaules.map((year)=> {return( <option value={year}>{year}</option>)})}
-          </Form.Select>
-          </Stack>
-          <Button variant="secondary" size="lg" className='mb-3' onClick={(e)=>handleSubmit(e)}>Save</Button>
+    <>
+    <Modal.Header closeButton>
+                        <Modal.Title>User Info</Modal.Title>
+                    </Modal.Header>
+    
+    <Modal.Body>
+        <Form className='mt-5' >
+        
+              <Form.Control className='mb-3'  type="text" placeholder="Name"  onChange={(e)=>setUserData({...userData, name:(e.target.value)})} defaultValue={userData.name} />  
+              <Form.Select  className='mb-3' onChange={(e)=>setUserData({...userData, gender:(e.target.value)})} defaultValue="Female" >
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Other">Other</option>
+              </Form.Select>
+              <Form.Control className='mb-3' type="text" placeholder="City"  onChange={(e)=>handleAproxLocationChange(e.target.value)} />  
+              <Stack direction="horizontal" gap={3} className='mb-3' >
+              <Form.Select  onChange={(e)=>setDay(e.target.value) } defaultValue={day} >
+              { dayVaules.map((day)=> {return( <option key={day}>{day}</option>)})}
+                  
+              
+              </Form.Select>
+              <Form.Select   onChange={(e)=>setMonth(e.target.value)} defaultValue={month}>
+                    { monthVaules.map((month)=> {return( <option key={month}>{month}</option>)})}
+                  
+              </Form.Select>
+              <Form.Select  onChange={(e)=>setYear(e.target.value)} defaultValue={year} >
+                      { yearVaules.map((year)=> {return( <option key={year}>{year}</option>)})}
+              </Form.Select>
+              </Stack>
+              <Button variant="secondary" size="lg" className='mb-3' onClick={(e)=>handleSubmit(e)}>Save</Button>
 
-     </Form>
+        </Form>
+     </Modal.Body>
+    </>
 
   )
 }

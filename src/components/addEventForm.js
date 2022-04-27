@@ -1,13 +1,18 @@
-import React ,{useState}from 'react'
+import React ,{useEffect, useState}from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import {createEvent} from '../actions/eventActions'
 import { unsetForm} from '../actions/globalStateActions'
+import Form from 'react-bootstrap/Form';
+import CloseButton from 'react-bootstrap/CloseButton';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 export const AddEventForm = () => {
   const form = useSelector((state) =>(state.current.form ? state.current.form :null));
   const events = useSelector((state) =>(state.events ? state.events :null));
   const userLogged = useSelector((state) =>(state.current.user ? state.current.user :null));
   const dispatch= useDispatch();
+ 
 
 
   const typesAvaiable=[
@@ -38,43 +43,26 @@ export const AddEventForm = () => {
     };
 
   return (
-    <div>
-       <div className="form">
-         <form onSubmit={handleSubmit}>
-             <input className="cancel" readOnly value="X" onClick={()=>{dispatch(unsetForm());}}/>
-              <div className="form-group"> 
-                  <label className="m-2">Title: </label>
-                  <input  type="text"
-                      required
-                      className="form-control"
-                      value={eventData.title}
-                      onChange={(e)=>setEventData({...eventData, title:(e.target.value)})}
-                      />
-              </div>
-               <div className="form-group"> 
-                  <label className="m-2">Description: </label>
-                  <input  type="text"
-                      required
-                      className="form-control"
-                      value={eventData.description}
-                      onChange={(e)=>setEventData({...eventData, description:(e.target.value)})}
-                      />
-              </div>
-              <div className="form-group">
-                  <label className="m-2">Type: </label>
-                  <select  className="form-control dropdown" value={eventData.type}   onChange={(e)=>setEventData({...eventData, type:e.target.value, img:"."+typesAvaiable.find(item=>item.name===e.target.value).img})}>
-                        {typesAvaiable.map(item=><option  key={item.id}>
-                                                      {item.name} 
-                                                      {/* <div  className="div_img" style={{
-                                                      backgroundImage: `url("/bible.png")`
-                                                      }}> 
-                                                      </div> */}
-                                                  </option>)}
-                  </select>
-               </div>            
-              <input type="submit" value="Add Event" className="submitButton" />                        
-          </form>
-       </div>
-    </div>
+  <>
+        <Modal.Header closeButton>
+            <Modal.Title>New Event</Modal.Title>
+       </Modal.Header>
+        <Modal.Body>
+         <Form>
+           <Form.Control className='mb-3'  type="text" placeholder="Title"  onChange={(e)=>setEventData({...eventData, title:(e.target.value)})}  />  
+            <Form.Control className='mb-3'  type="text" placeholder="Description"  onChange={(e)=>setEventData({...eventData, description:(e.target.value)})}  />  
+
+              <Form.Select className='mb-3'  onChange={(e)=>setEventData({...eventData, type:e.target.value, img:"."+typesAvaiable.find(item=>item.name===e.target.value).img})} >
+              { typesAvaiable.map((item)=> {return( <option key={item.id}>{item.name}</option>)})}
+              
+              </Form.Select>
+
+               <Button variant="secondary" size="lg" className='mb-3' onClick={(e)=>handleSubmit(e)}>Add Event</Button>
+
+                                     
+          </Form>
+       </Modal.Body>
+       </>
+ 
   )
 }

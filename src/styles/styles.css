@@ -97,6 +97,11 @@
   margin-bottom: 1vh;
 }
 
+.InfoModal {
+  width: 90%;
+  max-width: none !important;
+}
+
 .chat_section {
   margin: auto;
   margin-top: 10vw;
