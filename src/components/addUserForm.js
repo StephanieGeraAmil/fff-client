@@ -29,7 +29,7 @@ export const AddUserForm = () => {
   
   useEffect(()=>{
   if (!isLoading&& isAuthenticated) {  
-    setUserData({...userData, email:user.email, name:user.nickname});
+    setUserData({...userData, email:user.email, name:user.nickname, gender:"Female"});
    }
   },[])
 
@@ -38,10 +38,7 @@ export const AddUserForm = () => {
          email:"",
          aproximatelat:-34.90328,
          aproximatelng:-56.18816,
-         gender:'',
-         birthDate:'',
-        
-  
+         gender:"",
     });
 
      
@@ -49,22 +46,22 @@ export const AddUserForm = () => {
 
   const handleSubmit=(e)=>{
       e.preventDefault();
-      setUserData({...userData,birthDate:(year.toString()+"-"+month.toString()+"-"+day.toString())})
       if(form.type=="AddUser"){
-       dispatch(createUser(userData)); 
-        
+        dispatch(createUser(userData)); 
       }else{
         dispatch(updateUser(userData)); 
-      }    
-  
+      } 
       dispatch(unsetForm());
     };
 
+  const setDate=()=>{
+      const dateToStore = new Date(year, month, day);
+      setUserData({...userData, birthDate:(dateToStore)})
+  }
   const handleAproxLocationChange=(city)=>{
     //get coords
     //set lat lng of map to user info
   
-    
   }
 
   return (
@@ -76,24 +73,24 @@ export const AddUserForm = () => {
     <Modal.Body>
         <Form className='mt-5' >
         
-              <Form.Control className='mb-3'  type="text" placeholder="Name"  onChange={(e)=>setUserData({...userData, name:(e.target.value)})} defaultValue={userData.name} />  
-              <Form.Select  className='mb-3' onChange={(e)=>setUserData({...userData, gender:(e.target.value)})} defaultValue="Female" >
+              <Form.Control className='mb-3'  type="text" placeholder="Name"  onChange={(e)=>setUserData({...userData, name:(e.target.value)})} value={userData.name} />  
+              <Form.Select  className='mb-3' onChange={(e)=>setUserData({...userData, gender:(e.target.value)})} value={userData.gender} >
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>
                     <option value="Other">Other</option>
               </Form.Select>
               <Form.Control className='mb-3' type="text" placeholder="City"  onChange={(e)=>handleAproxLocationChange(e.target.value)} />  
               <Stack direction="horizontal" gap={3} className='mb-3' >
-              <Form.Select  onChange={(e)=>setDay(e.target.value) } defaultValue={day} >
+              <Form.Select  onChange={(e)=>{setDay(e.target.value); setDate() ;} } defaultValue={day} >
               { dayVaules.map((day)=> {return( <option key={day}>{day}</option>)})}
                   
               
               </Form.Select>
-              <Form.Select   onChange={(e)=>setMonth(e.target.value)} defaultValue={month}>
+              <Form.Select   onChange={(e)=>{setMonth(e.target.value); setDate(); }} defaultValue={month}>
                     { monthVaules.map((month)=> {return( <option key={month}>{month}</option>)})}
                   
               </Form.Select>
-              <Form.Select  onChange={(e)=>setYear(e.target.value)} defaultValue={year} >
+              <Form.Select  onChange={(e)=>{setYear(e.target.value); setDate(); }} defaultValue={year} >
                       { yearVaules.map((year)=> {return( <option key={year}>{year}</option>)})}
               </Form.Select>
               </Stack>

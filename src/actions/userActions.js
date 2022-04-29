@@ -16,7 +16,6 @@ export const createUser=(user)=>async(dispatch)=>{
 }
 export const updateUser=(updatedUser)=>async(dispatch)=>{
     try {
-     
         const action={type:actions.UPDATE_USER, payload:updatedUser};
         dispatch(action);
         
