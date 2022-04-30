@@ -8,6 +8,7 @@ import CloseButton from 'react-bootstrap/CloseButton';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useAuth0 } from "@auth0/auth0-react";
+import {getCoord} from "./search"
 
 // import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
@@ -23,6 +24,7 @@ export const AddUserForm = () => {
   const [day, setDay]=useState(date.getDate());
   const [month, setMonth]=useState(date.getMonth()+1);
   const [year, setYear]=useState(date.getFullYear());
+  //const [city, setCity]=useState("Montevideo, Uruguay");
   const dayVaules=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
   const monthVaules=[1,2,3,4,5,6,7,8,9,10,11,12]
   const yearVaules=[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024]
@@ -36,9 +38,8 @@ export const AddUserForm = () => {
   const [userData, setUserData]=useState({
          name:"",
          email:"",
-         aproximatelat:-34.90328,
-         aproximatelng:-56.18816,
          gender:"",
+         city:"",
     });
 
      
@@ -46,21 +47,31 @@ export const AddUserForm = () => {
 
   const handleSubmit=(e)=>{
       e.preventDefault();
+     
+      // if(!userData.aproxcoords){
+      //   gettingCoords();
+      // }
+      
+      
       if(form.type=="AddUser"){
         dispatch(createUser(userData)); 
       }else{
         dispatch(updateUser(userData)); 
       } 
       dispatch(unsetForm());
+      console.log( userData);
     };
 
   const setDate=()=>{
       const dateToStore = new Date(year, month, day);
       setUserData({...userData, birthDate:(dateToStore)})
   }
-  const handleAproxLocationChange=(city)=>{
-    //get coords
-    //set lat lng of map to user info
+  const gettingCoords= async ()=>{
+    const coords= await getCoord(userData.city);
+    console.log(  coords);
+    setUserData({...userData, aproxcoords:(coords)});
+
+      
   
   }
 
@@ -79,7 +90,7 @@ export const AddUserForm = () => {
                     <option value="Male">Male</option>
                     <option value="Other">Other</option>
               </Form.Select>
-              <Form.Control className='mb-3' type="text" placeholder="City"  onChange={(e)=>handleAproxLocationChange(e.target.value)} />  
+              <Form.Control className='mb-3' type="text" placeholder="City"  value={userData.city}   onBlur={()=>gettingCoords()} onChange={(e)=>setUserData({...userData, city:(e.target.value)})} />  
               <Stack direction="horizontal" gap={3} className='mb-3' >
               <Form.Select  onChange={(e)=>{setDay(e.target.value); setDate() ;} } defaultValue={day} >
               { dayVaules.map((day)=> {return( <option key={day}>{day}</option>)})}
