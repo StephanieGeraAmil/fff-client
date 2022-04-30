@@ -439,7 +439,7 @@ body .search .combobox .inputcombobox {
   font-size: 1vw;
   width: 100%;
   border-width: 0;
-  border-radius: 4vh;
+  border-radius: 2vh;
   z-index: 10;
 }
 

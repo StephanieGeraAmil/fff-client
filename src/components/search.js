@@ -2,18 +2,6 @@ import usePlacesAutocomplete, { getGeocode, getLatLng,} from "use-places-autocom
 import {Combobox,ComboboxInput,ComboboxPopover,ComboboxList, ComboboxOption,} from "@reach/combobox";
 import "@reach/combobox/styles.css";
 
-export const getCoord= async (address)=>{
-   try {
-      const results = await getGeocode({ address });
-  
-      const { lat, lng } = await getLatLng(results[0]);
-      const coords= { lat, lng };
-      return(coords);
-    } catch (error) {
-      console.log("Error: ", error);
-    }
-
-}
 
 export const Search =({ panTo })=> {
   const {
@@ -24,7 +12,7 @@ export const Search =({ panTo })=> {
     clearSuggestions,
   } = usePlacesAutocomplete({
     requestOptions: {
-      //so we prefer results ner our location
+      // we prefer results ner our location
       location: { lat: () => -34.90328, lng: () => -56.18816 },
       //3km
       radius: 300 * 1000,
