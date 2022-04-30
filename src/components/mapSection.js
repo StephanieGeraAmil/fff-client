@@ -6,6 +6,7 @@ import { formatRelative } from "date-fns";
 import usePlacesAutocomplete, { getGeocode, getLatLng,} from "use-places-autocomplete";
 import {AddEventForm} from "./addEventForm"
 import {AddUserForm} from "./addUserForm"
+import {Search} from "./search"
 import Modal from "react-bootstrap/Modal"
 import Container from "react-bootstrap/Container"
 // import Backdrop from "./Backdrop"
@@ -15,7 +16,6 @@ import {getEvents, getEventsWithUserBelongingInfo,updateUserInEvent} from '../ac
 import {Combobox,ComboboxInput,ComboboxPopover,ComboboxList, ComboboxOption,} from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import Button from 'react-bootstrap/Button';
-
 
 
 const libraries=['places'];
@@ -44,12 +44,7 @@ export const MapSection = () => {
     const userLogged = useSelector(userLoggedSelector);
     const dispatch= useDispatch();
     const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env;
-    
-
     const [selected, setSelected] = useState(null);
-
-
-
 
     /// modals
     const [show, setShow] = useState(false);
@@ -169,59 +164,59 @@ export const MapSection = () => {
 }
 
 
-function Search({ panTo }) {
-  const {
-    ready,
-    value,
-    suggestions: { status, data },
-    setValue,
-    clearSuggestions,
-  } = usePlacesAutocomplete({
-    requestOptions: {
-      //so we prefer results ner our location
-      location: { lat: () => -34.90328, lng: () => -56.18816 },
-      //3km
-      radius: 300 * 1000,
-    },
-  });
+// function Search({ panTo }) {
+//   const {
+//     ready,
+//     value,
+//     suggestions: { status, data },
+//     setValue,
+//     clearSuggestions,
+//   } = usePlacesAutocomplete({
+//     requestOptions: {
+//       //so we prefer results ner our location
+//       location: { lat: () => -34.90328, lng: () => -56.18816 },
+//       //3km
+//       radius: 300 * 1000,
+//     },
+//   });
 
-  // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
+//   // https://developers.google.com/maps/documentation/javascript/reference/places-autocomplete-service#AutocompletionRequest
 
-  const handleInput = (e) => {
-    setValue(e.target.value);
-  };
+//   const handleInput = (e) => {
+//     setValue(e.target.value);
+//   };
 
-  const handleSelect = async (address) => {
-    setValue(address, false);
-    clearSuggestions();
-    try {
-      const results = await getGeocode({ address });
-      const { lat, lng } = await getLatLng(results[0]);
-      panTo({ lat, lng });
-    } catch (error) {
-      console.log("Error: ", error);
-    }
-  };
+//   const handleSelect = async (address) => {
+//     setValue(address, false);
+//     clearSuggestions();
+//     try {
+//       const results = await getGeocode({ address });
+//       const { lat, lng } = await getLatLng(results[0]);
+//       panTo({ lat, lng });
+//     } catch (error) {
+//       console.log("Error: ", error);
+//     }
+//   };
 
-  return (
-    <div className="search">
-      <Combobox onSelect={handleSelect} className="combobox">
-        <ComboboxInput
-          value={value}
-          onChange={handleInput}
-          disabled={!ready}
-          placeholder="Search your location"
-          className="inputcombobox"
-        />
-        <ComboboxPopover portal={false} className='pop_over' >
-          <ComboboxList>
-            {status === "OK" &&
-              data.map(({ id, description }) => (
-                <ComboboxOption  className='pop_over_suggestion' key={id+description} value={description} />
-              ))}
-          </ComboboxList>
-        </ComboboxPopover>
-      </Combobox>
-    </div>
-  );
-}
+//   return (
+//     <div className="search">
+//       <Combobox onSelect={handleSelect} className="combobox">
+//         <ComboboxInput
+//           value={value}
+//           onChange={handleInput}
+//           disabled={!ready}
+//           placeholder="Search your location"
+//           className="inputcombobox"
+//         />
+//         <ComboboxPopover portal={false} className='pop_over' >
+//           <ComboboxList>
+//             {status === "OK" &&
+//               data.map(({ id, description }) => (
+//                 <ComboboxOption  className='pop_over_suggestion' key={id+description} value={description} />
+//               ))}
+//           </ComboboxList>
+//         </ComboboxPopover>
+//       </Combobox>
+//     </div>
+//   );
+// }
