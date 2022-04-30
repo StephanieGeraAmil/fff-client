@@ -10,7 +10,7 @@ import {Search} from "./search"
 import Modal from "react-bootstrap/Modal"
 import Container from "react-bootstrap/Container"
 import {setForm} from '../actions/globalStateActions'
-import {getEvents, getEventsWithUserBelongingInfo,updateUserInEvent} from '../actions/eventActions'
+import {getEvents, getEventsWithUserBelongingInfo,updateUserInEvent,deleteEvent} from '../actions/eventActions'
 import Button from 'react-bootstrap/Button';
 
 
@@ -45,11 +45,11 @@ export const MapSection = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    
     const onMapClick = useCallback((e) => {
       setSelected(null);
     
       if(userLogged){
-          
           const positionSelected={  
                             lat: e.latLng.lat(),
                             lng: e.latLng.lng()
@@ -89,8 +89,7 @@ export const MapSection = () => {
   }
 
   useEffect(()=>{
-        handleShow();
-     
+    handleShow(); 
     if(userLogged){
       //later on I will probably allow the user to set himself the aprox location with coords and then I would center based on that
       centerMap(userLogged.city);
@@ -160,6 +159,24 @@ export const MapSection = () => {
                                                 }>
                                                 { selected.hasTheUser?'Leave':'Join'}
                                         </Button>}
+                               { (selected.creator===userLogged._id)&&<Button onClick={() => {
+                                                       // dispatch(editEventForm(selected._id)); 
+                                                        setSelected(null);  
+                                                        handleClose();
+                                                     }
+                                                  }>
+                                                  Edit
+                                          </Button>}
+                              
+                             { (selected.creator===userLogged._id)&&<Button onClick={() => {
+                                                        dispatch(deleteEvent(selected._id)); 
+                                                        setSelected(null);  
+                                                        handleClose();
+                                                     }
+                                                  }>
+                                                  Delete
+                                          </Button>}
+                                
                     </Container>
                 </InfoWindow>
               ) : null}
