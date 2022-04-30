@@ -30,8 +30,8 @@ export const AddEventForm = () => {
          description:'',
          type: typesAvaiable[0].name,
          img:"."+typesAvaiable[0].img,
-         lat:form.position.lat, 
-         lng:form.position.lng,
+         lat:form.positionSelected.lat, 
+         lng:form.positionSelected.lng,
          creator: userLogged._id
     });
 

@@ -8,7 +8,7 @@ import CloseButton from 'react-bootstrap/CloseButton';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useAuth0 } from "@auth0/auth0-react";
-import {getCoord} from "./search"
+//import {getCoord} from "./search"
 
 // import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
@@ -66,14 +66,11 @@ export const AddUserForm = () => {
       const dateToStore = new Date(year, month, day);
       setUserData({...userData, birthDate:(dateToStore)})
   }
-  const gettingCoords= async ()=>{
-    const coords= await getCoord(userData.city);
-    console.log(  coords);
-    setUserData({...userData, aproxcoords:(coords)});
-
-      
-  
-  }
+  // const gettingCoords= async ()=>{
+  //   const coords= await getCoord(userData.city);
+  //   console.log(  coords);
+  //   setUserData({...userData, aproxcoords:(coords)});
+  // }
 
   return (
     <>
@@ -90,7 +87,7 @@ export const AddUserForm = () => {
                     <option value="Male">Male</option>
                     <option value="Other">Other</option>
               </Form.Select>
-              <Form.Control className='mb-3' type="text" placeholder="City"  value={userData.city}   onBlur={()=>gettingCoords()} onChange={(e)=>setUserData({...userData, city:(e.target.value)})} />  
+              <Form.Control className='mb-3' type="text" placeholder="City"  value={userData.city}  onChange={(e)=>setUserData({...userData, city:(e.target.value)})} />  
               <Stack direction="horizontal" gap={3} className='mb-3' >
               <Form.Select  onChange={(e)=>{setDay(e.target.value); setDate() ;} } defaultValue={day} >
               { dayVaules.map((day)=> {return( <option key={day}>{day}</option>)})}
