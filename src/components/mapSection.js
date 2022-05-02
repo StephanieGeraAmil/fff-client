@@ -5,11 +5,12 @@ import mapStyles from "./mapStyles";
 import { formatRelative } from "date-fns";
 import { getGeocode, getLatLng,} from "use-places-autocomplete";
 import {AddEventForm} from "./addEventForm"
+import {EditEventForm} from "./editEventForm"
 import {AddUserForm} from "./addUserForm"
 import {Search} from "./search"
 import Modal from "react-bootstrap/Modal"
 import Container from "react-bootstrap/Container"
-import {setForm} from '../actions/globalStateActions'
+import {setForm,unsetForm} from '../actions/globalStateActions'
 import {getEvents, getEventsWithUserBelongingInfo,updateUserInEvent,deleteEvent} from '../actions/eventActions'
 import Button from 'react-bootstrap/Button';
 
@@ -92,12 +93,13 @@ export const MapSection = () => {
     handleShow(); 
     if(userLogged){
       //later on I will probably allow the user to set himself the aprox location with coords and then I would center based on that
-      centerMap(userLogged.city);
+      const city=userLogged.city?userLogged.city:"Montevideo";
+      centerMap(city);
       dispatch(getEventsWithUserBelongingInfo(userLogged._id));
     }else{
        dispatch(getEvents());
     }
-  },[userLogged])
+  },[userLogged,form])
 
  
   return isLoaded ? (<>
@@ -126,9 +128,11 @@ export const MapSection = () => {
                 }}
               />
             ))}
-            {form? form.type=='AddEvent'&& <Modal  show={show} onHide={handleClose}> <AddEventForm/></Modal> : <></> }
-            {form? form.type=='AddUserInfo'&& <Modal show={show} onHide={handleClose}> <AddUserForm/></Modal>: <></> }
-            {form? form.type=='AddUser'&& <Modal show={show} onHide={handleClose}><AddUserForm/></Modal> : <></> } 
+            {form? form.type=='AddEvent' && <Modal show={show} onHide={handleClose}> <AddEventForm/> </Modal> : <></> }
+   
+            {form? form.type=='AddUserInfo'&& <Modal show={show} onHide={handleClose}> <AddUserForm/> </Modal>: <></> }
+            {form? form.type=='AddUser' && <Modal show={show} onHide={handleClose}> <AddUserForm/> </Modal> : <></> } 
+            {form? form.type=="EditEvent" && <Modal show={show} onHide={handleClose}> <EditEventForm/> </Modal>: <></> } 
             {selected ? (
                 <InfoWindow
                   position={{ lat: selected.lat, lng: selected.lng}}       
@@ -136,47 +140,56 @@ export const MapSection = () => {
                     setSelected(null);
                   }}
                 >   
-              
+                      
                     <Container>
+                       
                             <h2>
                               {selected.title}
                             </h2> 
                           
                             <p>Description:  {selected.description}</p>
                             <p>Created {formatRelative(new Date(selected.date),Date.now())}</p> 
-                            {userLogged&&<Button onClick={() => {
-                                                  let update={};
-                                                      if(selected.hasTheUser){
-                                                        update={...selected,userToAddOrRemove:userLogged._id, task:'deleteUser'}
-                                                      
-                                                      }else{
-                                                        update={...selected,userToAddOrRemove:userLogged._id, task:'addUser'}
-                                                    }
-                                                      dispatch(updateUserInEvent(update)); 
-                                                      setSelected(null);  
-                                                      handleClose();
-                                                  }
-                                                }>
-                                                { selected.hasTheUser?'Leave':'Join'}
-                                        </Button>}
-                               { (selected.creator===userLogged._id)&&<Button onClick={() => {
-                                                       // dispatch(editEventForm(selected._id)); 
-                                                        setSelected(null);  
-                                                        handleClose();
-                                                     }
-                                                  }>
-                                                  Edit
-                                          </Button>}
-                              
-                             { (selected.creator===userLogged._id)&&<Button onClick={() => {
-                                                        dispatch(deleteEvent(selected._id)); 
-                                                        setSelected(null);  
-                                                        handleClose();
-                                                     }
-                                                  }>
-                                                  Delete
-                                          </Button>}
-                                
+                            { userLogged && <>
+                                                <Button onClick={() => {
+                                                          let update={};
+                                                              if(selected.hasTheUser){
+                                                                update={...selected,userToAddOrRemove:userLogged._id, task:'deleteUser'}
+                                                              
+                                                              }else{
+                                                                update={...selected,userToAddOrRemove:userLogged._id, task:'addUser'}
+                                                            }
+                                                              dispatch(updateUserInEvent(update)); 
+                                                              setSelected(null);  
+                                                              handleClose();
+                                                          }
+                                                        }>
+                                                        { selected.hasTheUser?'Leave':'Join'}
+                                                </Button>
+                                                 
+                                                { (selected.creator===userLogged._id) && 
+                                                                                      <>
+                                                                                      <Button onClick={() => {
+                                                                                                  handleShow()
+                                                                                                  dispatch(setForm( {type:'EditEvent', event:selected})); 
+                                                                                                  setSelected(null); 
+                                                                                                  handleClose(); 
+                                                                                                 
+                                                                                              }
+                                                                                            }>
+                                                                                            Edit
+                                                                                     </Button>
+                                                                                             
+                                                                                     <Button onClick={() => {
+                                                                                                  dispatch(deleteEvent(selected._id)); 
+                                                                                                  setSelected(null);  
+                                                                                                  handleClose();
+                                                                                              }
+                                                                                            }>
+                                                                                            Delete
+                                                                                    </Button>
+                                                                                     </>}
+                                              
+                                        </>} 
                     </Container>
                 </InfoWindow>
               ) : null}

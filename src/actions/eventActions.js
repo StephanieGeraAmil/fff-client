@@ -12,6 +12,7 @@ export const createEvent=(event)=>async(dispatch)=>{
         console.log(error);
     }
 }
+
 export const updateEvent=(updatedEvent)=>async(dispatch)=>{
     try {    
         const updated=await api.updateEvent(updatedEvent);

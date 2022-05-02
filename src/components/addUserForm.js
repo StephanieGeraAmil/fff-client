@@ -48,11 +48,6 @@ export const AddUserForm = () => {
   const handleSubmit=(e)=>{
       e.preventDefault();
      
-      // if(!userData.aproxcoords){
-      //   gettingCoords();
-      // }
-      
-      
       if(form.type=="AddUser"){
         dispatch(createUser(userData)); 
       }else{

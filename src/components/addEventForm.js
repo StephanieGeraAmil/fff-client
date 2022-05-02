@@ -9,12 +9,9 @@ import Modal from 'react-bootstrap/Modal';
 
 export const AddEventForm = () => {
   const form = useSelector((state) =>(state.current.form ? state.current.form :null));
-  const events = useSelector((state) =>(state.events ? state.events :null));
   const userLogged = useSelector((state) =>(state.current.user ? state.current.user :null));
   const dispatch= useDispatch();
  
-
-
   const typesAvaiable=[
                   {name:"Bible Study", img: `/bible.png`, id:1},
                   {name:"Coffee", img: `/coffee.png`, id:2},
@@ -41,6 +38,8 @@ export const AddEventForm = () => {
       dispatch(createEvent(eventData));       
       dispatch(unsetForm());
     };
+
+  
 
   return (
   <>
