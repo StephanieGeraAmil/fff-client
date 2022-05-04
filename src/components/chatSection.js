@@ -4,8 +4,10 @@ import {ChatPage} from './chatPage';
 import {useAuth0 } from "@auth0/auth0-react";
 import {useDispatch , useSelector} from 'react-redux';
 import {getChats} from '../actions/chatActions.js';
+import {clearSelectedChat} from '../actions/globalStateActions.js';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
+
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
@@ -19,29 +21,36 @@ export const ChatSection = () => {
     const dispatch= useDispatch();
     useEffect(()=>{
       dispatch(getChats());
+      return()=>{
+      
+        dispatch(clearSelectedChat());
+       }
       
     },[])
 
-  return (
-    <Container className='mt-5'>
-      <Row>
-          <Col className='mt-5'>
-                <ListGroup >
-                      {chats.map((item) => {
-                          return (
-                              <ListGroupItem  key={item._id}>
-                                  <ChatItem key={item._id} chat={item}/>
-                              </ListGroupItem>
-                          )
-                      })}
-                  </ListGroup>
-            </Col>
-            <Col xs={7} className=' m-5 mt-5'>
-                  {selectedChat&&<ChatPage selected_chat={selectedChat}/>}
-            </Col>
-        </Row>
+  return (<>
+   {/* <div className='auxdiv'>
+
+   </div> */}
+   <div className='chat_section'>
+        <Container className='chat_list'>
+              <ListGroup className='mh-100' >
+                    {chats.map((item) => {
+                        return (
+                            <ListGroupItem  key={item._id}>
+                                <ChatItem key={item._id} chat={item}/>
+                            </ListGroupItem>
+                        )
+                    })}
+                </ListGroup>
+          </Container>
+          <div className='chatView'>
+              {selectedChat&&<ChatPage selected_chat={selectedChat}/>}
+        </div>
+     
      
        {/* later on an option to create a chat room will be added here */}
-      </Container>
+      </div>
+      </>
   )
 }
