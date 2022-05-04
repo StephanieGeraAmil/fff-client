@@ -1,31 +1,25 @@
 import React from 'react'
-import {useDispatch , useSelector} from 'react-redux';
-import {setSelectedChat, clearSelectedChat} from '../actions/globalStateActions.js';
-import {getMessages} from '../actions/messageActions.js';
+import {useDispatch } from 'react-redux';
+import {setSelectedChat} from '../actions/globalStateActions.js';
+import {clearMessages}  from '../actions/messageActions';
 import Container from 'react-bootstrap/Container';
 
-// import { Link} from "react-router-dom"; 
 
-export const ChatItem = ({chat}) => {
-  // const id=chat._id;
-  // const title=chat.title;
+
+export const ChatItem = ({chat,socket}) => {
+  
   const dispatch= useDispatch();
-  const selectedChat=useSelector((state)=>state.current.chat); 
 
   const onChatChange=(chat)=>{
+    dispatch(clearMessages());
     dispatch(setSelectedChat(chat));
-    dispatch(getMessages(chat._id));
-
+    socket.emit("get-last-100-messages",chat._id);
+  
+     
   }
   return (
-    // <Link  to={id} params={{chat:{chat}}} >
-
-      <Container onClick={()=>{onChatChange(chat)}}>
-        
+      <Container onClick={()=>{onChatChange(chat)}}> 
             <h4>{chat.title}</h4>
-      
-            
       </Container>
-    // </Link>
   )
 }
