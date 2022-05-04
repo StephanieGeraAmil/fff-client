@@ -54,19 +54,14 @@ export const AddUserForm = () => {
         dispatch(updateUser(userData)); 
       } 
       dispatch(unsetForm());
-      console.log( userData);
+   
     };
 
   const setDate=()=>{
       const dateToStore = new Date(year, month, day);
       setUserData({...userData, birthDate:(dateToStore)})
   }
-  // const gettingCoords= async ()=>{
-  //   const coords= await getCoord(userData.city);
-  //   console.log(  coords);
-  //   setUserData({...userData, aproxcoords:(coords)});
-  // }
-
+ 
   return (
     <>
     <Modal.Header closeButton>

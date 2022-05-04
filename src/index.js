@@ -12,6 +12,7 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import reducers from './reducers/reducers.js'
 import { BrowserRouter,Routes,Route} from "react-router-dom"; 
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const store= createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))
 
@@ -26,8 +27,8 @@ ReactDOM.render(
           >
             <TopSection/>
             <Routes>
-                <Route path="/" element={<App />} />
-                <Route path="/chats" element={<ChatSection />} />
+                <Route path="/" element={<App/>} />
+                <Route path="/chats" element={<ChatSection/>} />
              
              
             </Routes>

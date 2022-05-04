@@ -104,8 +104,9 @@
 
 .chat_section {
   margin: auto;
-  margin-top: 10vw;
-  width: 90%;
+  margin-top: 8%;
+  width: 95%;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -119,10 +120,11 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  color: #545454;
 }
 
 .chat_section .chat_list {
-  width: 40%;
+  width: 45%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -186,7 +188,42 @@
 }
 
 .chat_section .chatView {
-  width: 60%;
+  width: 55%;
+  height: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.chat_section .chatView .chat {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-right: 5vw;
+  padding-left: 5vw;
+}
+
+.chat_section .chatView .chat .chat_title {
+  font-size: 2.5vw;
+}
+
+.chat_section .chatView .chat .chat_input {
+  -ms-grid-column-align: end;
+      justify-self: end;
 }
 
 .chat_page {
@@ -420,6 +457,16 @@ body {
   font-family: "Montserrat", sans-serif;
   width: 100vw;
   height: 100vh;
+}
+
+body #root {
+  width: 100vw;
+  height: 100vh;
+}
+
+body .auxdiv {
+  width: 100vw;
+  height: 15vh;
 }
 
 body .search {
