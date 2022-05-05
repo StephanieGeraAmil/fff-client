@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-export const EditEventForm = () => {
+export const EditEventForm = ({socket}) => {
   const form = useSelector((state) =>(state.current.form ? state.current.form :null));
   const dispatch= useDispatch();
 
@@ -32,7 +32,8 @@ export const EditEventForm = () => {
 
   const handleSubmit=(e)=>{
     e.preventDefault();
-    dispatch(updateEvent(eventData));       
+    socket.emit("update-event",eventData);
+    //dispatch(updateEvent(eventData));       
     dispatch(unsetForm());
     };
  

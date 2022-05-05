@@ -14,7 +14,7 @@ import {setForm} from '../actions/globalStateActions'
 import {updateUserInEvent,deleteEvent} from '../actions/eventActions'
 import Button from 'react-bootstrap/Button';
 import {io} from 'socket.io-client';
-import {setEvents, addEvent}  from '../actions/eventActions';
+import {setEvents, addEvent,updEvent}  from '../actions/eventActions';
 
 
 
@@ -106,26 +106,15 @@ export const MapSection = () => {
       socket.emit("get-events-near");
        
     }
-    socket.on ("new-event",  (message)  =>{ dispatch(addEvent(message));console.log("new event received"); });
-
+    socket.on ("new-event",  (event)  =>{ dispatch(addEvent(event)); });
+    socket.on ("event-updated",  (event)  =>{ dispatch(updEvent(event)); });
+    
     return()=>{
         socket.disconnect()
         
        }
   },[userLogged])
-
-  // useEffect(()=>{
-  //   handleShow(); 
-  //   if(userLogged){
-  //     //later on I will probably allow the user to set himself the aprox location with coords and then I would center based on that
-  //     const city=userLogged.city?userLogged.city:"Montevideo";
-  //     centerMap(city);
-  //     dispatch(getEventsWithUserBelongingInfo(userLogged._id));
-  //   }else{
-  //      dispatch(getEvents());
-  //   }
-  // },[userLogged,form])
-
+ 
  
   return isLoaded ? (<>
      
@@ -154,10 +143,11 @@ export const MapSection = () => {
               />
             ))}
             {form? form.type=='AddEvent' && <Modal show={show} onHide={handleClose}> <AddEventForm socket={skt}/> </Modal> : <></> }
-   
+            {form? form.type=="EditEvent" && <Modal show={show} onHide={handleClose}> <EditEventForm socket={skt}/> </Modal>: <></> } 
+           
             {form? form.type=='AddUserInfo'&& <Modal show={show} onHide={handleClose}> <AddUserForm/> </Modal>: <></> }
             {form? form.type=='AddUser' && <Modal show={show} onHide={handleClose}> <AddUserForm/> </Modal> : <></> } 
-            {form? form.type=="EditEvent" && <Modal show={show} onHide={handleClose}> <EditEventForm/> </Modal>: <></> } 
+
             {selected ? (
                 <InfoWindow
                   position={{ lat: selected.lat, lng: selected.lng}}       
@@ -197,8 +187,6 @@ export const MapSection = () => {
                                                                                                   handleShow()
                                                                                                   dispatch(setForm( {type:'EditEvent', event:selected})); 
                                                                                                   setSelected(null); 
-                                                                                                  handleClose(); 
-                                                                                                 
                                                                                               }
                                                                                             }>
                                                                                             Edit
