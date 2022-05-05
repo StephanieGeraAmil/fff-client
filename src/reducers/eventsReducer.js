@@ -18,7 +18,15 @@ export default (events=[], action)=>{
 
         // case actions.SET_USER_SUSCRIBED_TO_EVENT:
         // return action.payload;
-        
+
+        case actions.SET_EVENTS:
+        return  action.payload;
+         
+        case actions.ADD_EVENT:
+        return  [...events, action.payload];
+
+        case actions.UPD_EVENT:
+        return events.map((event)=>event._id===action.payload._id? action.payload: event);
         default:
         return events;
     }

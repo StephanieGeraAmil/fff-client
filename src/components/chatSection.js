@@ -16,7 +16,7 @@ export const ChatSection = () => {
     // const { isAuthenticated} = useAuth0();
     const chats=useSelector((state)=>state.chats); 
     const selectedChat=useSelector((state)=>state.current.chat); 
-    const [skt, setSkt]= useState({})
+    const [skt, setSkt]= useState({});
     const dispatch= useDispatch();
 
     useEffect(()=>{

@@ -7,7 +7,7 @@ import CloseButton from 'react-bootstrap/CloseButton';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-export const AddEventForm = () => {
+export const AddEventForm = ({socket}) => {
   const form = useSelector((state) =>(state.current.form ? state.current.form :null));
   const userLogged = useSelector((state) =>(state.current.user ? state.current.user :null));
   const dispatch= useDispatch();
@@ -35,7 +35,8 @@ export const AddEventForm = () => {
 
   const handleSubmit=(e)=>{
       e.preventDefault();
-      dispatch(createEvent(eventData));       
+      socket.emit("event-created",eventData);
+      // dispatch(createEvent(eventData));       
       dispatch(unsetForm());
     };
 

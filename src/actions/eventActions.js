@@ -66,3 +66,33 @@ export const getEventsWithUserBelongingInfo=(user_id)=>async(dispatch)=>{
     }
 
 }
+
+export const setEvents=(data)=>async(dispatch)=>{
+    try{ 
+        const action={type: actions.SET_EVENTS,payload:data};
+        dispatch(action);     
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+export const addEvent=(event)=>async(dispatch)=>{
+    try {
+        const action={type: actions.ADD_EVENT,payload:event};
+        dispatch(action);   
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export const updEvent=(event)=>async(dispatch)=>{
+    try {
+        const action={type: actions.UPD_EVENT,payload:event};
+        dispatch(action);   
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
