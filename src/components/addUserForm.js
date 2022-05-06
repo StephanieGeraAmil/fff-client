@@ -88,8 +88,10 @@ export const AddUserForm = () => {
  
 
   useEffect(()=>{
+
       generateArrayOfDays();
-  },[month,year])
+      setDate();
+  },[day,month,year])
 
   useEffect(()=>{
        generateArrayOfDays();
@@ -109,7 +111,6 @@ export const AddUserForm = () => {
    
   const handleSubmit=(e)=>{
       e.preventDefault();
-     console.log(userData)
       if(form.type=="AddUser"){
         dispatch(createUser(userData)); 
       }else{
@@ -121,6 +122,7 @@ export const AddUserForm = () => {
 
   const setDate=()=>{
    
+    console.log('setting date')
       const dateToStore = new Date(year, month, day);
       setUserData({...userData, birthDate:(dateToStore)})
    
@@ -143,16 +145,16 @@ export const AddUserForm = () => {
               </Form.Select>
               <Form.Control className='mb-3' type="text" placeholder="City"  value={userData.city}  onChange={(e)=>setUserData({...userData, city:(e.target.value)})} />  
               <Stack direction="horizontal" gap={3} className='mb-3' >
-              <Form.Select  onChange={(e)=>{setDay(e.target.value); setDate() ;} } defaultValue={day} >
+              <Form.Select  onChange={(e)=>{setDay(e.target.value);} } defaultValue={day} >
               { dayValues.map((day)=> {return( <option key={day}>{day}</option>)})}
                   
               
               </Form.Select>
-              <Form.Select   onChange={(e)=>{setMonth(e.target.value); setDate(); }} defaultValue={month}>
+              <Form.Select   onChange={(e)=>{setMonth(e.target.value); }} defaultValue={month}>
                     { monthVaules.map((m)=> {return( <option key={m.value} value={m.value}>{m.name}</option>)})}
                   
               </Form.Select>
-              <Form.Select  onChange={(e)=>{setYear(e.target.value); setDate(); }} defaultValue={year} >
+              <Form.Select  onChange={(e)=>{setYear(e.target.value);}} defaultValue={year} >
                       { yearValues.map((year)=> {return( <option key={year}>{year}</option>)})}
               </Form.Select>
               </Stack>
