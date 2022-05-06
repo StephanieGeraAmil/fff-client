@@ -20,19 +20,83 @@ export const AddUserForm = () => {
   const dispatch= useDispatch();
 
   const {user,isAuthenticated, isLoading} = useAuth0();
-   const date= new Date();
-  const [day, setDay]=useState(date.getDate());
-  const [month, setMonth]=useState(date.getMonth()+1);
-  const [year, setYear]=useState(date.getFullYear());
-  //const [city, setCity]=useState("Montevideo, Uruguay");
-  const dayVaules=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
-  const monthVaules=[1,2,3,4,5,6,7,8,9,10,11,12]
-  const yearVaules=[2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024]
+  const date= new Date();
+  const [day, setDay]=useState(date.getDate().toString());
+  const [month, setMonth]=useState((date.getMonth()+1).toString());
+  const [year, setYear]=useState(date.getFullYear().toString());
+  const [yearValues, setYearValues]=useState([]);
+  const [dayValues, setDayValues]=useState([]);
   
+  
+  const generateArrayOfDays=()=> {
+    const days=[]
+    let dayNum;
+
+    if (
+      (month === "0") |
+      (month === "2") |
+      (month === "4") |
+      (month === "6") |
+      (month === "7") |
+      (month ==="9") |
+      (month === "11")
+    ) {
+      dayNum = 31;
+    } else if (
+      (month === "3") |
+      (month === "5") |
+      (month === "8") |
+      (month ==="10")
+    ) {
+      dayNum = 30;
+    } else {
+      
+      const isLeap = new Date(year, 1, 29).getMonth() == 1;
+      isLeap ? (dayNum = 29) : (dayNum = 28);
+    }
+    for (let i = 1; i <= dayNum; i++) {
+       days.push(i)
+    }
+    setDayValues(days)
+  }
+
+
+  const monthVaules=[ {value:0, name:"January"},
+                      {value:1, name:"February"},
+                      {value:2, name:"March"},
+                      {value:3, name:"April"},
+                      {value:4, name:"May"},
+                      {value:5, name:"June"},
+                      {value:6, name:"July"},
+                      {value:7, name:"August"},
+                      {value:8, name:"September"},
+                      {value:9, name:"October"},
+                      {value:10, name:"November"},
+                      {value:11, name:"December"},
+  ];
+
+  function generateArrayOfYears() {
+        const max = new Date().getFullYear()
+        const min = max - 109
+        const years=[]
+        for (let i = max; i >= min; i--) {
+          years.push(i)
+        }
+        setYearValues(years);
+    
+  }
+ 
+
   useEffect(()=>{
-  if (!isLoading&& isAuthenticated) {  
-    setUserData({...userData, email:user.email, name:user.nickname, gender:"Female"});
-   }
+      generateArrayOfDays();
+  },[month,year])
+
+  useEffect(()=>{
+       generateArrayOfDays();
+      generateArrayOfYears();
+      if (!isLoading&& isAuthenticated) { 
+        setUserData({...userData, email:user.email, name:user.nickname, gender:"Female"});
+      }
   },[])
 
   const [userData, setUserData]=useState({
@@ -42,12 +106,10 @@ export const AddUserForm = () => {
          city:"",
     });
 
-     
-
-
+   
   const handleSubmit=(e)=>{
       e.preventDefault();
-     
+     console.log(userData)
       if(form.type=="AddUser"){
         dispatch(createUser(userData)); 
       }else{
@@ -58,8 +120,10 @@ export const AddUserForm = () => {
     };
 
   const setDate=()=>{
+   
       const dateToStore = new Date(year, month, day);
       setUserData({...userData, birthDate:(dateToStore)})
+   
   }
  
   return (
@@ -80,16 +144,16 @@ export const AddUserForm = () => {
               <Form.Control className='mb-3' type="text" placeholder="City"  value={userData.city}  onChange={(e)=>setUserData({...userData, city:(e.target.value)})} />  
               <Stack direction="horizontal" gap={3} className='mb-3' >
               <Form.Select  onChange={(e)=>{setDay(e.target.value); setDate() ;} } defaultValue={day} >
-              { dayVaules.map((day)=> {return( <option key={day}>{day}</option>)})}
+              { dayValues.map((day)=> {return( <option key={day}>{day}</option>)})}
                   
               
               </Form.Select>
               <Form.Select   onChange={(e)=>{setMonth(e.target.value); setDate(); }} defaultValue={month}>
-                    { monthVaules.map((month)=> {return( <option key={month}>{month}</option>)})}
+                    { monthVaules.map((m)=> {return( <option key={m.value} value={m.value}>{m.name}</option>)})}
                   
               </Form.Select>
               <Form.Select  onChange={(e)=>{setYear(e.target.value); setDate(); }} defaultValue={year} >
-                      { yearVaules.map((year)=> {return( <option key={year}>{year}</option>)})}
+                      { yearValues.map((year)=> {return( <option key={year}>{year}</option>)})}
               </Form.Select>
               </Stack>
               <Button variant="secondary" size="lg" className='mb-3' onClick={(e)=>handleSubmit(e)}>Save</Button>
