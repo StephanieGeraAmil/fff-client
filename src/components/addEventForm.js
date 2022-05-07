@@ -66,9 +66,9 @@ export const AddEventForm = ({socket}) => {
                       {value:11, name:"December"},
   ];
 
-  function generateArrayOfYears() {
-        const max = new Date().getFullYear()
-        const min = max - 109
+  const generateArrayOfYears=()=> {
+        const min = new Date().getFullYear();
+        const max = min + 10;
         const years=[]
         for (let i = max; i >= min; i--) {
           years.push(i)
@@ -97,28 +97,28 @@ export const AddEventForm = ({socket}) => {
          lat:form.positionSelected.lat, 
          lng:form.positionSelected.lng,
          creator: userLogged._id,
+      
    
     });
-   useEffect(()=>{
+  useEffect(()=>{
       generateArrayOfDays();
-  },[month,year])
-    useEffect(()=>{
-       generateArrayOfDays();
+      setDate();
+  },[day,month,year])
+
+  useEffect(()=>{
+      generateArrayOfDays();
       generateArrayOfYears();
-        },[])
+  },[])
 
   const handleSubmit=(e)=>{
       e.preventDefault();
-      socket.emit("event-created",eventData);
-      // dispatch(createEvent(eventData));       
+      socket.emit("event-created",eventData);    
       dispatch(unsetForm());
     };
 
-    const setDate=()=>{
-   
+  const setDate=()=>{
       const dateToStore = new Date(year, month, day);
       setEventData({...eventData, end_date:(dateToStore)})
-   
   }
 
   return (
@@ -136,16 +136,16 @@ export const AddEventForm = ({socket}) => {
               
               </Form.Select>
               <Stack direction="horizontal" gap={3} className='mb-3' >
-              <Form.Select  onChange={(e)=>{setDay(e.target.value); setDate() ;} } defaultValue={day} >
+              <Form.Select  onChange={(e)=>{setDay(e.target.value); } } defaultValue={day} >
               { dayValues.map((day)=> {return( <option key={day}>{day}</option>)})}
                   
               
               </Form.Select>
-              <Form.Select   onChange={(e)=>{setMonth(e.target.value); setDate(); }} defaultValue={month}>
+              <Form.Select   onChange={(e)=>{setMonth(e.target.value); }} defaultValue={month}>
                     { monthVaules.map((m)=> {return( <option key={m.value} value={m.value}>{m.name}</option>)})}
                   
               </Form.Select>
-              <Form.Select  onChange={(e)=>{setYear(e.target.value); setDate(); }} defaultValue={year} >
+              <Form.Select  onChange={(e)=>{setYear(e.target.value);  }} defaultValue={year} >
                       { yearValues.map((year)=> {return( <option key={year}>{year}</option>)})}
               </Form.Select>
               </Stack>
