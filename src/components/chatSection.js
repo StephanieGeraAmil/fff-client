@@ -42,7 +42,7 @@ export const ChatSection = () => {
                                 {chats.map((item) => {
                                     return (
                                         <ListGroupItem  key={item._id}>
-                                            <ChatItem key={item._id} chat={item} socket={skt}/>
+                                            <ChatItem  className='chat_list_item' key={item._id} chat={item} socket={skt}/>
                                         </ListGroupItem>
                                     )
                                 })}

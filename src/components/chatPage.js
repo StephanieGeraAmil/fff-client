@@ -8,6 +8,7 @@ import Stack from 'react-bootstrap/Stack';
 import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
+import Image from 'react-bootstrap/Image'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
@@ -39,7 +40,10 @@ export const ChatPage = ({ socket}) => {
   
   return ( <>
      {loaded && <Container className='chat'>
-          <h4 className='chat_title'>{selectedChat.title}</h4>
+       <Stack className='d-flex flex-row'>
+         <Image thumbnail={true}  roundedCircle={true} src={selectedChat.img} style={{maxWidth: '50px',maxHeight: '50px'}}/>   
+          <h4 className='m-2 chat_title'>{selectedChat.title}</h4>
+          </Stack>
           <ListGroup className='chat_messages'>
             {messagesOfChat.map((item) => {
                 return (
@@ -53,7 +57,7 @@ export const ChatPage = ({ socket}) => {
               <Stack direction="horizontal" gap={3} className='p-3'>
                     <Form.Control type="text" onChange={(e)=>setMsg(e.target.value)}
                               onKeyPress={(e)=>handleKeyPress(e)} value={msg}/>  
-                    <Button variant="secondary" size="lg" onClick={(e)=>handleSubmit(e)}>Send</Button>
+                    <Button variant="secondary" size="sm" onClick={(e)=>handleSubmit(e)}>Send</Button>
            
               </Stack>
           </Form>
