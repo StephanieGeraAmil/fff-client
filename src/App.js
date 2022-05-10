@@ -3,7 +3,10 @@ import './styles/styles.css';
 import React, { useEffect, useState } from 'react'
 import {MapSection} from './components/mapSection';
 
+
 function App() {
+
+
      return (
     <div className="App">
       <MapSection/>
@@ -11,3 +14,4 @@ function App() {
   );
 }
 export default App;
+// export const add=(n1,n2)= n1+n2

@@ -1,9 +1,7 @@
 import React ,{useEffect, useState}from 'react'
 import { useDispatch,useSelector } from 'react-redux';
-import {createEvent} from '../actions/eventActions'
 import { unsetForm} from '../actions/globalStateActions'
 import Form from 'react-bootstrap/Form';
-import CloseButton from 'react-bootstrap/CloseButton';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Stack from 'react-bootstrap/esm/Stack';

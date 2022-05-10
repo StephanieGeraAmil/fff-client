@@ -4,9 +4,9 @@ import { GoogleMap,Marker,InfoWindow,useLoadScript } from '@react-google-maps/ap
 import mapStyles from "./mapStyles";
 import { formatRelative } from "date-fns";
 import { getGeocode, getLatLng,} from "use-places-autocomplete";
-import {AddEventForm} from "./addEventForm"
-import {EditEventForm} from "./editEventForm"
-import {AddUserForm} from "./addUserForm"
+//import {AddEventForm} from "./addEventForm"
+//import {EditEventForm} from "./editEventForm"
+//import {AddUserForm} from "./addUserForm"
 import {Search} from "./search"
 import Modal from "react-bootstrap/Modal"
 import Container from "react-bootstrap/Container"
