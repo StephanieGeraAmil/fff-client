@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { TopSection } from './components/topSection';
-import{ ChatSection} from './components/chatSection';
-import{ ChatPage} from './components/chatPage';
 import reportWebVitals from './reportWebVitals';
 import { Auth0Provider } from "@auth0/auth0-react";
 import {Provider} from 'react-redux';
@@ -28,7 +26,7 @@ ReactDOM.render(
             <TopSection/>
             <Routes>
                 <Route path="/" element={<App/>} />
-                <Route path="/chats" element={<ChatSection/>} />
+    
              
              
             </Routes>
