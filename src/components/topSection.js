@@ -43,9 +43,7 @@ export const TopSection = () => {
       <>
        {!isAuthenticated && (<Login/>)}
       {isAuthenticated &&(<div className='top_section'>
-                            {(location.pathname=='/' ) && (<Link  to="/chats" > <button className=" top_link chat_section_button"></button> </Link> )}
-                            {(location.pathname=='/chats') && (<Link  to="/" > <button className="top_link map_button"></button> </Link>)}
-                            <Logout/>
+                           <Logout/>
                         </div>)}
       </>
   )
