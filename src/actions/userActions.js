@@ -3,6 +3,8 @@ import * as api from '../api.js';
 
 export const createUser=(user)=>async(dispatch)=>{
     try {
+          console.log("inside create user")
+        console.log(user)
         const {data}=await api.createUser(user);
         const action={type:actions.CREATE_USER, payload:data};
         dispatch(action);
