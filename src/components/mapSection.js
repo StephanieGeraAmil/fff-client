@@ -116,7 +116,7 @@ export const MapSection = () => {
     };
     if (userLogged) {
       if (!userLogged.gender || !userLogged.birthDate) {
-        dispatch(setForm({ type: "AddUserInfo" }));
+        dispatch(setForm({ type: "AddUser" }));
       }
       if (userLogged.gender) queryParams.gender = userLogged.gender;
       if (userLogged.birthdate)
@@ -192,16 +192,6 @@ export const MapSection = () => {
           <></>
         )}
 
-        {form ? (
-          form.type == "AddUserInfo" && (
-            <Modal show={show} onHide={handleClose}>
-              {" "}
-              <AddUserForm />{" "}
-            </Modal>
-          )
-        ) : (
-          <></>
-        )}
         {form ? (
           form.type == "AddUser" && (
             <Modal show={show} onHide={handleClose}>
