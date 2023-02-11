@@ -1,7 +1,7 @@
 import { useDispatch , useSelector} from 'react-redux';
 import React, { useEffect, useState } from 'react'
 
-import {setForm,setUser} from './../actions/globalStateActions.js';
+import {setUser} from './../actions/globalStateActions.js';
 import { useAuth0 } from "@auth0/auth0-react";
 import {Login} from './login';
 import {Logout} from './logout';
