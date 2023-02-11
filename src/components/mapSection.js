@@ -26,10 +26,10 @@ const containerStyle = {
   width: "100vw",
   height: "100vh",
 };
-const center = {
-  lat: -34.90328,
-  lng: -56.18816,
-};
+// const center = {
+//   lat: -34.90328,
+//   lng: -56.18816,
+// };
 const options = {
   styles: mapStyles,
   disableDefaultUI: true,
@@ -49,6 +49,7 @@ export const MapSection = () => {
   const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env;
   const [selected, setSelected] = useState(null);
   const [show, setShow] = useState(true);
+  const [mapCenter, setMapCenter] = useState({lat: -34.90328,lng: -56.18816});
   const socket = useRef();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -84,11 +85,11 @@ export const MapSection = () => {
     libraries,
   });
 
-  const centerMap = async (address) => {
+  const centerMapOnSearch = async (address) => {
     try {
       const results = await getGeocode({ address });
       const { lat, lng } = await getLatLng(results[0]);
-      panTo({ lat, lng });
+      setMapCenter({ lat, lng });
     } catch (error) {
       console.log("Error: ", error);
     }
@@ -131,6 +132,17 @@ export const MapSection = () => {
   }, [userLogged]);
 
   useEffect(() => {
+    console.log("onuseeffect");
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        let initialLocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+        console.log(initialLocation);
+        setMapCenter(initialLocation);
+      });
+    }
     if (!socket.current) {
       socket.current = new WebSocket(process.env.REACT_APP_WS_BACKEND_URL);
       socket.current.addEventListener("open", onConnOpen);
@@ -150,7 +162,7 @@ export const MapSection = () => {
       <Search panTo={panTo} />
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={center}
+        center={mapCenter}
         zoom={19}
         options={options}
         onClick={onMapClick}
