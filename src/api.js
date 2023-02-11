@@ -10,7 +10,7 @@ const users_url= backend_url+"/users";
 export const fetchUsers=()=>axios.get(users_url);
 export const findUserByEmail=(userEmail)=> axios.get(`${users_url}?email=${userEmail}`);
 export const createUser=(newUser)=> axios.post(users_url, newUser);
-export const updateUser=(updatedUser)=> axios.patch(`${users_url}/${updatedUser.id}`, updatedUser);
+export const updateUser=(updatedUser)=> axios.put(`${users_url}/${updatedUser.id}`, updatedUser);
 export const deleteUser=(deleteUserId)=> axios.delete(`${users_url}/${deleteUserId}`);
 const events_url= backend_url+"/events";
 export const fetchEvents=()=>axios.get(events_url);
