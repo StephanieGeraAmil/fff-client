@@ -48,7 +48,7 @@ export const MapSection = () => {
   const dispatch = useDispatch();
   const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env;
   const [selected, setSelected] = useState(null);
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const socket = useRef();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -97,24 +97,51 @@ export const MapSection = () => {
     dispatch(setEvents(data));
   };
 
- 
-const onConnOpen=()=>{ 
-        console.log("an open event came");
-        socket.current.send(JSON.stringify({
+  const onConnOpen = () => {
+    socket.current.send(
+      JSON.stringify({
         action: "addConnectionInfo",
-        location: {country:"Uruguay", city: "Montevideo"}
-      }));
-}
+        location: { country: "Uruguay", city: "Montevideo" },
+      })
+    );
+  };
+  const getAgeOf = (birthdate) => {
+    const now = new Date();
+    return now - birthdate;
+  };
+  useEffect(() => {
+    const queryParams = {
+      country: "Uruguay",
+      city: "Montevideo",
+    };
+    if (userLogged) {
+       if(!userLogged.gender||!userLogged.birthdate){
+                 dispatch(setForm({type:'AddUserInfo'}));
+                }
+      if (userLogged.gender) queryParams.gender = userLogged.gender;
+      if (userLogged.birthdate) queryParams.age = getAgeOf(userLogged.birthdate);
+
+    }
+    // console.log(userLogged);
+    //     console.log(queryParams);
+    // socket.current.addEventListener("getEventsAround", (data) => {
+    //   dispatch(setEvents(data));
+    // });
+    // socket.current.send("eventAround", {});
+  }, [userLogged]);
 
   useEffect(() => {
-    console.log("onMount");
     if (!socket.current) {
       socket.current = new WebSocket(process.env.REACT_APP_WS_BACKEND_URL);
-      socket.current.addEventListener("open",  onConnOpen);
+      socket.current.addEventListener("open", onConnOpen);
 
-    // socket.current.onmessage = onMessage;
-    // socket.current.onclose = onConnClose;
-      
+      //       socket.current.addEventListener("getEventsAround",(data)=> { dispatch(setEvents(data));});
+      //     socket.current.send("eventAround",{country:"Uruguay",city:"Montevideo"});
+      //      socket.current.addEventListener ("new-event",  (event)  =>{ dispatch(addEvent(event)); });
+      //  socket.current.addEventListener("event-updated",  (event)  =>{ dispatch(updEvent(event)); });
+
+      // socket.current.onmessage = onMessage;
+      // socket.current.onclose = onConnClose;
     }
   }, []);
 
