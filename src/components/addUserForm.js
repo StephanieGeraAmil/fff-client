@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import CloseButton from "react-bootstrap/CloseButton";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useAuth0 } from "@auth0/auth0-react";
 
 import "react-datetime/css/react-datetime.css";
 import Stack from "react-bootstrap/esm/Stack";
@@ -21,12 +22,15 @@ export const AddUserForm = () => {
   const dispatch = useDispatch();
 
   const now = new Date();
+  const [gender, setGender] = useState("Female");
+  const [name, setName] = useState("");
   const [day, setDay] = useState(now.getDate().toString());
   const [month, setMonth] = useState(now.getMonth().toString());
   const [year, setYear] = useState(now.getFullYear().toString());
   const [yearValues, setYearValues] = useState([]);
   const [dayValues, setDayValues] = useState([]);
 
+  const { user } = useAuth0();
   const generateArrayOfDays = () => {
     const daysValues = [];
     let dayNum;
@@ -85,23 +89,41 @@ export const AddUserForm = () => {
 
   useEffect(() => {
     generateArrayOfDays();
-    const updateDateSelected = new Date(year, month, day);
-    setUserData({ ...userData, birthDate: updateDateSelected });
-  }, [day, month, year]);
+  }, [month, year]);
 
   useEffect(() => {
     generateArrayOfDays();
     generateArrayOfYears();
+    if (userLogged) {
+      //display the values already saved from the user
+      if (userLogged.birthDate) {
+        const birthdt = new Date(userLogged.birthDate);
+        setDay(birthdt.getDate().toString());
+        setMonth(birthdt.getMonth().toString());
+        setYear(birthdt.getFullYear().toString());
+      }
+      if (userLogged.gender) {
+        setGender(userLogged.gender);
+      }
+      if (userLogged.name) {
+        setName(userLogged.name);
+      }
+    }
   }, []);
-
-  const [userData, setUserData] = useState({ ...userLogged});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (form.type == "AddUser") {
-      dispatch(createUser(userData));
+    const usr = {
+      email: user.email,
+      name: name,
+      gender: gender,
+      birthDate: new Date(year, month, day),
+    };
+    if (userLogged) {
+      usr.id = userLogged.id;
+      dispatch(updateUser(usr));
     } else {
-      dispatch(updateUser(userData));
+      dispatch(createUser(usr));
     }
     dispatch(unsetForm());
   };
@@ -118,15 +140,13 @@ export const AddUserForm = () => {
             className="mb-3"
             type="text"
             placeholder="Name"
-            onChange={(e) => setUserData({ ...userData, name: e.target.value })}
-            value={userData.name}
+            onChange={(e) => setName(e.target.value)}
+            value={name}
           />
           <Form.Select
             className="mb-3"
-            onChange={(e) =>
-              setUserData({ ...userData, gender: e.target.value })
-            }
-            value={userData.gender}
+            onChange={(e) => setGender(e.target.value)}
+            value={gender}
           >
             <option value="Female">Female</option>
             <option value="Male">Male</option>
