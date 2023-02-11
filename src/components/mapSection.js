@@ -115,12 +115,12 @@ export const MapSection = () => {
       city: "Montevideo",
     };
     if (userLogged) {
-       if(!userLogged.gender||!userLogged.birthdate){
-                 dispatch(setForm({type:'AddUserInfo'}));
-                }
+      if (!userLogged.gender || !userLogged.birthDate) {
+        dispatch(setForm({ type: "AddUserInfo" }));
+      }
       if (userLogged.gender) queryParams.gender = userLogged.gender;
-      if (userLogged.birthdate) queryParams.age = getAgeOf(userLogged.birthdate);
-
+      if (userLogged.birthdate)
+        queryParams.age = getAgeOf(userLogged.birthdate);
     }
     // console.log(userLogged);
     //     console.log(queryParams);
