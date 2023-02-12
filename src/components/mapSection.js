@@ -49,7 +49,10 @@ export const MapSection = () => {
   const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env;
   const [selected, setSelected] = useState(null);
   const [show, setShow] = useState(true);
-  const [mapCenter, setMapCenter] = useState({lat: -34.90328,lng: -56.18816});
+  const [mapCenter, setMapCenter] = useState({
+    lat: -34.90328,
+    lng: -56.18816,
+  });
   const socket = useRef();
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -106,9 +109,27 @@ export const MapSection = () => {
       })
     );
   };
-  const getAgeOf = (birthdate) => {
+  
+  const getAgeOf = (birthDate) => {
+    let age;
+    const birth = new Date(birthDate);
     const now = new Date();
-    return now - birthdate;
+    const diff_months = now.getMonth() - birth.getMonth();
+    if (diff_months < 0) {
+      age = now.getFullYear() - 1 - birth.getFullYear();
+    } else {
+      if (diff_months == 0) {
+        const diff_days = now.getDate() - birth.getDate();
+        if (diff_days < 0) {
+          age = now.getFullYear() - 1 - birth.getFullYear();
+        } else {
+          age = now.getFullYear() - birth.getFullYear();
+        }
+      } else {
+        age = now.getFullYear() - birth.getFullYear();
+      }
+    }
+    return age;
   };
   useEffect(() => {
     const queryParams = {
@@ -120,8 +141,9 @@ export const MapSection = () => {
         dispatch(setForm({ type: "AddUser" }));
       }
       if (userLogged.gender) queryParams.gender = userLogged.gender;
-      if (userLogged.birthdate)
-        queryParams.age = getAgeOf(userLogged.birthdate);
+      if (userLogged.birthDate)
+        queryParams.age = getAgeOf(userLogged.birthDate);
+      console.log(queryParams);
     }
     // console.log(userLogged);
     //     console.log(queryParams);
@@ -132,14 +154,12 @@ export const MapSection = () => {
   }, [userLogged]);
 
   useEffect(() => {
-    console.log("onuseeffect");
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         let initialLocation = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         };
-        console.log(initialLocation);
         setMapCenter(initialLocation);
       });
     }
