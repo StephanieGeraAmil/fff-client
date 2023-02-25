@@ -32,3 +32,22 @@ export const setUser = (user) => async (dispatch) => {
     dispatch(action);
   }
 };
+
+export const createUser=(user)=>async(dispatch)=>{
+    try {
+        const {data}=await api.createUser(user);
+        const action={type:actions.SET_USER, payload:data};
+        dispatch(action);
+    } catch (error) {
+        console.log(error);
+    }
+}
+export const updateUser=(updatedUser)=>async(dispatch)=>{
+    try {
+        const {data}=await api.updateUser(updatedUser);
+        const action={type:actions.SET_USER, payload:data};
+        dispatch(action);   
+    } catch (error) {
+        console.log(error);
+    }
+}

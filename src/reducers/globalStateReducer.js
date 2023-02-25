@@ -13,6 +13,7 @@ export default (current={user:null,form:null}, action)=>{
            
         case actions.UNSET_USER:
         return {...current,user: null};
+ 
 
         default:
         return current;
