@@ -8,7 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Stack from 'react-bootstrap/esm/Stack';
 
-export const AddEventForm = ({socket}) => {
+export const AddEventForm = ({actionMethod}) => {
   const form = useSelector((state) =>(state.current.form ? state.current.form :null));
   const userLogged = useSelector((state) =>(state.current.user ? state.current.user :null));
   const dispatch= useDispatch();
@@ -111,8 +111,8 @@ export const AddEventForm = ({socket}) => {
   },[])
 
   const handleSubmit=(e)=>{
-      e.preventDefault();
-      socket.emit("event-created",eventData);    
+      e.preventDefault(); 
+      actionMethod(eventData);
       dispatch(unsetForm());
     };
 
