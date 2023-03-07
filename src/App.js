@@ -7,7 +7,7 @@ import {MapSection} from './components/MapSection';
 const App=()=> {
      return (
     <div className="App">
-        <TopSection/>
+      <TopSection/>
       <MapSection/>
      </div>
   );
