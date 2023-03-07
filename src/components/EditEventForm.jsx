@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Stack from 'react-bootstrap/esm/Stack';
 
-export const EditEventForm = ({socket}) => {
+export const EditEventForm = ({actionMethod}) => {
   const form = useSelector((state) =>(state.current.form ? state.current.form :null));
   const dispatch= useDispatch();
 
@@ -135,7 +135,8 @@ export const EditEventForm = ({socket}) => {
 
    const handleSubmit=(e)=>{
       e.preventDefault();
-      socket.emit("update-event",eventData);      
+      // socket.emit("update-event",eventData);      
+       actionMethod(eventData);
       dispatch(unsetForm());
    };
 
