@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { TopSection } from './components/topSection';
+// import { TopSection } from './components/TopSection';
 import reportWebVitals from './reportWebVitals';
 import { Auth0Provider } from "@auth0/auth0-react";
 import {Provider} from 'react-redux';
@@ -9,7 +9,7 @@ import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import reducers from './reducers/reducers.js'
-import { BrowserRouter,Routes,Route} from "react-router-dom"; 
+import { BrowserRouter,Routes,Route} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const store= createStore(reducers, composeWithDevTools(applyMiddleware(thunk)))
@@ -23,18 +23,18 @@ ReactDOM.render(
             clientId="vNXWfuyHWr4jF94dV51O4ZclSOpkA8Hw"
             redirectUri={window.location.origin}
           >
-            <TopSection/>
+            {/* <TopSection/> */}
             <Routes>
                 <Route path="/" element={<App/>} />
-    
-             
-             
+
+
+
             </Routes>
-              
+
         </Auth0Provider>
       </Provider>
     </BrowserRouter>
-  
+
   </React.StrictMode>,
   document.getElementById('root')
 );
