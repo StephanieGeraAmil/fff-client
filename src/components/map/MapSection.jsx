@@ -8,10 +8,11 @@ import {
 } from "@react-google-maps/api";
 import mapStyles from "./MapStyles";
 import { formatRelative } from "date-fns";
-import { useSocket } from "../../hooks/useSocket";
+
 import { setForm } from "../../actions/globalStateActions";
 import { Card } from "@mui/material";
 import { Button } from "@mui/material";
+import { useSocket } from "../../hooks/useSocket";
 //import {  deleteEvent } from "../actions/eventActions";
 
 const containerStyle = {
@@ -48,9 +49,7 @@ export const MapSection = () => {
     country: "Uruguay",
     city: "Montevideo",
   });
-
-  // my useSocket hook establish the connection and  saves info about the connection on the db,  get the events on the redux state and retreives the methods to add and update events
-  const { addEvent, updateEvent } = useSocket({ userInfo });
+  useSocket({ userInfo });
 
   const onMapClick = useCallback(
     (e) => {
@@ -98,10 +97,10 @@ export const MapSection = () => {
       if (!userLogged.gender || !userLogged.birthDate) {
         dispatch(setForm({ type: "AddUser" }));
       }
-      if (userLogged.gender)
-        setUserInfo({ ...userInfo, gender: userLogged.gender });
-      if (userLogged.birthDate)
-        setUserInfo({ ...userInfo, age: getAgeOf(userLogged.birthDate) });
+      // if (userLogged.gender)
+      //   setUserInfo({ ...userInfo, gender: userLogged.gender });
+      // if (userLogged.birthDate)
+      //   setUserInfo({ ...userInfo, age: getAgeOf(userLogged.birthDate) });
     }
   }, [userLogged]);
 
@@ -135,7 +134,7 @@ export const MapSection = () => {
               lng: parseFloat(marker.lng),
             }}
             onClick={() => {
-              setSelectedEvent(marker);
+             setSelectedEvent(marker);
             }}
             icon={{
               url: marker.img,
@@ -153,13 +152,13 @@ export const MapSection = () => {
               setSelectedEvent(null);
             }}
           >
-            <Card>
+            <div>
               <h2>{selectedEvent.title}</h2>
 
               <p>Description: {selectedEvent.description}</p>
               <p>
                 Created{" "}
-                {formatRelative(new Date(selectedEvent.date), Date.now())}
+                {formatRelative(new Date(selectedEvent.createdAt), Date.now())}
               </p>
               {userLogged && (
                 <>
@@ -187,7 +186,7 @@ export const MapSection = () => {
                     {selectedEvent.hasTheUser ? "Leave" : "Join"}
                   </Button> */}
 
-                  {selectedEvent.creator === userLogged._id && (
+                  {selectedEvent.creator === userLogged.id && (
                     <>
                       <Button
                         onClick={() => {
@@ -212,7 +211,7 @@ export const MapSection = () => {
                   )}
                 </>
               )}
-            </Card>
+            </div>
           </InfoWindow>
         ) : null}
       </GoogleMap>
