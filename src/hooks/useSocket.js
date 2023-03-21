@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setEvents, addEvent, updateEvent } from "../../actions/eventActions";
+import { setEvents, addEvent, updateEvent } from "../actions/eventActions";
 
 export function useSocket({ userInfo }) {
   const socket = useRef();
@@ -45,7 +45,7 @@ export function useSocket({ userInfo }) {
             }
           }
         } catch (err) {
-          // console.log(err);
+          console.log(err);
         }
       };
     }
