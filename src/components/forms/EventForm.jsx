@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { unsetForm } from "../../actions/globalStateActions";
-import { addEvent, updateEvent } from "../../actions/eventActions";
+import { addEventOnBack, updateEventOnBack } from "../../hooks/useSocket";
 import {
   Button,
   TextField,
@@ -15,18 +15,20 @@ import {
 import { DatePicker } from "@mui/x-date-pickers";
 import dayjs from "dayjs";
 
-export const EventForm = ({ actionMethod }) => {
+export const EventForm = () => {
   const form = useSelector((state) =>
     state.current.form ? state.current.form : null
   );
   const userLogged = useSelector((state) =>
     state.current.user ? state.current.user : null
   );
+
   const dispatch = useDispatch();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
+  const [eventType, setEventType] = useState("");
   const [targetGender, setTargetGender] = useState("");
   const [targetAgeRange, setTargetAgeRange] = useState("");
 
@@ -42,33 +44,62 @@ export const EventForm = ({ actionMethod }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const typeOfEvent = typesAvaiable.filter((type) => type.id == eventType);
+
     const eventData = {
       title: title,
       description: description,
-      type: typesAvaiable[0].name,
-      img: "." + typesAvaiable[0].img,
-      lat: form.positionSelected.lat,
-      lng: form.positionSelected.lng,
-      creator: userLogged._id,
+      type: typeOfEvent[0].name,
+      img: "." + typeOfEvent[0].img,
+      creator: userLogged.id,
       expirationDate: date,
+      targetGender: targetGender,
+      targetAgeRange: targetAgeRange,
     };
-    if (form === "AddEvent") dispatch(addEvent(eventData));
-    else if (form === "EditEvent") dispatch(updateEvent(eventData));
+    if (form.positionSelected) {
+      eventData.lat = form.positionSelected.lat;
+      eventData.lng = form.positionSelected.lng;
+    }
+    if (form.event) {
+      eventData.createdAt = form.event.createdAt;
+      eventData.id = form.event.id;
+      eventData.lat = form.event.lat;
+      eventData.lng = form.event.lng;
+    }
+    console.log("eventData", eventData);
+    if (form.type === "AddEvent") addEventOnBack(eventData);
+    else if (form.type === "EditEvent") updateEventOnBack(eventData);
     dispatch(unsetForm());
   };
   useEffect(() => {
-    if (form === "EditEvent") {
+    if (form.type === "EditEvent") {
       //display the values already saved on the event
       if (form.event) {
+        console.log(form.event);
         if (form.event.expirationDate) {
           const expirationDate = new Date(form.event.expirationDate);
-          setDate(dayjs(form.event.expirationDate.toISOString().slice(0, 10)));
+          setDate(dayjs(expirationDate.toISOString().slice(0, 10)));
         }
         if (form.event.title) {
           setTitle(form.event.title);
         }
         if (form.event.description) {
           setDescription(form.event.description);
+        }
+        if (form.event.targetAgeRange) {
+          setTargetAgeRange(form.event.targetAgeRange);
+        }
+        if (form.event.targetGender) {
+          setTargetGender(form.event.targetGender);
+        }
+        if (form.event.type) {
+          console.log(form.event.type);
+          const typeOfEvent = typesAvaiable.filter(
+            (type) => type.name === form.event.type
+          );
+          console.log(typeOfEvent);
+          setEventType(typeOfEvent[0].id);
         }
       }
     }
@@ -104,11 +135,29 @@ export const EventForm = ({ actionMethod }) => {
           />
         </FormControl>
         <FormControl sx={{ m: 1 }}>
+          <InputLabel id="type-of-event">Type of Event</InputLabel>
+          <Select
+            labelId="type-of-event"
+            id="type-select"
+            label="Event type"
+            value={eventType}
+            onChange={(e) => setEventType(e.target.value)}
+          >
+            {typesAvaiable.map((type) => {
+              return (
+                <MenuItem key={type.id} value={type.id}>
+                  {type.name}
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
+        <FormControl sx={{ m: 1 }}>
           <InputLabel id="gender-select-label">Target Gender</InputLabel>
           <Select
             labelId="gender-select-label"
             id="gender-select"
-                        label="Target Gender"
+            label="Target Gender"
             value={targetGender}
             onChange={(e) => setTargetGender(e.target.value)}
           >
@@ -120,7 +169,8 @@ export const EventForm = ({ actionMethod }) => {
 
         <FormControl sx={{ m: 1 }}>
           <InputLabel id="age-select-label">Target Age Range</InputLabel>
-          <Select labelId="age-select-label"
+          <Select
+            labelId="age-select-label"
             id="age-select"
             label="Target Age Range"
             value={targetAgeRange}
