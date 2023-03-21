@@ -7,6 +7,7 @@ import { Search } from "./Search";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Box, Drawer } from "@mui/material/";
+import { setForm } from "../actions/globalStateActions";
 
 export const SideBar = () => {
   const formSelector = (state) =>
@@ -17,6 +18,9 @@ export const SideBar = () => {
 
   const toggleDrawer = (open) => (event) => {
     setShow(open);
+    if(!open){
+      setForm(null);
+    }
   };
 
   const list = () => (
@@ -36,6 +40,8 @@ export const SideBar = () => {
   useEffect(() => {
     if (form !== null) {
       setShow(true);
+    } else {
+      setShow(false);
     }
   }, [form]);
 
