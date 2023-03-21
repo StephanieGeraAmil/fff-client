@@ -27,6 +27,7 @@ export const UserForm = () => {
   const userLogged = useSelector((state) =>
     state.current.user ? state.current.user : null
   );
+
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
@@ -71,7 +72,7 @@ export const UserForm = () => {
   return (
     <>
       <Typography variant="h2" gutterBottom>
-        New Event
+        User Info
       </Typography>
       <FormGroup>
         <FormControl sx={{ p: 1 }}>
