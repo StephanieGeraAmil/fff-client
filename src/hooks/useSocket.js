@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setEvents, addEvent, updateEvent } from "../actions/eventActions";
+import { setEvents, addEvent, updateEvent , deleteEvent} from "../actions/eventActions";
 
 const socket = { current: null };
 export const useSocket = ({ userInfo }) => {
@@ -37,6 +37,8 @@ export const useSocket = ({ userInfo }) => {
                 return dispatch(addEvent(json.data));
               case "updatedEvent":
                 return dispatch(updateEvent(json.data));
+                 case "deletedEvent":
+                return dispatch(deleteEvent(json.data));
             }
           }
         } catch (err) {
@@ -61,6 +63,16 @@ export const updateEventOnBack = (data) => {
   socket.current.send(
     JSON.stringify({
       action: "updateEvent",
+      event: data,
+    })
+  );
+};
+export const deleteEventOnBack = (data) => {
+  console.log("in the delete event on the use socket")
+   console.log(data)
+  socket.current.send(
+    JSON.stringify({
+      action: "deleteEvent",
       event: data,
     })
   );
