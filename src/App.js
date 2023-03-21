@@ -7,7 +7,10 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import { CircularProgress } from "@mui/material";
 
+
 const App = () => {
+
+
   const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env;
   const theme = createTheme({
     palette: {
@@ -23,6 +26,8 @@ const App = () => {
       },
     },
   });
+
+ 
 
   const render = (status) => {
     switch (status) {
