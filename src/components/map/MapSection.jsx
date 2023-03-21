@@ -12,8 +12,7 @@ import { formatRelative } from "date-fns";
 import { setForm } from "../../actions/globalStateActions";
 import { Card } from "@mui/material";
 import { Button } from "@mui/material";
-import { useSocket } from "../../hooks/useSocket";
-//import {  deleteEvent } from "../actions/eventActions";
+import { useSocket, deleteEventOnBack } from "../../hooks/useSocket";
 
 const containerStyle = {
   width: "100vw",
@@ -134,7 +133,7 @@ export const MapSection = () => {
               lng: parseFloat(marker.lng),
             }}
             onClick={() => {
-             setSelectedEvent(marker);
+              setSelectedEvent(marker);
             }}
             icon={{
               url: marker.img,
@@ -201,7 +200,7 @@ export const MapSection = () => {
 
                       <Button
                         onClick={() => {
-                          // dispatch(deleteEvent(selected._id));
+                          deleteEventOnBack(selectedEvent.id);
                           setSelectedEvent(null);
                         }}
                       >

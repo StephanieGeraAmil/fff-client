@@ -67,7 +67,6 @@ export const EventForm = () => {
       eventData.lat = form.event.lat;
       eventData.lng = form.event.lng;
     }
-    console.log("eventData", eventData);
     if (form.type === "AddEvent") addEventOnBack(eventData);
     else if (form.type === "EditEvent") updateEventOnBack(eventData);
     dispatch(unsetForm());
@@ -76,7 +75,6 @@ export const EventForm = () => {
     if (form.type === "EditEvent") {
       //display the values already saved on the event
       if (form.event) {
-        console.log(form.event);
         if (form.event.expirationDate) {
           const expirationDate = new Date(form.event.expirationDate);
           setDate(dayjs(expirationDate.toISOString().slice(0, 10)));
@@ -98,7 +96,6 @@ export const EventForm = () => {
           const typeOfEvent = typesAvaiable.filter(
             (type) => type.name === form.event.type
           );
-          console.log(typeOfEvent);
           setEventType(typeOfEvent[0].id);
         }
       }

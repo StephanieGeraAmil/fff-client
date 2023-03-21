@@ -15,13 +15,12 @@ export const updateUserInEvent=(updatedEvent)=>async(dispatch)=>{
 
 
 export const deleteEvent=(event_id)=>async(dispatch)=>{
-//     try {  
-//          await api.deleteEvent(event_id);
-//         const action={type: actions.DELETE_EVENT,payload:event_id};
-//         dispatch(action);     
-//     } catch (error) {
-//         console.log(error);
-    // }
+    try {  
+        const action={type: actions.DELETE_EVENT,payload:event_id};
+        dispatch(action);     
+    } catch (error) {
+        console.log(error);
+    }
 
     
 }
