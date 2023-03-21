@@ -1,61 +1,61 @@
 import { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setEvents, addEvent, updateEvent } from "../../actions/eventActions";
 
 export function useSocket({ userInfo }) {
   const socket = useRef();
   const { REACT_APP_WS_BACKEND_URL } = process.env;
-  //const dispatch= useDispatch();
+  const dispatch = useDispatch();
 
-  const onConnOpen = () => {
-    socket.current.send(
-      JSON.stringify({
-        action: "addConnectionInfo",
-        location: { country: "Uruguay", city: "Montevideo" },
-      })
-    );
-    socket.current.send(
-      JSON.stringify({
-        action: "eventCrud",
-        method: "read",
-        // queyParams: userInfo,
-      })
-    );
-  };
-  // const onNewEvent = (event) => {
-  //   dispatch(addEvent(event));
-  //   console.log(event);
-  // };
-  // const onUpdateEvent = (event) => {
-  //   dispatch(updEvent(event));
-  //   console.log(event);
-  // };
-
-  // const onListEvents = (data) => {
-  //    console.log(data);
-  //    dispatch(setEvents(data));
-
-  // };
-  const onListEvents = (data) => console.log(JSON.parse(data));
-
-  // socket.current.addEventListener("newEvent", (data) => onNewEvent);
-  // socket.current.addEventListener("updatedEvent", (data) => onUpdateEvent);
   useEffect(() => {
-    if (!socket.crurent) {
+    if (!socket.current) {
       socket.current = new WebSocket(REACT_APP_WS_BACKEND_URL);
-      socket.current.addEventListener("open", onConnOpen);
-      socket.current.addEventListener("listEvents", onListEvents);
+
+      socket.current.onopen = (event) => {
+        console.log("OnConnOpen");
+        socket.current.send(
+          JSON.stringify({
+            action: "addConnectionInfo",
+            location: { country: "Uruguay", city: "Montevideo" },
+          })
+        );
+        socket.current.send(
+          JSON.stringify({
+            action: "getListEvents",
+
+            // queyParams: userInfo,
+          })
+        );
+      };
+
+      socket.current.onmessage = function (event) {
+        try {
+          const json = JSON.parse(event.data);
+          const message = JSON.parse(json);
+
+          if (message.action && message.data) {
+            console.log(message.action, message.data);
+            switch (message.action) {
+              case "listEvents":
+                return dispatch(setEvents(message.data));
+              case "addEvent":
+                return dispatch(addEvent(message.data));
+              case "updateEvent":
+                return dispatch(updateEvent(message.data));
+            }
+          }
+        } catch (err) {
+          // console.log(err);
+        }
+      };
     }
-    return () => {
-      socket.current.removeEventListener("open", onConnOpen);
-      socket.current.removeEventListener("listEvents", onListEvents);
-    };
+    return () => {};
   }, []);
-  useEffect(()=>{console.log(socket.current)},[socket.current])
 
   const addEvent = (data) =>
     socket.current.send(
       JSON.stringify({
-        action: "eventCrud",
-        method: "create",
+        action: "addEvent",
         event: data,
       })
     );
@@ -63,8 +63,7 @@ export function useSocket({ userInfo }) {
   const updateEvent = (data) =>
     socket.current.send(
       JSON.stringify({
-        action: "eventCrud",
-        method: "update",
+        action: "updateEvent",
         event: data,
       })
     );
