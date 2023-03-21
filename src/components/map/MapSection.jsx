@@ -129,8 +129,11 @@ export const MapSection = () => {
       >
         {events.map((marker) => (
           <Marker
-            key={marker._id}
-            position={{ lat: marker.lat, lng: marker.lng }}
+            key={marker.id}
+            position={{
+              lat: parseFloat(marker.lat),
+              lng: parseFloat(marker.lng),
+            }}
             onClick={() => {
               setSelectedEvent(marker);
             }}
