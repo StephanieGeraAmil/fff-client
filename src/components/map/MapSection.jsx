@@ -112,6 +112,12 @@ export const MapSection = () => {
         };
         setMapCenter(initialLocation);
       });
+    } else {
+      //not web
+      setMapCenter({
+        lat: 40.73061,
+        lng: -73.935242,
+      });
     }
   }, []);
 
