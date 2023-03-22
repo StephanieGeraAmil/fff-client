@@ -96,10 +96,6 @@ export const MapSection = () => {
       if (!userLogged.gender || !userLogged.birthDate) {
         dispatch(setForm({ type: "AddUser" }));
       }
-      // if (userLogged.gender)
-      //   setUserInfo({ ...userInfo, gender: userLogged.gender });
-      // if (userLogged.birthDate)
-      //   setUserInfo({ ...userInfo, age: getAgeOf(userLogged.birthDate) });
     }
   }, [userLogged]);
 
@@ -167,30 +163,6 @@ export const MapSection = () => {
               </p>
               {userLogged && (
                 <>
-                  {/* <Button
-                    onClick={() => {
-                      // let update = {};
-                      // if (selected.hasTheUser) {
-                      //   update = {
-                      //     ...selected,
-                      //     userToAddOrRemove: userLogged._id,
-                      //     task: "deleteUser",
-                      //   };
-                      // } else {
-                      //   update = {
-                      //     ...selected,
-                      //     userToAddOrRemove: userLogged._id,
-                      //     task: "addUser",
-                      //   };
-                      // }
-                      // dispatch(updateUserInEvent(update));
-                      setSelectedEvent(null);
-                      handleClose();
-                    }}
-                  >
-                    {selectedEvent.hasTheUser ? "Leave" : "Join"}
-                  </Button> */}
-
                   {selectedEvent.creator === userLogged.id && (
                     <>
                       <Button
