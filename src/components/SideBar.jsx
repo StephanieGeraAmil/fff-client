@@ -6,7 +6,7 @@ import { Search } from "./Search";
 
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { Box, Drawer } from "@mui/material/";
+import { Box, Drawer, Grid } from "@mui/material/";
 import { setForm } from "../actions/globalStateActions";
 
 export const SideBar = () => {
@@ -48,16 +48,20 @@ export const SideBar = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <>
+    
         <Drawer
           PaperProps={{
             sx: {
-              width: "30%",
+              width: "50%",
+              minWidth:'200px',
+              maxWidth:'400px',
               position: "fixed",
               top: 0,
               left: 40,
               m: 0,
               zIndex: 10,
             },
+           
           }}
           anchor={"left"}
           open={show}
@@ -65,6 +69,7 @@ export const SideBar = () => {
         >
           {list()}
         </Drawer>
+
       </>
     </LocalizationProvider>
   );
