@@ -6,7 +6,7 @@ import { Search } from "./Search";
 
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { Box, Drawer, Grid } from "@mui/material/";
+import { Box, Drawer } from "@mui/material/";
 import { setForm } from "../actions/globalStateActions";
 
 export const SideBar = () => {
@@ -53,7 +53,7 @@ export const SideBar = () => {
           PaperProps={{
             sx: {
               width: "50%",
-              minWidth:'200px',
+              minWidth:'300px',
               maxWidth:'400px',
               position: "fixed",
               top: 0,
