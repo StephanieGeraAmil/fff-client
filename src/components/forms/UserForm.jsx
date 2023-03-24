@@ -17,8 +17,19 @@ import {
   InputLabel,
   FormControl,
   FormGroup,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+  Slider,
+  Grid,
+  Switch,
+  Container,
+  Box,
 } from "@mui/material";
 import dayjs from "dayjs";
+import Woman2OutlinedIcon from "@mui/icons-material/Woman2Outlined";
+import Man2OutlinedIcon from "@mui/icons-material/Man2Outlined";
 
 export const UserForm = () => {
   const form = useSelector((state) =>
@@ -78,21 +89,50 @@ export const UserForm = () => {
         <FormControl sx={{ p: 1 }}>
           <TextField
             label="Name"
-            variant="outlined"
+            variant="standard"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </FormControl>
-        <FormControl sx={{ p: 1 }}>
-          <Select
-            value={gender}
-            label="Gender"
-            onChange={(e) => setGender(e.target.value)}
-          >
-            <MenuItem value={"Female"}>Female</MenuItem>
-            <MenuItem value={"Male"}>Male</MenuItem>
-          </Select>
-        </FormControl>
+
+        <Box sx={{ display: "flex", justifyContent: "space-between" , alignItems: "center" , m:1}}>
+          <Typography variant="subtitle2" gutterBottom sx={{ fontWeight: 100, fontSize: 15.5 }}>
+            Gender
+          </Typography>
+
+          <FormControl>
+            <RadioGroup
+              row
+              aria-labelledby="demo-controlled-radio-buttons-group"
+              name="controlled-radio-buttons-group"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+              size="small"
+              sx={{ m: 0 }}
+            >
+              <Box sx={{ m: 0, display: "flex", alignItems: "center" }}>
+                <FormControlLabel
+                  sx={{ m: 0 }}
+                  value="female"
+                  control={<Radio size="small" />}
+                  labelPlacement="start"
+                />
+
+                <Woman2OutlinedIcon sx={{ m: 0 }} />
+              </Box>
+              <Box sx={{ m: 0, display: "flex", alignItems: "center" }}>
+                <FormControlLabel
+                  sx={{ m: 0 }}
+                  value="male"
+                  control={<Radio size="small" />}
+                  labelPlacement="start"
+                />
+
+                <Man2OutlinedIcon sx={{ m: 0 }} />
+              </Box>
+            </RadioGroup>
+          </FormControl>
+        </Box>
         <FormControl sx={{ p: 1 }}>
           <DatePicker
             label="Birth Date"
