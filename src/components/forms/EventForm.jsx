@@ -41,7 +41,6 @@ export const EventForm = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
-  // const [eventDate, setEventDate] = useState("");
   const [eventType, setEventType] = useState("");
   const [targetGender, setTargetGender] = useState("");
   const [repetition, setRepetition] = useState(false);
@@ -50,7 +49,7 @@ export const EventForm = () => {
   const typesAvaiable = [
     { name: "Bible Study", img: `/bible.png`, id: 1 },
     { name: "Coffee", img: `/coffee.png`, id: 2 },
-    { name: "Pizza", img: `/pizza.png`, id: 3 },
+    { name: "Food", img: `/pizza.png`, id: 3 },
     { name: "Church", img: `/church.png`, id: 4 },
     { name: "Movies", img: `/tv.png`, id: 5 },
     { name: "Fitness", img: `/fitness.png`, id: 6 },
@@ -78,39 +77,7 @@ export const EventForm = () => {
   const handleRepeatChange = (event) => {
     setRepetition(event.target.checked);
   };
-  const marks = [
-    {
-      value: 10,
-    },
-    {
-      value: 20,
-      label: "20",
-    },
-    {
-      value: 30,
-    },
-    {
-      value: 40,
-      label: "40",
-    },
-    {
-      value: 50,
-    },
-    {
-      value: 60,
-      label: "60",
-    },
-    {
-      value: 70,
-    },
-    {
-      value: 80,
-      label: "80",
-    },
-    {
-      value: 90,
-    },
-  ];
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -122,10 +89,15 @@ export const EventForm = () => {
       type: typeOfEvent[0].name,
       img: "." + typeOfEvent[0].img,
       creator: userLogged.id,
-      eventDate: date,
+
       targetGender: targetGender,
       targetAgeRange: targetAgeRange,
     };
+    if (!repetition) {
+      eventData.date = date;
+    } else {
+      eventData.date = null;
+    }
     if (form.positionSelected) {
       eventData.lat = form.positionSelected.lat;
       eventData.lng = form.positionSelected.lng;
@@ -145,10 +117,11 @@ export const EventForm = () => {
       //display the values already saved on the event
       if (form.event) {
         if (form.event.date) {
+          setRepetition(false);
           const date = new Date(form.event.date);
           setDate(dayjs(date.toISOString().slice(0, 10)));
         } else {
-          setRepetition(false);
+          setRepetition(true);
         }
         if (form.event.title) {
           setTitle(form.event.title);
@@ -241,7 +214,7 @@ export const EventForm = () => {
             >
               Who is it for?
             </Typography>
-            <Grid container xs={12}>
+            <Grid container>
               <Grid item xs={2} sx={{ display: "flex", alignItems: "center" }}>
                 <Typography
                   variant="subtitle2"
@@ -262,9 +235,7 @@ export const EventForm = () => {
                     size="small"
                     sx={{ m: 0 }}
                   >
-                    <Box
-                      sx={{m: 0 , display: "flex", alignItems: "center" }}
-                    >
+                    <Box sx={{ m: 0, display: "flex", alignItems: "center" }}>
                       <FormControlLabel
                         sx={{ m: 0 }}
                         value="female"
@@ -274,10 +245,7 @@ export const EventForm = () => {
 
                       <Woman2OutlinedIcon sx={{ m: 0 }} />
                     </Box>
-                    <Box
-                      
-                      sx={{m: 0 , display: "flex", alignItems: "center" }}
-                    >
+                    <Box sx={{ m: 0, display: "flex", alignItems: "center" }}>
                       <FormControlLabel
                         sx={{ m: 0 }}
                         value="male"
@@ -287,10 +255,7 @@ export const EventForm = () => {
 
                       <Man2OutlinedIcon sx={{ m: 0 }} />
                     </Box>
-                    <Box
-                  
-                      sx={{ m: 0 ,display: "flex", alignItems: "center" }}
-                    >
+                    <Box sx={{ m: 0, display: "flex", alignItems: "center" }}>
                       <FormControlLabel
                         sx={{ m: 0 }}
                         value="all"
