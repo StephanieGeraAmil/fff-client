@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import parse from "autosuggest-highlight/parse";
 import { getGeocode, getLatLng } from "use-places-autocomplete";
 import {
@@ -8,9 +9,13 @@ import {
   Typography,
   Grid,
   Stack,
+  FormControl,
+  FormControlLabel,
+  Switch,
 } from "@mui/material/";
 import { debounce } from "@mui/material/utils";
 import { CenterMap } from "./map/MapSection";
+import { unsetFilters, setFilters } from "../actions/globalStateActions";
 
 const autocompleteService = { current: null };
 const bounce = debounce((request, callback) => {
@@ -21,6 +26,15 @@ export const Search = () => {
   const [value, setValue] = React.useState(null);
   const [inputValue, setInputValue] = React.useState("");
   const [options, setOptions] = React.useState([]);
+
+  const dispatch = useDispatch();
+  const userLogged = useSelector((state) =>
+    state.current.user ? state.current.user : null
+  );
+  const filtersSaved = useSelector((state) =>
+    state.current.filters ? state.current.filters : null
+  );
+  const [forMe, setForMe] = useState(filtersSaved ? true : false);
 
   const handleSelect = async (placeId) => {
     try {
@@ -63,6 +77,29 @@ export const Search = () => {
       active = false;
     };
   }, [value, inputValue]);
+
+  const getAge = (birthdate) => {
+    const now = new Date();
+    const bdate = new Date(birthdate);
+    const difference = now.getTime() - bdate.getTime();
+    const dayDifference = Math.floor(difference / (1000 * 60 * 60 * 24 * 365));
+
+    return dayDifference;
+  };
+  const handleForMeChange = (event) => {
+    setForMe(event.target.checked);
+    if (event.target.checked) {
+      const myAge = getAge(userLogged.birthDate);
+      const filters = {
+        age: myAge,
+        gender: userLogged.gender,
+      };
+
+      dispatch(setFilters(filters));
+    } else {
+      dispatch(unsetFilters());
+    }
+  };
   return (
     <Box role="presentation" sx={{ width: "100%", height: "90%" }}>
       <Autocomplete
@@ -120,6 +157,14 @@ export const Search = () => {
           <TextField {...params} label="Change location" fullWidth />
         )}
       />
+      {userLogged && (
+        <FormControl>
+          <FormControlLabel
+            control={<Switch checked={forMe} onChange={handleForMeChange} />}
+            label={forMe ? "Show only events for me" : "Show all Events"}
+          />
+        </FormControl>
+      )}
     </Box>
   );
 };

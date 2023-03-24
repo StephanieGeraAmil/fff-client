@@ -52,3 +52,21 @@ export const updateUser=(updatedUser)=>async(dispatch)=>{
         console.log(error);
     }
 }
+
+export const setFilters = (filters) => async (dispatch) => {
+  try {
+    const action = { type: actions.SET_FILTERS, payload: filters };
+    dispatch(action);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const unsetFilters = () => async (dispatch) => {
+  try {
+    const action = { type: actions.UNSET_FILTERS };
+    dispatch(action);
+  } catch (error) {
+    console.log(error);
+  }
+};
