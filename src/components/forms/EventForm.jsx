@@ -263,8 +263,7 @@ export const EventForm = () => {
                     sx={{ m: 0 }}
                   >
                     <Box
-                      sx={{ m: 0 }}
-                      sx={{ display: "flex", alignItems: "center" }}
+                      sx={{m: 0 , display: "flex", alignItems: "center" }}
                     >
                       <FormControlLabel
                         sx={{ m: 0 }}
@@ -276,8 +275,8 @@ export const EventForm = () => {
                       <Woman2OutlinedIcon sx={{ m: 0 }} />
                     </Box>
                     <Box
-                      sx={{ m: 0 }}
-                      sx={{ display: "flex", alignItems: "center" }}
+                      
+                      sx={{m: 0 , display: "flex", alignItems: "center" }}
                     >
                       <FormControlLabel
                         sx={{ m: 0 }}
@@ -289,8 +288,8 @@ export const EventForm = () => {
                       <Man2OutlinedIcon sx={{ m: 0 }} />
                     </Box>
                     <Box
-                      sx={{ m: 0 }}
-                      sx={{ display: "flex", alignItems: "center" }}
+                  
+                      sx={{ m: 0 ,display: "flex", alignItems: "center" }}
                     >
                       <FormControlLabel
                         sx={{ m: 0 }}
