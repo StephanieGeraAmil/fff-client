@@ -85,70 +85,90 @@ export const UserForm = () => {
       <Typography variant="h2" gutterBottom>
         User Info
       </Typography>
-      <FormGroup>
-        <FormControl sx={{ p: 1 }}>
-          <TextField
-            label="Name"
-            variant="standard"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </FormControl>
-
-        <Box sx={{ display: "flex", justifyContent: "space-between" , alignItems: "center" , m:1}}>
-          <Typography variant="subtitle2" gutterBottom sx={{ fontWeight: 100, fontSize: 15.5 }}>
-            Gender
-          </Typography>
-
-          <FormControl>
-            <RadioGroup
-              row
-              aria-labelledby="demo-controlled-radio-buttons-group"
-              name="controlled-radio-buttons-group"
-              value={gender}
-              onChange={(e) => setGender(e.target.value)}
-              size="small"
-              sx={{ m: 0 }}
-            >
-              <Box sx={{ m: 0, display: "flex", alignItems: "center" }}>
-                <FormControlLabel
-                  sx={{ m: 0 }}
-                  value="female"
-                  control={<Radio size="small" />}
-                  labelPlacement="start"
-                />
-
-                <Woman2OutlinedIcon sx={{ m: 0 }} />
-              </Box>
-              <Box sx={{ m: 0, display: "flex", alignItems: "center" }}>
-                <FormControlLabel
-                  sx={{ m: 0 }}
-                  value="male"
-                  control={<Radio size="small" />}
-                  labelPlacement="start"
-                />
-
-                <Man2OutlinedIcon sx={{ m: 0 }} />
-              </Box>
-            </RadioGroup>
+      <Grid container spacing={1}>
+        <Grid item xs={12}>
+          <FormControl sx={{ p: 1 , width: "100%"}}>
+            <TextField
+              label="Name"
+              variant="standard"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
           </FormControl>
-        </Box>
-        <FormControl sx={{ p: 1 }}>
-          <DatePicker
-            label="Birth Date"
-            value={date}
-            onChange={(newValue) => setDate(newValue)}
-          />
-        </FormControl>
-      </FormGroup>
+        </Grid>
+        <Grid item xs={12}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              m: 1,
+            }}
+          >
+            <Typography
+              variant="subtitle2"
+              gutterBottom
+              sx={{ fontWeight: 100, fontSize: 15.5 }}
+            >
+              Gender
+            </Typography>
 
-      <Button
-        sx={{ mt: 1 }}
-        variant="contained"
-        onClick={(e) => handleSubmit(e)}
-      >
-        Save
-      </Button>
+            <FormControl>
+              <RadioGroup
+                row
+                aria-labelledby="demo-controlled-radio-buttons-group"
+                name="controlled-radio-buttons-group"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+                size="small"
+                sx={{ m: 0 }}
+              >
+                <Box sx={{ m: 0, display: "flex", alignItems: "center" }}>
+                  <FormControlLabel
+                    sx={{ m: 0 }}
+                    value="female"
+                    control={<Radio size="small" />}
+                    labelPlacement="start"
+                  />
+
+                  <Woman2OutlinedIcon sx={{ m: 0 }} />
+                </Box>
+                <Box sx={{ m: 0, display: "flex", alignItems: "center" }}>
+                  <FormControlLabel
+                    sx={{ m: 0 }}
+                    value="male"
+                    control={<Radio size="small" />}
+                    labelPlacement="start"
+                  />
+
+                  <Man2OutlinedIcon sx={{ m: 0 }} />
+                </Box>
+              </RadioGroup>
+            </FormControl>
+          </Box>
+        </Grid>
+        <Grid item xs={12}>
+          <FormControl sx={{ p: 1 , width: "100%"}}>
+            <DatePicker
+              label="Birth Date"
+              value={date}
+              onChange={(newValue) => setDate(newValue)}
+              disableCloseOnSelect={false}
+            />
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12}>
+          <Button
+            sx={{ mt: 1 }}
+            variant="contained"
+            onClick={(e) => handleSubmit(e)}
+             disabled = {!name||!gender||!date}
+          >
+            Save
+          </Button>
+        </Grid>
+      </Grid>
     </>
   );
 };
