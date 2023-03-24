@@ -1,18 +1,9 @@
 import React, { useCallback, useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  GoogleMap,
-  Marker,
-  InfoWindow,
-  useLoadScript,
-} from "@react-google-maps/api";
+import { GoogleMap, Marker } from "@react-google-maps/api";
 import mapStyles from "./MapStyles";
-import { formatRelative } from "date-fns";
-
-import { setForm } from "../../actions/globalStateActions";
-import { Card } from "@mui/material";
-import { Button } from "@mui/material";
-import { useSocket, deleteEventOnBack } from "../../hooks/useSocket";
+import { setForm,unsetForm } from "../../actions/globalStateActions";
+import { useSocket } from "../../hooks/useSocket";
 
 const containerStyle = {
   width: "100vw",
@@ -52,6 +43,7 @@ export const MapSection = () => {
 
   const onMapClick = useCallback(
     (e) => {
+    
       setSelectedEvent(null); // to be sure the state is clean to save the event being created
       if (userLogged) {
         const positionSelected = {
@@ -69,27 +61,12 @@ export const MapSection = () => {
   }, []);
 
   // I need the ade of the loged user to determine which events are accesible to it
-  const getAgeOf = (birthDate) => {
-    let age;
-    const birth = new Date(birthDate);
-    const now = new Date();
-    const diff_months = now.getMonth() - birth.getMonth();
-    if (diff_months < 0) {
-      age = now.getFullYear() - 1 - birth.getFullYear();
-    } else {
-      if (diff_months === 0) {
-        const diff_days = now.getDate() - birth.getDate();
-        if (diff_days < 0) {
-          age = now.getFullYear() - 1 - birth.getFullYear();
-        } else {
-          age = now.getFullYear() - birth.getFullYear();
-        }
-      } else {
-        age = now.getFullYear() - birth.getFullYear();
-      }
+
+  useEffect(() => {
+    if (selectedEvent) {
+      dispatch(setForm({ type: "EventDetails", event: selectedEvent }));
     }
-    return age;
-  };
+  }, [selectedEvent]);
 
   useEffect(() => {
     if (userLogged) {
@@ -145,52 +122,6 @@ export const MapSection = () => {
             }}
           />
         ))}
-
-        {selectedEvent ? (
-          <InfoWindow
-            position={{ lat: selectedEvent.lat, lng: selectedEvent.lng }}
-            onCloseClick={() => {
-              setSelectedEvent(null);
-            }}
-          >
-            <div>
-              <h2>{selectedEvent.title}</h2>
-
-              <p>Description: {selectedEvent.description}</p>
-              <p>
-                Created{" "}
-                {formatRelative(new Date(selectedEvent.createdAt), Date.now())}
-              </p>
-              {userLogged && (
-                <>
-                  {selectedEvent.creator === userLogged.id && (
-                    <>
-                      <Button
-                        onClick={() => {
-                          dispatch(
-                            setForm({ type: "EditEvent", event: selectedEvent })
-                          );
-                          setSelectedEvent(null);
-                        }}
-                      >
-                        Edit
-                      </Button>
-
-                      <Button
-                        onClick={() => {
-                          deleteEventOnBack(selectedEvent.id);
-                          setSelectedEvent(null);
-                        }}
-                      >
-                        Delete
-                      </Button>
-                    </>
-                  )}
-                </>
-              )}
-            </div>
-          </InfoWindow>
-        ) : null}
       </GoogleMap>
     </>
   );
