@@ -2,7 +2,7 @@ import React, { useCallback, useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import mapStyles from "./MapStyles";
-import { setForm,unsetForm } from "../../actions/globalStateActions";
+import { setForm, unsetForm } from "../../actions/globalStateActions";
 import { useSocket } from "../../hooks/useSocket";
 
 const containerStyle = {
@@ -27,9 +27,12 @@ export const MapSection = () => {
   const userLoggedSelector = (state) =>
     state.current.user ? state.current.user : null;
   const userLogged = useSelector(userLoggedSelector);
+  const filtersSelector = (state) =>
+    state.current.filters ? state.current.filters : null;
+  const filters = useSelector(filtersSelector);
 
   const dispatch = useDispatch();
-
+ const [eventsToShow, setEventsToShow] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [mapCenter, setMapCenter] = useState({
     lat: -32.90328,
@@ -43,7 +46,6 @@ export const MapSection = () => {
 
   const onMapClick = useCallback(
     (e) => {
-    
       setSelectedEvent(null); // to be sure the state is clean to save the event being created
       if (userLogged) {
         const positionSelected = {
@@ -61,6 +63,22 @@ export const MapSection = () => {
   }, []);
 
   // I need the ade of the loged user to determine which events are accesible to it
+
+  useEffect(() => {
+    if (filters) {
+      setEventsToShow(
+        events.filter(
+          (event) =>
+            (event.targetGender === filters.gender ||
+              event.targetGender === "all") &&
+            event.targetAgeRange[0] <= filters.age &&
+            event.targetAgeRange[1] >= filters.age
+        )
+      );
+    } else {
+      setEventsToShow(events);
+    }
+  }, [filters,events]);
 
   useEffect(() => {
     if (selectedEvent) {
@@ -104,7 +122,7 @@ export const MapSection = () => {
         onClick={onMapClick}
         onLoad={onMapLoad}
       >
-        {events.map((marker) => (
+        {eventsToShow.map((marker) => (
           <Marker
             key={marker.id}
             position={{
