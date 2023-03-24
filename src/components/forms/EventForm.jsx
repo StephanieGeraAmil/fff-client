@@ -7,7 +7,6 @@ import {
   TextField,
   Typography,
   FormControl,
-  FormGroup,
   Select,
   MenuItem,
   InputLabel,
@@ -45,6 +44,7 @@ export const EventForm = () => {
   const [targetGender, setTargetGender] = useState("");
   const [repetition, setRepetition] = useState(false);
   const [targetAgeRange, setTargetAgeRange] = useState([20, 37]);
+  const [chatLink, setChatLink] = useState("");
 
   const typesAvaiable = [
     { name: "Bible Study", img: `/bible.png`, id: 1 },
@@ -93,6 +93,10 @@ export const EventForm = () => {
       targetGender: targetGender,
       targetAgeRange: targetAgeRange,
     };
+
+    if (chatLink) {
+      eventData.chatLink = chatLink;
+    }
     if (!repetition) {
       eventData.date = date;
     } else {
@@ -135,6 +139,9 @@ export const EventForm = () => {
         if (form.event.targetGender) {
           setTargetGender(form.event.targetGender);
         }
+        if (form.event.chatLink) {
+          setChatLink(form.event.chatLink);
+        }
         if (form.event.type) {
           const typeOfEvent = typesAvaiable.filter(
             (type) => type.name === form.event.type
@@ -155,16 +162,19 @@ export const EventForm = () => {
         <Grid item xs={12}>
           <FormControl sx={{ width: "100%" }}>
             <TextField
+            required
               label="Title"
               variant="standard"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+    
             />
           </FormControl>
         </Grid>
         <Grid item xs={12}>
           <FormControl sx={{ width: "100%" }}>
             <TextField
+            required
               multiline
               maxRows={3}
               label="Description"
@@ -178,6 +188,7 @@ export const EventForm = () => {
           <FormControl variant="standard" sx={{ width: "100%" }}>
             <InputLabel id="type-of-event">Type of Event</InputLabel>
             <Select
+            required
               labelId="type-of-event"
               id="type-select"
               label="Event type"
@@ -227,6 +238,7 @@ export const EventForm = () => {
               <Grid item xs={10} sx={{ display: "flex", alignItems: "center" }}>
                 <FormControl>
                   <RadioGroup
+                  required
                     row
                     aria-labelledby="demo-controlled-radio-buttons-group"
                     name="controlled-radio-buttons-group"
@@ -280,6 +292,7 @@ export const EventForm = () => {
                 <FormControl sx={{ width: "100%" }}>
                   {" "}
                   <Slider
+                  required
                     getAriaLabel={() => "Minimum distance"}
                     value={targetAgeRange}
                     onChange={handleChange}
@@ -314,9 +327,21 @@ export const EventForm = () => {
                 label="Event Date"
                 value={date}
                 onChange={(newValue) => setDate(newValue)}
+                enableCloseOnSelect={true}
+        
               />
             </FormControl>
           )}
+        </Grid>
+        <Grid item xs={12}>
+          <FormControl sx={{ width: "100%" }}>
+            <TextField
+              label="Group Chat Link"
+              variant="standard"
+              value={chatLink}
+              onChange={(e) => setChatLink(e.target.value)}
+            />
+          </FormControl>
         </Grid>
 
         <Grid item xs={12}>
@@ -324,6 +349,7 @@ export const EventForm = () => {
             sx={{ mt: 1 }}
             variant="contained"
             onClick={(e) => handleSubmit(e)}
+            disabled = {!title||!description||!eventType||!targetGender||!targetAgeRange}
           >
             Save
           </Button>

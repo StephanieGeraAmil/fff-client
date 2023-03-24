@@ -50,6 +50,18 @@ export const EventDetails = () => {
       <Typography variant="subtitle2" gutterBottom>
         Created: {formatRelative(new Date(form.event.createdAt), Date.now())}
       </Typography>
+      {form.event.chatLink && (
+        <Button
+          variant="contained"
+          onClick={() => {
+            window.location.replace(form.event.chatLink);
+            // window.location.replace("https://discord.gg/pzQ6gNR2");
+            //  window.location.replace("https://chat.whatsapp.com/HFNiMfTMnQeIVKE7c1DJHI");
+          }}
+        >
+          Join Group Chat
+        </Button>
+      )}
       {userLogged &&
         form.event.creator &&
         userLogged.id === form.event.creator && (
