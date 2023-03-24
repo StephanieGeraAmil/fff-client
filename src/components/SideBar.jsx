@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { EventForm } from "./forms/EventForm";
+import { EventDetails } from "./forms/EventDetails";
 import { UserForm } from "./forms/UserForm";
 import { Search } from "./Search";
 
@@ -33,6 +34,7 @@ export const SideBar = () => {
       ) : (
         <></>
       )}
+        {form && form.type === "EventDetails" ? <EventDetails /> : <></>}
       {form && form.type === "AddUser" ? <UserForm /> : <></>}
       {form && form.type === "Search" ? <Search fullWidth /> : <></>}
     </Box>
