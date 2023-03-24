@@ -68,8 +68,6 @@ export const updateEventOnBack = (data) => {
   );
 };
 export const deleteEventOnBack = (data) => {
-  console.log("in the delete event on the use socket")
-   console.log(data)
   socket.current.send(
     JSON.stringify({
       action: "deleteEvent",
