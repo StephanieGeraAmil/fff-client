@@ -47,7 +47,12 @@ export const EventDetails = () => {
           Date: {date}
         </Typography>
       )}
-      <Typography variant="subtitle2" gutterBottom>
+    
+   
+       <Typography variant="body1" gutterBottom>
+       Event for  {form.event.targetGender=='all'?"Males and Females":(form.event.targetGender.concat("s"))} with ages between  {form.event.targetAgeRange[0]} and  {form.event.targetAgeRange[1]}
+      </Typography>
+     <Typography variant="subtitle2" gutterBottom>
         Created: {formatRelative(new Date(form.event.createdAt), Date.now())}
       </Typography>
       {form.event.chatLink && (
