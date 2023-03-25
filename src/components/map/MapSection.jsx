@@ -107,10 +107,7 @@ export const MapSection = () => {
     } else {
       if (screenSize.width < 500) {
         //not web
-        CenterMap({
-          lat: -32.90328,
-          lng: -52.18816,
-        });
+        dispatch(setForm({ type: "Search" }));
       }
     }
   }, []);
