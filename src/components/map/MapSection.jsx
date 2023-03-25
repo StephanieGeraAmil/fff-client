@@ -18,7 +18,7 @@ const options = {
 const mapRef = { current: null };
 export const CenterMap = ({ lat, lng }) => {
   mapRef.current.panTo({ lat, lng });
-  mapRef.current.setZoom(19);
+  mapRef.current.setZoom(17);
 };
 
 export const MapSection = () => {
@@ -107,9 +107,9 @@ export const MapSection = () => {
     } else {
       if (screenSize.width < 500) {
         //not web
-        setMapCenter({
-          lat: 50,
-          lng: -90,
+        CenterMap({
+          lat: -32.90328,
+          lng: -52.18816,
         });
       }
     }
@@ -127,7 +127,7 @@ export const MapSection = () => {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={mapCenter}
-        zoom={19}
+        zoom={17}
         options={options}
         onClick={onMapClick}
         onLoad={onMapLoad}
