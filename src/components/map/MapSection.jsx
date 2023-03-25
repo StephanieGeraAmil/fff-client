@@ -108,8 +108,8 @@ export const MapSection = () => {
       if (screenSize.width < 500) {
         //not web
         setMapCenter({
-          lat: 40.73061,
-          lng: -73.935242,
+          lat: 50,
+          lng: -90,
         });
       }
     }
