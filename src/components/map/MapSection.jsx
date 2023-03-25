@@ -104,11 +104,10 @@ export const MapSection = () => {
         };
         setMapCenter(initialLocation);
       });
-    } else {
-      if (screenSize.width < 500) {
-        //not web
-        dispatch(setForm({ type: "Search" }));
-      }
+    }
+    if (screenSize.width < 500) {
+      //not web
+      dispatch(setForm({ type: "Search" }));
     }
   }, []);
 

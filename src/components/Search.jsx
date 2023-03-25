@@ -154,7 +154,7 @@ export const Search = () => {
           );
         }}
         renderInput={(params) => (
-          <TextField {...params} label="Change location" fullWidth />
+          <TextField {...params} label="Go to" fullWidth />
         )}
       />
       {userLogged && (
