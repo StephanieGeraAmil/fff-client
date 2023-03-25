@@ -126,7 +126,7 @@ export const MapSection = () => {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={mapCenter}
-        zoom={screenSize.width>=500?19:25}
+        zoom={screenSize.width>=500?19:9}
         options={options}
         onClick={onMapClick}
         onLoad={onMapLoad}
