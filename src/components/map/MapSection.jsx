@@ -42,6 +42,7 @@ export const MapSection = () => {
     country: "Uruguay",
     city: "Montevideo",
   });
+  const [screenSize, setScreenSize] = useState(getCurrentDimension());
   useSocket({ userInfo });
 
   const onMapClick = useCallback(
@@ -95,6 +96,7 @@ export const MapSection = () => {
   }, [userLogged]);
 
   useEffect(() => {
+    console.log("screenSize",screenSize)
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         let initialLocation = {
@@ -112,12 +114,19 @@ export const MapSection = () => {
     }
   }, []);
 
+  function getCurrentDimension(){
+    return {
+      	width: window.innerWidth,
+      	height: window.innerHeight
+    }
+}
+
   return (
     <>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={mapCenter}
-        zoom={19}
+        zoom={screenSize.width>=500?19:25}
         options={options}
         onClick={onMapClick}
         onLoad={onMapLoad}
