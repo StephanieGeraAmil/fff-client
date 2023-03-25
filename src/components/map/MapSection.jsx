@@ -32,7 +32,7 @@ export const MapSection = () => {
   const filters = useSelector(filtersSelector);
 
   const dispatch = useDispatch();
- const [eventsToShow, setEventsToShow] = useState([]);
+  const [eventsToShow, setEventsToShow] = useState([]);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [mapCenter, setMapCenter] = useState({
     lat: -32.90328,
@@ -79,7 +79,7 @@ export const MapSection = () => {
     } else {
       setEventsToShow(events);
     }
-  }, [filters,events]);
+  }, [filters, events]);
 
   useEffect(() => {
     if (selectedEvent) {
@@ -96,7 +96,6 @@ export const MapSection = () => {
   }, [userLogged]);
 
   useEffect(() => {
-    console.log("screenSize",screenSize)
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         let initialLocation = {
@@ -106,27 +105,29 @@ export const MapSection = () => {
         setMapCenter(initialLocation);
       });
     } else {
-      //not web
-      setMapCenter({
-        lat: 40.73061,
-        lng: -73.935242,
-      });
+      if (screenSize.width < 500) {
+        //not web
+        setMapCenter({
+          lat: 40.73061,
+          lng: -73.935242,
+        });
+      }
     }
   }, []);
 
-  function getCurrentDimension(){
+  function getCurrentDimension() {
     return {
-      	width: window.innerWidth,
-      	height: window.innerHeight
-    }
-}
+      width: window.innerWidth,
+      height: window.innerHeight,
+    };
+  }
 
   return (
     <>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={mapCenter}
-        zoom={screenSize.width>=500?19:9}
+        zoom={19}
         options={options}
         onClick={onMapClick}
         onLoad={onMapLoad}
