@@ -15,7 +15,11 @@ import {
 } from "@mui/material/";
 import { debounce } from "@mui/material/utils";
 import { CenterMap } from "./map/MapSection";
-import { unsetFilters, setFilters } from "../actions/globalStateActions";
+import {
+  unsetFilters,
+  setFilters,
+  unsetForm,
+} from "../actions/globalStateActions";
 
 const autocompleteService = { current: null };
 const bounce = debounce((request, callback) => {
@@ -36,15 +40,6 @@ export const Search = () => {
   );
   const [forMe, setForMe] = useState(filtersSaved ? true : false);
 
-  const handleSelect = async (placeId) => {
-    try {
-      const results = await getGeocode({ placeId: placeId });
-      const { lat, lng } = await getLatLng(results[0]);
-      CenterMap({ lat, lng });
-    } catch (error) {
-      console.log("Error: ", error);
-    }
-  };
   const loadPlacesLibrary = async () => {
     await window.google.maps.importLibrary("places");
     autocompleteService.current =
@@ -98,6 +93,17 @@ export const Search = () => {
       dispatch(setFilters(filters));
     } else {
       dispatch(unsetFilters());
+    }
+  };
+
+  const handleSelect = async (placeId) => {
+    try {
+      const results = await getGeocode({ placeId: placeId });
+      const { lat, lng } = await getLatLng(results[0]);
+      CenterMap({ lat, lng });
+      dispatch(unsetForm());
+    } catch (error) {
+      console.log("Error: ", error);
     }
   };
   return (

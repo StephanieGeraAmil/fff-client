@@ -22,11 +22,8 @@ export const unsetForm = () => async (dispatch) => {
 export const setUser = (user) => async (dispatch) => {
   try {
     const response = await api.findUserByEmail(user.email);
-    //user found so I check if I have all the info and display the AddUserInfo form if I dont
     const action = { type: actions.SET_USER, payload: response.data.message };
     dispatch(action);
-    // const action2 = { type: actions.SET_FORM, payload: { type: "AddUser" } };
-    // dispatch(action2);
   } catch (error) {
     //user not found
     const action = { type: actions.SET_FORM, payload: { type: "AddUser" } };

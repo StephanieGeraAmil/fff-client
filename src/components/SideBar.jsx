@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { setForm } from "../actions/globalStateActions";
 import { EventForm } from "./forms/EventForm";
 import { EventDetails } from "./forms/EventDetails";
 import { UserForm } from "./forms/UserForm";
@@ -8,7 +9,6 @@ import { Search } from "./Search";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Box, Drawer } from "@mui/material/";
-import { setForm } from "../actions/globalStateActions";
 
 export const SideBar = () => {
   const formSelector = (state) =>
@@ -19,7 +19,7 @@ export const SideBar = () => {
 
   const toggleDrawer = (open) => (event) => {
     setShow(open);
-    if(!open){
+    if (!open) {
       setForm(null);
     }
   };
@@ -34,7 +34,7 @@ export const SideBar = () => {
       ) : (
         <></>
       )}
-        {form && form.type === "EventDetails" ? <EventDetails /> : <></>}
+      {form && form.type === "EventDetails" ? <EventDetails /> : <></>}
       {form && form.type === "AddUser" ? <UserForm /> : <></>}
       {form && form.type === "Search" ? <Search fullWidth /> : <></>}
     </Box>
@@ -50,28 +50,27 @@ export const SideBar = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <>
-    
         <Drawer
           PaperProps={{
             sx: {
-              width: "50%",
-              minWidth:'300px',
-              maxWidth:'400px',
-              position: "fixed",
+              width: 0.5,
+              minWidth:300,
+              maxWidth:600,
+              position: 'fixed',
               top: 0,
-              left: 40,
+              left: 'min(5%,80px)',
               m: 0,
-              zIndex: 10,
+              zIndex: 1000,
             },
            
           }}
+  
           anchor={"left"}
           open={show}
           onClose={toggleDrawer(false)}
         >
           {list()}
         </Drawer>
-
       </>
     </LocalizationProvider>
   );

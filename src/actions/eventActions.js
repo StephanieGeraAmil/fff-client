@@ -1,18 +1,4 @@
-import * as actions from '../actionTypes'
-//import * as api from '../api.js';
-
-
-export const updateUserInEvent=(updatedEvent)=>async(dispatch)=>{
-//     try {    
-//        await api.updateEvent(updatedEvent);
-//        const {data}=await api.fetchEventsWithUserBelongingInfo(updatedEvent.userToAddOrRemove);
-//         const action={type: actions.FETCH_EVENTS_WITH_USER_BELONGING_INFO,payload:data};
-//         dispatch(action);           
-//     } catch (error) {
-//         console.log(error);
-//     }
-}
-
+import * as actions from '../actionTypes';
 
 export const deleteEvent=(event_id)=>async(dispatch)=>{
     try {  
@@ -20,12 +6,8 @@ export const deleteEvent=(event_id)=>async(dispatch)=>{
         dispatch(action);     
     } catch (error) {
         console.log(error);
-    }
-
-    
+    }    
 }
-
-
 
 export const setEvents=(data)=>async(dispatch)=>{
     try{ 
@@ -34,7 +16,6 @@ export const setEvents=(data)=>async(dispatch)=>{
     } catch (error) {
         console.log(error);
     }
-
 }
 
 export const addEvent=(event)=>async(dispatch)=>{
