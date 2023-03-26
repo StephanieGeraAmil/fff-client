@@ -32,7 +32,7 @@ const handleSearchIconClick=(e)=>{
         top: 0,
         left: 0,
         backgroundColor: "background.default",
-        width: '5%',
+        width: '4%',
         minWidth:50,
         maxWidth:80,
         height: 1,

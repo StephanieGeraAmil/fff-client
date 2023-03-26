@@ -15,34 +15,6 @@ body {
   #root {
     width: 100vw;
     height: 100vh;
-    .sidebar {
-      
-        left: 4%;
-      }
-    
-      .rail {
-        width: 4%;
-      }
-  }
-}
-
-@media (min-width: 1000px) {
-  .sidebar {
-    // width: 500px;
-    left: 80px;
-  }
-
-  .rail {
-    width: 80px;
-  }
-}
-@media (max-width: 500px) {
-  .sidebar {
-    left: 50px;
-  
-  }
-
-  .rail {
-    width: 50px;
+   
   }
 }
