@@ -1,9 +1,9 @@
-import { useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { setEvents, addEvent, updateEvent , deleteEvent} from "../actions/eventActions";
 
 const socket = { current: null };
-export const useSocket = ({ userInfo }) => {
+export const useSocket = () => {
   const { REACT_APP_WS_BACKEND_URL } = process.env;
   const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ export const useSocket = ({ userInfo }) => {
           JSON.stringify({
             action: "getListEvents",
 
-            // queyParams: userInfo,
+            // queyParams: params,
           })
         );
       };

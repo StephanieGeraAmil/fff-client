@@ -1,5 +1,5 @@
 import "./styles/styles.css";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NavRail } from "./components/NavRail";
 import { MapSection } from "./components/map/MapSection";
 import { SideBar } from "./components/SideBar";
@@ -9,10 +9,9 @@ import {
   responsiveFontSizes,
 } from "@mui/material/styles";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
-import { CircularProgress, Backdrop } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 
 const App = () => {
-  const [open, setOpen] = useState(false);
   const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env;
   let theme = createTheme({
     palette: {
@@ -43,7 +42,6 @@ const App = () => {
       case Status.SUCCESS:
         return (
           <>
-            {" "}
             <SideBar />
             <MapSection />
           </>

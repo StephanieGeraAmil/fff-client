@@ -3,8 +3,6 @@ import axios from "axios";
 const { REACT_APP_REST_BACKEND_URL } = process.env;
 
 const backend_url = REACT_APP_REST_BACKEND_URL;
-// axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
-//const backend_url=""
 const users_url = backend_url + "/users";
 export const fetchUsers = () => axios.get(users_url);
 export const findUserByEmail = (userEmail) =>

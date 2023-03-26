@@ -162,7 +162,7 @@ export const UserForm = () => {
           <Button
             sx={{ mt: 1 }}
             variant="contained"
-            onClick={(e) => handleSubmit(e)}
+            onClick={handleSubmit}
              disabled = {!name||!gender||!date}
           >
             Save

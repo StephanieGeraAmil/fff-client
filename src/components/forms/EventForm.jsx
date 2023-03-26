@@ -56,8 +56,43 @@ export const EventForm = () => {
     { name: "Pray", img: `/pray.png`, id: 7 },
   ];
 
+  useEffect(() => {
+    if (form.type === "EditEvent") {
+      //display the values already saved on the event
+      if (form.event) {
+        if (form.event.date) {
+          setRepetition(false);
+          const date = new Date(form.event.date);
+          setDate(dayjs(date.toISOString().slice(0, 10)));
+        } else {
+          setRepetition(true);
+        }
+        if (form.event.title) {
+          setTitle(form.event.title);
+        }
+        if (form.event.description) {
+          setDescription(form.event.description);
+        }
+        if (form.event.targetAgeRange) {
+          setTargetAgeRange(form.event.targetAgeRange);
+        }
+        if (form.event.targetGender) {
+          setTargetGender(form.event.targetGender);
+        }
+        if (form.event.chatLink) {
+          setChatLink(form.event.chatLink);
+        }
+        if (form.event.type) {
+          const typeOfEvent = typesAvaiable.filter(
+            (type) => type.name === form.event.type
+          );
+          setEventType(typeOfEvent[0].id);
+        }
+      }
+    }
+  }, []);
   const minAgeRange = 5;
-  const handleChange = (event, newValue, activeThumb) => {
+  const handleSliderChange = (event, newValue, activeThumb) => {
     if (!Array.isArray(newValue)) {
       return;
     }
@@ -74,6 +109,7 @@ export const EventForm = () => {
       ]);
     }
   };
+
   const handleRepeatChange = (event) => {
     setRepetition(event.target.checked);
   };
@@ -116,42 +152,8 @@ export const EventForm = () => {
     else if (form.type === "EditEvent") updateEventOnBack(eventData);
     dispatch(unsetForm());
   };
-  useEffect(() => {
-    if (form.type === "EditEvent") {
-      //display the values already saved on the event
-      if (form.event) {
-        if (form.event.date) {
-          setRepetition(false);
-          const date = new Date(form.event.date);
-          setDate(dayjs(date.toISOString().slice(0, 10)));
-        } else {
-          setRepetition(true);
-        }
-        if (form.event.title) {
-          setTitle(form.event.title);
-        }
-        if (form.event.description) {
-          setDescription(form.event.description);
-        }
-        if (form.event.targetAgeRange) {
-          setTargetAgeRange(form.event.targetAgeRange);
-        }
-        if (form.event.targetGender) {
-          setTargetGender(form.event.targetGender);
-        }
-        if (form.event.chatLink) {
-          setChatLink(form.event.chatLink);
-        }
-        if (form.event.type) {
-          const typeOfEvent = typesAvaiable.filter(
-            (type) => type.name === form.event.type
-          );
-          setEventType(typeOfEvent[0].id);
-        }
-      }
-    }
-  }, []);
 
+  
   return (
     <>
       <Typography variant="h2" gutterBottom>
@@ -162,19 +164,18 @@ export const EventForm = () => {
         <Grid item xs={12}>
           <FormControl sx={{ width: "100%" }}>
             <TextField
-            required
+              required
               label="Title"
               variant="standard"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-    
             />
           </FormControl>
         </Grid>
         <Grid item xs={12}>
           <FormControl sx={{ width: "100%" }}>
             <TextField
-            required
+              required
               multiline
               maxRows={3}
               label="Description"
@@ -188,7 +189,7 @@ export const EventForm = () => {
           <FormControl variant="standard" sx={{ width: "100%" }}>
             <InputLabel id="type-of-event">Type of Event</InputLabel>
             <Select
-            required
+              required
               labelId="type-of-event"
               id="type-select"
               label="Event type"
@@ -238,7 +239,7 @@ export const EventForm = () => {
               <Grid item xs={10} sx={{ display: "flex", alignItems: "center" }}>
                 <FormControl>
                   <RadioGroup
-                  required
+                    required
                     row
                     aria-labelledby="demo-controlled-radio-buttons-group"
                     name="controlled-radio-buttons-group"
@@ -292,15 +293,12 @@ export const EventForm = () => {
                 <FormControl sx={{ width: "100%" }}>
                   {" "}
                   <Slider
-                  required
-                    getAriaLabel={() => "Minimum distance"}
+                    // required
+                    //   getAriaLabel={() => "Minimum distance"}
                     value={targetAgeRange}
-                    onChange={handleChange}
+                    onChange={handleSliderChange}
                     valueLabelDisplay="auto"
                     disableSwap
-
-                    // marks={marks}
-                    // valueLabelDisplay="on"
                   />
                 </FormControl>
               </Grid>
@@ -328,7 +326,6 @@ export const EventForm = () => {
                 value={date}
                 onChange={(newValue) => setDate(newValue)}
                 enableCloseOnSelect={true}
-        
               />
             </FormControl>
           )}
@@ -348,8 +345,14 @@ export const EventForm = () => {
           <Button
             sx={{ mt: 1 }}
             variant="contained"
-            onClick={(e) => handleSubmit(e)}
-            disabled = {!title||!description||!eventType||!targetGender||!targetAgeRange}
+            onClick={handleSubmit}
+            disabled={
+              !title ||
+              !description ||
+              !eventType ||
+              !targetGender ||
+              !targetAgeRange
+            }
           >
             Save
           </Button>

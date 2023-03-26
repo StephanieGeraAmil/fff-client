@@ -5,8 +5,6 @@ import { Button, Typography } from "@mui/material";
 import { deleteEventOnBack } from "../../hooks/useSocket";
 import { formatRelative } from "date-fns";
 
-import dayjs from "dayjs";
-
 export const EventDetails = () => {
   const form = useSelector((state) =>
     state.current.form ? state.current.form : null
@@ -31,6 +29,17 @@ export const EventDetails = () => {
     }
   }, []);
 
+  const clickGroupChatHandler = () => {
+    window.location.replace(form.event.chatLink);
+  };
+  const clickDeleteHandler = () => {
+    deleteEventOnBack(form.event.id);
+    dispatch(unsetForm());
+  };
+  const clickEditHandler = () => {
+    dispatch(setForm({ type: "EditEvent", event: form.event }));
+  };
+
   return (
     <>
       <Typography variant="h2" gutterBottom>
@@ -47,23 +56,20 @@ export const EventDetails = () => {
           Date: {date}
         </Typography>
       )}
-    
-   
-       <Typography variant="body1" gutterBottom>
-       Event for  {form.event.targetGender=='all'?"Males and Females":(form.event.targetGender.concat("s"))} with ages between  {form.event.targetAgeRange[0]} and  {form.event.targetAgeRange[1]}
+
+      <Typography variant="body1" gutterBottom>
+        Event for{" "}
+        {form.event.targetGender == "all"
+          ? "Males and Females"
+          : form.event.targetGender.concat("s")}{" "}
+        with ages between {form.event.targetAgeRange[0]} and{" "}
+        {form.event.targetAgeRange[1]}
       </Typography>
-     <Typography variant="subtitle2" gutterBottom>
+      <Typography variant="subtitle2" gutterBottom>
         Created: {formatRelative(new Date(form.event.createdAt), Date.now())}
       </Typography>
       {form.event.chatLink && (
-        <Button
-          variant="contained"
-          onClick={() => {
-            window.location.replace(form.event.chatLink);
-            // window.location.replace("https://discord.gg/pzQ6gNR2");
-            //  window.location.replace("https://chat.whatsapp.com/HFNiMfTMnQeIVKE7c1DJHI");
-          }}
-        >
+        <Button variant="contained" onClick={clickGroupChatHandler}>
           Join Group Chat
         </Button>
       )}
@@ -71,21 +77,8 @@ export const EventDetails = () => {
         form.event.creator &&
         userLogged.id === form.event.creator && (
           <>
-            <Button
-              onClick={() => {
-                dispatch(setForm({ type: "EditEvent", event: form.event }));
-              }}
-            >
-              Edit
-            </Button>
-            <Button
-              onClick={() => {
-                deleteEventOnBack(form.event.id);
-                dispatch(unsetForm());
-              }}
-            >
-              Delete
-            </Button>
+            <Button onClick={clickEditHandler}>Edit</Button>
+            <Button onClick={clickDeleteHandler}>Delete</Button>
           </>
         )}
     </>

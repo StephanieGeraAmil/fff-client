@@ -1,8 +1,8 @@
-import React, { useCallback, useState, useRef, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import mapStyles from "./MapStyles";
-import { setForm, unsetForm } from "../../actions/globalStateActions";
+import { setForm } from "../../actions/globalStateActions";
 import { useSocket } from "../../hooks/useSocket";
 
 const containerStyle = {
@@ -13,7 +13,7 @@ const containerStyle = {
 const options = {
   styles: mapStyles,
   disableDefaultUI: true,
-  // zoomControl: true,
+  zoomControl: true,
 };
 const mapRef = { current: null };
 export const CenterMap = ({ lat, lng }) => {
@@ -63,8 +63,13 @@ export const MapSection = () => {
     mapRef.current = map;
   }, []);
 
-  // I need the ade of the loged user to determine which events are accesible to it
-
+  
+ function getCurrentDimension() {
+    return {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    };
+  }
   useEffect(() => {
     if (filters) {
       setEventsToShow(
@@ -111,12 +116,7 @@ export const MapSection = () => {
     }
   }, []);
 
-  function getCurrentDimension() {
-    return {
-      width: window.innerWidth,
-      height: window.innerHeight,
-    };
-  }
+ 
 
   return (
     <>

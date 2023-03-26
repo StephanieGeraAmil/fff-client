@@ -22,30 +22,33 @@ export const NavRail = () => {
       }
     }
   }, [user]);
-
+const handleSearchIconClick=(e)=>{
+   dispatch(setForm({ type: "Search" }));
+}
   return (
     <Box
-      sx={{
+        sx={{
         position: "absolute",
-        top: "0",
-        left: "0",
+        top: 0,
+        left: 0,
         backgroundColor: "background.default",
-        width: "35",
-        height: "100%",
+        width: '5%',
+        minWidth:50,
+        maxWidth:80,
+        height: 1,
         margin: "auto",
-        zIndex: "20",
+        zIndex: 1500,
         display: "flex",
         flexDirection: "column",
       }}
+      className="rail"
       role="presentation"
     >
       {!isAuthenticated && <Login />}
       {isAuthenticated && <Logout />}
       <IconButton
         aria-label="search"
-        onClick={(e) => {
-          dispatch(setForm({ type: "Search" }));
-        }}
+        onClick={handleSearchIconClick}
       >
         <SearchOutlined />
       </IconButton>
