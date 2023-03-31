@@ -4,34 +4,39 @@ import { Button, Grid, Typography, Box } from "@mui/material";
 
 const LandingPage = () => {
   return (
-    <Grid container sx={{ backgroundColor: "#fff", color: "#171717" }}>
-      <Typography
-        variant="h2"
+    <Grid container sx={{ backgroundColor: "#fff", color: "#0E0A05" }}>
+      <Grid
+        item
         sx={{
-          pl: "10%",
+          pl: "18%",
           pr: "45%",
           pt: "10%",
           zIndex: "1000",
-          display: "inline-flex",
-          fontWeight: 700,
-          fontSize: "6vw",
+          display: "flex",
+          flexDirection: "column",
+          // justifyContent: "space-between",
+          // alignItems: "center",
         }}
       >
-        Nobody
-      </Typography>
-      <Typography
-        variant="h3"
-        sx={{
-          pl: "10%",
-          pr: "45%",
-          zIndex: "1000",
-          display: "inline-flex",
-          fontWeight: 500,
-          fontSize: "3vw",
-        }}
-      >
-        should be alone
-      </Typography>
+        <Typography
+          variant="h2"
+          sx={{
+            fontWeight: 700,
+            fontSize: "6vw",
+          }}
+        >
+          Nobody
+        </Typography>
+        <Typography
+          variant="h3"
+          sx={{
+            fontWeight: 500,
+            fontSize: "3vw",
+          }}
+        >
+          should be alone
+        </Typography>
+      </Grid>
       {/* <Link to="/map">
             <Button
               sx={{
@@ -46,7 +51,7 @@ const LandingPage = () => {
               Start
             </Button>
           </Link> */}
-      <img src="/pexels-pixabay-247195.jpg" className="alone" />
+      <img src="/pexels-pixabay-247195.png" className="alone" />
       <Grid
         container
         item
@@ -82,25 +87,28 @@ const LandingPage = () => {
           </Typography>
         </Grid>
 
-        <Grid item xs={5}  sx={{
-          height:"65%",
+        <Grid
+          item
+          xs={5}
+          sx={{
+            height: "65%",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-          
-          }}>
+          }}
+        >
           <Typography
             variant="body2"
             align="justify"
             sx={{ fontWeight: 100, fontSize: "1.2vw" }}
           >
-            God created us to love and be
-            loved, and we need people around us in order to do that.
+            God created us to love and be loved, and we need people around us in
+            order to do that.
           </Typography>
           <Typography
             variant="body2"
             align="justify"
-            sx={{  fontWeight: 100, fontSize: "1.2vw" }}
+            sx={{ fontWeight: 100, fontSize: "1.2vw" }}
           >
             Through generosity, gratitude and service, we HEAL, GROW and get to
             PARTICIPATE in Gods amazing plan.
@@ -109,7 +117,7 @@ const LandingPage = () => {
           <Typography
             variant="body2"
             align="justify"
-            sx={{  fontWeight: 100, fontSize: "1.2vw" }}
+            sx={{ fontWeight: 100, fontSize: "1.2vw" }}
           >
             When we are in close relationships with other believers, we have
             people to teach us,to pray for us,to support us,to encourage us,to
@@ -120,7 +128,6 @@ const LandingPage = () => {
           <Link to="/map">
             <Button
               sx={{
-              
                 width: "10vw",
                 height: "2.5vw",
                 fontSize: "1.2vw",
@@ -140,7 +147,7 @@ const LandingPage = () => {
           pl: "12%",
           pr: "10%",
           pt: "2.5%",
-          pb: "12%",
+          // pb: "12%",
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
@@ -151,7 +158,7 @@ const LandingPage = () => {
           item
           xs={5}
           sx={{
-                height:"65%",
+            height: "65%",
             pr: "2%",
             display: "flex",
             flexDirection: "column",
@@ -170,7 +177,6 @@ const LandingPage = () => {
           <Typography
             variant="body2"
             sx={{
-            
               fontWeight: 300,
               fontSize: "1.2vw",
               alignSelf: "flex-end",
@@ -193,7 +199,6 @@ const LandingPage = () => {
               fontWeight: 300,
               fontSize: "1.2vw",
               alignSelf: "flex-end",
-            
             }}
           >
             1 John 1:7
@@ -211,7 +216,6 @@ const LandingPage = () => {
               fontWeight: 300,
               fontSize: "1.2vw",
               alignSelf: "flex-end",
-            
             }}
           >
             Galatians 6:2
@@ -228,55 +232,60 @@ const LandingPage = () => {
           }}
         >
           <img src="/newEvent.png" className="laptop" />
-                 <Typography
+          <Typography
             variant="subtitle1"
             sx={{ fontWeight: 100, fontSize: "1.5vw" }}
           >
             Once you Login you can
           </Typography>
           <Typography variant="h5" sx={{ fontWeight: 500, fontSize: "2vw" }}>
-            Create new events 
+            Create new events
           </Typography>
         </Grid>
       </Grid>
+
+      <img src="/pexels-belle-co-1000445.png" className="community" />
 
       <Grid
         container
         item
         xs={12}
         sx={{
+          pt: "6%",
           zIndex: "1000",
           display: "inline-flex",
           flexDirection: "row",
-          justifyContent: "flex-end",
+          justifyContent: "center",
+          alignItems: "flex-end",
         }}
       >
-        <img src="/pexels-belle-co-1000445.jpg" className="community" />
-
-        <Grid
+        {/* <Grid
           item
-          xs={4}
+          xs={12}
           sx={{
             pr: "5%",
             pl: "4%",
             zIndex: "1000",
             display: "inline-flex",
-            flexDirection: "column",
+            flexDirection: "row",
             justifyContent: "center",
             alignItems: "flex-start",
           }}
+        > */}
+        <Typography
+          variant="h5"
+          sx={{ fontWeight: 500, fontSize: "2vw", mr: "1vw" }}
         >
-          <Typography variant="h5" sx={{ fontWeight: 500, fontSize: "2vw" }}>
-            Go to meetings
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            sx={{ fontWeight: 100, fontSize: "1.5vw" }}
-          >
-            Develop friendships, build your godly community
-          </Typography>
-        </Grid>
+          Go to meetings,
+        </Typography>
+        <Typography
+          variant="subtitle1"
+          sx={{ fontWeight: 100, fontSize: "1.5vw" }}
+        >
+          Develop friendships, build your godly community
+        </Typography>
       </Grid>
+      {/* </Grid> */}
     </Grid>
   );
 };

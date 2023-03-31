@@ -38,8 +38,8 @@ body #root {
   height: 33vw;
   -o-object-fit: cover;
      object-fit: cover;
-  -o-object-position: 0% 60%;
-     object-position: 0% 60%;
+  -o-object-position: 0% 50%;
+     object-position: 0% 50%;
   position: absolute;
   top: 112vw;
   left: 0;
