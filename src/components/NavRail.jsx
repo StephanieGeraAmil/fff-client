@@ -41,7 +41,6 @@ const handleSearchIconClick=(e)=>{
         display: "flex",
         flexDirection: "column",
       }}
-      className="rail"
       role="presentation"
     >
       {!isAuthenticated && <Login />}
