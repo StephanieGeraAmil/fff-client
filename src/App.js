@@ -46,6 +46,7 @@ const App = () => {
             <MapSection />
           </>
         );
+      default: return;
     }
   };
   return (

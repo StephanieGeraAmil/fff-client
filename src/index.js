@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import LandingPage from "./components/LandingPage";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
@@ -24,7 +25,8 @@ ReactDOM.render(
           redirectUri={window.location.origin}
         >
           <Routes>
-            <Route path="/" element={<App />} />
+            <Route path="/" element={<LandingPage />} />
+               <Route path="/map" element={<App />} />
           </Routes>
         </Auth0Provider>
       </Provider>

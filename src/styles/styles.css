@@ -1,52 +1,11 @@
-.infoMarker {
-  padding-top: 0;
-  padding: 3vh;
-  font-size: 1.8vh;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-radius: 7vw;
-  background-color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.infoMarker button {
-  background-color: #6229d0;
-  padding: 1vh;
-  width: 60%;
-  margin: auto;
-  border-color: #6229d0;
-  border-radius: 5vh;
-  font-size: 1.8vh;
-  color: white;
-}
-
-.infoMarker h2 {
-  margin: 0;
-}
-
-.infoMarker p {
-  margin-top: 1vh;
-  margin-bottom: 1vh;
-}
-
-.InfoModal {
-  width: 90%;
-  max-width: none !important;
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #ffff;
-  color: #545454;
-  font-family: "Montserrat", sans-serif;
   width: 100vw;
   height: 100vh;
 }
@@ -54,5 +13,36 @@ body {
 body #root {
   width: 100vw;
   height: 100vh;
+}
+
+.alone {
+  width: 100%;
+  height: 35vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 0% 40%;
+     object-position: 0% 40%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.laptop {
+  width: 42vw;
+  height: 30vw;
+}
+
+.community {
+  width: 100%;
+  height: 33vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: 0% 60%;
+     object-position: 0% 60%;
+  position: absolute;
+  top: 112vw;
+  left: 0;
+  z-index: 0;
 }
 /*# sourceMappingURL=styles.css.map */
