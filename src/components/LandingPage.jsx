@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Grid, Typography, Box } from "@mui/material";
+import { Button, Grid, Typography, Card, CardContent } from "@mui/material";
 
 const LandingPage = () => {
   return (
@@ -14,8 +14,6 @@ const LandingPage = () => {
           zIndex: "1000",
           display: "flex",
           flexDirection: "column",
-          // justifyContent: "space-between",
-          // alignItems: "center",
         }}
       >
         <Typography
@@ -36,27 +34,29 @@ const LandingPage = () => {
         >
           should be alone
         </Typography>
+        <Link to="/map" style={{ textDecoration: "none" }}>
+          <Button
+            sx={{
+              mt: "4%",
+              width: "15vw",
+              height: "3vw",
+              fontSize: "1.2vw",
+              backgroundColor: "#545454",
+              borderRadius: "1vw",
+            }}
+            variant="contained"
+          >
+            Find Community
+          </Button>
+        </Link>
       </Grid>
-      {/* <Link to="/map">
-            <Button
-              sx={{
-                mt: "2%",
-                width: "10vw",
-                height: "2.5vw",
-                fontSize: "1.2vw",
-                backgroundColor: "#545454",
-              }}
-              variant="contained"
-            >
-              Start
-            </Button>
-          </Link> */}
+
       <img src="/pexels-pixabay-247195.png" className="alone" />
       <Grid
         container
         item
         sx={{
-          pt: "15%",
+          pt: "12%",
           pl: "10%",
           pr: "12%",
           display: "flex",
@@ -125,17 +125,18 @@ const LandingPage = () => {
             us .
           </Typography>
 
-          <Link to="/map">
+          <Link to="/map"  style={{ textDecoration: "none" }}>
             <Button
               sx={{
-                width: "10vw",
-                height: "2.5vw",
+                width: "15vw",
+                height: "3vw",
                 fontSize: "1.2vw",
                 backgroundColor: "#545454",
+                borderRadius: "1vw",
               }}
               variant="contained"
             >
-              Start
+              Start Now
             </Button>
           </Link>
         </Grid>
@@ -158,7 +159,7 @@ const LandingPage = () => {
           item
           xs={5}
           sx={{
-            height: "65%",
+            height: "70%",
             pr: "2%",
             display: "flex",
             flexDirection: "column",
@@ -166,60 +167,77 @@ const LandingPage = () => {
             alignItems: "flex-start",
           }}
         >
-          <Typography
-            variant="body2"
-            align="justify"
-            sx={{ fontWeight: 100, fontSize: "1.2vw" }}
-          >
-            Live in harmony with each other. Don’t be too proud to enjoy the
-            company of ordinary people. And don’t think you know it all!
-          </Typography>
-          <Typography
-            variant="body2"
+          <Card
             sx={{
-              fontWeight: 300,
-              fontSize: "1.2vw",
-              alignSelf: "flex-end",
+              backgroundColor: "#545454",
+              color: "#fff",
+              p: "3%",
+              borderRadius: "1vw",
+              display: "flex",
+              height: "30%",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "flex-start",
             }}
           >
-            Romans 12:16
-          </Typography>
-          <Typography
-            align="justify"
-            variant="body2"
-            sx={{ pt: "5%", fontWeight: 100, fontSize: "1.2vw" }}
-          >
-            But if we are living in the light, as God is in the light, then we
-            have fellowship with each other, and the blood of Jesus, his Son,
-            cleanses us from all sin.
-          </Typography>
-          <Typography
-            variant="body2"
+            <CardContent>
+              <Typography
+                variant="body2"
+                align="justify"
+                sx={{ fontWeight: 100, fontSize: "1vw" }}
+              >
+                Live in harmony with each other. Don’t be too proud to enjoy the
+                company of ordinary people. And don’t think you know it all!
+              </Typography>
+              <Typography
+                variant="body2"
+                align="right"
+                sx={{
+                  fontWeight: 100,
+                  fontSize: "1vw",
+                  alignSelf: "flex-end",
+                }}
+              >
+                Romans 12:16
+              </Typography>
+            </CardContent>
+          </Card>
+          <Card
             sx={{
-              fontWeight: 300,
-              fontSize: "1.2vw",
-              alignSelf: "flex-end",
+              backgroundColor: "#545454",
+              color: "#fff",
+              p: "3%",
+              height: "30%",
+              borderRadius: "1vw",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "flex-start",
             }}
           >
-            1 John 1:7
-          </Typography>
-          <Typography
-            align="justify"
-            variant="body2"
-            sx={{ pt: "5%", fontWeight: 100, fontSize: "1.2vw" }}
-          >
-            Share each other’s burdens, and in this way obey the law of Christ.
-          </Typography>
-          <Typography
-            variant="body2"
-            sx={{
-              fontWeight: 300,
-              fontSize: "1.2vw",
-              alignSelf: "flex-end",
-            }}
-          >
-            Galatians 6:2
-          </Typography>
+            <CardContent>
+              <Typography
+                align="justify"
+                variant="body2"
+                sx={{ fontWeight: 100, fontSize: "1vw" }}
+              >
+                But if we are living in the light, as God is in the light, then
+                we have fellowship with each other, and the blood of Jesus, his
+                Son, cleanses us from all sin.
+              </Typography>
+              <Typography
+                variant="body2"
+                align="right"
+                sx={{
+                  fontWeight: 100,
+                  fontSize: "1vw",
+                  alignSelf: "flex-end",
+                }}
+              >
+                1 John 1:7
+              </Typography>
+            </CardContent>
+          </Card>
         </Grid>
         <Grid
           item
