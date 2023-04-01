@@ -4,10 +4,11 @@ import { GoogleMap, Marker } from "@react-google-maps/api";
 import mapStyles from "./MapStyles";
 import { setForm } from "../../actions/globalStateActions";
 import { useSocket } from "../../hooks/useSocket";
+import { Box } from "@mui/material/";
 
 const containerStyle = {
-  width: "100%",
-  height: "100%",
+  width: "100vw",
+  height: "100vh",
 };
 
 let options = {
@@ -64,8 +65,7 @@ export const MapSection = () => {
     mapRef.current = map;
   }, []);
 
-  
- function getCurrentDimension() {
+  function getCurrentDimension() {
     return {
       width: window.innerWidth,
       height: window.innerHeight,
@@ -117,10 +117,15 @@ export const MapSection = () => {
     }
   }, []);
 
- 
-
   return (
-    <>
+    <Box
+      sx={{
+        width: 1,
+        height: 1,
+   
+      }}
+      // role="presentation"
+    >
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={mapCenter}
@@ -148,6 +153,6 @@ export const MapSection = () => {
           />
         ))}
       </GoogleMap>
-    </>
+    </Box>
   );
 };
