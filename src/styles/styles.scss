@@ -1,10 +1,6 @@
 @import "./variables";
 
-@mixin theme {
-  // background-color: $background-color;
-  // color: $base-color;
-  // font-family: $font;
-}
+
 * {
   box-sizing: border-box;
 }
@@ -14,12 +10,13 @@
 body {
   margin: 0;
   padding: 0;
-  // @include theme();
   width: 100vw;
   height: 100vh;
+
   #root {
     width: 100vw;
     height: 100vh;
+ 
   }
 }
 .alone {

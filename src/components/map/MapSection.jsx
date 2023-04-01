@@ -9,6 +9,7 @@ import { Box } from "@mui/material/";
 const containerStyle = {
   width: "100vw",
   height: "100vh",
+   overflow: "hidden",
 };
 
 let options = {
