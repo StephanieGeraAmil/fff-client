@@ -41,10 +41,10 @@ const App = () => {
         return <div>ERROR LOADING MAP</div>;
       case Status.SUCCESS:
         return (
-          <>
+          <div className="app">
             <SideBar />
             <MapSection />
-          </>
+          </div>
         );
       default: return;
     }
