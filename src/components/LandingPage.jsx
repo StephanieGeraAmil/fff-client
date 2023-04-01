@@ -20,7 +20,6 @@ const LandingPage = () => {
           container
           item
           xs={8}
-          
           direction="row"
           sx={{
             width: "85%",
