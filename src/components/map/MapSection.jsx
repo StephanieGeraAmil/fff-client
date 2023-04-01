@@ -11,10 +11,10 @@ const containerStyle = {
   overflow:"hidden",
 };
 
-const options = {
+let options = {
   styles: mapStyles,
   disableDefaultUI: true,
-  zoomControl: true,
+  // zoomControl: true,
 };
 const mapRef = { current: null };
 
