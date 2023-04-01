@@ -14,7 +14,10 @@ const containerStyle = {
 let options = {
   styles: mapStyles,
   disableDefaultUI: true,
-  // zoomControl: true,
+  minZoom: 12,
+  maxZoom: 19,
+  zoomControl: true,
+
 };
 const mapRef = { current: null };
 
@@ -122,7 +125,6 @@ export const MapSection = () => {
       sx={{
         width: 1,
         height: 1,
-   
       }}
       // role="presentation"
     >
