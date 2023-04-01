@@ -6,8 +6,8 @@ import { setForm } from "../../actions/globalStateActions";
 import { useSocket } from "../../hooks/useSocket";
 
 const containerStyle = {
-  width: "100vw",
-  height: "100vh",
+  width: "100%",
+  height: "100%",
 };
 
 const options = {
