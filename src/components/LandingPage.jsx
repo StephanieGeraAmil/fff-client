@@ -4,22 +4,26 @@ import { Button, Grid, Typography, Container, Paper } from "@mui/material";
 
 const LandingPage = () => {
   return (
-    <>
+
       <Grid
         container
         item
         sx={{ backgroundColor: "#fff", color: "#0E0A05" }}
         spacing={{ sx: 5, sm: 1 }}
         direction="column"
+      ><Grid
+         container
+        item
+        spacing={{ sx: 5, sm: 1 }}
       >
         <Grid
           container
           item
-          xs={12}
-          sm={5}
+          xs={8}
+          
           direction="row"
           sx={{
-            width: "70%",
+            width: "85%",
             mx: "auto",
           }}
         >
@@ -75,7 +79,7 @@ const LandingPage = () => {
         <Grid
           container
           item
-          // spacing={{ xs: 3, sm: 1 }}
+       
           direction="row"
           sx={{
             mt: "3%",
@@ -299,12 +303,10 @@ const LandingPage = () => {
           </Grid>
              <img src="/pexels-belle-co-1000445.png" className="community" />
         </Grid>
-           {/* <Paper sx={{ mt: "5%", height: "32vw", px: "0vw", width: "100%" }}> */}
-       
-      {/* </Paper> */}
+        </Grid>
       </Grid>
    
-    </>
+  
   );
 };
 export default LandingPage;
