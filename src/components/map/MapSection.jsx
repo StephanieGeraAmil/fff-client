@@ -125,6 +125,7 @@ export const MapSection = () => {
       sx={{
         width: 1,
         height: 1,
+        overflow: "hidden",
       }}
       // role="presentation"
     >
