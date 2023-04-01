@@ -8,6 +8,7 @@ import { useSocket } from "../../hooks/useSocket";
 const containerStyle = {
   width: "100vw",
   height: "100vh",
+  overflow:"hidden",
 };
 
 const options = {
