@@ -36,6 +36,9 @@ export const MapSection = () => {
   const filtersSelector = (state) =>
     state.current.filters ? state.current.filters : null;
   const filters = useSelector(filtersSelector);
+  const formSelector = (state) =>
+    state.current.form ? state.current.form : null;
+  const form = useSelector(formSelector);
 
   const dispatch = useDispatch();
   const [eventsToShow, setEventsToShow] = useState([]);
@@ -98,12 +101,12 @@ export const MapSection = () => {
   }, [selectedEvent]);
 
   useEffect(() => {
-    if (userLogged) {
+    if (userLogged && !form) {
       if (!userLogged.gender || !userLogged.birthDate) {
         dispatch(setForm({ type: "AddUser" }));
       }
     }
-  }, [userLogged]);
+  }, [userLogged,form]);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -115,11 +118,14 @@ export const MapSection = () => {
         setMapCenter(initialLocation);
       });
     }
+
+  }, []);
+    useEffect(() => {
     if (screenSize.width < 500) {
       //not web
       dispatch(setForm({ type: "Search" }));
     }
-  }, []);
+  }, [screenSize]);
 
   return (
     <Box
@@ -128,7 +134,7 @@ export const MapSection = () => {
         height: 1,
         overflow: "hidden",
       }}
-      // role="presentation"
+    
     >
       <GoogleMap
         mapContainerStyle={containerStyle}
