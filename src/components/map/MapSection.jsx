@@ -16,9 +16,14 @@ const options = {
   zoomControl: true,
 };
 const mapRef = { current: null };
+
 export const CenterMap = ({ lat, lng }) => {
   mapRef.current.panTo({ lat, lng });
+  if(window.innerWidth<500){
+     mapRef.current.setZoom(19);
+  }else{
   mapRef.current.setZoom(17);
+  }
 };
 
 export const MapSection = () => {
