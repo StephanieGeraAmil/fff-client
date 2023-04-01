@@ -1,21 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Grid, Typography, Container, Paper } from "@mui/material";
+import { Button, Grid, Typography, Container } from "@mui/material";
+
+
 
 const LandingPage = () => {
+ 
   return (
-
-      <Grid
-        container
-        item
-        sx={{ backgroundColor: "#fff", color: "#0E0A05" }}
-        spacing={{ sx: 5, sm: 1 }}
-        direction="column"
-      ><Grid
-         container
-        item
-        spacing={{ sx: 5, sm: 1 }}
-      >
+    <Grid
+      container
+      item
+      sx={{ backgroundColor: "#fff", color: "#0E0A05" }}
+      spacing={{ sx: 5, sm: 1 }}
+      direction="column"
+    >
+      <Grid container item spacing={{ sx: 5, sm: 1 }}>
         <Grid
           container
           item
@@ -64,13 +63,16 @@ const LandingPage = () => {
                   fontSize: "1.2vw",
                   backgroundColor: "#545454",
                   borderRadius: "1vw",
-                  minWidth:"85px"
+                  minWidth: "85px",
                 }}
                 variant="contained"
               >
                 Find Community
+              
               </Button>
+              
             </Link>
+  
           </Grid>
         </Grid>
 
@@ -78,7 +80,6 @@ const LandingPage = () => {
         <Grid
           container
           item
-       
           direction="row"
           sx={{
             mt: "3%",
@@ -271,7 +272,7 @@ const LandingPage = () => {
           xs={12}
           direction="row"
           sx={{
-            mt: "3%", 
+            mt: "3%",
           }}
         >
           <Grid
@@ -282,30 +283,27 @@ const LandingPage = () => {
               display: "flex",
               flexDirection: "row",
               justifyContent: "center",
-              mb:-15,
-               pt:2
+              mb: -15,
+              pt: 2,
             }}
           >
-          <Typography
-            variant="h5"
-            sx={{ fontWeight: 500, fontSize: "2vw", mr: "1vw" }}
-          >
-            Go to meetings,
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            sx={{ fontWeight: 100, fontSize: "1.5vw" }}
-          >
-            Develop friendships, build your godly community
-          </Typography>
-        
+            <Typography
+              variant="h5"
+              sx={{ fontWeight: 500, fontSize: "2vw", mr: "1vw" }}
+            >
+              Go to meetings,
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              sx={{ fontWeight: 100, fontSize: "1.5vw" }}
+            >
+              Develop friendships, build your godly community
+            </Typography>
           </Grid>
-             <img src="/pexels-belle-co-1000445.png" className="community" />
-        </Grid>
+          <img src="/pexels-belle-co-1000445.png" className="community" />
         </Grid>
       </Grid>
-   
-  
+    </Grid>
   );
 };
 export default LandingPage;
