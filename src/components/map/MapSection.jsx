@@ -6,8 +6,8 @@ import { setForm } from "../../actions/globalStateActions";
 import { useSocket } from "../../hooks/useSocket";
 
 const containerStyle = {
-  width: "100%",
-  height: "100%",
+  width: "100vw",
+  height: "100vh",
 };
 
 const options = {
@@ -19,11 +19,7 @@ const mapRef = { current: null };
 
 export const CenterMap = ({ lat, lng }) => {
   mapRef.current.panTo({ lat, lng });
-  if(window.innerWidth<500){
-     mapRef.current.setZoom(19);
-  }else{
   mapRef.current.setZoom(17);
-  }
 };
 
 export const MapSection = () => {
