@@ -26,6 +26,9 @@ const App = () => {
         default: "#3f3f3f",
       },
     },
+    typography: {
+      fontSize:15,
+    }
   });
   theme = responsiveFontSizes(theme);
 

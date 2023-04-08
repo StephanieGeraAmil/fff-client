@@ -25,6 +25,7 @@ export const NavRail = () => {
 const handleSearchIconClick=(e)=>{
    dispatch(setForm({ type: "Search" }));
 }
+
   return (
     <Box
         sx={{
@@ -34,7 +35,7 @@ const handleSearchIconClick=(e)=>{
         backgroundColor: "background.default",
         width: '4%',
         minWidth:50,
-        maxWidth:80,
+        maxWidth:100,
         height: 1,
         margin: "auto",
         zIndex: 1500,
@@ -46,10 +47,12 @@ const handleSearchIconClick=(e)=>{
       {!isAuthenticated && <Login />}
       {isAuthenticated && <Logout />}
       <IconButton
+    
         aria-label="search"
         onClick={handleSearchIconClick}
       >
         <SearchOutlined />
+       
       </IconButton>
     </Box>
   );

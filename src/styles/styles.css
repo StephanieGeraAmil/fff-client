@@ -49,4 +49,16 @@ body #root {
     height: 50vw;
   }
 }
+
+@media only screen and (min-width: 1536px) {
+  html {
+    font-size: 125%;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  html {
+    font-size: 190%;
+  }
+}
 /*# sourceMappingURL=styles.css.map */
