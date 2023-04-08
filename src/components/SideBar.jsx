@@ -55,7 +55,7 @@ export const SideBar = () => {
             sx: {
               width: 0.4,
               minWidth:300,
-              maxWidth:600,
+              maxWidth:650,
               position: 'fixed',
               top: 0,
               left: 'clamp(50px,4%,80px)',
