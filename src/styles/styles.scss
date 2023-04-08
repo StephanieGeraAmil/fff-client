@@ -28,7 +28,7 @@ body {
   z-index: 0;
 }
 .laptop {
-  width: 42vw;
+  width: 47vw;
   height: 30vw;
 }
 .community {
@@ -38,3 +38,13 @@ body {
   object-position: 0% 50%;
   z-index: 0;
 }
+
+
+@media  (max-width: 500px) {
+  .laptop {
+      width: 70vw;
+        height: 50vw;
+  }
+}
+
+;

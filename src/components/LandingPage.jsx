@@ -2,10 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Grid, Typography, Container } from "@mui/material";
 
-
-
 const LandingPage = () => {
- 
   return (
     <Grid
       container
@@ -40,7 +37,7 @@ const LandingPage = () => {
               variant="h2"
               sx={{
                 fontWeight: 700,
-                fontSize: "6vw",
+                fontSize: "max(6vw,2.7rem)",
               }}
             >
               Nobody
@@ -49,7 +46,7 @@ const LandingPage = () => {
               variant="h3"
               sx={{
                 fontWeight: 500,
-                fontSize: "3vw",
+                fontSize: "max(3vw,1.4rem)",
               }}
             >
               should be alone
@@ -58,21 +55,18 @@ const LandingPage = () => {
               <Button
                 sx={{
                   mt: "4%",
-                  width: "18vw",
-                  height: "3vw",
-                  fontSize: "1.2vw",
-                  backgroundColor: "#545454",
-                  borderRadius: "1vw",
+                  width: "max(15vw,140px)",
+                  height: "max(4vw,30px)",
+                  fontSize: "max(1vw,0.7rem)",
+                  backgroundColor: "#0E0A05",
+                  borderRadius: "max(1vw,10px)",
                   minWidth: "85px",
                 }}
                 variant="contained"
               >
                 Find Community
-              
               </Button>
-              
             </Link>
-  
           </Grid>
         </Grid>
 
@@ -92,17 +86,25 @@ const LandingPage = () => {
             item
             direction="column"
             xs={12}
-            sm={6}
+            sm={7}
             justifyContent={"center"}
             alignItems={"center"}
+            order={{ xs: 2, sm: 1 }}
           >
             <img src="/EventInfo.png" className="laptop" />
-            <Typography variant="h5" sx={{ fontWeight: 500, fontSize: "2vw" }}>
+            <Typography
+              variant="h5"
+              sx={{
+                fontWeight: 500,
+
+                fontSize: "max(2vw,1.3rem)",
+              }}
+            >
               Look for events in your area
             </Typography>
             <Typography
               variant="subtitle1"
-              sx={{ fontWeight: 100, fontSize: "1.5vw" }}
+              sx={{ fontWeight: 100, fontSize: "max(1.5vw,1.1rem)" }}
             >
               Join the group chat if it is provided and say Hi!
             </Typography>
@@ -112,50 +114,69 @@ const LandingPage = () => {
             container
             item
             direction="column"
+            justifyContent={"flex-start"}
+            alignItems={"flex-start"}
             xs={12}
-            sm={6}
-            sx={{ p: "4%", m: "auto", maxWidth: "300px" }}
+            sm={5}
+            sx={{ p: "4%" }}
+            order={{ xs: 1, sm: 2 }}
           >
-            <Typography
-              variant="body2"
-              align="justify"
-              sx={{ fontWeight: 100, fontSize: "1.2vw", pb: "3%" }}
-            >
-              God created us to love and be loved, and we need people around us
-              in order to do that.
-            </Typography>
-            <Typography
-              variant="body2"
-              align="justify"
-              sx={{ fontWeight: 100, fontSize: "1.2vw", pb: "3%" }}
-            >
-              Through generosity, gratitude and service, we HEAL, GROW and get
-              to PARTICIPATE in Gods amazing plan.
-            </Typography>
-            <Typography
-              variant="body2"
-              align="justify"
-              sx={{ fontWeight: 100, fontSize: "1.2vw", pb: "3%" }}
-            >
-              When we are in close relationships with other believers, we have
-              people to teach us,to pray for us,to support us,to encourage us,to
-              hold us accountable,to give us wise counsel and to serve alongside
-              us .
-            </Typography>
-            <Link to="/map" style={{ textDecoration: "none" }}>
-              <Button
+            <Grid item>
+              <Typography
+                variant="body2"
+                align="justify"
                 sx={{
-                  width: "15vw",
-                  height: "3vw",
-                  fontSize: "1.2vw",
-                  backgroundColor: "#545454",
-                  borderRadius: "1vw",
+                  fontWeight: 100,
+                  fontSize: "max(1.2vw,0.7rem)",
+                  pb: "3%",
                 }}
-                variant="contained"
               >
-                Start Now
-              </Button>
-            </Link>
+                God created us to love and be loved, and we need people around
+                us in order to do that.
+              </Typography>
+              <Typography
+                variant="body2"
+                align="justify"
+                sx={{
+                  fontWeight: 100,
+                  fontSize: "max(1.2vw,0.7rem)",
+                  pb: "3%",
+                }}
+              >
+                Through generosity, gratitude and service, we HEAL, GROW and get
+                to PARTICIPATE in Gods amazing plan.
+              </Typography>
+              <Typography
+                variant="body2"
+                align="justify"
+                sx={{
+                  fontWeight: 100,
+                  fontSize: "max(1.2vw,0.7rem)",
+                  pb: "3%",
+                }}
+              >
+                When we are in close relationships with other believers, we have
+                people to teach us,to pray for us,to support us,to encourage
+                us,to hold us accountable,to give us wise counsel and to serve
+                alongside us .
+              </Typography>
+            </Grid>
+            <Grid item alignSelf={"flex-end"}>
+              <Link to="/map" style={{ textDecoration: "none" }}>
+                <Button
+                  sx={{
+                    width: "max(15vw,120px)",
+                    height: "max(4vw,30px)",
+                    fontSize: "max(1vw,0.7rem)",
+                    backgroundColor: "#0E0A05",
+                    borderRadius: "max(1vw,10px)",
+                  }}
+                  variant="contained"
+                >
+                  Start Now
+                </Button>
+              </Link>
+            </Grid>
           </Grid>
         </Grid>
         <Grid
@@ -172,84 +193,105 @@ const LandingPage = () => {
             container
             item
             direction="column"
+            justifyContent={"center"}
             xs={12}
-            sm={6}
-            sx={{ m: "auto", p: "4%", maxWidth: "300px" }}
+            sm={5}
             order={{ xs: 2, sm: 1 }}
+            sx={{
+              mb: "8%",
+              mt: "3%",
+            }}
           >
-            <Container
-              sx={{
-                backgroundColor: "#545454",
-                color: "#fff",
-                borderRadius: "1vw",
-                display: "flex",
-                height: "8vw",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "flex-start",
-                mb: "3%",
-              }}
-            >
-              <Typography
-                variant="body2"
-                align="justify"
-                sx={{ fontWeight: 100, fontSize: "1vw" }}
-              >
-                Live in harmony with each other. Don’t be too proud to enjoy the
-                company of ordinary people. And don’t think you know it all!
-              </Typography>
-              <Typography
-                variant="body2"
-                align="right"
+            <Grid item>
+              <Container
+                maxWidth="80%"
+                disableGutters={true}
                 sx={{
-                  fontWeight: 100,
-                  fontSize: "1vw",
-                  alignSelf: "flex-end",
+                  width: "75%",
+                  backgroundColor: "#545454",
+                  color: "#fff",
+                  borderRadius: "max(1vw,10px)",
+                  display: "flex",
+                  height: "9vw",
+                  minHeight: "110px",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "flex-start",
+                  mb: "3%",
+
+                  p: "5%",
                 }}
               >
-                Romans 12:16
-              </Typography>
-            </Container>
-            <Container
-              sx={{
-                backgroundColor: "#545454",
-                color: "#fff",
-                height: "8vw",
-                borderRadius: "1vw",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "flex-start",
-              }}
-            >
-              <Typography
-                align="justify"
-                variant="body2"
-                sx={{ fontWeight: 100, fontSize: "1vw" }}
-              >
-                But if we are living in the light, as God is in the light, then
-                we have fellowship with each other, and the blood of Jesus, his
-                Son, cleanses us from all sin.
-              </Typography>
-              <Typography
-                variant="body2"
-                align="right"
+                <Typography
+                  variant="body2"
+                  align="justify"
+                  sx={{ fontWeight: 100, fontSize: "max(1vw,0.7rem)" }}
+                >
+                  Live in harmony with each other. Don’t be too proud to enjoy
+                  the company of ordinary people. And don’t think you know it
+                  all!
+                </Typography>
+                <Typography
+                  variant="body2"
+                  align="right"
+                  sx={{
+                    fontWeight: 100,
+                    fontSize: "max(1vw,0.7rem)",
+                    alignSelf: "flex-end",
+                  }}
+                >
+                  Romans 12:16
+                </Typography>
+              </Container>
+            </Grid>
+            <Grid item>
+              <Container
+                maxWidth="80%"
+                disableGutters={true}
                 sx={{
-                  fontWeight: 100,
-                  fontSize: "1vw",
-                  alignSelf: "flex-end",
+                  height: "9vw",
+                  minHeight: "110px",
+                  width: "75%",
+                  backgroundColor: "#545454",
+                  color: "#fff",
+
+                  borderRadius: "max(1vw,10px)",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "flex-start",
+                  p: "5%",
                 }}
               >
-                1 John 1:7
-              </Typography>
-            </Container>
+                <Typography
+                  align="justify"
+                  variant="body2"
+                  sx={{ fontWeight: 100, fontSize: "max(1vw,0.7rem)" }}
+                >
+                  But if we are living in the light, as God is in the light,
+                  then we have fellowship with each other, and the blood of
+                  Jesus, his Son, cleanses us from all sin.
+                </Typography>
+                <Typography
+                  variant="body2"
+                  align="right"
+                  sx={{
+                    fontWeight: 100,
+                    fontSize: "max(1vw,0.7rem)",
+                    alignSelf: "flex-end",
+                  }}
+                >
+                  1 John 1:7
+                </Typography>
+              </Container>
+            </Grid>
           </Grid>
           <Grid
             container
             item
             direction="column"
             xs={12}
-            sm={6}
+            sm={7}
             order={{ xs: 1, sm: 2 }}
             justifyContent={"center"}
             alignItems={"center"}
@@ -257,11 +299,14 @@ const LandingPage = () => {
             <img src="/newEvent.png" className="laptop" />
             <Typography
               variant="subtitle1"
-              sx={{ fontWeight: 100, fontSize: "1.5vw" }}
+              sx={{ fontWeight: 100, fontSize: "max(1.5vw,1.1rem)" }}
             >
               Once you Login you can
             </Typography>
-            <Typography variant="h5" sx={{ fontWeight: 500, fontSize: "2vw" }}>
+            <Typography
+              variant="h5"
+              sx={{ fontWeight: 500, fontSize: "max(2vw,1.3rem)" }}
+            >
               Create new events
             </Typography>
           </Grid>
@@ -283,19 +328,19 @@ const LandingPage = () => {
               display: "flex",
               flexDirection: "row",
               justifyContent: "center",
-              mb: -15,
+              mb: "-15vw",
               pt: 2,
             }}
           >
             <Typography
               variant="h5"
-              sx={{ fontWeight: 500, fontSize: "2vw", mr: "1vw" }}
+              sx={{ fontWeight: 500, fontSize: "max(2vw,1rem)", mr: "1vw" }}
             >
               Go to meetings,
             </Typography>
             <Typography
               variant="subtitle1"
-              sx={{ fontWeight: 100, fontSize: "1.5vw" }}
+              sx={{ fontWeight: 100, fontSize: "max(1.5vw,0.8rem)" }}
             >
               Develop friendships, build your godly community
             </Typography>
