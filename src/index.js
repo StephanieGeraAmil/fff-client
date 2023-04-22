@@ -10,7 +10,6 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import reducers from "./reducers/reducers.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const { REDIRECT_URI } = process.env;
 
 const store = createStore(
   reducers,
@@ -24,11 +23,11 @@ ReactDOM.render(
         <Auth0Provider
           domain="dev-7pl37pty.us.auth0.com"
           clientId="vNXWfuyHWr4jF94dV51O4ZclSOpkA8Hw"
-          redirectUri={window.location.origin}
+          redirectUri={process.env.REDIRECTION_URL || window.location.origin}
         >
           <Routes>
             <Route path="/" element={<LandingPage />} />
-               <Route path="/map" element={<App />} />
+            <Route path="/map" element={<App />} />
           </Routes>
         </Auth0Provider>
       </Provider>
@@ -36,4 +35,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
-
