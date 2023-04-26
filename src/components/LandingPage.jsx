@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button, Grid, Typography, Container } from "@mui/material";
-
+import {LoginButton} from "./0auth/LoginButton";
 const LandingPage = () => {
   return (
     <Grid
@@ -51,8 +51,10 @@ const LandingPage = () => {
             >
               should be alone
             </Typography>
-            <Link to="/map" style={{ textDecoration: "none" }}>
-              <Button
+            {/* <Link to="/map" style={{ textDecoration: "none" }}> */}
+            <LoginButton text="Find Community"/>
+              {/* <Button
+              
                 sx={{
                   mt: "4%",
                   width: "max(15vw,140px)",
@@ -65,8 +67,8 @@ const LandingPage = () => {
                 variant="contained"
               >
                 Find Community
-              </Button>
-            </Link>
+              </Button> */}
+            {/* </Link> */}
           </Grid>
         </Grid>
 
@@ -162,7 +164,7 @@ const LandingPage = () => {
               </Typography>
             </Grid>
             <Grid item alignSelf={"flex-end"}>
-              <Link to="/map" style={{ textDecoration: "none" }}>
+              {/* <Link to="/map" style={{ textDecoration: "none" }}>
                 <Button
                   sx={{
                     width: "max(15vw,120px)",
@@ -175,7 +177,8 @@ const LandingPage = () => {
                 >
                   Start Now
                 </Button>
-              </Link>
+              </Link> */}
+               <LoginButton text="Start Now"/>
             </Grid>
           </Grid>
         </Grid>
