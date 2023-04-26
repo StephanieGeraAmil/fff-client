@@ -53,9 +53,7 @@ export const SideBar = () => {
         <Drawer
           PaperProps={{
             sx: {
-              width: 0.4,
-              minWidth:300,
-              maxWidth:650,
+              width:'clamp(300px,40%,850px)',
               position: 'fixed',
               top: 0,
               left: 'clamp(50px,4%,80px)',
