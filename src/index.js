@@ -14,7 +14,7 @@ const store = createStore(
   reducers,
   composeWithDevTools(applyMiddleware(thunk))
 );
-console.log(process.env.REACT_APP_REDIRECTION_URL);
+
 
 ReactDOM.render(
   <React.StrictMode>
