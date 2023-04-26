@@ -23,7 +23,7 @@ ReactDOM.render(
         <Auth0Provider
           domain="dev-7pl37pty.us.auth0.com"
           clientId="vNXWfuyHWr4jF94dV51O4ZclSOpkA8Hw"
-          redirectUri={process.env.REACT_APP_REDIRECTION_URL}
+          redirectUri="https://fight-loneliness.com/map"
         >
           <Routes>
             <Route path="/" element={<LandingPage />} />
