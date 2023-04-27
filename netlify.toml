@@ -1,4 +1,4 @@
 [[redirects]]
-  from = "/map*"
+  from = "/map.*"
   to = "/map"
   status = 200
