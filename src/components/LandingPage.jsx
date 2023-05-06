@@ -51,24 +51,7 @@ const LandingPage = () => {
             >
               should be alone
             </Typography>
-            {/* <Link to="/map" style={{ textDecoration: "none" }}> */}
-            <LoginButton text="Find Community"/>
-              {/* <Button
-              
-                sx={{
-                  mt: "4%",
-                  width: "max(15vw,140px)",
-                  height: "max(4vw,30px)",
-                  fontSize: "max(1vw,0.7rem)",
-                  backgroundColor: "#0E0A05",
-                  borderRadius: "max(1vw,10px)",
-                  minWidth: "85px",
-                }}
-                variant="contained"
-              >
-                Find Community
-              </Button> */}
-            {/* </Link> */}
+            <LoginButton text="Find Community"/> 
           </Grid>
         </Grid>
 
@@ -98,7 +81,6 @@ const LandingPage = () => {
               variant="h5"
               sx={{
                 fontWeight: 500,
-
                 fontSize: "max(2vw,1.3rem)",
               }}
             >
@@ -164,20 +146,6 @@ const LandingPage = () => {
               </Typography>
             </Grid>
             <Grid item alignSelf={"flex-end"}>
-              {/* <Link to="/map" style={{ textDecoration: "none" }}>
-                <Button
-                  sx={{
-                    width: "max(15vw,120px)",
-                    height: "max(4vw,30px)",
-                    fontSize: "max(1vw,0.7rem)",
-                    backgroundColor: "#0E0A05",
-                    borderRadius: "max(1vw,10px)",
-                  }}
-                  variant="contained"
-                >
-                  Start Now
-                </Button>
-              </Link> */}
                <LoginButton text="Start Now"/>
             </Grid>
           </Grid>
@@ -257,7 +225,6 @@ const LandingPage = () => {
                   width: "75%",
                   backgroundColor: "#545454",
                   color: "#fff",
-
                   borderRadius: "max(1vw,10px)",
                   display: "flex",
                   flexDirection: "column",
