@@ -11,12 +11,13 @@ export const LoginButton = ({text}) => {
       }}
       sx={{
         mt: "4%",
-        width: "max(15vw,140px)",
-        height: "max(4vw,30px)",
-        fontSize: "max(1vw,0.7rem)",
-        backgroundColor: "#0E0A05",
-        borderRadius: "max(1vw,10px)",
-        minWidth: "85px",
+        width:{ sm:'15vw'}, 
+        height: { sm:'4vw'}, 
+        fontSize: {xs: '0.7rem',sm: "1.5vw"},
+        backgroundColor:"#6d6c6c",
+        color:"#fff",
+        borderRadius: {xs:"4vw",sm:"2vw"}, 
+        fontFamily: 'PT Sans, sans-serif',
       }}
       variant="contained"
     >

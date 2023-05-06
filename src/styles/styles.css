@@ -15,38 +15,148 @@ body #root {
   height: 100vh;
 }
 
-.alone {
-  width: 100%;
-  height: 35vw;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: 0% 40%;
-     object-position: 0% 40%;
-  position: absolute;
-  top: 0;
-  left: 0;
+.topSection {
+  position: relative;
   z-index: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.laptop {
-  width: 47vw;
-  height: 30vw;
+.alone {
+  width: 80%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: 1;
+}
+
+.shape {
+  width: 60%;
+  z-index: -1;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.diamond {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: #d4d4d4;
+  width: 40vw;
+  height: 40vw;
+  -webkit-transform: translateX(-50%) translateY(15vw) rotate(45deg);
+          transform: translateX(-50%) translateY(15vw) rotate(45deg);
+  z-index: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.textInsideDiamond {
+  width: 90%;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 2vh;
+}
+
+.circleNumber {
+  background-color: #aaaaaa;
+  border-radius: 50%;
+  width: 4vh;
+  height: 4vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .community {
-  width: 100%;
-  height: 34vw;
+  width: 60vh;
+  height: 60vh;
+  margin: 0 auto;
   -o-object-fit: cover;
      object-fit: cover;
-  -o-object-position: 0% 50%;
-     object-position: 0% 50%;
-  z-index: 0;
 }
 
-@media (max-width: 500px) {
-  .laptop {
-    width: 70vw;
-    height: 50vw;
+.bottomShape {
+  width: 75%;
+  z-index: -1;
+  position: absolute;
+  left: 20%;
+  top: -15%;
+  -webkit-transform: rotate(-80deg);
+          transform: rotate(-80deg);
+}
+
+.bottomImages {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media (max-width: 720px) {
+  .community {
+    width: 50vh;
+    height: 50vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .alone {
+    width: 100%;
+  }
+  .shape {
+    width: 90%;
+    top: -10vw;
+  }
+  .diamond {
+    width: 240px;
+    height: 240px;
+    margin: 0 auto;
+  }
+  .community {
+    width: 60vh;
+    height: 60vh;
   }
 }
 
@@ -59,6 +169,58 @@ body #root {
 @media only screen and (min-width: 1920px) {
   html {
     font-size: 190%;
+  }
+}
+
+@-webkit-keyframes clockwise {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes clockwise {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes donut-rotate {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  50% {
+    -webkit-transform: rotate(-140deg);
+            transform: rotate(-140deg);
+  }
+  100% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
+@keyframes donut-rotate {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  50% {
+    -webkit-transform: rotate(-140deg);
+            transform: rotate(-140deg);
+  }
+  100% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
   }
 }
 /*# sourceMappingURL=styles.css.map */
