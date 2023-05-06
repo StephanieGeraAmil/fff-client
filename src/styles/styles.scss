@@ -1,6 +1,5 @@
 @import "./variables";
 
-
 * {
   box-sizing: border-box;
 }
@@ -14,42 +13,111 @@ body {
   #root {
     width: 100vw;
     height: 100vh;
- 
   }
+}
+.topSection {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .alone {
-  width: 100%;
-  height: 35vw;
+  width: 80%;
   object-fit: cover;
-  object-position: 0% 40%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
+  z-index: 1;
 }
-.laptop {
-  width: 47vw;
-  height: 30vw;
+.shape {
+  width: 60%;
+  z-index: -1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.diamond {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: #d4d4d4;
+  width: 40vw;
+  height: 40vw;
+  transform: translateX(-50%) translateY(15vw) rotate(45deg);
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.textInsideDiamond {
+  width: 90%;
+  transform: rotate(-45deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2vh;
+}
+
+.circleNumber {
+  background-color: #aaaaaa;
+  border-radius: 50%;
+  width: 4vh;
+  height: 4vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .community {
-  width: 100%;
-  height: 34vw;
+  width: 60vh;
+  height: 60vh;
+  margin: 0 auto;
   object-fit: cover;
-  object-position: 0% 50%;
-  z-index: 0;
+  // animation: donut-rotate 1500ms linear infinite;
 }
+.bottomShape {
+  width: 75%;
+  z-index: -1;
+  position: absolute;
+  left: 20%;
+  top: -15%;
+  transform: rotate(-80deg);
 
-
-@media  (max-width: 500px) {
-  .laptop {
-      width: 70vw;
-        height: 50vw;
+  // animation: clockwise 1500ms  linear infinite;
+}
+.bottomImages {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 720px) {
+  .community {
+    width: 50vh;
+    height: 50vh;
   }
 }
+@media (max-width: 600px) {
+  .alone {
+    width: 100%;
+  }
 
-;
+  .shape {
+    width: 90%;
+    top: -10vw;
+  }
 
-
+  .diamond {
+    width: 240px;
+    height: 240px;
+    margin: 0 auto;
+  }
+  .community {
+    width: 60vh;
+    height: 60vh;
+  }
+}
 
 @media only screen and (min-width: 1536px) {
   html {
@@ -57,12 +125,32 @@ body {
   }
 }
 
-;
-
 @media only screen and (min-width: 1920px) {
   html {
     font-size: 190%;
   }
 }
 
-;
+@keyframes clockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes donut-rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  50% {
+    transform: rotate(-140deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
