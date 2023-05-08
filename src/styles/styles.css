@@ -4,15 +4,11 @@
 }
 
 body {
-  margin: 0;
   padding: 0;
-  width: 100vw;
-  height: 100vh;
 }
 
 body #root {
-  width: 100vw;
-  height: 100vh;
+  margin-top: 5rem;
 }
 
 .topSection {
@@ -25,6 +21,7 @@ body #root {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-bottom: 40rem;
 }
 
 .alone {
@@ -105,8 +102,8 @@ body #root {
 }
 
 .community {
-  width: 60vh;
-  height: 60vh;
+  width: 40rem;
+  height: 40rem;
   margin: 0 auto;
   -o-object-fit: cover;
      object-fit: cover;
@@ -134,10 +131,25 @@ body #root {
           justify-content: center;
 }
 
+@media (min-width: 3000px) {
+  .topSection {
+    margin-bottom: 70rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .topSection {
+    margin-bottom: 30rem;
+  }
+}
+
 @media (max-width: 720px) {
+  .topSection {
+    margin-bottom: 25rem;
+  }
   .community {
-    width: 50vh;
-    height: 50vh;
+    width: 30rem;
+    height: 30rem;
   }
 }
 
@@ -155,8 +167,11 @@ body #root {
     margin: 0;
   }
   .community {
-    width: 60vh;
-    height: 60vh;
+    width: 340px;
+    height: 340px;
+  }
+  .textInsideDiamond {
+    gap: 1vh;
   }
 }
 
@@ -164,6 +179,13 @@ body #root {
   .diamond {
     width: 190px;
     height: 190px;
+  }
+}
+
+@media (min-height: 1000px) and (max-width: 1000px) {
+  .community {
+    width: 30rem;
+    height: 30rem;
   }
 }
 
