@@ -11,7 +11,6 @@ const LandingPage = () => {
       sx={{
         backgroundColor: "#fff",
         color: "#626161",
-        marginTop: "10vh",
         fontFamily: "Montserrat, sans-serif",
       }}
       spacing={{ sx: 5, sm: 1 }}
@@ -37,7 +36,7 @@ const LandingPage = () => {
                   variant="h3"
                   sx={{
                     fontWeight: 700,
-                    fontSize: { xs: "4vh", sm: "4vw" },
+                    fontSize: { xs: "1.4rem", sm: "4vw" },
                   }}
                 >
                   Are you lonely?
@@ -47,11 +46,14 @@ const LandingPage = () => {
                   sx={{
                     fontWeight: 300,
                     fontSize: {
-                      xs: "2vh",
-                      sm: "1.5vw",
+                      xs: "1rem",
+                      sm: "1.2vw",
                     },
                     textAling: "left",
-                    lineHeight: "1em",
+                    lineHeight: {
+                      xs: "1rem",
+                      sm: "1em",
+                    },
                   }}
                 >
                   ​God created us to love and be loved, and we need people
@@ -68,12 +70,6 @@ const LandingPage = () => {
           item
           direction="row"
           sx={{
-            mt: {
-              xs: "40vh",
-              sm: "50vh",
-              md: "70vh",
-              xl: "90vh",
-            },
             p: 2,
             backgroundColor: "#D4D4D4",
           }}
@@ -92,7 +88,7 @@ const LandingPage = () => {
             <Typography
               variant="h2"
               align="justify"
-              sx={{ fontWeight: 300, fontSize: { xs: "4vh", sm: "5vw" } }}
+              sx={{ fontWeight: 300, fontSize: { xs: "1.6rem", sm: "4.2vw" } }}
             >
               Simple steps
             </Typography>
@@ -101,7 +97,7 @@ const LandingPage = () => {
               align="left"
               sx={{
                 fontWeight: 100,
-                fontSize: { xs: "2vh", sm: "1.5vw" },
+                fontSize: { xs: "1rem", sm: "1.2vw" },
                 mt: { xs: "2vh", sm: 0 },
               }}
             >
@@ -132,7 +128,7 @@ const LandingPage = () => {
                 <Box
                   sx={{
                     borderRadius: { xs: "4vw", sm: "2vw" },
-                    p: { xs: "3vh", sm: "4vh" },
+                    p: { xs: "2rem", sm: "3rem" },
                     width: { xs: "100%", lg: "95%" },
                   }}
                   direction="column"
@@ -146,7 +142,7 @@ const LandingPage = () => {
                       align="left"
                       sx={{
                         fontWeight: 500,
-                        fontSize: { xs: "2.5vh", sm: "2vw" },
+                        fontSize: { xs: "1.2rem", sm: "2.2vw", xl: "1.8vw" },
                         fontFamily: "Montserrat, sans-serif",
                       }}
                     >
@@ -158,7 +154,7 @@ const LandingPage = () => {
                     align="left"
                     sx={{
                       fontWeight: 500,
-                      fontSize: { xs: "2.5vh", sm: "3vh", lg: "3.5vh" },
+                      fontSize: { xs: "1.3rem", sm: "2.5vw" },
                       mt: "3vh",
                       mb: "3vh",
                     }}
@@ -170,7 +166,10 @@ const LandingPage = () => {
                     align="left"
                     sx={{
                       fontWeight: 100,
-                      fontSize: { xs: "2vh", sm: "2.5vh" },
+                      fontSize: {
+                        xs: "1rem",
+                        sm: "1.2vw",
+                      },
                       fontStyle: "italic",
                     }}
                   >
@@ -184,7 +183,7 @@ const LandingPage = () => {
                 <Box
                   sx={{
                     borderRadius: { xs: "4vw", sm: "2vw" },
-                    p: { xs: "3vh", sm: "4vh" },
+                    p: { xs: "2rem", sm: "3rem" },
                     width: { xs: "100%", lg: "95%" },
                   }}
                   direction="column"
@@ -198,7 +197,7 @@ const LandingPage = () => {
                       align="left"
                       sx={{
                         fontWeight: 500,
-                        fontSize: { xs: "2.5vh", sm: "2vw" },
+                        fontSize: { xs: "1.2rem", sm: "2.2vw", xl: "1.8vw" },
                         fontFamily: "Montserrat, sans-serif",
                       }}
                     >
@@ -210,7 +209,7 @@ const LandingPage = () => {
                     align="left"
                     sx={{
                       fontWeight: 500,
-                      fontSize: { xs: "2.5vh", sm: "3vh", lg: "3.5vh" },
+                      fontSize: { xs: "1.3rem", sm: "2.5vw" },
                       mt: "3vh",
                       mb: "3vh",
                     }}
@@ -222,7 +221,10 @@ const LandingPage = () => {
                     align="left"
                     sx={{
                       fontWeight: 100,
-                      fontSize: { xs: "2vh", sm: "2.5vh" },
+                      fontSize: {
+                        xs: "1rem",
+                        sm: "1.2vw",
+                      },
                       fontStyle: "italic",
                     }}
                   >
@@ -236,7 +238,7 @@ const LandingPage = () => {
                 <Box
                   sx={{
                     borderRadius: { xs: "4vw", sm: "2vw" },
-                    p: { xs: "3vh", sm: "4vh" },
+                    p: { xs: "2rem", sm: "3rem" },
                     width: { xs: "100%", lg: "95%" },
                   }}
                   direction="column"
@@ -250,7 +252,7 @@ const LandingPage = () => {
                       align="left"
                       sx={{
                         fontWeight: 500,
-                        fontSize: { xs: "2.5vh", sm: "2vw" },
+                        fontSize: { xs: "1.2rem", sm: "2.2vw", xl: "1.8vw" },
                         fontFamily: "Montserrat, sans-serif",
                       }}
                     >
@@ -262,7 +264,7 @@ const LandingPage = () => {
                     align="left"
                     sx={{
                       fontWeight: 500,
-                      fontSize: { xs: "2.5vh", sm: "3vh", lg: "3.5vh" },
+                      fontSize: { xs: "1.3rem", sm: "2.5vw" },
                       mt: "3vh",
                       mb: "3vh",
                     }}
@@ -275,7 +277,7 @@ const LandingPage = () => {
                     align="left"
                     sx={{
                       fontWeight: 100,
-                      fontSize: { xs: "2vh", sm: "2.5vh" },
+                      fontSize: { xs: "1rem", sm: "1.2vw" },
                       fontStyle: "italic",
                     }}
                   >
@@ -288,7 +290,7 @@ const LandingPage = () => {
                 <Box
                   sx={{
                     borderRadius: { xs: "4vw", sm: "2vw" },
-                    p: { xs: "3vh", sm: "4vh" },
+                    p: { xs: "2rem", sm: "3rem" },
                     width: { xs: "100%", lg: "95%" },
                   }}
                   direction="column"
@@ -302,7 +304,7 @@ const LandingPage = () => {
                       align="left"
                       sx={{
                         fontWeight: 500,
-                        fontSize: { xs: "2.5vh", sm: "2vw" },
+                        fontSize: { xs: "1.2rem", sm: "2.2vw", xl: "1.8vw" },
                         fontFamily: "Montserrat, sans-serif",
                       }}
                     >
@@ -314,7 +316,7 @@ const LandingPage = () => {
                     align="left"
                     sx={{
                       fontWeight: 500,
-                      fontSize: { xs: "2.5vh", sm: "3vh", lg: "3.5vh" },
+                      fontSize: { xs: "1.3rem", sm: "2.5vw" },
                       mt: "3vh",
                       mb: "3vh",
                     }}
@@ -327,7 +329,10 @@ const LandingPage = () => {
                     align="left"
                     sx={{
                       fontWeight: 100,
-                      fontSize: { xs: "2vh", sm: "2.5vh" },
+                      fontSize: {
+                        xs: "1rem",
+                        sm: "1.2vw",
+                      },
                       fontStyle: "italic",
                     }}
                   >
@@ -359,20 +364,19 @@ const LandingPage = () => {
               <Box
                 sx={{
                   width: "80%",
-                   zIndex:"2",
+                  zIndex: "2",
                   m: { xs: "auto", sm: 0 },
                   ml: { sm: "20%" },
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
-               
                 }}
               >
                 <Typography
                   variant="h3"
                   sx={{
                     fontWeight: 300,
-                    fontSize: { xs: "4vh", md: "3.5vw", xl: "4vw" },
+                    fontSize: { xs: "1.4rem", sm: "4vw" },
                   }}
                 >
                   Community is vital
@@ -381,7 +385,10 @@ const LandingPage = () => {
                   variant="p"
                   sx={{
                     fontWeight: 500,
-                    fontSize: { xs: "2vh", sm: "2.5vh" },
+                    fontSize: {
+                      xs: "1rem",
+                      sm: "1.2vw",
+                    },
                     my: "2vh",
                   }}
                 >
@@ -390,7 +397,13 @@ const LandingPage = () => {
                 </Typography>
                 <Typography
                   variant="p"
-                  sx={{ fontWeight: 100, fontSize: { xs: "2vh", sm: "2.5vh" } }}
+                  sx={{
+                    fontWeight: 100,
+                    fontSize: {
+                      xs: "1rem",
+                      sm: "1.2vw",
+                    },
+                  }}
                 >
                   When we are in close relationships with other believers, we
                   have people to teach us,to pray for us,to support us,to
@@ -405,32 +418,35 @@ const LandingPage = () => {
               <Box
                 sx={{
                   width: { xs: "90%", md: "60%" },
-                  mx:  { xs: 0, md: "auto"},
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                
-                }}
-              >  <div className="bottomImages">
-                <img src="/friends.png" className="community" />{" "}
-                 <img src="/shape2.png" className="bottomShape" />
-               </div>
-                <Box
-                sx={{
-                  width: { xs: "90%",sm:"80%", md: "70%",lg:"60%" },
-                  zIndex:"2",
                   mx: "auto",
                   display: "flex",
                   flexDirection: "column",
-                  justifyContent: "flex-start",
-                
+                  justifyContent: "center",
                 }}
               >
+                {" "}
+                <div className="bottomImages">
+                  <img src="/friends.png" className="community" />{" "}
+                  <img src="/shape2.png" className="bottomShape" />
+                </div>
+                <Box
+                  sx={{
+                    width: { xs: "90%", sm: "80%", md: "70%", lg: "60%" },
+                    zIndex: "2",
+                    mx: "auto",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                  }}
+                >
                   <Typography
                     variant="p"
                     sx={{
                       fontWeight: 100,
-                      fontSize: { xs: "2vh",sm: "2.2vh",md: "2.5vh" },
+                      fontSize: {
+                        xs: "1rem",
+                        sm: "1.2vw",
+                      },
                       fontStyle: "italic",
                       mt: "2vh",
                     }}
@@ -443,13 +459,16 @@ const LandingPage = () => {
                     variant="p"
                     sx={{
                       fontWeight: 700,
-                      fontSize: { xs: "2vh",sm: "2.2vh", md: "2.5vh" },
+                      fontSize: {
+                        xs: "1rem",
+                        sm: "1.2vw",
+                      },
                       fontStyle: "italic",
                     }}
                   >
                     Romans 12:16
                   </Typography>
-            </Box>
+                </Box>
               </Box>
             </Grid>
           </Grid>
