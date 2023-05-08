@@ -404,8 +404,8 @@ const LandingPage = () => {
             <Grid container item xs={12} sm={7}>
               <Box
                 sx={{
-                  // width: { xs: "90%", md: "60%" },
-                  mx: "auto",
+                  width: { xs: "90%", md: "60%" },
+                  mx:  { xs: 0, md: "auto"},
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
