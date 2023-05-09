@@ -105,8 +105,8 @@ body #root {
 }
 
 .community {
-  width: 40rem;
-  height: 40rem;
+  width: 100%;
+  aspect-ratio: 1;
   margin: 0 auto;
   -o-object-fit: cover;
      object-fit: cover;

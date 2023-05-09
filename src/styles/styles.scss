@@ -69,9 +69,8 @@ body {
   align-items: center;
 }
 .community {
-  width: 40rem;
-  height: 40rem;
-
+  width: 100%;
+  aspect-ratio: 1;
   margin: 0 auto;
   object-fit: cover;
   // animation: donut-rotate 1500ms linear infinite;
