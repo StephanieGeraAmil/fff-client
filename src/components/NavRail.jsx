@@ -36,7 +36,7 @@ const handleSearchIconClick=(e)=>{
         width: '4%',
         minWidth:50,
         maxWidth:100,
-        height: 1,
+        height: '100%',
         margin: "auto",
         zIndex: 1500,
         display: "flex",
