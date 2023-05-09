@@ -6,12 +6,7 @@ import { setForm } from "../../actions/globalStateActions";
 import { useSocket } from "../../hooks/useSocket";
 import { Box } from "@mui/material/";
 
-const containerStyle = {
-   width: "100vw",
-  height: "100vh",
-  margin:0,
-   overflow: "hidden",
-};
+
 
 let options = {
   styles: mapStyles,
@@ -138,7 +133,12 @@ export const MapSection = () => {
     
     >
       <GoogleMap
-        mapContainerStyle={containerStyle}
+        mapContainerStyle={{
+   width: screenSize.width,
+  height: screenSize.height,
+  margin:0,
+   overflow: "hidden",
+}}
         center={mapCenter}
         zoom={17}
         options={options}
