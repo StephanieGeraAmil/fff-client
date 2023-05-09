@@ -5,13 +5,16 @@
 
 body {
   padding: 0;
+  margin: 0;
 }
 
 body #root {
-  margin-top: 5rem;
+  padding: 0;
+  margin: 0;
 }
 
 .topSection {
+  margin-top: 5rem;
   position: relative;
   z-index: 0;
   width: 100vw;

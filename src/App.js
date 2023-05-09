@@ -9,7 +9,10 @@ import {
   responsiveFontSizes,
 } from "@mui/material/styles";
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
-import { CircularProgress } from "@mui/material";
+import { Box, IconButton, CircularProgress } from "@mui/material";
+
+
+
 
 const App = () => {
   const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env;
@@ -27,8 +30,8 @@ const App = () => {
       },
     },
     typography: {
-      fontSize:15,
-    }
+      fontSize: 15,
+    },
   });
   theme = responsiveFontSizes(theme);
 
@@ -49,11 +52,24 @@ const App = () => {
             <MapSection />
           </>
         );
-      default: return;
+      default:
+        return;
     }
   };
   return (
-    <div className="App">
+ <Box
+        sx={{
+       
+        backgroundColor: "background.default",
+        width: 1,
+       
+        height: 1,
+        margin: 0,
+        zIndex: -10,
+      
+      }}
+    
+    >
       <ThemeProvider theme={theme}>
         <Wrapper
           apiKey={REACT_APP_GOOGLE_MAPS_API_KEY}
@@ -62,7 +78,7 @@ const App = () => {
 
         <NavRail />
       </ThemeProvider>
-    </div>
+    </Box>
   );
 };
 
