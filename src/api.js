@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const { REACT_APP_BACKEND_URL } = process.env;
+const { REACT_APP_REST_BACKEND_URL } = process.env;
 
-const users_url =  REACT_APP_BACKEND_URL + "/users";
+const users_url =  REACT_APP_REST_BACKEND_URL + "/users";
 export const fetchUsers = () => axios.get(users_url);
 export const findUserByEmail = (userEmail) =>
   axios.get(`${users_url}?email=${userEmail}`);
@@ -11,7 +11,7 @@ export const updateUser = (updatedUser) =>
   axios.put(`${users_url}/${updatedUser.id}`, updatedUser);
 export const deleteUser = (deleteUserId) =>
   axios.delete(`${users_url}/${deleteUserId}`);
-const events_url =  REACT_APP_BACKEND_URL + "/events";
+const events_url =  REACT_APP_REST_BACKEND_URL + "/events";
 export const fetchEvents = () => axios.get(events_url);
 export const fetchEventsWithUserBelongingInfo = (user_id) =>
   axios.get(`${events_url}/${user_id}`);
