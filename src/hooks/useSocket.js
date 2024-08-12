@@ -9,12 +9,12 @@ import {
 
 const socket = { current: null };
 export const useSocket = () => {
-  const { REACT_APP_WS_BACKEND_URL } = process.env;
+  const { REACT_APP_BACKEND_URL } = process.env;
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!socket.current) {
-      socket.current = new WebSocket(REACT_APP_WS_BACKEND_URL);
+      socket.current = new WebSocket(REACT_APP_BACKEND_URL);
       socket.current.onopen = (event) => {
         socket.current.send(
           JSON.stringify({
