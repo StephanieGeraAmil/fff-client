@@ -22,20 +22,20 @@ export const NavRail = () => {
       }
     }
   }, [user]);
-const handleSearchIconClick=(e)=>{
-   dispatch(setForm({ type: "Search" }));
-}
+  const handleSearchIconClick = (e) => {
+    dispatch(setForm({ type: "Search" }));
+  }
 
   return (
     <Box
-        sx={{
+      sx={{
         position: "absolute",
         top: 0,
         left: 0,
         backgroundColor: "background.default",
         width: '4%',
-        minWidth:50,
-        maxWidth:100,
+        minWidth: 50,
+        maxWidth: 100,
         height: '100%',
         margin: "auto",
         zIndex: 1500,
@@ -45,14 +45,16 @@ const handleSearchIconClick=(e)=>{
       role="presentation"
     >
       {!isAuthenticated && <Login />}
-      {isAuthenticated && <Logout />}
+      {isAuthenticated && <>
+      {/* <label>{user.email}</label> */}
+      <Logout /></>}
       <IconButton
-    
+
         aria-label="search"
         onClick={handleSearchIconClick}
       >
         <SearchOutlined />
-       
+
       </IconButton>
     </Box>
   );
