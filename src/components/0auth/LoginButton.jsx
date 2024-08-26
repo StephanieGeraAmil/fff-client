@@ -10,9 +10,9 @@ export const LoginButton = ({text}) => {
         loginWithRedirect();
       }}
       sx={{
-        mt: "4%",
+        mt: "2%",
         width:{ sm:'15vw'}, 
-        height: { sm:'4vw'}, 
+        height: { sm:'auto'}, 
         fontSize: {xs: '0.7rem',sm: "1.5vw"},
         backgroundColor:"#6d6c6c",
         color:"#fff",
