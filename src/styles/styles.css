@@ -1,13 +1,11 @@
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
   padding: 0;
   margin: 0;
 }
-
 body #root {
   padding: 0;
   margin: 0;
@@ -18,13 +16,9 @@ body #root {
   position: relative;
   z-index: 0;
   width: 100vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-bottom: 40rem;
+  justify-content: center;
+  margin-bottom: 15rem;
 }
 
 .alone {
@@ -39,69 +33,51 @@ body #root {
   z-index: -1;
   position: absolute;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 .diamond {
   position: absolute;
   left: 50%;
   top: 50%;
-  background: #d4d4d4;
-  width: 40vw;
-  height: 40vw;
-  -webkit-transform: translateX(-50%) translateY(15vw) rotate(45deg);
-          transform: translateX(-50%) translateY(15vw) rotate(45deg);
-  z-index: 2;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  width: 160vw;
+  height: 110vw;
+  transform: translate(-30%, -25%);
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.diamond svg {
+  z-index: 10;
+  width: 100%;
+  height: 100%;
 }
 
 .textInsideDiamond {
+  position: absoulte;
+  left: 50%;
+  top: 50%;
+  transform: translate(-100%, 0);
   width: 90%;
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  gap: 2vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5vw;
+  z-index: 50;
 }
 
 .circleNumber {
   background-color: #aaaaaa;
   border-radius: 50%;
-  width: 4vh;
-  height: 4vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  width: 6vw;
+  height: 6vw;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .community {
@@ -113,50 +89,55 @@ body #root {
 }
 
 .bottomShape {
-  width: 75%;
+  width: 110%;
   z-index: -1;
   position: absolute;
-  left: 20%;
-  top: -15%;
-  -webkit-transform: rotate(-80deg);
-          transform: rotate(-80deg);
+  left: 15%;
+  top: -17%;
+  transform: rotate(-80deg);
 }
 
 .bottomImages {
   position: relative;
   z-index: 0;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
 
+@media (min-width: 1000px) {
+  .circleNumber {
+    width: 5vw;
+    height: 5vw;
+  }
+}
 @media (min-width: 3000px) {
   .topSection {
     margin-bottom: 70rem;
   }
 }
-
 @media (max-width: 1000px) {
   .topSection {
     margin-bottom: 30rem;
   }
 }
-
 @media (max-width: 720px) {
   .topSection {
-    margin-bottom: 25rem;
+    margin-bottom: 20rem;
   }
   .community {
     width: 30rem;
     height: 30rem;
   }
+  .circleNumber {
+    width: 8vw;
+    height: 8vw;
+  }
 }
-
 @media (max-width: 600px) {
+  .topSection {
+    margin-bottom: 70vw;
+  }
   .alone {
     width: 100%;
   }
@@ -165,9 +146,8 @@ body #root {
     top: -8vw;
   }
   .diamond {
-    width: 240px;
-    height: 240px;
-    margin: 0;
+    width: 280vw;
+    height: 160vw;
   }
   .community {
     width: 340px;
@@ -176,83 +156,55 @@ body #root {
   .textInsideDiamond {
     gap: 1vh;
   }
-}
-
-@media (max-width: 350px) {
-  .diamond {
-    width: 190px;
-    height: 190px;
+  .circleNumber {
+    width: 9vw;
+    height: 9vw;
   }
 }
-
+@media (max-width: 350px) {
+  .circleNumber {
+    width: 11vw;
+    height: 11vw;
+  }
+}
+@media (max-width: 900px) {
+  .bottomImages {
+    width: 60%;
+    margin: auto;
+  }
+}
 @media (min-height: 1000px) and (max-width: 1000px) {
   .community {
     width: 30rem;
     height: 30rem;
   }
 }
-
 @media only screen and (min-width: 1536px) {
   html {
     font-size: 125%;
   }
 }
-
 @media only screen and (min-width: 1920px) {
   html {
     font-size: 190%;
   }
 }
-
-@-webkit-keyframes clockwise {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
 @keyframes clockwise {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
-
-@-webkit-keyframes donut-rotate {
-  0% {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
-  }
-  50% {
-    -webkit-transform: rotate(-140deg);
-            transform: rotate(-140deg);
-  }
-  100% {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
-  }
-}
-
 @keyframes donut-rotate {
   0% {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
+    transform: rotate(0);
   }
   50% {
-    -webkit-transform: rotate(-140deg);
-            transform: rotate(-140deg);
+    transform: rotate(-140deg);
   }
   100% {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
+    transform: rotate(0);
   }
-}
-/*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.css.map */

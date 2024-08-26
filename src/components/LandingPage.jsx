@@ -31,15 +31,29 @@ const LandingPage = () => {
             <img src="/sadGirl.png" className="alone" />
             <img src="/shape.png" className="shape" />
             <div className="diamond">
+
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#d4d4d4"d="M45.4,-43.5C56.7,-44.7,62.1,-28.3,60.6,-14.1C59,0.1,50.5,12.2,41.2,19.6C31.9,27,21.9,29.8,14,28.2C6.2,26.5,0.5,20.4,-7.5,18.5C-15.5,16.5,-25.7,18.6,-31.7,15C-37.6,11.4,-39.2,2.1,-36.9,-5.7C-34.6,-13.6,-28.4,-20,-21.6,-19.6C-14.8,-19.2,-7.4,-12.1,4.8,-17.9C17.1,-23.6,34.2,-42.3,45.4,-43.5Z" transform="translate(100 100)" />
+              </svg>
               <div className="textInsideDiamond">
                 <Typography
                   variant="h3"
                   sx={{
                     fontWeight: 700,
-                    fontSize: { xs: "1.4rem", sm: "4vw" },
+                    fontSize: { xs: "8vw", sm: "4vw", lg: "4.5vw" },
+                  }}
+                  align="center"
+                >
+                  Feeling Lonely?
+                </Typography>
+                {/* <Typography
+                  variant="h6"
+                  sx={{
+                    fontWeight: 700,
+                    fontSize: { xs: "1.2rem", sm: "2vw", lg:"1.2vw" },
                   }}
                 >
-                  Are you lonely?
+                  Discover Connection and Community
                 </Typography>
                 <Typography
                   variant="p"
@@ -47,7 +61,7 @@ const LandingPage = () => {
                     fontWeight: 300,
                     fontSize: {
                       xs: "1rem",
-                      sm: "1.2vw",
+                      sm: "1.2vw"
                     },
                     textAling: "left",
                     lineHeight: {
@@ -55,10 +69,11 @@ const LandingPage = () => {
                       sm: "1em",
                     },
                   }}
+                  align="center"
                 >
-                  ​God created us to love and be loved, and we need people
-                  around us in order to do that.
-                </Typography>
+                  We all need connection and support to thrive. This app helps you meet like-minded individuals and build strong communities.
+
+                </Typography> */}
                 <LoginButton text="Start now" />
               </div>
             </div>
@@ -92,7 +107,7 @@ const LandingPage = () => {
             >
               Simple steps
             </Typography>
-            <Typography
+            {/* <Typography
               variant="p"
               align="left"
               sx={{
@@ -103,7 +118,7 @@ const LandingPage = () => {
             >
               This is a simple app, that just want to connect christians and to
               help ​strengthen communities;
-            </Typography>
+            </Typography> */}
           </Grid>
           <Grid
             container
@@ -128,18 +143,20 @@ const LandingPage = () => {
                 <Box
                   sx={{
                     borderRadius: { xs: "4vw", sm: "2vw" },
-                    p: { xs: "2rem", sm: "3rem" },
+                    p: { xs: "2rem", sm: "1rem" },
                     width: { xs: "100%", lg: "95%" },
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    alignItems: "center",
+
                   }}
-                  direction="column"
                   backgroundColor="#fff"
-                  justifyContent={"flex-start"}
-                  alignItems={"flex-start"}
                 >
                   <div className="circleNumber">
                     <Typography
                       variant="h6"
-                      align="left"
+                      // align="left"
                       sx={{
                         fontWeight: 500,
                         fontSize: { xs: "1.2rem", sm: "2.2vw", xl: "1.8vw" },
@@ -154,12 +171,12 @@ const LandingPage = () => {
                     align="left"
                     sx={{
                       fontWeight: 500,
-                      fontSize: { xs: "1.3rem", sm: "2.5vw" },
+                      fontSize: { xs: "1.3rem", sm: "2.5vw", lg: "1.8vw", xl: "1.2vw" },
                       mt: "3vh",
                       mb: "3vh",
                     }}
                   >
-                    Login
+                    Signup with Confidence
                   </Typography>
                   <Typography
                     variant="p"
@@ -173,9 +190,7 @@ const LandingPage = () => {
                       fontStyle: "italic",
                     }}
                   >
-                    We promise wont send you spam.You need to have an account to
-                    create and edit events.We will only ask for your gender and
-                    age information to filter the events that best fit you
+                    No Spam Promise: We only ask for your gender and age to tailor events for you.
                   </Typography>
                 </Box>
               </Grid>
@@ -183,18 +198,20 @@ const LandingPage = () => {
                 <Box
                   sx={{
                     borderRadius: { xs: "4vw", sm: "2vw" },
-                    p: { xs: "2rem", sm: "3rem" },
+                    p: { xs: "2rem", sm: "1rem" },
                     width: { xs: "100%", lg: "95%" },
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    alignItems: "center",
+
                   }}
-                  direction="column"
                   backgroundColor="#fff"
-                  justifyContent={"flex-start"}
-                  alignItems={"flex-start"}
                 >
                   <div className="circleNumber">
                     <Typography
                       variant="h6"
-                      align="left"
+                      // align="left"
                       sx={{
                         fontWeight: 500,
                         fontSize: { xs: "1.2rem", sm: "2.2vw", xl: "1.8vw" },
@@ -209,12 +226,12 @@ const LandingPage = () => {
                     align="left"
                     sx={{
                       fontWeight: 500,
-                      fontSize: { xs: "1.3rem", sm: "2.5vw" },
+                      fontSize: { xs: "1.3rem", sm: "2.5vw", lg: "1.8vw", xl: "1.2vw" },
                       mt: "3vh",
                       mb: "3vh",
                     }}
                   >
-                    Check the events in your area
+                    Explore Local Events
                   </Typography>
                   <Typography
                     variant="p"
@@ -228,8 +245,7 @@ const LandingPage = () => {
                       fontStyle: "italic",
                     }}
                   >
-                    This is meant to be a tool for off-line conection, so the
-                    closer, the better
+                    Find events nearby to foster real-life interactions.
                   </Typography>
                 </Box>
               </Grid>
@@ -238,18 +254,20 @@ const LandingPage = () => {
                 <Box
                   sx={{
                     borderRadius: { xs: "4vw", sm: "2vw" },
-                    p: { xs: "2rem", sm: "3rem" },
+                    p: { xs: "2rem", sm: "1rem" },
                     width: { xs: "100%", lg: "95%" },
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    alignItems: "center",
+
                   }}
-                  direction="column"
                   backgroundColor="#fff"
-                  justifyContent={"flex-start"}
-                  alignItems={"flex-start"}
                 >
                   <div className="circleNumber">
                     <Typography
                       variant="h6"
-                      align="left"
+                      // align="left"
                       sx={{
                         fontWeight: 500,
                         fontSize: { xs: "1.2rem", sm: "2.2vw", xl: "1.8vw" },
@@ -264,13 +282,12 @@ const LandingPage = () => {
                     align="left"
                     sx={{
                       fontWeight: 500,
-                      fontSize: { xs: "1.3rem", sm: "2.5vw" },
+                      fontSize: { xs: "1.3rem", sm: "2.5vw", lg: "1.8vw", xl: "1.2vw" },
                       mt: "3vh",
                       mb: "3vh",
                     }}
                   >
-                    Join the group chat if available or go to the meeting point
-                    on time
+                    Engage and Participate
                   </Typography>
                   <Typography
                     variant="p"
@@ -281,8 +298,7 @@ const LandingPage = () => {
                       fontStyle: "italic",
                     }}
                   >
-                    This is the hardest part, but you wont regret it.Develop
-                    friendships, build your godly community
+                    Join available group chats or attend events in person. Building friendships and community is rewarding and fulfilling.
                   </Typography>
                 </Box>
               </Grid>
@@ -290,18 +306,20 @@ const LandingPage = () => {
                 <Box
                   sx={{
                     borderRadius: { xs: "4vw", sm: "2vw" },
-                    p: { xs: "2rem", sm: "3rem" },
+                    p: { xs: "2rem", sm: "1rem" },
                     width: { xs: "100%", lg: "95%" },
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    alignItems: "center",
+
                   }}
-                  direction="column"
                   backgroundColor="#fff"
-                  justifyContent={"flex-start"}
-                  alignItems={"flex-start"}
                 >
                   <div className="circleNumber">
                     <Typography
                       variant="h6"
-                      align="left"
+                      // align="left"
                       sx={{
                         fontWeight: 500,
                         fontSize: { xs: "1.2rem", sm: "2.2vw", xl: "1.8vw" },
@@ -316,12 +334,12 @@ const LandingPage = () => {
                     align="left"
                     sx={{
                       fontWeight: 500,
-                      fontSize: { xs: "1.3rem", sm: "2.5vw" },
+                      fontSize: { xs: "1.3rem", sm: "2.5vw", lg: "1.8vw", xl: "1.2vw" },
                       mt: "3vh",
                       mb: "3vh",
                     }}
                   >
-                    Create new events
+                    Create and Share Events
                   </Typography>
 
                   <Typography
@@ -336,9 +354,7 @@ const LandingPage = () => {
                       fontStyle: "italic",
                     }}
                   >
-                    If you have an idea ,create an event, and don't get
-                    discouraged if few people show up.Everything will happen on
-                    Gods timing, be patient
+                    Have a great idea? Start your own event. Don’t worry about attendance; every connection matters.
                   </Typography>
                 </Box>
               </Grid>
@@ -360,7 +376,7 @@ const LandingPage = () => {
             container
             item
           >
-            <Grid container item xs={12} sm={5}>
+            <Grid container item xs={12} md={5}>
               <Box
                 sx={{
                   width: "80%",
@@ -379,7 +395,7 @@ const LandingPage = () => {
                     fontSize: { xs: "1.4rem", sm: "4vw" },
                   }}
                 >
-                  Community is vital
+                  Community is Vital
                 </Typography>
                 <Typography
                   variant="p"
@@ -387,13 +403,12 @@ const LandingPage = () => {
                     fontWeight: 500,
                     fontSize: {
                       xs: "1rem",
-                      sm: "1.2vw",
+                      sm: "1.1vw",
                     },
                     my: "2vh",
                   }}
                 >
-                  Through generosity, gratitude and service, we HEAL, GROW and
-                  get to PARTICIPATE in Gods amazing plan
+                  By fostering generosity, gratitude, and support, we heal, grow, and participate in a larger plan.
                 </Typography>
                 <Typography
                   variant="p"
@@ -401,20 +416,37 @@ const LandingPage = () => {
                     fontWeight: 100,
                     fontSize: {
                       xs: "1rem",
-                      sm: "1.2vw",
+                      sm: "1.1vw",
                     },
+
+                    '& ul': {
+                      paddingLeft: '3rem',
+                      margin: '1rem 0',
+                    },
+                    '& li': {
+                      marginBottom: '8px',
+                    }
                   }}
                 >
-                  When we are in close relationships with other believers, we
-                  have people to teach us,to pray for us,to support us,to
-                  encourage us,to hold us accountable,to give us wise counsel
-                  and to serve alongside us.
+                  Close relationships with others offer:
+
+                  <ul>
+                    <li> Improved Mental Health</li>
+                    <li>Enhanced Well-being</li>
+                    <li>Increased Longevity</li>
+                    <li>Learning Opportunities</li>
+                    <li>Emotional Support</li>
+                    <li>Encouragement and Accountability</li>
+                    <li>Wise Counsel</li>
+                    <li>Opportunities to Collaborate</li>
+                  </ul>
                 </Typography>
+
                 <LoginButton text="Start now" />
               </Box>
             </Grid>
 
-            <Grid container item xs={12} sm={7}>
+            <Grid container item xs={12} sm={12} md={7}>
               <Box
                 sx={{
                   width: { xs: "90%", md: "60%" },
@@ -436,7 +468,8 @@ const LandingPage = () => {
                     mx: "auto",
                     display: "flex",
                     flexDirection: "column",
-                    justifyContent: "flex-start",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
                   <Typography
@@ -444,8 +477,8 @@ const LandingPage = () => {
                     sx={{
                       fontWeight: 100,
                       fontSize: {
-                        xs: "1rem",
-                        sm: "1.2vw",
+                        xs: "0.9rem",
+                        sm: "1vw",
                       },
                       fontStyle: "italic",
                       mt: "2vh",
@@ -460,9 +493,11 @@ const LandingPage = () => {
                     sx={{
                       fontWeight: 700,
                       fontSize: {
-                        xs: "1rem",
-                        sm: "1.2vw",
+                        xs: "0.9rem",
+                        sm: "1vw",
                       },
+                      width: "auto",
+                      maxWidth: "50%",
                       fontStyle: "italic",
                     }}
                   >

@@ -20,7 +20,7 @@ body {
   width: 100vw;
   display: flex;
   justify-content: center;
-  margin-bottom: 40rem;
+  margin-bottom: 15rem;
 }
 .alone {
   width: 80%;
@@ -35,35 +35,90 @@ body {
   transform: translateX(-50%);
 }
 
+// .diamond {
+//   position: absolute;
+//   left: 50%;
+//   top: 50%;
+//   background:transparent;
+//   width: 40vw;
+//   height: 40vw;
+//   transform: translateX(-50%) translateY(15vw) rotate(45deg);
+//   z-index: 2;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   align-items: center;
+//   overflow: hidden;
+// }
+
+
+
+
+// .diamond::before,
+// .diamond::after {
+//   content: "";
+//   position: absolute;
+//   width: 100%;
+//   height: 50%;
+//   background-color: #d4d4d4; 
+// }
+
+// .diamond::before {
+//   top: 25%;
+// }
+
+// .diamond::after {
+//   bottom: 25%;
+// }
 .diamond {
   position: absolute;
   left: 50%;
   top: 50%;
-  background: #d4d4d4;
-  width: 40vw;
-  height: 40vw;
-  transform: translateX(-50%) translateY(15vw) rotate(45deg);
-  z-index: 2;
+  width: 160vw;
+  height: 110vw; 
+//  background-color: #d4d4d4;
+  transform:  translate(-30%,-25%);
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  z-index: 2;
+
+
+
+ // clip-path: path("M 43.3% 0 C 60% 10% 100% 30% 100% 56.6% C 100% 90% 60% 100% 43.3% 100% C 30% 100% 0 90% 0 56.6% C 0 30% 30% 10% 43.3% 0");
 }
+.diamond svg{
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}
+
+
+
 .textInsideDiamond {
+  position: absoulte;
+  left: 50%;
+  top: 50%;
+  transform:translate(-100%, 0);
   width: 90%;
-  transform: rotate(-45deg);
+ 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2vh;
+  gap: 0.5vw;
+  // margin-top:5vw;
+  z-index: 50;
 }
 
 .circleNumber {
   background-color: #aaaaaa;
   border-radius: 50%;
-  width: 4vh;
-  height: 4vh;
+
+  width: 6vw;
+  height: 6vw;
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,11 +131,11 @@ body {
   // animation: donut-rotate 1500ms linear infinite;
 }
 .bottomShape {
-  width: 75%;
+  width: 110%;
   z-index: -1;
   position: absolute;
-  left: 20%;
-  top: -15%;
+  left: 15%;
+  top: -17%;
   transform: rotate(-80deg);
   // animation: clockwise 1500ms  linear infinite;
 }
@@ -90,6 +145,12 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+@media (min-width: 1000px) {
+  .circleNumber {
+    width: 5vw;
+    height: 5vw;
+  }
 }
 @media (min-width: 3000px) {
   .topSection {
@@ -103,14 +164,21 @@ body {
 }
 @media (max-width: 720px) {
   .topSection {
-    margin-bottom: 25rem;
+    margin-bottom: 20rem;
   }
   .community {
     width: 30rem;
     height: 30rem;
   }
+  .circleNumber {
+    width: 8vw;
+    height: 8vw;
+  }
 }
 @media (max-width: 600px) {
+  .topSection {
+    margin-bottom: 70vw;
+  }
   .alone {
     width: 100%;
   }
@@ -121,9 +189,9 @@ body {
   }
 
   .diamond {
-    width: 240px;
-    height: 240px;
-    margin: 0;
+    width:280vw;
+    height: 160vw;
+   
   }
   .community {
     width: 340px;
@@ -132,14 +200,27 @@ body {
   .textInsideDiamond {
     gap: 1vh;
   }
-}
-@media (max-width: 350px) {
-  .diamond {
-    width: 190px;
-    height: 190px;
+  .circleNumber {
+    width: 9vw;
+    height: 9vw;
   }
 }
-@media (min-height: 1000px) and(max-width: 1000px) {
+@media (max-width: 350px) {
+
+  .circleNumber {
+    width: 11vw;
+    height: 11vw;
+  }
+}
+@media (max-width: 900px) {
+  .bottomImages {
+    width: 60%;
+    margin: auto;
+ 
+  }
+ 
+}
+@media (min-height: 1000px) and (max-width: 1000px) {
   .community {
     width: 30rem;
     height: 30rem;
