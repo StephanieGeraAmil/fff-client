@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setForm, unsetForm } from "../../actions/globalStateActions";
-import { Button, Typography } from "@mui/material";
+import { Button, Typography, Box} from "@mui/material";
 import { deleteEventOnBack } from "../../hooks/useSocket";
 import { formatRelative } from "date-fns";
 
@@ -71,23 +71,63 @@ export const EventDetails = () => {
       <Typography variant="subtitle2" gutterBottom>
         Created: {formatRelative(new Date(form.event.createdAt), Date.now())}
       </Typography>
-      {form.event.chatLink && (
-        <Button variant="contained" onClick={clickGroupChatHandler}>
-          Join Group Chat
-        </Button>
-      )}
-      {form.event.webLink && (
-        <Button variant="contained" onClick={clickWebLinkHandler}>
-         check out the web
-        </Button>
-      )}
+    
+      <Box  display="flex" justifyContent="flex-start" alignItems="center" gap={2} mt={2}>
+        {form.event.chatLink && (
+          <Button variant="contained" onClick={clickGroupChatHandler}
+          sx={{
+            transition: "border-color 0.3s, color 0.3s, transform 0.3s",
+            "&:hover": {
+              backgroundColor: "#555", 
+              color: "#FFF",  
+              transform: "scale(1.05)",  
+              boxShadow: "0 0 10px #fff",  
+            },}}>
+            Join Group Chat
+          </Button>
+        )}
+        {form.event.webLink && (
+          <Button variant="contained" onClick={clickWebLinkHandler}
+          sx={{
+            transition: "border-color 0.3s, color 0.3s, transform 0.3s",
+            "&:hover": {
+              backgroundColor: "#555", 
+              color: "#FFF",  
+              transform: "scale(1.05)",  
+              boxShadow: "0 0 10px #fff",  
+            },}}>
+            Check out the web
+          </Button>
+        )}
+      </Box>
       {userLogged &&
         form.event.creator &&
         userLogged.id === form.event.creator && (
-          <>
-            <Button onClick={clickEditHandler}>Edit</Button>
-            <Button onClick={clickDeleteHandler}>Delete</Button>
-          </>
+          <Box mt={2}>
+            <Button variant="outlined" onClick={clickEditHandler} 
+             sx={{
+              mr: 2,
+              transition: "border-color 0.3s, color 0.3s, transform 0.3s",
+              "&:hover": {
+                borderColor: "white",
+                color:"white",
+                transform: "scale(1.05)",
+              },}}
+            >
+              Edit
+            </Button>
+            <Button variant="outlined" onClick={clickDeleteHandler}
+             sx={{
+              transition: "border-color 0.3s, color 0.3s, transform 0.3s",
+              "&:hover": {
+                borderColor: "white",
+                color:"white",
+                transform: "scale(1.05)",
+              },}}
+            >
+              Delete
+            </Button>
+          </Box>
         )}
     </>
   );
