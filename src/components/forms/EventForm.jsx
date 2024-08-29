@@ -45,6 +45,8 @@ export const EventForm = () => {
   const [repetition, setRepetition] = useState(false);
   const [targetAgeRange, setTargetAgeRange] = useState([20, 37]);
   const [chatLink, setChatLink] = useState("");
+  const [webLink, setWebLink] = useState("");
+  const [error, setError] = useState("");
 
   const typesAvaiable = [
     { name: "Bible Study", img: `/bible.png`, id: 1 },
@@ -82,6 +84,9 @@ export const EventForm = () => {
         if (form.event.chatLink) {
           setChatLink(form.event.chatLink);
         }
+        if (form.event.webLink) {
+          setWebLink(form.event.webLink);
+        }
         if (form.event.type) {
           const typeOfEvent = typesAvaiable.filter(
             (type) => type.name === form.event.type
@@ -116,6 +121,10 @@ export const EventForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!repetition && !date) {
+      setError("If the event isn't recurring, it needs a date.");
+      return; // Prevent form submission if date is required but not provided
+    }
 
     const typeOfEvent = typesAvaiable.filter((type) => type.id == eventType);
 
@@ -132,6 +141,9 @@ export const EventForm = () => {
 
     if (chatLink) {
       eventData.chatLink = chatLink;
+    }
+    if (webLink) {
+      eventData.webLink = webLink;
     }
     if (!repetition) {
       eventData.date = date;
@@ -340,6 +352,16 @@ export const EventForm = () => {
             />
           </FormControl>
         </Grid>
+        <Grid item xs={12}>
+          <FormControl sx={{ width: "100%" }}>
+            <TextField
+              label="Web Link"
+              variant="standard"
+              value={webLink}
+              onChange={(e) => setWebLink(e.target.value)}
+            />
+          </FormControl>
+        </Grid>
 
         <Grid item xs={12}>
           <Button
@@ -358,6 +380,7 @@ export const EventForm = () => {
           </Button>
         </Grid>
       </Grid>
+      {error && <Typography color="red">{error}</Typography>}
     </>
   );
 };

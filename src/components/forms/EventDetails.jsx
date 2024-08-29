@@ -32,6 +32,9 @@ export const EventDetails = () => {
   const clickGroupChatHandler = () => {
     window.location.replace(form.event.chatLink);
   };
+  const clickWebLinkHandler = () => {
+    window.location.replace(form.event.webLink);
+  };
   const clickDeleteHandler = () => {
     deleteEventOnBack(form.event.id);
     dispatch(unsetForm());
@@ -71,6 +74,11 @@ export const EventDetails = () => {
       {form.event.chatLink && (
         <Button variant="contained" onClick={clickGroupChatHandler}>
           Join Group Chat
+        </Button>
+      )}
+      {form.event.webLink && (
+        <Button variant="contained" onClick={clickWebLinkHandler}>
+         check out the web
         </Button>
       )}
       {userLogged &&
