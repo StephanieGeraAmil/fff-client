@@ -41,12 +41,12 @@ export const EventForm = () => {
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [eventType, setEventType] = useState("");
-  const [targetGender, setTargetGender] = useState("");
+  const [targetGender, setTargetGender] = useState("all");
   const [repetition, setRepetition] = useState(false);
   const [targetAgeRange, setTargetAgeRange] = useState([20, 37]);
   const [chatLink, setChatLink] = useState("");
   const [webLink, setWebLink] = useState("");
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
 
   const typesAvaiable = [
     { name: "Bible Study", img: `/bible.png`, id: 1 },
@@ -121,10 +121,10 @@ export const EventForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!repetition && !date) {
-      setError("If the event isn't recurring, it needs a date.");
-      return; // Prevent form submission if date is required but not provided
-    }
+    // if (!repetition && !date) {
+    //   setError("If the event isn't recurring, it needs a date.");
+    //   return; // Prevent form submission if date is required but not provided
+    // }
 
     const typeOfEvent = typesAvaiable.filter((type) => type.id == eventType);
 
@@ -165,7 +165,7 @@ export const EventForm = () => {
     dispatch(unsetForm());
   };
 
-  
+
   return (
     <>
       <Typography variant="h2" gutterBottom>
@@ -199,7 +199,10 @@ export const EventForm = () => {
         </Grid>
         <Grid item xs={12}>
           <FormControl variant="standard" sx={{ width: "100%" }}>
-            <InputLabel id="type-of-event">Type of Event</InputLabel>
+            <InputLabel id="type-of-event">
+              Type of Event
+              <span> *</span>
+            </InputLabel>
             <Select
               required
               labelId="type-of-event"
@@ -237,6 +240,7 @@ export const EventForm = () => {
               sx={{ fontWeight: 100 }}
             >
               Who is it for?
+              <span> *</span>
             </Typography>
             <Grid container>
               <Grid item xs={2} sx={{ display: "flex", alignItems: "center" }}>
@@ -251,7 +255,7 @@ export const EventForm = () => {
               <Grid item xs={10} sx={{ display: "flex", alignItems: "center" }}>
                 <FormControl>
                   <RadioGroup
-                    required
+                 
                     row
                     aria-labelledby="demo-controlled-radio-buttons-group"
                     name="controlled-radio-buttons-group"
@@ -334,8 +338,9 @@ export const EventForm = () => {
           {!repetition && (
             <FormControl label="Responsive variant">
               <DatePicker
+                
                 label="Event Date"
-                value={date}
+                value={date ? date : null}
                 onChange={(newValue) => setDate(newValue)}
                 enableCloseOnSelect={true}
               />
@@ -373,14 +378,15 @@ export const EventForm = () => {
               !description ||
               !eventType ||
               !targetGender ||
-              !targetAgeRange
+              !targetAgeRange||
+              (!date && !repetition)
             }
           >
             Save
           </Button>
         </Grid>
       </Grid>
-      {error && <Typography color="red">{error}</Typography>}
+      {/* {error && <Typography color="red">{error}</Typography>} */}
     </>
   );
 };
