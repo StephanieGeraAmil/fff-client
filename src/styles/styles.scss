@@ -13,27 +13,48 @@ body {
     margin: 0;
   }
 }
+
 .topSection {
-  margin-top: 5rem;
   position: relative;
-  z-index: 0;
-  width: 100vw;
+  overflow: hidden;
+
   display: flex;
   justify-content: center;
-  margin-bottom: 15rem;
+  align-items: center;
+ 
+  width: 100vw;
+  height:100vh;
+  z-index: 0;
+
+
 }
+
 .alone {
-  width: 80%;
-  object-fit: cover;
-  z-index: 1;
-}
-.shape {
-  width: 60%;
-  z-index: -1;
   position: absolute;
-  left: 50%;
+  top: 10%;
+  // left:15%;
   transform: translateX(-50%);
+  
+  width: 100%;
+  min-height: 100vh;
+  object-fit: cover;
+  /* Parallax effect */
+  transform: translate3d(0, calc(-10vh + var(--scrollY) * 0.5), 0);
 }
+
+
+.advantages{
+
+  height:20%;
+  width:auto;
+}
+// .shape {
+//   width: 60%;
+//   z-index: -1;
+//   position: absolute;
+//   left: 50%;
+//   transform: translateX(-50%);
+// }
 
 // .diamond {
 //   position: absolute;
@@ -70,29 +91,29 @@ body {
 // .diamond::after {
 //   bottom: 25%;
 // }
-.diamond {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 160vw;
-  height: 110vw; 
-//  background-color: #d4d4d4;
-  transform:  translate(-30%,-25%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  z-index: 2;
+// .diamond {
+//   position: absolute;
+//   left: 50%;
+//   top: 50%;
+//   width: 160vw;
+//   height: 110vw; 
+// //  background-color: #d4d4d4;
+//   transform:  translate(-30%,-25%);
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   overflow: hidden;
+//   z-index: 2;
 
 
 
- // clip-path: path("M 43.3% 0 C 60% 10% 100% 30% 100% 56.6% C 100% 90% 60% 100% 43.3% 100% C 30% 100% 0 90% 0 56.6% C 0 30% 30% 10% 43.3% 0");
-}
-.diamond svg{
-  z-index: 10;
-  width: 100%;
-  height: 100%;
-}
+//  // clip-path: path("M 43.3% 0 C 60% 10% 100% 30% 100% 56.6% C 100% 90% 60% 100% 43.3% 100% C 30% 100% 0 90% 0 56.6% C 0 30% 30% 10% 43.3% 0");
+// }
+// .diamond svg{
+//   z-index: 10;
+//   width: 100%;
+//   height: 100%;
+// }
 
 
 
@@ -124,7 +145,7 @@ body {
   align-items: center;
 }
 .community {
-  width: 100%;
+  width: 80%;
   aspect-ratio: 1;
   margin: 0 auto;
   object-fit: cover;
@@ -146,72 +167,76 @@ body {
   display: flex;
   justify-content: center;
 }
-@media (min-width: 1000px) {
-  .circleNumber {
-    width: 5vw;
-    height: 5vw;
-  }
-}
-@media (min-width: 3000px) {
-  .topSection {
-    margin-bottom: 70rem;
-  }
-}
-@media (max-width: 1000px) {
-  .topSection {
-    margin-bottom: 30rem;
-  }
-}
+// @media (min-width: 1000px) {
+//   .circleNumber {
+//     width: 5vw;
+//     height: 5vw;
+//   }
+// }
+// @media (min-width: 3000px) {
+//   .topSection {
+//     margin-bottom: 70rem;
+//   }
+// }
+// @media (max-width: 1000px) {
+//   .topSection {
+//     margin-bottom: 30rem;
+//   }
+// }
 @media (max-width: 720px) {
-  .topSection {
-    margin-bottom: 20rem;
-  }
+  // .topSection {
+  //   margin-bottom: 20rem;
+  // }
   .community {
-    width: 30rem;
-    height: 30rem;
+    width: 10rem;
+    height: 10rem;
   }
-  .circleNumber {
-    width: 8vw;
-    height: 8vw;
-  }
+  // .circleNumber {
+  //   width: 8vw;
+  //   height: 8vw;
+  // }
 }
 @media (max-width: 600px) {
   .topSection {
-    margin-bottom: 70vw;
+  //  margin-bottom: 70vw;
+  height:70vh;
   }
   .alone {
     width: 100%;
+    min-height: 80vh;
+    top:0 !important;
+    left:0 !important;
   }
 
-  .shape {
-    width: 80%;
-    top: -8vw;
-  }
+  // .shape {
+  //   width: 80%;
+  //   top: -8vw;
+  // }
 
-  .diamond {
-    width:280vw;
-    height: 160vw;
+  // .diamond {
+  //   width:280vw;
+  //   height: 160vw;
    
-  }
+  // }
   .community {
-    width: 340px;
-    height: 340px;
+    width: 240px;
+    height: 240px;
   }
-  .textInsideDiamond {
-    // gap: 1vh;
-  }
-  .circleNumber {
-    width: 9vw;
-    height: 9vw;
-  }
+  // .textInsideDiamond {
+  //   // gap: 1vh;
+  // }
+  // .circleNumber {
+  //   width: 9vw;
+  //   height: 9vw;
+  // }
 }
-@media (max-width: 350px) {
+// @media (max-width: 350px) {
 
-  .circleNumber {
-    width: 11vw;
-    height: 11vw;
-  }
-}
+//   .circleNumber {
+//     width: 11vw;
+//     height: 11vw;
+//   }
+// }
 @media (max-width: 900px) {
   .bottomImages {
     width: 60%;
@@ -222,8 +247,8 @@ body {
 }
 @media (min-height: 1000px) and (max-width: 1000px) {
   .community {
-    width: 30rem;
-    height: 30rem;
+    width: 10rem;
+    height: 10rem;
   }
 }
 
