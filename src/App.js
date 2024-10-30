@@ -32,6 +32,15 @@ const App = () => {
     typography: {
       fontSize: 15,
     },
+    // components: {
+    //   MuiBox: {
+    //     styleOverrides: {
+    //       root: {
+    //         padding: 0, // Set padding to 0 globally for all Box components
+    //       },
+    //     },
+    //   },
+    // },
   });
   theme = responsiveFontSizes(theme);
 
@@ -57,18 +66,18 @@ const App = () => {
     }
   };
   return (
- <Box
-        sx={{
-       
+    <Box
+      sx={{
+
         backgroundColor: "background.default",
         width: 1,
-       
+
         height: 1,
         margin: 0,
         zIndex: -10,
-      
+
       }}
-    
+
     >
       <ThemeProvider theme={theme}>
         <Wrapper
