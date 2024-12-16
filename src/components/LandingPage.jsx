@@ -77,7 +77,7 @@ const LandingPage = () => {
         // color: "#626161",
         color: "#4A4A4A",
         // fontFamily: "Montserrat, sans-serif",
-        fontFamily: "Funnel Display",
+        fontFamily: "Funnel Display, sans-serif",
       }}
       spacing={{ sx: 5, sm: 1 }}
       direction="column"
@@ -87,11 +87,11 @@ const LandingPage = () => {
           container
           item
           xs={12}
-          xl={9}
-          direction="row"
-          height="60vh"
+          // xl={9}
+
           sx={{
             mx: { xs: "0", sm: "0" },
+            height: { xs: "70vh", sm: "40vh", lg: "60vh" },
           }}
         >
           <div className="topSection" height={"auto"}>
@@ -112,24 +112,25 @@ const LandingPage = () => {
 
         <Grid container item xs={12}>
           <Grid
-            spacing={{ xs: 0, sm: 0 }}
-            columns={{ xs: 12, sm: 6 }}
+            // spacing={{ xs: 0, sm: 0 }}
+
+            xs={12}
             container
             item
             sx={{
               zIndex: "2",
               m: { xs: "0", sm: "0" },
-              // py: { xs: "2em", sm: "3.5%" },
-              px: { xs: "2em", sm: "5%" },
+              py: { xs: "2em", sm: "3.5%" },
+              px: { xs: "1em", sm: "5%" },
 
               // backgroundColor: "#D4D4D4",
               backgroundColor: "#B8D8E4",
               display: "flex",
-              flexDirection: "column",
+              flexDirection: { sm: "row" },
               justifyContent: "space-around",
             }}
           >
-            <Grid container item xs={12} lg={6}>
+            <Grid container item xs={12} md={6}>
               <Box
                 sx={{
                   m: { xs: "0", sm: "0" },
@@ -143,33 +144,16 @@ const LandingPage = () => {
                   variant="h3"
                   sx={{
                     fontWeight: 800,
-                    fontSize: { xs: "3rem", sm: "6rem" },
+                    fontSize: { xs: "3rem", sm: "4rem", lg: "5rem" },
                     fontFamily: "Funnel Display",
                     color: "#2B2D42",
                   }}
                 >
                   Fighting Loneliness
                 </Typography>
-                {/* <Typography
-                  variant="p"
-                  sx={{
-                    fontWeight: 300,
-                    fontSize: {
-                      xs: "1rem",
-                      sm: "1.4rem",
-                    },
-                    my: "2vh",
-                    color: "#2B2D42",
-                  }}
-                >
-                  Together, we thrive. By building connections rooted in
-                  kindness and shared purpose, we create a stronger, more
-                  supportive world where everyone belongs.
-                </Typography>
-                <LoginButton text="Start now" /> */}
               </Box>
             </Grid>
-            <Grid container item xs={12} lg={6}>
+            <Grid container item xs={12} md={6}>
               <Box
                 sx={{
                   m: { xs: "0", sm: "0" },
@@ -207,7 +191,8 @@ const LandingPage = () => {
         container
         item
         direction="row"
-        width="100%"
+        // width="100%"
+        xs={12}
         sx={{
           // p: 2,
           // px: { xs: "2em", sm: "5%" },
@@ -215,25 +200,6 @@ const LandingPage = () => {
           m: "0",
         }}
       >
-        {/* <Grid
-          container
-          item
-          direction="column"
-          xs={12}
-          justifyContent={"center"}
-          alignItems={"center"}
-          sx={{
-            mt: "6vh",
-          }}
-        >
-          <Typography
-            variant="h2"
-            align="justify"
-            sx={{ fontWeight: 300, fontSize: { xs: "2.5rem", sm: "3.7rem" } }}
-          >
-            Whow it works?
-          </Typography>
-        </Grid> */}
         <Grid
           container
           item
@@ -266,7 +232,6 @@ const LandingPage = () => {
                     justifyContent: "flex-start",
                     alignItems: "center",
                   }}
-                  // backgroundColor="#fff"
                   backgroundColor="#F8F8F8"
                 >
                   <Typography
@@ -274,8 +239,7 @@ const LandingPage = () => {
                     sx={{
                       fontWeight: 900,
                       fontSize: { xs: "3.7rem" },
-                      // fontFamily: "Montserrat, sans-serif",
-                      fontFamily: "Funnel Display",
+                      fontFamily: "Funnel Display, sans-serif",
                       color: "#B8D8E4",
                     }}
                   >
@@ -300,15 +264,10 @@ const LandingPage = () => {
                     align="left"
                     sx={{
                       fontWeight: 300,
-                      // fontSize: {
-                      //   xs: "1rem",
-                      //   sm: "1.1rem",
-                      // },
                       fontSize: {
                         xs: "1rem",
                         sm: "1.5rem",
                       },
-                      // color: "#aaaaaa",
                     }}
                   >
                     {text}
@@ -321,38 +280,24 @@ const LandingPage = () => {
       </Grid>
       <Grid container item xs={12}>
         <Grid
-          spacing={{ xs: 0, sm: 0 }}
-          columns={{ xs: 12 }}
+          spacing={{ xs: 2, sm: 2 }}
+          columns={{ xs: 12, md: 6 }}
           container
           item
           direction="row"
           justifyContent={"space-around"}
           alignContent={"center"}
-          height={"50vh"}
           sx={{
             m: { xs: "0", sm: "0" },
-            px: { xs: "0", sm: "10%" },
+            py: { xs: "5%", lg: "10%" },
+            px: { xs: "5%", lg: "10%" },
             width: "100%",
-            // minHeight: "400px",
-            // backgroundColor: "#D4D4D4",
+            height: { xs: "auto", md: "50vh" },
             backgroundColor: "#B8D8E4",
           }}
         >
           {advantages.map((adv, index) => (
-            <Grid
-              item
-              xs={12}
-              sm={6}
-              md={3}
-              container
-              justifyContent="center"
-              height={"30vh"}
-              sx={{
-                p: { xs: "0", sm: "0" },
-
-                // height: "250px",
-              }}
-            >
+            <Grid item xs={12} sm={6} md={4} container justifyContent="center">
               <Box
                 key={index}
                 sx={{
@@ -360,18 +305,14 @@ const LandingPage = () => {
                   flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
-                  width: "100%",
-                  minWidth: "350px",
+                  height: { xs: "auto", md: "30vh" },
+                  width: { xs: "90%", sm: "300px", lg: "350px" },
+                  maxWidth: { xs: "90%", sm: "300px", lg: "350px" },
 
                   m: "0",
-                  mt: "10px",
-                  pt: "30px",
-                  // px: "10px",
-                  py: "10px",
+                  py: { xs: "10px", sm: "20px" },
                   opacity: 1,
-                  // border: "2px solid #fff",
                   boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25)",
-                  // borderRadius: "8px",
                   borderRadius: "30px",
                   backgroundColor: "#2B2D42",
                 }}
@@ -381,23 +322,18 @@ const LandingPage = () => {
                   alt="Advantage"
                   className="advantages"
                   sx={{
-                    // my: "10px",
                     color: "#F8F8F8",
-                    // height: "20%",
-                    // width: "20%",
                   }}
                 />
                 <Typography
                   variant="h6"
                   sx={{
                     fontWeight: 300,
-                    // fontSize: { xs: "1.1rem" },
                     fontSize: {
                       xs: "1rem",
-                      sm: "1.3rem",
+                      sm: "1.2rem",
                     },
                     my: "25px",
-                    width: "85%",
                     textAlign: "center",
                     fontFamily: "Funnel Display",
                     color: "#F8F8F8",
@@ -416,7 +352,6 @@ const LandingPage = () => {
           item
           className="bottom_video"
           sx={{
-            // margin: { xs: "0", sm: "0" },
             marginTop: "50px",
             px: { sm: "2em" },
           }}
@@ -430,16 +365,8 @@ const LandingPage = () => {
                 height: "60vh",
                 overflow: "hidden",
                 position: "relative",
-                // m: "auto",
-                // p: "20px",
-                // display: "flex",
-                // flexDirection: "column",
-                // justifyContent: "center",
               }}
             >
-              {/* <div className="bottomImages">
-                <img src="/friends.png" className="community" />{" "}
-              </div> */}
               <video
                 autoPlay
                 muted
@@ -447,9 +374,11 @@ const LandingPage = () => {
                 playsInline
                 style={{
                   width: "100%",
-                  height: "auto",
+
+                  height: "100%",
+                  objectFit: "cover",
+                  objectPosition: "bottom",
                   zIndex: "1",
-                  margin: "-120px 0 0 0",
                 }}
               >
                 <source src="/video3.mp4" type="video/mp4" />
@@ -457,9 +386,8 @@ const LandingPage = () => {
               </video>
               <Box
                 sx={{
-                  width: "40%",
+                  width: { xs: "60%", sm: "50%", md: "40%" },
                   p: "30px",
-                  // mb: "-220px ",
                   position: "absolute",
                   bottom: "30px",
                   right: "30px",
@@ -474,9 +402,6 @@ const LandingPage = () => {
                   variant="p"
                   sx={{
                     fontWeight: 300,
-                    // fontSize: {
-                    //   xs: "1rem",
-                    // },
 
                     fontSize: {
                       xs: "1rem",
@@ -484,7 +409,6 @@ const LandingPage = () => {
                     },
                     fontFamily: "Funnel Display",
                     color: "#F8F8F8",
-                    // color: "#aaaaaa",
                   }}
                 >
                   Live in harmony with each other. Don’t be too proud to enjoy
@@ -495,10 +419,6 @@ const LandingPage = () => {
                   variant="p"
                   sx={{
                     fontWeight: 700,
-                    // fontSize: {
-                    //   xs: "0.9rem",
-                    //   sm: "1rem",
-                    // },
                     fontSize: {
                       xs: "1rem",
                       sm: "1.7rem",
@@ -515,21 +435,6 @@ const LandingPage = () => {
               </Box>
             </Box>
           </Grid>
-          {/* <Grid
-            container
-            item
-            xs={12}
-            sm={12}
-            md={12}
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-end",
-              backgroundColor: "#fff",
-            }}
-          >
-          
-          </Grid> */}
         </Grid>
       </Grid>
     </Grid>

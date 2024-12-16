@@ -11,7 +11,7 @@ export const LoginButton = ({ text }) => {
       }}
       sx={{
         // mt: "2%",
-        width: { sm: "15vw" },
+        width: { sm: "15rem" },
         height: { sm: "auto" },
         fontSize: { xs: "1em", sm: "1.7rem" },
         // backgroundColor: "#6d6c6c",
