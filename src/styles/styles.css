@@ -18,25 +18,21 @@ body #root {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: auto;
   z-index: 0;
 }
 
 .alone {
   position: absolute;
-  top: 10%;
-  transform: translateX(-50%);
-  width: 100%;
-  min-height: 100vh;
   -o-object-fit: cover;
      object-fit: cover;
   /* Parallax effect */
-  transform: translate3d(0, calc(-10vh + var(--scrollY) * 0.5), 0);
+  transform: translate3d(0, calc(var(--scrollY) * 0.5), 0);
 }
 
 .advantages {
   height: 20%;
-  width: auto;
+  width: 20%;
 }
 
 .textInsideDiamond {
@@ -68,6 +64,7 @@ body #root {
   margin: 0 auto;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 30px;
 }
 
 .bottomShape {
@@ -87,6 +84,12 @@ body #root {
   justify-content: center;
 }
 
+.bottom_video {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: auto;
+}
+
 @media (max-width: 720px) {
   .community {
     width: 10rem;
@@ -94,9 +97,6 @@ body #root {
   }
 }
 @media (max-width: 600px) {
-  .topSection {
-    height: 70vh;
-  }
   .alone {
     width: 100%;
     min-height: 80vh;

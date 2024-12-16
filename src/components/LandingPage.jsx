@@ -6,20 +6,20 @@ import { red } from "@mui/material/colors";
 
 const advantages = [
   {
-    img: '/mental-health.png',
-    text: 'Enhance Mental Health and Overall Well-Being',
+    img: "/mental-health.svg",
+    text: "Enhance Mental Health and Overall Well-Being",
+  },
+  // {
+  //   img: "/hourglass.png",
+  //   text: "Boost Longevity",
+  // },
+  {
+    img: "/help.svg",
+    text: "Receive Emotional Support, Encouragement, and Accountability",
   },
   {
-    img: '/hourglass.png',
-    text: 'Boost Longevity',
-  },
-  {
-    img: '/help.png',
-    text: 'Receive Emotional Support, Encouragement, and Accountability',
-  },
-  {
-    img: '/jigsaw.png',
-    text: 'Benefit from Opportunities to Collaborate and Learn',
+    img: "/jigsaw.svg",
+    text: "Benefit from Opportunities to Collaborate and Learn",
   },
 ];
 const steps = [
@@ -56,7 +56,10 @@ const LandingPage = () => {
   // }, []);
   useEffect(() => {
     const handleScroll = () => {
-      document.documentElement.style.setProperty("--scrollY", `${window.scrollY}px`);
+      document.documentElement.style.setProperty(
+        "--scrollY",
+        `${window.scrollY}px`
+      );
     };
     window.addEventListener("scroll", handleScroll);
 
@@ -69,9 +72,12 @@ const LandingPage = () => {
       container
       item
       sx={{
-        backgroundColor: "#fff",
-        color: "#626161",
-        fontFamily: "Montserrat, sans-serif",
+        // backgroundColor: "#fff",
+        backgroundColor: "#F8F8F8",
+        // color: "#626161",
+        color: "#4A4A4A",
+        // fontFamily: "Montserrat, sans-serif",
+        fontFamily: "Funnel Display",
       }}
       spacing={{ sx: 5, sm: 1 }}
       direction="column"
@@ -83,43 +89,49 @@ const LandingPage = () => {
           xs={12}
           xl={9}
           direction="row"
-          height={"auto"}
+          height="60vh"
           sx={{
-            mx: { xs: "0", sm: "auto" },
+            mx: { xs: "0", sm: "0" },
           }}
         >
           <div className="topSection" height={"auto"}>
-            <img src="/sadGirl.png" className="alone" />
-        
+            {/* <img src="/sadGirl.png" className="alone" /> */}
+            <video
+              className="alone"
+              autoPlay
+              muted
+              loop
+              playsInline
+              style={{ width: "100%", height: "auto" }}
+            >
+              <source src="/video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </Grid>
 
-
-        <Grid
-          container
-          item
-          xs={12}
-
-
-
-        >
+        <Grid container item xs={12}>
           <Grid
             spacing={{ xs: 0, sm: 0 }}
             columns={{ xs: 12, sm: 6 }}
             container
             item
             sx={{
+              zIndex: "2",
               m: { xs: "0", sm: "0" },
-              py: { xs: "2em", sm: "3.5%" },
-              px: { xs: "2em", sm: "7%" },
-              backgroundColor: "#D4D4D4",
+              // py: { xs: "2em", sm: "3.5%" },
+              px: { xs: "2em", sm: "5%" },
 
+              // backgroundColor: "#D4D4D4",
+              backgroundColor: "#B8D8E4",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-around",
             }}
           >
-            <Grid container item xs={12} md={7} lg={6}>
+            <Grid container item xs={12} lg={6}>
               <Box
                 sx={{
-                  zIndex: "2",
                   m: { xs: "0", sm: "0" },
                   p: "0",
                   display: "flex",
@@ -130,13 +142,15 @@ const LandingPage = () => {
                 <Typography
                   variant="h3"
                   sx={{
-                    fontWeight: 900,
+                    fontWeight: 800,
                     fontSize: { xs: "3rem", sm: "6rem" },
+                    fontFamily: "Funnel Display",
+                    color: "#2B2D42",
                   }}
                 >
                   Fighting Loneliness
                 </Typography>
-                <Typography
+                {/* <Typography
                   variant="p"
                   sx={{
                     fontWeight: 300,
@@ -145,16 +159,47 @@ const LandingPage = () => {
                       sm: "1.4rem",
                     },
                     my: "2vh",
+                    color: "#2B2D42",
                   }}
                 >
-                  Community is vital, by fostering generosity, gratitude, and support, we heal, grow, and participate in things grater than us.
+                  Together, we thrive. By building connections rooted in
+                  kindness and shared purpose, we create a stronger, more
+                  supportive world where everyone belongs.
+                </Typography>
+                <LoginButton text="Start now" /> */}
+              </Box>
+            </Grid>
+            <Grid container item xs={12} lg={6}>
+              <Box
+                sx={{
+                  m: { xs: "0", sm: "0" },
+                  p: "0",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "flex-start",
+                }}
+              >
+                <Typography
+                  variant="p"
+                  sx={{
+                    fontWeight: 300,
+                    fontSize: {
+                      xs: "1rem",
+                      sm: "1.7rem",
+                    },
+                    fontFamily: "Funnel Display",
+                    my: "2vh",
+                    color: "#2B2D42",
+                  }}
+                >
+                  Together, we thrive. By building connections rooted in
+                  kindness and shared purpose, we create a stronger, more
+                  supportive world where everyone belongs.
                 </Typography>
                 <LoginButton text="Start now" />
               </Box>
-
             </Grid>
-
-
           </Grid>
         </Grid>
       </Grid>
@@ -162,12 +207,15 @@ const LandingPage = () => {
         container
         item
         direction="row"
+        width="100%"
         sx={{
-          p: 2,
-
+          // p: 2,
+          // px: { xs: "2em", sm: "5%" },
+          p: "0",
+          m: "0",
         }}
       >
-        <Grid
+        {/* <Grid
           container
           item
           direction="column"
@@ -177,7 +225,6 @@ const LandingPage = () => {
           sx={{
             mt: "6vh",
           }}
-
         >
           <Typography
             variant="h2"
@@ -186,8 +233,7 @@ const LandingPage = () => {
           >
             Whow it works?
           </Typography>
-      
-        </Grid>
+        </Grid> */}
         <Grid
           container
           item
@@ -195,9 +241,10 @@ const LandingPage = () => {
           md={10}
           xl={9}
           sx={{
-            mx: "auto",
-            mt: "4vh",
-            mb: "5vh",
+            m: "auto",
+            my: "10vh",
+
+            p: "0",
           }}
         >
           <Grid
@@ -208,70 +255,71 @@ const LandingPage = () => {
             item
           >
             {steps.map(({ step, subtitle, text }) => (
-            <Grid container item xs={12} sm={6} md={3}>
-              <Box
-                sx={{
-                  borderRadius: { xs: "4vw", sm: "2vw" },
-                  p: { xs: "1rem"},
-                  width: { xs: "100%", lg: "95%" },
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                  alignItems: "center",
-
-                }}
-                backgroundColor="#fff"
-              >
-                
-                <Typography
-                  variant="h6"
+              <Grid container item xs={12} sm={6} md={3}>
+                <Box
                   sx={{
-                    fontWeight: 900,
-                    fontSize: { xs: "2.7rem" },
-                    fontFamily: "Montserrat, sans-serif",
+                    // borderRadius: { xs: "4vw", sm: "2vw" },
+                    p: { xs: "1rem" },
+                    width: { xs: "100%", lg: "95%" },
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    alignItems: "center",
                   }}
+                  // backgroundColor="#fff"
+                  backgroundColor="#F8F8F8"
                 >
-                 {step}.
-                </Typography>
-                <Typography
-                  variant="h5"
-                  align="left"
-                  sx={{
-                    fontWeight: 500,
-                    fontSize: { xs: "1.3rem", sm: "1.6rem" },
-                    mt: "3vh",
-                    mb: "3vh",
-                  }}
-                >
-                  {subtitle}
-                </Typography>
-                <Typography
-                  variant="p"
-                  align="left"
-                  sx={{
-                    fontWeight: 300,
-                    fontSize: {
-                      xs: "1rem",
-                      sm: "1.1rem",
-                    },
-                    color: "#aaaaaa",
-
-                  }}
-                >
-                  {text}
-                </Typography>
-              </Box>
-            </Grid>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontWeight: 900,
+                      fontSize: { xs: "3.7rem" },
+                      // fontFamily: "Montserrat, sans-serif",
+                      fontFamily: "Funnel Display",
+                      color: "#B8D8E4",
+                    }}
+                  >
+                    {step}.
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    align="left"
+                    sx={{
+                      fontWeight: 500,
+                      fontSize: { xs: "1.3rem", sm: "1.6rem" },
+                      fontFamily: "Funnel Display",
+                      mt: "1vh",
+                      mb: "1vh",
+                      color: "#2B2D42",
+                    }}
+                  >
+                    {subtitle}
+                  </Typography>
+                  <Typography
+                    variant="p"
+                    align="left"
+                    sx={{
+                      fontWeight: 300,
+                      // fontSize: {
+                      //   xs: "1rem",
+                      //   sm: "1.1rem",
+                      // },
+                      fontSize: {
+                        xs: "1rem",
+                        sm: "1.5rem",
+                      },
+                      // color: "#aaaaaa",
+                    }}
+                  >
+                    {text}
+                  </Typography>
+                </Box>
+              </Grid>
             ))}
-           
           </Grid>
         </Grid>
       </Grid>
-      <Grid
-        container
-        item
-        xs={12}
-      >
+      <Grid container item xs={12}>
         <Grid
           spacing={{ xs: 0, sm: 0 }}
           columns={{ xs: 12 }}
@@ -279,39 +327,80 @@ const LandingPage = () => {
           item
           direction="row"
           justifyContent={"space-around"}
+          alignContent={"center"}
+          height={"50vh"}
           sx={{
             m: { xs: "0", sm: "0" },
-            p: { xs: "0", sm: "0" },
+            px: { xs: "0", sm: "10%" },
             width: "100%",
-            backgroundColor: "#D4D4D4"
+            // minHeight: "400px",
+            // backgroundColor: "#D4D4D4",
+            backgroundColor: "#B8D8E4",
           }}
         >
-
           {advantages.map((adv, index) => (
-            <Grid item xs={12} sm={6} md={3} container justifyContent="center" sx={{ p: { xs: "0", sm: "0" }, }}>
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={3}
+              container
+              justifyContent="center"
+              height={"30vh"}
+              sx={{
+                p: { xs: "0", sm: "0" },
+
+                // height: "250px",
+              }}
+            >
               <Box
                 key={index}
                 sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'flex-start',
-                  width: '90%',
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "100%",
+                  minWidth: "350px",
+
                   m: "0",
-                  pt:"60px",
-                  pb:"5px",
-                
+                  mt: "10px",
+                  pt: "30px",
+                  // px: "10px",
+                  py: "10px",
                   opacity: 1,
+                  // border: "2px solid #fff",
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.25)",
+                  // borderRadius: "8px",
+                  borderRadius: "30px",
+                  backgroundColor: "#2B2D42",
                 }}
               >
-                <img src={advantages[index].img} alt="Advantage" className="advantages" />
+                <img
+                  src={advantages[index].img}
+                  alt="Advantage"
+                  className="advantages"
+                  sx={{
+                    // my: "10px",
+                    color: "#F8F8F8",
+                    // height: "20%",
+                    // width: "20%",
+                  }}
+                />
                 <Typography
                   variant="h6"
                   sx={{
-                    fontWeight: 500,
-                    fontSize: { xs: "1.1rem" },
+                    fontWeight: 300,
+                    // fontSize: { xs: "1.1rem" },
+                    fontSize: {
+                      xs: "1rem",
+                      sm: "1.3rem",
+                    },
                     my: "25px",
+                    width: "85%",
                     textAlign: "center",
+                    fontFamily: "Funnel Display",
+                    color: "#F8F8F8",
                   }}
                 >
                   {advantages[index].text}
@@ -325,76 +414,125 @@ const LandingPage = () => {
           columns={{ xs: 12, sm: 6 }}
           container
           item
+          className="bottom_video"
           sx={{
-            margin: { xs: "0", sm: "0" },
+            // margin: { xs: "0", sm: "0" },
+            marginTop: "50px",
             px: { sm: "2em" },
-
           }}
         >
-
-          <Grid container item xs={12} sm={12} md={6} spacing={0}>
-
+          <Grid container item xs={12} sm={12} md={12}>
             <Box
               sx={{
-                width:"90%",
-                m: "auto",
-                p:"20px",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
+                width: "100%",
+                m: "0",
+                p: "0",
+                height: "60vh",
+                overflow: "hidden",
+                position: "relative",
+                // m: "auto",
+                // p: "20px",
+                // display: "flex",
+                // flexDirection: "column",
+                // justifyContent: "center",
               }}
             >
-              {" "}
-              <div className="bottomImages">
+              {/* <div className="bottomImages">
                 <img src="/friends.png" className="community" />{" "}
-                
-              </div>
-              
-            </Box>
-          </Grid>
-          <Grid container item xs={12} sm={12} md={5} alignItems={"center"} spacing={0}>
-            <Box
-            sx={{p:"20px",}}>
-              <Typography
-                variant="p"
+              </div> */}
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  zIndex: "1",
+                  margin: "-120px 0 0 0",
+                }}
+              >
+                <source src="/video3.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <Box
                 sx={{
-                  fontWeight: 300,
-                  fontSize: {
-                    xs: "1rem",
-                   
-                  },
-                  color: "#aaaaaa",
-                  mt: "2vh",
+                  width: "40%",
+                  p: "30px",
+                  // mb: "-220px ",
+                  position: "absolute",
+                  bottom: "30px",
+                  right: "30px",
+                  height: "auto",
 
+                  zIndex: "3",
+                  backgroundColor: "rgba(0, 0, 0, 0.5)",
+                  borderRadius: "30px",
                 }}
               >
-                Live in harmony with each other. Don’t be too proud to enjoy
-                the company of ordinary people. And don’t think you know it
-                all.
-              </Typography>
-              <Typography
-                variant="p"
-                sx={{
-                  fontWeight: 700,
-                  fontSize: {
-                    xs: "0.9rem",
-                    sm: "1rem",
-                  },
-                  width: "auto",
-                  padding: "10px",
-                  maxWidth: "50%",
-                  color: "#aaaaaa",
-                }}
-              >
-                Romans 12:16
-              </Typography>
+                <Typography
+                  variant="p"
+                  sx={{
+                    fontWeight: 300,
+                    // fontSize: {
+                    //   xs: "1rem",
+                    // },
+
+                    fontSize: {
+                      xs: "1rem",
+                      sm: "1.7rem",
+                    },
+                    fontFamily: "Funnel Display",
+                    color: "#F8F8F8",
+                    // color: "#aaaaaa",
+                  }}
+                >
+                  Live in harmony with each other. Don’t be too proud to enjoy
+                  the company of ordinary people. And don’t think you know it
+                  all.
+                </Typography>
+                <Typography
+                  variant="p"
+                  sx={{
+                    fontWeight: 700,
+                    // fontSize: {
+                    //   xs: "0.9rem",
+                    //   sm: "1rem",
+                    // },
+                    fontSize: {
+                      xs: "1rem",
+                      sm: "1.7rem",
+                    },
+                    width: "auto",
+                    padding: "10px",
+                    maxWidth: "50%",
+                    color: "#F8F8F8",
+                    fontFamily: "Funnel Display",
+                  }}
+                >
+                  Romans 12:16
+                </Typography>
+              </Box>
             </Box>
           </Grid>
+          {/* <Grid
+            container
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              backgroundColor: "#fff",
+            }}
+          >
+          
+          </Grid> */}
         </Grid>
       </Grid>
     </Grid>
-
-
   );
 };
 export default LandingPage;
